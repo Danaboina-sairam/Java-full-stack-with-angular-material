@@ -78,10 +78,10 @@ Stack Memory:-
 ->store temporary variables and separate memory block for methods
 ->store primitive data types
 ->store reference of the heap objects
-1.strong reference
-2.weak reference
-    
-2.1.soft reference
+1.strong reference-------> Person person=new Person();
+2.weak reference--------->WeakReference<String> weakRef = new WeakReference<>(new Person());
+2.1.soft reference------->SoftReference<String> softRef = new SoftReference<>(new Person());
+
 
 ->each thread has its own stack memory.
 ->variables within a SCOPE is only visible and as soon as any variable goes out of the SCOPE, it get deleted from the stack(in LIFO order)
@@ -654,4 +654,5 @@ Exception handling
 
 1.super class(more information)
 2.child class(less information)
+
 
