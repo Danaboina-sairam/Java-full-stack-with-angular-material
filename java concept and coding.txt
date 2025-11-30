@@ -590,6 +590,11 @@ Class, interface,enums
 Add additional code
 
 
+Note:-Reflection and Annotations works at runtime
+
+sealed classes
+--------------
+
 final,sealed,non-sealed Vs permits
 
 
@@ -684,4 +689,5 @@ try {
 } catch (Exception e) {
     e.printStackTrace();
 }
+
 
