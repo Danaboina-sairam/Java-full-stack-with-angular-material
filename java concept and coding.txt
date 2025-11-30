@@ -588,7 +588,7 @@ Types of supresswarnings
 1.4 functional interfaces(used to check compile time at most one abstract method in the interface)
 Class, interface,enums
 Add additional code
-1.5 SafeVarargs
+1.5 SafeVarargs(heap pollution----->Object of one type,storing reference of another type Object)
 
 
 Note:-Reflection and Annotations works at runtime
@@ -690,6 +690,7 @@ try {
 } catch (Exception e) {
     e.printStackTrace();
 }
+
 
 
 
