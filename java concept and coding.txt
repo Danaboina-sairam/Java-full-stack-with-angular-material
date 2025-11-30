@@ -578,9 +578,9 @@ Reflection
 Annotations
 -----------
 1.predefined(on java code)
-1.1 deprecated
+1.1 deprecated(used for user defined,predefined)
 Class, methods, fields,Enum
-1.2 override
+1.2 override(normally override happening at runtime but it is used to check compile time overriding happened or not)
 Methods
 1.3 supresswarnings
 class, methods, fields, constructor,constants
@@ -653,8 +653,8 @@ sorted(Comparator)------------->Sort stream
 
 Inheritence
 -----------
-1.super class(less information
-2.child class(more information
+1.super class(less information)
+2.child class(more information)
 
 Exception handling
 
@@ -690,6 +690,7 @@ try {
 } catch (Exception e) {
     e.printStackTrace();
 }
+
 
 
 
