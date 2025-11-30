@@ -656,3 +656,32 @@ Exception handling
 2.child class(less information)
 
 
+
+String response = """
+        {
+          "eisFlcWithdrawResp": {
+            "REQUEST_REFERENCE_NUMBER": "58TY225297192297707011061",
+            "EIS_RESPONSE": {
+              "status": "SUCCESS",
+              "statusMsg": "Case Withdrawn Successfully",
+              "objList": [
+                {
+                  "fleStatus": "FLC Request Withdrawn"
+                }
+              ],
+              "ERROR_CODE": "10",
+              "ERROR_DESCRIPTION": "",
+              "RESPONSE_STATUS": "OK"
+            }
+          }
+        }
+        """;  
+
+ObjectMapper mapper = new ObjectMapper();
+
+try {
+    HashMap<String, Object> eisFlcWithdrawResp = mapper.readValue(response, HashMap.class);
+} catch (Exception e) {
+    e.printStackTrace();
+}
+
