@@ -626,3 +626,11 @@ collect(Supplier, BiConsumer, BiConsumer)------------->Accumulate + combine
 7. Methods that take Comparator<T>
 
 sorted(Comparator)------------->Sort stream
+
+
+
+
+
+
+1.JsonObject( DTO-JsonObject-HashMap, DTO-JsonObject-String)
+2.ObjectMapper( HashMap-DTO)
