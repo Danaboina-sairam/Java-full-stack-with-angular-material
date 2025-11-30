@@ -580,3 +580,7 @@ Types of supresswarnings
 1.4 functional interfaces
 Class, interface,enums
 Add additional code
+
+
+final,sealed,non-sealed Vs permits
+
