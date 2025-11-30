@@ -584,3 +584,45 @@ Add additional code
 
 final,sealed,non-sealed Vs permits
 
+
+Defult functional interfaces
+----------------------------
+
+1. Methods that take Predicate<T>
+
+filter(Predicate)------------->Keep elements matching predicate
+anyMatch(Predicate)------------->At least one element matches
+allMatch(Predicate)------------->All match
+noneMatch(Predicate)------------->None match
+dropWhile(Predicate)------------->Drop until predicate false
+takeWhile(Predicate)------------->Take until predicate false
+
+2. Methods that take Function<T, R>
+
+map(Function)------------->Convert T → R
+flatMap(Function)------------->Convert T → Stream<R>
+mapToInt, mapToLong, mapToDouble------------->Primitive mapping
+collect(Collectors.mapping(Function))------------->Mapping inside collector
+
+3. Methods that take Consumer<T>
+
+forEach(Consumer)------------->Action on each element
+peek(Consumer)------------->Debug/inspect each element
+
+4. Methods that take Supplier<R>
+
+collect(Supplier, BiConsumer, BiConsumer)------------->Custom collection
+Stream.generate(Supplier)------------->Infinite stream generation
+
+5. Methods that take BinaryOperator<T>
+
+reduce(BinaryOperator)------------->Combine two values
+Collectors.reducing(BinaryOperator)------------->Combine during collection
+
+6. Methods that take BiConsumer<T, U>
+
+collect(Supplier, BiConsumer, BiConsumer)------------->Accumulate + combine
+
+7. Methods that take Comparator<T>
+
+sorted(Comparator)------------->Sort stream
