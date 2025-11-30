@@ -126,13 +126,18 @@ Heap Memory:-
 
 
 
-
+Text Blocks
+-----------
 
 Test blocks used for storing json object in string format
 
 Pattern matching for instanceof
+-------------------------------
+
 
 We can able to create reference for object and interface
+--------------------------------------------------------
+
 
 Record
 
@@ -147,6 +152,9 @@ Lombok is external dependency
 Record is java feature, so it can restrict add setter method
 
 Also provide accessor method nothing but getter method like name()
+
+
+
 
 
 class loader
@@ -634,3 +642,16 @@ sorted(Comparator)------------->Sort stream
 
 1.JsonObject( DTO-JsonObject-HashMap, DTO-JsonObject-String)
 2.ObjectMapper( HashMap-DTO)
+
+
+
+Inheritence
+-----------
+1.super class(less information
+2.child class(more information
+
+Exception handling
+
+1.super class(more information)
+2.child class(less information)
+
