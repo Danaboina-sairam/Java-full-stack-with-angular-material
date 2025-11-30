@@ -582,7 +582,7 @@ Annotations
 Class, methods, fields,Enum
 1.2 override(normally override happening at runtime but it is used to check compile time overriding happened or not)
 Methods
-1.3 supresswarnings
+1.3 supresswarnings(IGNORE the compile time warnings but some times could led to Runtime exception,if any valid warning is IGNORED)
 class, methods, fields, constructor,constants
 Types of supresswarnings
 1.4 functional interfaces
@@ -690,6 +690,7 @@ try {
 } catch (Exception e) {
     e.printStackTrace();
 }
+
 
 
 
