@@ -549,11 +549,34 @@ If tree nodes in a bucket drop to ≤ 6, it converts back to a linked list.
 
 
 
+Reflection
+-----------
+ Interface,class, methods, fields, constructor, return types, method name
+
+ Every class itself create class Class
+
+ getMethods return only public methods
+
+ getDeclaredMethods return private method also
+
+ When access private member then put accessible true
+
+ We can able to see metadata of the class and call the actual methods also
 
 
 
 
 
-
-
-
+Annotations
+-----------
+1.predefined(on java code)
+1.1 deprecated
+Class, methods, fields,Enum
+ override
+Methods
+1.3 supresswarnings
+class, methods, fields, constructor,constants
+Types of supresswarnings
+1.4 functional interfaces
+Class, interface,enums
+Add additional code
