@@ -578,18 +578,48 @@ Reflection
 Annotations
 -----------
 1.predefined(on java code)
-1.1 deprecated(used for user defined,predefined)
+------------
+
+1.1 @Deprecated(used for user defined,predefined)
 Class, methods, fields,Enum
-1.2 override(normally override happening at runtime but it is used to check compile time overriding happened or not)
+1.2 @Override(normally override happening at runtime but it is used to check compile time overriding happened or not)
 Methods
-1.3 supresswarnings(IGNORE the compile time warnings but some times could led to Runtime exception,if any valid warning is IGNORED)
+1.3 @Supresswarnings(IGNORE the compile time warnings but some times could led to Runtime exception,if any valid warning is IGNORED)
 class, methods, fields, constructor,constants
 Types of supresswarnings
-1.4 functional interfaces(used to check compile time at most one abstract method in the interface)
+1.4 @FunctionalInterfaces(used to check compile time at most one abstract method in the interface)
 Class, interface,enums
 Add additional code
-1.5 SafeVarargs(heap pollution----->Object of one type,storing reference of another type Object)
+1.5 @SafeVarargs(heap pollution----->Object of one type,storing reference of another type Object)
 
+2.
+------------
+
+2.1 @Target({ElementType.METHOD})--->(this meta-annotation will restrict,where to use annotation Either at method,contructor,field etc)
+-----------
+
+2.2 @Retention
+--------------
+
+RetentionPolicy.SOURCE
+
+RetentionPolicy.CLASS
+
+RetentionPolicy.RUNTIME
+
+NOTE:-@Target and @Retention every time strictly combine both otherwise not working
+
+
+2.3 @Documented( we can Java documentation from the intellij tool)
+
+->by default, Annotations are ignored when Java documentation is generated
+->with this meta-annotation even annotations will come in Java Docs.
+
+2.4 @Inherited
+
+->By default, Annotations applied on parent class are not available to child classes.
+->but it is after this meta-annotation.
+->this meta-annotation has no effect, if annotation is used other than a class.
 
 Note:-Reflection and Annotations works at runtime
 
@@ -690,6 +720,7 @@ try {
 } catch (Exception e) {
     e.printStackTrace();
 }
+
 
 
 
