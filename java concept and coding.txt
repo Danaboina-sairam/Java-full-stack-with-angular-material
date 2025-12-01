@@ -141,9 +141,19 @@ We can able to create reference for object and interface
 
 Record
 
-Automatic -canonical constructor
+Record is final class
 
-Compact constructor
+java.lang.Record class
+
+Note:- in record parameter fields called as canonical constructor
+
+canonical constructor :
+
+Automatically generates "canonical constructor", means constructor that takes all record components(fields) in order.
+
+we can override the canonical constructor if want.
+
+Compact constructor:- compact constructor nothing but constructor with empty record component, in this case record automatically add record component and initialize automatically.
 
 Local record can't declare with public, private, protected
 
@@ -153,7 +163,7 @@ Record is java feature, so it can restrict add setter method
 
 Also provide accessor method nothing but getter method like name()
 
-
+nested records:- nested records only consists of nested static records
 
 
 
@@ -780,6 +790,7 @@ try {
 } catch (Exception e) {
     e.printStackTrace();
 }
+
 
 
 
