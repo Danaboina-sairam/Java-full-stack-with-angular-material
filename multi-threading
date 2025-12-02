@@ -341,6 +341,44 @@ Class or Object level Monitor lock
 ----------------------------------
 1.static with synchronized(used in method signature)
 
+
+
+Case 1: Same object
+-------------------
+
+
+MyService s = new MyService();
+
+Thread t1 = new Thread(() -> s.doWork());
+Thread t2 = new Thread(() -> s.doWork());
+
+t1.start();
+t2.start();
+
+
+doWork() is synchronized → Locks same object → Only one thread can run.
+
+
+
+Case 2: Different objects
+-------------------------
+
+MyService s1 = new MyService();
+MyService s2 = new MyService();
+
+Thread t1 = new Thread(() -> s1.doWork());
+Thread t2 = new Thread(() -> s2.doWork());
+
+t1.start();
+t2.start();
+
+
+doWork() is synchronized → But objects are different → Two threads run parallel.
+
+
+
+
+
 Explicit locking
 ----------------
 1.ReentrantLock
