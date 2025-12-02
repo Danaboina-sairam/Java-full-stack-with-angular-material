@@ -197,7 +197,7 @@ why we have 2 ways to create threads
 
 1.class extend only 1 class
 
-2.class implements more than 1 class
+2.class implements more than 1 interface
 
 
 runnable interface execution
