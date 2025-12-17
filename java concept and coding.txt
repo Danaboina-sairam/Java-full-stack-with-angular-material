@@ -794,9 +794,26 @@ try {
 
 
 
+| Aspect                       | Old Date-Time API (Legacy)   | New Date-Time API (Java 8+)                          |
+| ---------------------------- | ---------------------------- | ---------------------------------------------------- |
+| **Core Package**             | `java.util`                  | `java.time`                                          |
+| **Main Classes**             | `Date`, `Calendar`           | `LocalDate`, `LocalTime`, `LocalDateTime`, `Instant` |
+| **Formatting Package**       | `java.text`                  | `java.time.format`                                   |
+| **Formatter Class**          | `SimpleDateFormat` (mutable) | `DateTimeFormatter` (immutable)                      |
+| **Time Zone Package**        | `java.util.TimeZone`         | `java.time.zone`                                     |
+| **Time Zone Classes**        | `TimeZone`                   | `ZoneId`, `ZonedDateTime`, `ZoneRules`               |
+| **Advanced Date Operations** | `Calendar` methods           | `java.time.temporal`                                 |
+| **Alternate Calendars**      | ❌ Not supported              | `java.time.chrono`                                   |
+| **Thread Safety**            | ❌ Not thread-safe            | ✅ Thread-safe                                        |
+| **Immutability**             | ❌ Mutable                    | ✅ Immutable                                          |
+| **API Design**               | Confusing & error-prone      | Clean & well-structured                              |
 
 
 
-
-
+| Legacy Package               | Replacement Package                  |
+| ---------------------------- | ------------------------------------ |
+| `java.util.Date`             | `java.time.Instant`                  |
+| `java.util.Calendar`         | `java.time.LocalDateTime`            |
+| `java.text.SimpleDateFormat` | `java.time.format.DateTimeFormatter` |
+| `java.util.TimeZone`         | `java.time.ZoneId`                   |
 
