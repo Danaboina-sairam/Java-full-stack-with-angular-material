@@ -810,6 +810,24 @@ try {
 
 
 
+| Aspect                      | Old Date-Time API              | New Date & Time API                                  |
+| --------------------------- | ------------------------------ | ---------------------------------------------------- |
+| **Core Date/Time Package**  | `java.util`                    | `java.time`                                          |
+| **Formatting Package**      | `java.text`                    | `java.time.format`                                   |
+| **Package Design**          | Fragmented across packages     | Unified under one root package                       |
+| **Date & Time Classes**     | `Date`, `Calendar`             | `LocalDate`, `LocalTime`, `LocalDateTime`, `Instant` |
+| **Formatter Class**         | `SimpleDateFormat`             | `DateTimeFormatter`                                  |
+| **Formatter Thread Safety** | ❌ Not thread-safe              | ✅ Thread-safe                                        |
+| **Time Zone Package**       | `java.util.TimeZone`           | `java.time.zone`                                     |
+| **Zone-Aware Date-Time**    | ❌ No dedicated class           | `ZonedDateTime`                                      |
+| **Immutability**            | ❌ Mutable                      | ✅ Immutable                                          |
+| **Error-Prone Design**      | Month starts at 0, year offset | Human-readable values                                |
+| **API Readability**         | Poor                           | Clean & expressive                                   |
+
+
+
+
+
 | Legacy Package               | Replacement Package                  |
 | ---------------------------- | ------------------------------------ |
 | `java.util.Date`             | `java.time.Instant`                  |
@@ -817,3 +835,9 @@ try {
 | `java.text.SimpleDateFormat` | `java.time.format.DateTimeFormatter` |
 | `java.util.TimeZone`         | `java.time.ZoneId`                   |
 
+
+Old API: Date & Time → java.util, Formatting → java.text
+New API: Date, Time & Formatting → java.time (with sub-packages)
+
+
+The old Date API is split between java.util for date/time and java.text for formatting, making it fragmented and unsafe for concurrency, whereas the new Java Date & Time API is unified under the java.time package hierarchy, providing immutability, thread safety, and cleaner design.
