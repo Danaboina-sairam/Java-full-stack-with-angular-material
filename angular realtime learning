@@ -179,5 +179,24 @@ npm install -g npm@latest
 npm install -g @angular/cli@latest
 
 
+Angular
+-------
 
+Base64(backend)->JsonString(frontend)
+
+MultiPart(backend)->BLOB(frontend)
+
+
+
+in Angular
+
+contructor:
+----------
+
+1.it is called only 1 time at the time of start application
+
+onInit():
+--------
+
+1.it is called every time wherever going into application
 
