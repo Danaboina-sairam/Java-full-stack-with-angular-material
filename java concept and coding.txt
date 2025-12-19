@@ -841,3 +841,20 @@ New API: Date, Time & Formatting → java.time (with sub-packages)
 
 
 The old Date API is split between java.util for date/time and java.text for formatting, making it fragmented and unsafe for concurrency, whereas the new Java Date & Time API is unified under the java.time package hierarchy, providing immutability, thread safety, and cleaner design.
+
+
+NOT USING EQUAL OPERATOR: Instantiation and Initialization both are same place
+------------------------
+
+int[] arr = new int[] {10, 20, 30};
+
+String[] arr= new String[] { "a", "b", "c" };
+
+
+USING EQUAL OPERATOR: without Instantiation we are using Initialization,so using EQUAL OPERATOR
+--------------------
+
+int[] arr = {10, 20, 30};
+
+String[] arr = {"Java", "Spring", "Kafka"};
+
