@@ -55,6 +55,85 @@ IOC----->Dependency Injection,Bean Factory,Application Context
 
 
 
+
+
+
+@Component:
+
+1.@Component tells to spring boot ,you have to create object and you have to manage life cycle
+
+
+
+userdefined bean
+
+1.@Component with userdefined constructor(no args constructor)
+
+2.@Configuration with customized constructor of @Bean (args constructor)
+
+springboot bean
+
+1.@Component
+
+
+Dynamic bean initialization with @Qualifier 
+-------------------------------------------
+
+
+
+
+1. Client sends HTTP request
+2. DispatcherServlet receives request
+3. DispatcherServlet asks HandlerMapping:
+      "Which handler?"
+4. HandlerMapping returns:
+      → Controller object + method info
+5. DispatcherServlet asks HandlerAdapter:
+      "Can you handle this controller?"
+6. HandlerAdapter invokes the controller method
+7. Controller executes business logic
+8. HandlerAdapter returns ModelAndView / ResponseBody
+9. DispatcherServlet sends response to client
+
+
+
+
+1️⃣ DispatcherServlet → HandlerMapping
+
+“Who should handle this request?”
+
+Uses RequestMappingHandlerMapping
+
+Finds the controller method annotated with:
+
+@GetMapping
+
+@PostMapping, etc.
+
+
+
+2️⃣ DispatcherServlet → HandlerAdapter
+
+“How do I invoke this handler?”
+
+Uses RequestMappingHandlerAdapter
+
+Prepares:
+
+Method arguments (@PathVariable, @RequestBody)
+
+Validation
+
+Conversion
+
+
+
+
+
+
+
+
+
+
 product-service:-getting details of product
 
 order-service:-posting details of product
