@@ -774,10 +774,121 @@ NOTE:- all resilience patterns applied for rest calls
 
 
 
+@Transactional annotation
+-------------------------
+
+1.Declarative
+2.programatic 
+
+a.programatic way of usage
+
+b.using TransactionTemplate
 
 
+Types of transaction propagation
+-------------------------------- 
 
 
+1️⃣ REQUIRED (Default)
+
+📌 Behavior
+
+Joins the existing transaction if present
+
+Creates a new transaction if none exists
+
+@Transactional(propagation = Propagation.REQUIRED)
+public void saveOrder() {
+}
+
+
+2️⃣ REQUIRES_NEW
+
+📌 Behavior
+
+Suspends the existing transaction
+
+Always creates a new transaction
+
+@Transactional(propagation = Propagation.REQUIRES_NEW)
+public void saveAuditLog() {
+}
+
+
+3️⃣ SUPPORTS
+
+📌 Behavior
+
+Uses existing transaction if present
+
+Executes without transaction if none exists
+
+@Transactional(propagation = Propagation.SUPPORTS)
+public List<Order> getOrders() {
+}
+
+
+4️⃣ NOT_SUPPORTED
+
+📌 Behavior
+
+Suspends existing transaction
+
+Executes non-transactionally
+
+
+@Transactional(propagation = Propagation.NOT_SUPPORTED)
+public void generateReport() {
+}
+
+
+5️⃣ MANDATORY
+
+📌 Behavior
+
+Must run inside an existing transaction
+
+Throws exception if no transaction exists
+
+@Transactional(propagation = Propagation.MANDATORY)
+public void updateAccount() {
+}
+
+
+6️⃣ NEVER
+
+📌 Behavior
+
+Must NOT run inside a transaction
+
+Throws exception if a transaction exists
+
+@Transactional(propagation = Propagation.NEVER)
+public void externalCall() {
+}
+
+
+7️⃣ NESTED
+
+📌 Behavior
+
+Runs inside existing transaction
+
+Creates a savepoint
+
+Rolls back only to the savepoint (not full rollback)
+
+@Transactional(propagation = Propagation.NESTED)
+public void processItem() {
+}
+
+
+Types of ISOLATION Level(ONLY READ Operation)
+------------------------
+
+
+DB Locking Types
+----------------
 
 
 
