@@ -67,6 +67,10 @@ Delete MYSQL folder from ProgramData folder
 -------------------------------------------
 1.this is for the root password creation
 
+SHOW DATABASES;
+
+CREATE DATABASE ORDER_SERVICE;
+
 
 ALTER USER 'root'@'localhost' IDENTIFIED BY 'mysql';
 
