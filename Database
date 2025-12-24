@@ -63,6 +63,11 @@ MYSQL
 2.mysql-workbench-community-8.0.45-winx64
 
 
+Delete MYSQL folder from ProgramData folder
+-------------------------------------------
+1.this is for the root password creation
+
+
 ALTER USER 'root'@'localhost' IDENTIFIED BY 'mysql';
 
 
