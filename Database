@@ -35,6 +35,11 @@ Mongo db compass UI
 
 refresh
 
+ORACLE DB ERROR
+---------------
+The provided destination folder has invalid characters
+
+C:\oracle
 
 ORACLE DB
 ---------
@@ -50,9 +55,15 @@ ALTER USER system IDENTIFIED BY system;
 NOTE:- Oracle database and Oracle SQL developer same username and password
 
 
+MYSQL 
+-----
+
+1.mysql-installer-community-8.0.44.0
+
+2.mysql-workbench-community-8.0.45-winx64
+
+
 ALTER USER 'root'@'localhost' IDENTIFIED BY 'mysql';
-
-
 
 
 
