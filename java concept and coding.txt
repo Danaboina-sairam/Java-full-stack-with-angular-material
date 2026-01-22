@@ -858,3 +858,15 @@ int[] arr = {10, 20, 30};
 
 String[] arr = {"Java", "Spring", "Kafka"};
 
+
+Fail-Safe: What actually happens
+
+👉 Removal / modification happens on the ORIGINAL collection
+👉 Iteration happens on a COPY (snapshot) of the collection
+
+
+Fail-Fast:What actually happens
+
+👉 Iteration and Removal / modification happens on the ORIGINAL collection
+
+
