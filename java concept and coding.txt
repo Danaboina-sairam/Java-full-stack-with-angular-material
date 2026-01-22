@@ -134,6 +134,15 @@ Test blocks used for storing json object in string format
 Pattern matching for instanceof
 -------------------------------
 
+1.Previously:- comparison and type cast done at same place 
+
+2.currently:- comparison and type cast done at different place
+
+->by using type casting we can able to give object reference to interface
+->only && operator working in instanceof
+->|| operator not working in instanceof
+
+
 
 We can able to create reference for object and interface
 --------------------------------------------------------
@@ -868,5 +877,6 @@ Fail-Safe: What actually happens
 Fail-Fast:What actually happens
 
 👉 Iteration and Removal / modification happens on the ORIGINAL collection
+
 
 
