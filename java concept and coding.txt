@@ -707,6 +707,36 @@ sealed classes
 
 final,sealed,non-sealed Vs permits
 
+->Biggest problem is lack of control in inheritence that's why introducing sealed classes
+
+
+// Sealed parent class: only permitted classes can extend it
+sealed class Payment
+        permits CreditCardPayment, UpiPayment, CashPayment {
+}
+
+// final: cannot be extended by any other class
+final class CreditCardPayment extends Payment {
+}
+
+// non-sealed: inheritance is open again
+non-sealed class UpiPayment extends Payment {
+}
+
+// Allowed because UpiPayment is non-sealed
+class GooglePay extends UpiPayment {
+}
+
+// Also allowed for the same reason
+class PhonePe extends UpiPayment {
+}
+
+// Normal subclass of sealed class (must be listed in permits)
+class CashPayment extends Payment {
+}
+
+
+
 
 Defult functional interfaces
 ----------------------------
@@ -877,6 +907,7 @@ Fail-Safe: What actually happens
 Fail-Fast:What actually happens
 
 👉 Iteration and Removal / modification happens on the ORIGINAL collection
+
 
 
 
