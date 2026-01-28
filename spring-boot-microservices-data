@@ -199,6 +199,14 @@ Use http://<service-name>
 Include spring-cloud-starter-loadbalancer
 Register with Eureka
 
+Note:-
+
+spring-cloud-starter-gateway(parent)
+
+spring-cloud-starter-loadbalancer(child)
+
+----------->so here no need to add spring-cloud-starter-loadbalancer again in the dependency
+
 
 API Gateway
 
