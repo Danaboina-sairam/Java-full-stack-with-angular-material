@@ -910,4 +910,22 @@ Fail-Fast:What actually happens
 
 
 
+Madhan neelapu
+Lambda expression
+-----------------
+---->primitives and objects are first class citizens in java(so only first class citizens able to pass in method parameter)
+Note:- methods not first class citizens in java
+---->we can able to pass primitive and object reference as method parameter
+---->we can't able to pass methods as method parameter
+---->so lambda expression expression used to pass methods as method parameter
+
+
+Class
+
+1.does it have data or state? 
+2.does it hava logic or behavior? 
+
+interface
+
+1.only data information of logic or behavior being passed.
 
