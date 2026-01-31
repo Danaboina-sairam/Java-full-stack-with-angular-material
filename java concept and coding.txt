@@ -929,3 +929,35 @@ interface
 
 1.only data information of logic or behavior being passed.
 
+
+
+Generics in Java
+
+code duplication
+----------------
+
+code duplication whenever overloading methods in java
+
+loss of type information
+------------------------
+
+removing (removing overloading methods) code duplication by using Object data type passing as parameter
+
+Note:-in generics must  use Wrapper classes
+
+Auto boxing and unboxing concept in wrapper class
+
+Note:- generic data type first assign to class after that method will take and using that type
+
+Normal type cast issues getting at run time but generic using we are getting compile time only
+
+
+compile time and byte code time (no need know for switch case and for loop)
+-------------------------------
+
+need to know how internaly working inside compile time and byte code time
+
+
+EXAMPLE:- Bottle with capsule and tablet
+
+
