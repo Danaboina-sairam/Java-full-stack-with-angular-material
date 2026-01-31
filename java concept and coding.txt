@@ -31,6 +31,11 @@ In microservices:
 
 -->Abstract classes reduce code duplication
 
+IMP POINTS:-
+
+-->Interface is used to keep microservices loosely coupled, mockable, and extendable.
+-->Abstract class is used only to enforce common logic or shared fields.
+
 
 super class:- class through which sub class class derived is called super class
 
@@ -976,6 +981,7 @@ need to know how internaly working inside compile time and byte code time
 
 
 EXAMPLE:- Bottle with capsule and tablet
+
 
 
 
