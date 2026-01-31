@@ -12,7 +12,24 @@ abstraction achieve 2 ways
 ->abstract class contains abstract, static, normal methods(default and normal methods both are different)
 ->class can able to extend only once that is also immediate concreate sub class
 
+Interface vs Abstract Class – REAL decision rule
 
+| Situation                | Use              |
+| ------------------------ | ---------------- |
+| Multiple implementations | ✅ Interface      |
+| API contract             | ✅ Interface      |
+| Spring DI                | ✅ Interface      |
+| Feign / JPA / Kafka      | ✅ Interface      |
+| Common code + template   | ✅ Abstract class |
+| Shared fields            | ✅ Abstract class |
+| Partial implementation   | ✅ Abstract class |
+
+
+In microservices:
+
+-->Interfaces define service boundaries
+
+-->Abstract classes reduce code duplication
 
 
 super class:- class through which sub class class derived is called super class
@@ -959,5 +976,6 @@ need to know how internaly working inside compile time and byte code time
 
 
 EXAMPLE:- Bottle with capsule and tablet
+
 
 
