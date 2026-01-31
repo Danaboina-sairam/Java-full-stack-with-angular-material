@@ -984,4 +984,23 @@ EXAMPLE:- Bottle with capsule and tablet
 
 
 
+Wild Cards using <?>
+
+Bounds using Super and Extends keyword
+
+Lower Bound using Super Keyword
+
+->read is not allowed
+->write is allowed
+
+Upper Bound using Extends Keyword
+
+->read is allowed
+->write is not allowed
+
+
+PECS
+
+->Producer Extends
+->Consumer Super
 
