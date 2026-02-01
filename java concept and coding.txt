@@ -953,6 +953,28 @@ interface
 
 
 
+Generics used to create functional interface with multiple data types
+
+We can able to assign lambda expression to function interfaces and test method in functional interfaces
+
+input and output types based
+
+consumer
+supplier
+predicate
+function
+
+->lambda expression only create most used class
+->annonymous inner class create every class used in that
+->this reference in lamda expression vs anonymous class
+->lamda used invoke dynamics
+
+
+Streams in Java
+---------------
+
+
+
 Generics in Java
 
 code duplication
@@ -1000,7 +1022,16 @@ Upper Bound using Extends Keyword
 
 
 PECS
+----
 
 ->Producer Extends
 ->Consumer Super
 
+Generics usage in Static Methods
+--------------------------------
+
+Multi Bounds
+------------
+
+Multi Types
+-----------
