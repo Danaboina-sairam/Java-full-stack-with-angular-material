@@ -447,6 +447,49 @@ targetPort(third)
 
 
 
+Docker realtime practice
+------------------------
+
+cd api-gateway
+
+docker build -t apigateway-dockerfile .
+
+docker images
+
+docker build -t apigateway-layered -f Dockerfile.layered .
+
+cd spring-boot-microserivces
+
+maven installation
+------------------
+download maven and path setting in the environment variables
+
+mvn clean compile jib:build
+
+docker images
+
+
+docker hub
+----------
+
+sairam8276/discovery-server:latest
+
+
+docker compose up -d  
+
+docker logs -f broker
+
+docker logs -f  order-service
+
+docker logs -f api-gateway
+
+docker logs -f  order-service
+
+docker logs -f  notification-service
+
+
+
+
 
 
 
