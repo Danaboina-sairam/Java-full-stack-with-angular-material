@@ -959,10 +959,25 @@ We can able to assign lambda expression to function interfaces and test method i
 
 input and output types based
 
-consumer
-supplier
 predicate
+---------
+Input: Any Datatype
+Output: Boolean
+
+consumer
+--------
+Input: Any Datatype
+Output: void
+
+supplier
+--------
+Input: empty 
+Output: Any Datatype
+
 function
+--------
+Input: Any Datatype
+Output: Any Datatype
 
 ->lambda expression only create most used class
 ->annonymous inner class create every class used in that
@@ -973,6 +988,34 @@ function
 Streams in Java
 ---------------
 
+Intermediate Operations
+-----------------------
+
+Stateless
+---------
+1.filter
+2.map
+3.flatMap
+
+Stateful
+--------
+1.sorted
+2.limit
+3.distinct
+
+Terminal Operations
+-------------------
+
+Short Circuiting
+----------------
+1.findFirst
+2.allMatch
+
+Non Short Circuiting
+--------------------
+1.forEach
+2.reduce
+3.collect
 
 
 Generics in Java
@@ -1035,3 +1078,4 @@ Multi Bounds
 
 Multi Types
 -----------
+
