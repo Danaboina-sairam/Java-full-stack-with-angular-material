@@ -458,6 +458,7 @@ docker images
 
 docker build -t apigateway-layered -f Dockerfile.layered .
 
+
 cd spring-boot-microserivces
 
 maven installation
@@ -483,9 +484,38 @@ docker logs -f  order-service
 
 docker logs -f api-gateway
 
+docker logs -f discovery-server
+
+docker logs -f  product-service
+
 docker logs -f  order-service
 
+docker logs -f  inventory-service
+
 docker logs -f  notification-service
+
+
+
+
+docker exec -it mysql-inventory-service mysql -uroot -proot -e "SHOW DATABASES;"
+
+docker exec -it mysql-inventory-service mysql -uroot -proot -e "CREATE DATABASE inventory_service;"
+
+docker compose restart inventory-service
+
+
+
+
+docker run -p 127.0.0.1:9191:8080 -e KC_BOOTSTRAP_ADMIN_USERNAME=admin -e KC_BOOTSTRAP_ADMIN_PASSWORD=admin quay.io/keycloak/keycloak:26.5.2 start-dev
+
+
+
+
+1️⃣ Create Realm from Keycloak Admin Console (UI)
+
+2️⃣ Auto-Create Realm using Docker (Best for Microservices)
+
+3️⃣ Create Realm using REST API (Automation / CI/CD)
 
 
 
