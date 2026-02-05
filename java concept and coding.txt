@@ -1049,6 +1049,10 @@ EXAMPLE:- Bottle with capsule and tablet
 
 
 
+Inheritence, Wild cards, Bounds using Super and Extend keyword
+--------------------------------------------------------------
+
+
 Wild Cards using <?>
 
 Bounds using Super and Extends keyword
@@ -1078,4 +1082,5 @@ Multi Bounds
 
 Multi Types
 -----------
+
 
