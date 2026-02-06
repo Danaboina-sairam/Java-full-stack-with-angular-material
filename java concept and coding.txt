@@ -985,10 +985,88 @@ Output: Any Datatype
 ->lamda used invoke dynamics
 
 
-Streams in Java
+Streams in Java(Water tank example with pipes and tap)
 ---------------
 
-Intermediate Operations
+1.There may be 0 or more pipes
+2.There must be always 1 tap
+3.The choice of pipes/tap depends on the purpose/goal
+
+Previously Collection used to Iterator interface(internally used hasNext() and next() methods)
+
+.stream():- 
+
+1.no data present in stream()(Stream Api used spliterator() internally)
+2.stream() method every time pull and push then transform the element(same like hasNext() and next())
+
+java.util.stream.ReferencePipeline$Head@6d311334----------->after stream() method
+java.util.stream.ReferencePipeline$2@6d311335
+java.util.stream.ReferencePipeline$3@6d311336
+
+Lazy evalutation
+----------------
+Computation starts only when the terminal operation is invoked
+
+Short circuiting
+----------------
+Terminate pipeline successfully without examining all the data
+
+Operation Fusion
+----------------
+
+Combining multiple operations to be executed in a single pass on the data
+
+
+List<Integer> numbers=Arrays.asList(1,2,3,4,5,6,7,8,9);
+
+Map printing working in Java 8
+------------------------------
+
+numbers.stream().map(e->{ System.out.println("Squaring:"+e); return e*e;).count();
+
+Map printing not working in Java 9
+----------------------------------
+
+numbers.stream().map(e->{ System.out.println("Squaring:"+e); return e*e;).count();
+
+
+whenever passing lambda expression or method reference as function parameter (provide only precise parameter and dont add extra logic)
+
+
+parallel Streams issues
+-----------------------
+
+
+
+Characteristics of a stream
+---------------------------
+
+List<Integer> numbers=Arrays.asList(1,2,3,4,5,6,7,8,9);
+
+numbers.stream().distinct().sorted().count();
+
+stream()------->SIZED , ORDERED
+
+distinct()------->DISTINCT
+
+sorted()-------->SORTED
+
+count()
+
+The characterstics of a stream are known from characterstics bitmap
+
+Intermediate operation effects the stream characterstics
+
+
+spliterator splitting working in parallel stream
+------------------------------------------------
+
+spliteraor----->stream convertion----->internally linked list
+
+Pipes not store any water that is just for flow
+
+
+Intermediate Operations(Pipes):- lazy evaluation 
 -----------------------
 
 Stateless
@@ -1003,19 +1081,69 @@ Stateful
 2.limit
 3.distinct
 
-Terminal Operations
+Terminal Operations(Tap)
 -------------------
 
-Short Circuiting
+Short Circuiting(No need to process all the elements)
 ----------------
 1.findFirst
 2.allMatch
 
-Non Short Circuiting
+Non Short Circuiting(All elements need to process)
 --------------------
 1.forEach
 2.reduce
 3.collect
+
+
+List<Integer> numbers=new ArrayList<>(Arrays.asList(1,2,3,4,5,6,7,8,9,10));
+
+//void forEach(Cosumer<? super T> action)
+
+numbers.stream().forEach(e->System.out.println(e));
+
+//Stream<T> filter(Predicate<? super T> predicate)
+
+numbers.stream().filter(e->e%2==0).forEach(e->System.out.println(e));
+
+
+Return type for each operation type
+-----------------------------------
+
+1.Intermediate----------->Stream<T>
+2.Terminal--------------->void
+
+//<R> Stream<R> map(Function<? super T,? extends R> mapper)
+
+numbers.stream().map(e->e*e).forEach(e->System.out.println(e));
+
+
+numbers.stream().map(e->"number :"+e).forEach(e->System.out.println(e));
+
+
+numbers.stream().map(e->List.of(e*2,e*5,e*8)).forEach(e->System.out.println(e));
+
+
+//<R> Stream<R> flatMap(Function<? super T, ? extends Stream<? extends R>> mapper);
+
+note:- list and object not accept directly so convert to stream
+
+List.of() vs Stream.of()
+
+numbers.stream().flatMap(e->List.of(e*2,e*5,e*8).stream()).forEach(e->System.out.println(e));
+
+numbers.stream().flatMap(e->Stream.of(e*2,e*5,e*8)).forEach(e->System.out.println(e));
+
+
+//T reduce(T identity, BinaryOperator<T> accumulator);
+
+System.out.println(number.stream().reduce(0,(e,carry)->e+carry)));
+
+Major focus on second parameter
+
+// 1,0-->1
+// 2,1-->3
+// 3,3-->6
 
 
 Generics in Java
@@ -1082,5 +1210,6 @@ Multi Bounds
 
 Multi Types
 -----------
+
 
 
