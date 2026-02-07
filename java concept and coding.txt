@@ -1111,7 +1111,7 @@ Return type for each operation type
 -----------------------------------
 
 1.Intermediate----------->Stream<T>
-2.Terminal--------------->void
+2.Terminal--------------->void,Optional<T>
 
 //<R> Stream<R> map(Function<? super T,? extends R> mapper)
 
@@ -1145,6 +1145,82 @@ Major focus on second parameter
 // 2,1-->3
 // 3,3-->6
 
+
+Unable apply sum() method on the map() because map() return integer,string,list,array,object etc 
+
+
+mapToInt() , mapToDouble() , mapToLong()
+----------------------------------------
+
+System.out.println(number.stream().filter(e->e%2==0).mapToInt(e->e*e).sum());
+
+
+Note:- we can able to print logs using S.o.pln() wherever lambda expression available like filter() and forEach()
+
+peek()
+
+System.out.println(number.stream().filter(e->e%2==0).peek(e->System.out.println(e)).mapToInt(e->e*e).sum());
+
+toArray()
+
+Object[] objects=number.stream().filter(e->e%2==0).map(e->e*e).toArray();
+
+int[] intArray=number.stream().filter(e->e%2==0).mapToInt(e->e*e).toArray();
+
+
+toList();
+
+List<Integer> integers=number.stream().filter(e->e%2==0).map(e->e*e).toList();
+
+more than array,list and object, we can use collect()
+
+Set<Integer> setOfIntegers=number.stream().filter(e->e%2==0).map(e->e*e).collect(Collectors.toSet());
+
+
+allMatch() , anyMatch() , noneMatch()
+
+
+numbers.stream().allMatch(e->e%2==0);
+
+count()
+
+numbers.stream().filter(e->e>4).filter(e->e%2!=0).count();
+
+distinct()
+
+numbers.stream().distinct().forEach(e->System.out.println(e));
+
+findAny() and findFirst()
+-------------------------
+
+numbers.stream.filter(e->e%2==0).map(e->e*e).findFirst();
+
+
+skip() and limit()
+
+numbers.stream().skip(3).limit(6).forEach(e->System.out.println(e));
+
+sorted()
+
+numbers.stream().sorted((e1,e2)->e2-e1).forEach(e->System.out.println(e));
+
+working
+-------
+
+filter() and count()
+
+map() and reduce()
+
+mapToInt() and sum()
+
+mapToDouble() and max()
+
+not working
+-----------
+
+map() and sum()
+
+map() and max()
 
 Generics in Java
 
@@ -1210,6 +1286,7 @@ Multi Bounds
 
 Multi Types
 -----------
+
 
 
 
