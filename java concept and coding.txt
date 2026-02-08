@@ -1222,6 +1222,123 @@ map() and sum()
 
 map() and max()
 
+
+Employee
+--------
+
+
+EmployeeData
+------------
+
+public class EmployeeData{
+
+public static ArrayList<Employee> get(){
+
+return new ArrayList<Employee>(Arrays.asList(
+
+new Employee(1,"madan","neelapu","DEV","SE","24000.00","30")
+
+new Employee(2,"raju","mudunuri","DEV","VP","25000.00","40")
+
+new Employee(2,"raju","mudunuri","PRODUCT","VP","25000.00","40")
+
+new Employee(3,"anand","mudunuri","ADMIN","VP","27000.00","45")
+
+new Employee(4,"swati","metta","HR","HR","30000.00","28")
+
+new Employee(5,"murthy","gsn","DEV","DBA","26000.00","40")
+
+new Employee(6,"sruthi","np","HR","JR","24000.00","30")
+
+));
+}
+}
+
+
+new Employee(5,"murthy","gsn","ADMIN","DEVOPS","26000.00","40")
+
+new Employee(5,"murthy","gsn","ITSUPPORT","DEVOPS","26000.00","40")
+
+
+StreamCollectionDemo
+--------------------
+
+public class StreamCollectionDemo{
+
+public static void main(String args[]){
+
+List<Employee> employees=EmployeeData.get();
+
+
+
+//EX:1
+
+StringBuilder namesBuilder=new StringBuilder();
+for(Employee e:employees){
+namesBuilder.append(e.getFirstName()).append(", ");
+}
+namesBuilder.substring(0,namesBuilder.length()-2);   //Remove the last ", "
+
+
+
+//Joining the data
+//Concat the firstnames of all the employees
+//static Collector<CharSequence, ?, String> joining(CharSequence delimiter)
+
+String empFirstnameJoined=employees.stream().map(e->e.getFirstName()).collect(Collectors.joining(", "));
+
+System.out.println(empFirstnameJoined);
+
+
+
+
+//EX:2
+
+List<Employye> employeeWithSalAbove25K=new ArrayList<>();
+List<Employye> employeeWithSalBelow25K=new ArrayList<>();
+for(Employee e:employees){
+if(e.getSalary()>25000.0){
+employeeWithSalAbove25K.add(e);
+}
+else{
+employeeWithSalBelow25K.add(e);
+}
+}
+
+
+
+
+//partitioning the data
+//split the list based on the salary>25000.0
+//static <T> Collector<T, ?, Map<Boolean, List<T>>> partitioningBy(Predicate<? super T> predicate)
+
+With List
+---------
+
+Map<Boolean,List<Employee> empListBySal25k = employees.stream().collect(Collectors.partitioningBy(e.getSalary()>25000.0));
+
+System.out.println(empListBySal25k);
+
+With Set
+--------
+
+Map<Boolean,Set<Employee> empSetBySal25k = employees.stream().collect(Collectors.partitioningBy(e.getSalary()>25000.0),Collectors.toSet());
+
+System.out.println(empSetBySal25k);
+
+
+//EX:3
+
+//split the list based on the salary>25000.0  - but count only
+
+Map<Boolean,Long> empCountBySal25k = employees.stream().collect(Collectors.partitioningBy(e.getSalary()>25000.0),Collectors.counting());
+
+System.out.println(empCountBySal25k);
+
+
+
+
+
 Generics in Java
 
 code duplication
@@ -1286,6 +1403,7 @@ Multi Bounds
 
 Multi Types
 -----------
+
 
 
 
