@@ -1329,11 +1329,47 @@ System.out.println(empSetBySal25k);
 
 //EX:3
 
+
 //split the list based on the salary>25000.0  - but count only
 
 Map<Boolean,Long> empCountBySal25k = employees.stream().collect(Collectors.partitioningBy(e.getSalary()>25000.0),Collectors.counting());
 
 System.out.println(empCountBySal25k);
+
+
+
+
+//EX:4
+
+
+Map<String,List<Employee>> empsByDept=new HashMap<>();
+for(Employee e:employees){
+String dept=e.getDepartment();
+if(empsByDept.containsKey(dept)){
+empsByDept.get(dept).add(e);
+}
+else{
+List<Employee> employeeList=new ArrayList<>();
+employeeList.add(e);
+empsByDept.put(dept,employeeList);
+}
+}
+
+
+
+//Grouping the data
+//Group the employee by their department
+//static <T, K> Collector<T, ?, Map<K, List<T>>> groupingBy(Function<? super T, ? extends K> classifier)
+
+
+
+
+
+//EX:5
+//Group the employee by their department-count the employee by each dapartment
+
+static <T, K, D, A, M extends Map<K, D>> Collector<T, ?, M> groupingBy(Function<? super T, ? extends K> classifier,Supplier<M> mapFactory,Collector<? super T, A, D> downstream)
+
 
 
 
@@ -1403,6 +1439,7 @@ Multi Bounds
 
 Multi Types
 -----------
+
 
 
 
