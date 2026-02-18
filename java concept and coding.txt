@@ -1375,6 +1375,133 @@ static <T, K, D, A, M extends Map<K, D>> Collector<T, ?, M> groupingBy(Function<
 
 
 
+Method References in JAVA
+-------------------------
+
+
+public class MethodRefDemo{
+
+public static void main(String args[]){
+
+List<String> names=new ArrayList<>(Arrays.asList("sai@ram","sai@charan","sai@chand",null,"");
+
+/*
+
+*Given a list of employees' names given:
+
+* -Exclude the empty strings
+* -Remove special characters if any
+* -convert to upper case
+* -sort it alphabetical order
+* -create Employee objects
+
+*/
+
+MyDataFormatter mdf=new MyDataFormatter();
+
+List<Employee> employees=names.stream()
+
+
+
+// .filter(e->StringUtils.isNotEmpty(e))
+
+.filter(StringUtils::isNotEmpty) // Method reference using a static method
+
+
+
+// .map(e->mdf.removeSplChars(e))
+
+ .map(e->mdf::removeSplChars) // Method reference using an instance method
+
+
+// .map(e->e.toUpperCase())
+
+.map(String::toUpperCase) // Method reference using instance method but for an arbitrary object
+
+
+// .sorted((e1,e2)->e1.compareTo(e2))
+.sorted(String::compareTo)  // 2 parameters. 1 as target; other as argument.
+
+// .map(e->new Employee(e))
+.map(Employee::new) // Method reference using constructor
+
+
+//.forEach(e->System.out.println(e));
+//.forEach(System.out::println);
+
+.toList();
+
+
+System.out.println(employee);
+
+
+}
+}
+
+
+
+
+
+
+
+
+
+
+public class MyDataFormatter{
+
+public String removeSplChars(String s)){
+
+return s.replaceAll("[^a-zA-Z0-9]","")
+
+}
+
+
+
+
+
+
+
+
+public class Employee{
+
+private String name;
+
+public Employee(String name)
+{
+ 
+this.name=name;
+
+}
+
+public String toString(){
+
+return 'Employee{'+'name='+name+'\''+'}';
+
+}
+}
+
+
+
+
+
+
+
+note:- getters and setters not required when the datatype is public
+
+IMP
+---
+
+Integer
+
+1.toString()
+2.toString(int i)
+
+
+
+
+
+
+
 Generics in Java
 
 code duplication
@@ -1439,6 +1566,7 @@ Multi Bounds
 
 Multi Types
 -----------
+
 
 
 
