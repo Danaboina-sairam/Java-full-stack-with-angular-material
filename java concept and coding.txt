@@ -1377,12 +1377,81 @@ Importent points in Streams
 ---------------------------
 
 1.we have object but we need specific field in that object then that case use map() method
+
+groupingBy() entire Object by specific Field
+---------------------------------------------
+
 2.whenever using partitioningBy() method that time divided into 2 parts that is false and true (may or may not be each false and true is list)
 3.whenever using partitioningBy() method along with counting() that time divided into two parts that is false and true(each false and true assigned counting value)
 
 4.whenever using groupingBy() method that time divided based on the specific department(may or may not be each department is list)
 5.whenever using groupingBy() method along with counting() method that time divided based on the specific department (each department assigned counting value)
 6.whenever printing stream operation that printing value in the console
+
+groupingBy() entire Object by specific Field but only need 1 column of object(usage of down stream collectors)
+-----------------------------------------------------------------------------
+
+Collectors(1.groupingBy(),2.mappingBy(),3.toList())
+
+Adding enire salaries of each department(usage of down stream collectors)
+----------------------------------------
+
+Method:1
+--------
+
+Collectors(1.groupingBy(),2.mappingBy(),3.reducing())
+
+Method:2
+--------
+
+Collectors(1.groupingBy(),2.summingDouble())
+
+
+Note:- summingDouble() and summerizingDouble() both are different
+
+summerizingDouble(1.count,2.sum,3.min,4.max,5.avg)
+-----------------
+
+Collectors(1.groupingBy(),2.summarizingDouble()
+
+
+Note:- filter() and filtering() both are different
+
+filtering():-only for single department
+-----------
+
+Collectors(1.filtering(),2.summerizingDouble()
+
+
+maxBy():- get max 1 record in the entire object
+-------
+
+method:1
+--------
+maxBy():-lambda comparison
+
+method:2
+--------
+maxBy():-Comparator.comparing of comparison
+
+
+
+Comparator:-single abtract method return type int
+----------
+
+1.our requirement is double so we need to implement automatic type converison type that is Comparator.comparing
+
+
+Collectors(1.collectingAndThen(),2.maxBy()
+
+
+
+Last Example
+------------
+
+Note:- flatMap() and flatMapping() both are different
+
+Collectors(1.groupingBy(),2.flatMapping()----------------->stream(),3.toList())
 
 
 
@@ -1578,6 +1647,7 @@ Multi Bounds
 
 Multi Types
 -----------
+
 
 
 
