@@ -1373,6 +1373,18 @@ static <T, K, D, A, M extends Map<K, D>> Collector<T, ?, M> groupingBy(Function<
 
 
 
+Importent points in Streams
+---------------------------
+
+1.we have object but we need specific field in that object then that case use map() method
+2.whenever using partitioningBy() method that time divided into 2 parts that is false and true (may or may not be each false and true is list)
+3.whenever using partitioningBy() method along with counting() that time divided into two parts that is false and true(each false and true assigned counting value)
+
+4.whenever using groupingBy() method that time divided based on the specific department(may or may not be each department is list)
+5.whenever using groupingBy() method along with counting() method that time divided based on the specific department (each department assigned counting value)
+6.whenever printing stream operation that printing value in the console
+
+
 
 
 Method References in JAVA
@@ -1566,6 +1578,7 @@ Multi Bounds
 
 Multi Types
 -----------
+
 
 
 
