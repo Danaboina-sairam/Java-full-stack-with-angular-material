@@ -985,8 +985,14 @@ Output: Any Datatype
 ->lamda used invoke dynamics
 
 
-Streams in Java(Water tank example with pipes and tap)
+
+
+
+Streams in Java
 ---------------
+
+Analogy:- Water tank example with pipes and tap
+-------
 
 1.There may be 0 or more pipes
 2.There must be always 1 tap
@@ -999,43 +1005,32 @@ Previously Collection used to Iterator interface(internally used hasNext() and n
 1.no data present in stream()(Stream Api used spliterator() internally)
 2.stream() method every time pull and push then transform the element(same like hasNext() and next())
 
+
+Collection vs Streams
+---------------------
+
+Collection: able to store and mutate
+----------
+1.hasNext()
+
+2.next()
+
+Streams: not able to store and mutate
+-------
+1.spliterator
+
+
 java.util.stream.ReferencePipeline$Head@6d311334----------->after stream() method
 java.util.stream.ReferencePipeline$2@6d311335
 java.util.stream.ReferencePipeline$3@6d311336
 
-Lazy evalutation
-----------------
-Computation starts only when the terminal operation is invoked
-
-Short circuiting
-----------------
-Terminate pipeline successfully without examining all the data
-
-Operation Fusion
-----------------
-
-Combining multiple operations to be executed in a single pass on the data
+NOTE: 'Head' consider as 1 in  Stream pipeline
 
 
-List<Integer> numbers=Arrays.asList(1,2,3,4,5,6,7,8,9);
-
-Map printing working in Java 8
-------------------------------
-
-numbers.stream().map(e->{ System.out.println("Squaring:"+e); return e*e;).count();
-
-Map printing not working in Java 9
-----------------------------------
-
-numbers.stream().map(e->{ System.out.println("Squaring:"+e); return e*e;).count();
-
-
-whenever passing lambda expression or method reference as function parameter (provide only precise parameter and dont add extra logic)
 
 
 parallel Streams issues
 -----------------------
-
 
 
 Characteristics of a stream
@@ -1066,6 +1061,26 @@ spliteraor----->stream convertion----->internally linked list
 Pipes not store any water that is just for flow
 
 
+
+
+
+Structure of Stream
+-------------------
+
+
+List<Integer> numbers=Arrays.asList(1,2,3,4,5,6,7,8,9,10);
+
+Note:- 
+
+numbers.stream()---------->stream() is not intermediate and terminal operation
+
+
+
+numbers-------------->data source(ArrayList,HashMap,Arrays,I/O Streams,generator functions)
+
+
+
+
 Intermediate Operations(Pipes):- lazy evaluation 
 -----------------------
 
@@ -1094,6 +1109,93 @@ Non Short Circuiting(All elements need to process)
 1.forEach
 2.reduce
 3.collect
+
+
+
+How Stream works
+----------------
+
+in object oriented programming
+------------------------------
+every time execute method based on calling the method
+
+in stream operations
+--------------------
+
+method execute lazily when terminal operation called(short circuit and non short circuit operations)
+
+
+EX:
+
+List<Integer> numbers=Arrays.asList(1,2,3,4,5,6,7,8,9,10);
+
+numbers.stream.filter(e->e%2==0).map(e->e*e).findFirst();
+
+
+EAGER
+-----
+
+filter----->10
+
+map----->5
+
+Total------>15
+
+
+LAZY
+----
+
+filter----->2
+
+map----->1
+
+Total------>3
+
+
+
+
+Lazy evalutation
+----------------
+Computation starts for lazy intermediate operation when the terminal operation is invoked only
+
+
+
+
+Short circuiting
+----------------
+Terminate pipeline successfully without examining all the data
+
+
+
+
+Operation Fusion
+----------------
+
+Combining multiple operations to be executed in a single pass on the data
+
+
+
+
+
+
+List<Integer> numbers=Arrays.asList(1,2,3,4,5,6,7,8,9);
+
+Map printing working in Java 8
+------------------------------
+
+numbers.stream().map(e->{ System.out.println("Squaring:"+e); return e*e;).count();
+
+Map printing not working in Java 9
+----------------------------------
+
+numbers.stream().map(e->{ System.out.println("Squaring:"+e); return e*e;).count();
+
+
+whenever passing lambda expression or method reference as function parameter (provide only precise parameter and dont add extra logic)
+
+
+
+
 
 
 List<Integer> numbers=new ArrayList<>(Arrays.asList(1,2,3,4,5,6,7,8,9,10));
@@ -1204,6 +1306,10 @@ sorted()
 
 numbers.stream().sorted((e1,e2)->e2-e1).forEach(e->System.out.println(e));
 
+
+
+
+
 working
 -------
 
@@ -1221,6 +1327,11 @@ not working
 map() and sum()
 
 map() and max()
+
+map() and count()
+
+
+
 
 
 Employee
@@ -1679,6 +1790,7 @@ Deep copy
 -->deep copy is slow because of more memory using
 
 -->Immutable objects
+
 
 
 
