@@ -1204,6 +1204,9 @@ List<Integer> numbers=new ArrayList<>(Arrays.asList(1,2,3,4,5,6,7,8,9,10));
 
 numbers.stream().forEach(e->System.out.println(e));
 
+Note:- forEach() for traversing each element and apply some logic on that element then printing each element 
+
+
 //Stream<T> filter(Predicate<? super T> predicate)
 
 numbers.stream().filter(e->e%2==0).forEach(e->System.out.println(e));
@@ -1222,17 +1225,36 @@ numbers.stream().map(e->e*e).forEach(e->System.out.println(e));
 
 numbers.stream().map(e->"number :"+e).forEach(e->System.out.println(e));
 
+Multiple list in map()
+----------------------
 
 numbers.stream().map(e->List.of(e*2,e*5,e*8)).forEach(e->System.out.println(e));
 
 
+Note:-
+
+1.map() used for integer,string along with at time integer and string
+2.able to return List.of() objects in map
+
+
+
+
+Single list in flatMap()
+------------------------
+
 //<R> Stream<R> flatMap(Function<? super T, ? extends Stream<? extends R>> mapper);
 
-note:- list and object not accept directly so convert to stream
+note:- list object not accepting directly in flatMap() ,so convert to stream
 
 List.of() vs Stream.of()
 
+List.of() 
+---------
+
 numbers.stream().flatMap(e->List.of(e*2,e*5,e*8).stream()).forEach(e->System.out.println(e));
+
+Stream.of()
+-----------
 
 numbers.stream().flatMap(e->Stream.of(e*2,e*5,e*8)).forEach(e->System.out.println(e));
 
@@ -1248,7 +1270,20 @@ Major focus on second parameter
 // 3,3-->6
 
 
-Unable apply sum() method on the map() because map() return integer,string,list,array,object etc 
+Unable apply sum() method on the map() because map() return integer,string,list,array,object etc --------->alternative mapToInt() and sum()
+
+reduce() vs sum()
+-----------------
+
+reduce()
+--------
+
+reduce() is generic method like we will able to implement sum,sustraction etc
+
+sum()
+-----
+
+sum() used to implement 1 operation
 
 
 mapToInt() , mapToDouble() , mapToLong()
@@ -1264,31 +1299,36 @@ peek()
 System.out.println(number.stream().filter(e->e%2==0).peek(e->System.out.println(e)).mapToInt(e->e*e).sum());
 
 toArray()
+---------
 
 Object[] objects=number.stream().filter(e->e%2==0).map(e->e*e).toArray();
 
 int[] intArray=number.stream().filter(e->e%2==0).mapToInt(e->e*e).toArray();
 
 
-toList();
+toList()
+--------
 
 List<Integer> integers=number.stream().filter(e->e%2==0).map(e->e*e).toList();
 
 more than array,list and object, we can use collect()
+-----------------------------------------------------
 
 Set<Integer> setOfIntegers=number.stream().filter(e->e%2==0).map(e->e*e).collect(Collectors.toSet());
 
 
 allMatch() , anyMatch() , noneMatch()
-
+-------------------------------------
 
 numbers.stream().allMatch(e->e%2==0);
 
 count()
+-------
 
 numbers.stream().filter(e->e>4).filter(e->e%2!=0).count();
 
 distinct()
+----------
 
 numbers.stream().distinct().forEach(e->System.out.println(e));
 
@@ -1299,10 +1339,12 @@ numbers.stream.filter(e->e%2==0).map(e->e*e).findFirst();
 
 
 skip() and limit()
+------------------
 
 numbers.stream().skip(3).limit(6).forEach(e->System.out.println(e));
 
 sorted()
+--------
 
 numbers.stream().sorted((e1,e2)->e2-e1).forEach(e->System.out.println(e));
 
@@ -1790,6 +1832,7 @@ Deep copy
 -->deep copy is slow because of more memory using
 
 -->Immutable objects
+
 
 
 
