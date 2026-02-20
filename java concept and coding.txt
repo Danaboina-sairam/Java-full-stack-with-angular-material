@@ -1651,6 +1651,38 @@ Multi Types
 
 
 
+Shallow copy
+------------
+
+-->Dependent(dependent original and new copy)
+
+-->Field data changes every where
+
+-->Only 1 object created that is shared between 2 references
+
+-->shallow copy is faster because of less memory using
+
+-->Only primitive fields
+
+-->Mutable reference fields
+
+
+Deep copy
+---------
+
+-->Independent(independent original and new copy)
+
+-->Field data not changed every where
+
+-->2 objects created for 2 references
+
+-->deep copy is slow because of more memory using
+
+-->Immutable objects
+
+
+
+
 
 
 
