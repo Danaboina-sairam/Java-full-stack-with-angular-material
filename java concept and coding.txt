@@ -1316,8 +1316,8 @@ toList()
 
 List<Integer> integers=number.stream().filter(e->e%2==0).map(e->e*e).toList();
 
-With collect method using toSet()
----------------------------------
+With collect method using toSet() and toList()
+----------------------------------------------
 
 Note:-more than array,list and object, we can use collect()
 
@@ -1375,6 +1375,8 @@ mapToInt() and sum()
 
 mapToDouble() and max()
 
+mapToDouble() and sum()
+
 not working
 -----------
 
@@ -1385,7 +1387,28 @@ map() and max()
 map() and count()
 
 
+IMMUTABLE LIST:
+---------------
 
+toUnmodifiableList(): UnsupportedOperationException
+--------------------
+
+Note:- after final collect if we add any thing to the final result we are getting error 'UnsupportedOperationException'
+
+collect(Collectors.toUnmodifiableList())
+
+
+
+collect(Collectors.toMap())
+---------------------------
+
+here key and value is the object fields
+
+DuplicateKeyException in the toMap():- need to pass third parameter
+------------------------------------
+1.single record------>(a,b)->a
+
+2.two record------>(a,b)->a+ ',' +b
 
 
 Employee
@@ -1844,6 +1867,7 @@ Deep copy
 -->deep copy is slow because of more memory using
 
 -->Immutable objects
+
 
 
 
