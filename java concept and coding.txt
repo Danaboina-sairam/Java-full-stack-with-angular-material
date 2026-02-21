@@ -1239,8 +1239,8 @@ Note:-
 
 
 
-Single list in flatMap()
-------------------------
+flatMap() used to convert into single list
+------------------------------------------
 
 //<R> Stream<R> flatMap(Function<? super T, ? extends Stream<? extends R>> mapper);
 
@@ -1832,6 +1832,7 @@ Deep copy
 -->deep copy is slow because of more memory using
 
 -->Immutable objects
+
 
 
 
