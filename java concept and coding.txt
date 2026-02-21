@@ -1278,7 +1278,7 @@ reduce() vs sum()
 reduce()
 --------
 
-reduce() is generic method like we will able to implement sum,sustraction etc
+reduce() is generic method like we will able to implement sum()-addition,sustraction,multiplication,division etc
 
 sum()
 -----
@@ -1295,8 +1295,13 @@ System.out.println(number.stream().filter(e->e%2==0).mapToInt(e->e*e).sum());
 Note:- we can able to print logs using S.o.pln() wherever lambda expression available like filter() and forEach()
 
 peek()
+------
 
 System.out.println(number.stream().filter(e->e%2==0).peek(e->System.out.println(e)).mapToInt(e->e*e).sum());
+
+
+Without collect method using toArray() and toList()
+---------------------------------------------------
 
 toArray()
 ---------
@@ -1311,8 +1316,12 @@ toList()
 
 List<Integer> integers=number.stream().filter(e->e%2==0).map(e->e*e).toList();
 
-more than array,list and object, we can use collect()
------------------------------------------------------
+With collect method using toSet()
+---------------------------------
+
+Note:-more than array,list and object, we can use collect()
+
+IMP:- need to recheck for object
 
 Set<Integer> setOfIntegers=number.stream().filter(e->e%2==0).map(e->e*e).collect(Collectors.toSet());
 
@@ -1321,6 +1330,7 @@ allMatch() , anyMatch() , noneMatch()
 -------------------------------------
 
 numbers.stream().allMatch(e->e%2==0);
+
 
 count()
 -------
@@ -1342,6 +1352,8 @@ skip() and limit()
 ------------------
 
 numbers.stream().skip(3).limit(6).forEach(e->System.out.println(e));
+
+Note:- we can use skip() and limit() at a time
 
 sorted()
 --------
@@ -1832,6 +1844,7 @@ Deep copy
 -->deep copy is slow because of more memory using
 
 -->Immutable objects
+
 
 
 
