@@ -1,0 +1,71 @@
+Arrays
+------
+
+1.we have array of 0 and 1 then keee 0  at last and 1 at first
+
+2.find the the second max number in the array
+
+3.we have 3 list then find out common number in 3 lists
+
+4.Missing number in a consecutive array(Gauss sum/XOR approach)
+
+5.Find the max element in a list
+
+6.program to merge two sorted arrays into one
+
+7.Write a program to print non repeating numbers from a given list
+
+8.Reverse an array without using libraries and 3rd variable
+
+9.find the two elements and their indexes in an array that sum up to a given target value
+
+10.Find the first occurrence of number 1 from a sorted binary array and return index
+
+11.find the smallest missing element in a given array and determine the time complexity
+
+
+Strings
+-------
+
+1.long common subsequence
+
+2.Write a program to reverse every word in a given String
+
+3. Check if two strings are anagrams (sorting vs frequency array).
+
+4.Find duplicate strings in a list (HashSet / frequency map)
+
+5.Check whether a string is a palindrome (two-pointer approach)
+
+6.Combination Sum II (backtracking + pruning)
+
+7.Longest Common Prefix among strings (horizontal scanning/Trie optimization)
+
+8.Longest Increasing Subsequence (DP + binary search optimization O(n log n))
+
+9.Find the first non repetitive character in code(explain is its time complexity)
+
+10.Write a program to remove duplicate characters from a string
+
+11.Write a program to print the count of each character in a string
+
+12.Write a program find the longest substring without duplicates
+
+13.Find the anagrams in given array and group them into a list of lists
+
+
+Object
+------
+
+Without grouping
+-------------
+
+1.Find the second highest salary from a given list of employees
+
+2.Stream an employee list and filter emps having salary >10000 and sort them
+
+
+With grouping
+-------------
+
+1.Use streams to fetch the employee records having average salary per department
