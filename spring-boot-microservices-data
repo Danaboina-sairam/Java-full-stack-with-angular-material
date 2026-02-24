@@ -902,7 +902,108 @@ DB Locking Types
 
 
 
+👉 What is Idempotency in Backend Systems? 🖥️ 
+--------------------------------------------
 
+Let’s understand this simply.
+
+Imagine a light switch 💡
+
+Turn it ON once → Light turns ON 
+Turn it ON again → Still ON 
+
+Nothing changes after the first action.
+
+That is idempotent behavior.
+
+Now imagine clicking “Pay ₹1000” 💳 twice.
+
+First click → ₹1000 deducted 
+Second click → ₹1000 deducted again 
+
+That is NOT idempotent.
+
+In backend terms:
+
+An operation is idempotent if 
+making the same request multiple times 
+produces the same result as making it once.
+
+No additional side effects.
+
+Why does this matter?
+
+Because networks fail.
+
+• Client times out 
+• User refreshes page 
+• Request is retried 
+• Server responds late 
+
+If your API is not idempotent, you risk:
+
+• Duplicate payments 
+• Double orders 
+• Repeated database updates 
+• Data inconsistency 
+
+Now let’s connect this to HTTP methods.
+
+GET → Idempotent 
+PUT → Idempotent 
+DELETE → Idempotent 
+POST → Usually NOT idempotent 
+
+Why?
+
+PUT replaces a resource. 
+Calling it again keeps the same final state.
+
+POST usually creates new resources. 
+Calling it again creates duplicates.
+
+But here’s the important part:
+
+POST can be made idempotent.
+
+How to Solve Idempotency Problems 👇
+
+1️⃣ Idempotency Keys 
+
+Client sends a unique key with the request. 
+Server stores the key and result. 
+
+If the same key is received again → 
+Return previous response instead of processing again.
+
+Common in payment systems like Stripe.
+
+2️⃣ Database Unique Constraints 
+
+Use unique fields (e.g., orderId, transactionId). 
+If duplicate request comes → database prevents duplication.
+
+3️⃣ Upsert Logic 
+
+Instead of “create new”, 
+use insert-or-update pattern.
+
+4️⃣ Proper HTTP Method Usage 
+
+Use PUT when updating known resources. 
+Use POST carefully for creation.
+
+5️⃣ Request Deduplication Layer 
+
+Store request fingerprints in cache (Redis) 
+and block duplicates within a time window.
+
+Golden Rule 🧠 
+
+If a user retries a request, 
+your system should not panic.
+
+Design APIs so repeated requests don’t break your data.
 
 
 
