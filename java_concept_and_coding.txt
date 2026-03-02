@@ -25,6 +25,33 @@ Interface vs Abstract Class – REAL decision rule
 | Partial implementation   | ✅ Abstract class |
 
 
+
+
+| Feature                       | Abstract Class                                                                                    | Interface                                                                                    |
+| ----------------------------- | ------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| **Keyword**                   | `abstract class`                                                                                  | `interface`                                                                                  |
+| **Purpose**                   | Base class with shared state + partial implementation                                             | Contract defining capability                                                                 |
+| **Object Creation**           | ❌ Cannot instantiate                                                                              | ❌ Cannot instantiate                                                                         |
+| **Abstract Methods**          | ✅ Allowed                                                                                         | ✅ Allowed                                                                                    |
+| **Concrete Methods**          | ✅ Allowed                                                                                         | ✅ Allowed (`default`, `static`)                                                              |
+| **Static Methods**            | ✅ Allowed & inherited                                                                             | ✅ Allowed but NOT inherited                                                                  |
+| **Access Modifiers Allowed**  | public, protected, private, **package-private (default access)**                                  | public (implicit), private (Java 9+)                                                         |
+| **🔴 Meaning of “default”**   | “default” means **package-private access** (no modifier written). It is about **access control**. | `default` is a **keyword for concrete method implementation**. It is NOT an access modifier. |
+| **Protected Methods**         | ✅ Allowed                                                                                         | ❌ Not allowed                                                                                |
+| **Package-Private Methods**   | ✅ Allowed                                                                                         | ❌ Not allowed                                                                                |
+| **Instance Variables**        | ✅ Allowed                                                                                         | ❌ Not allowed                                                                                |
+| **Static Variables**          | ✅ Allowed                                                                                         | ✅ Allowed                                                                                    |
+| **Variable Default Modifier** | Normal variable                                                                                   | `public static final` (implicitly constant)                                                  |
+| **Constructors**              | ✅ Yes                                                                                             | ❌ No                                                                                         |
+| **Can Maintain State**        | ✅ Yes                                                                                             | ❌ No instance state                                                                          |
+| **Multiple Inheritance**      | ❌ Not supported                                                                                   | ✅ Supported                                                                                  |
+
+
+
+
+
+
+
 In microservices:
 
 -->Interfaces define service boundaries
@@ -2050,3 +2077,4 @@ Backward compatibility with Default method in interface
 
 Existing Immutability classes other than String in Java
 -------------------------------------------------------
+
