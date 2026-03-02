@@ -153,16 +153,29 @@ Text Blocks
 
 Test blocks used for storing json object in string format
 
+
+
+
+
 Pattern matching for instanceof
 -------------------------------
 
-1.Previously:- comparison and type cast done at same place 
+1.Old Way:- comparison and type cast done at different places 
+---------
 
-2.currently:- comparison and type cast done at different place
+2.New Way:- comparison and type cast done at same place 
+---------
 
-->by using type casting we can able to give object reference to interface
-->only && operator working in instanceof
-->|| operator not working in instanceof
+
+Note:-
+
+1.variable available in block only
+2.compiler ensures the type safety
+3.pattern matching can combine with && operator(1.comparison 2.type casting and initialization 3.using now variable in our scenario)
+4.pattern matching can't combine with || operator
+5.pattern matching can also works with interfaces
+6.pattern matching with switch
+
 
 
 
@@ -170,7 +183,12 @@ We can able to create reference for object and interface
 --------------------------------------------------------
 
 
+
+
+
+
 Record
+------
 
 Record is final class
 
@@ -1934,6 +1952,7 @@ But understanding marker interfaces helps you understand:
 👉 Java’s type system
 👉 JVM internal contracts
 👉 Design philosophy evolution
+
 
 
 
