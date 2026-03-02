@@ -1956,5 +1956,92 @@ But understanding marker interfaces helps you understand:
 
 
 
+IS-A Relationship
+
+1.IS-A with extends
+-------------------
+
+
+class Animal {
+    void eat() {
+        System.out.println("Eating...");
+    }
+}
+
+class Dog extends Animal {
+    void bark() {
+        System.out.println("Barking...");
+    }
+}
+
+
+2.IS-A with Interface
+---------------------
+
+interface Payment {
+    void pay();
+}
+
+class UpiPayment implements Payment {
+    public void pay() {
+        System.out.println("Paying via UPI");
+    }
+}
+
+
+
+HAS-A Relationship
+
+
+@Service
+class OrderService {
+
+    private final PaymentService paymentService;
+
+    public OrderService(PaymentService paymentService) {
+        this.paymentService = paymentService;
+    }
+}
+
+
+1️⃣ Composition (Strong HAS-A)
+-----------------------------
+
+class Engine {
+    void start() {
+        System.out.println("Engine started");
+    }
+}
+
+class Car {
+    private Engine engine;
+
+    Car() {
+        engine = new Engine(); // Created inside
+    }
+}
+
+2️⃣ Aggregation (Weak HAS-A)
+---------------------------
+
+class Department {
+    String name;
+}
+
+class Employee {
+    private Department department;
+
+    Employee(Department department) {
+        this.department = department; // Injected from outside
+    }
+}
+
+
+
+Note:
+
+1.Has-A better to use over IS-A
+2.Aggregation better to use over Composition
+
 
 
