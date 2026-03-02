@@ -1085,3 +1085,7 @@ Isolation levels
 
 3.service class with 2 methods that is updateStock() and checkStock()
 
+
+
+JPA performance issues
+
