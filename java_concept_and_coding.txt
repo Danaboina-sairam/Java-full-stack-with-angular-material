@@ -121,6 +121,10 @@ innerClassObj.print()
 Java Memory Model
 -----------------
 
+OS Allocates Memory for JVM
+
+JVM instance : JVM instance is nothing but process
+
 
 Stack Memory:-
 ------------
@@ -168,6 +172,231 @@ Heap Memory:-
 ->Survivor(s0,s1)
 2.old/tenured generation(major GC happens here)
 3.permanent generation(before java 7) / metaspace
+
+
+
+
+
+
+
+
+
+
+Stack vs Heap
+-------------
+
+->Each Thread has its own Thread Stack; means each Thread Stack belongs to one and only one Thread. Where as, Heap belongs to all the threads.
+
+
+local variable(Primitive type)
+--------------
+
+->A local variable may be of a primitive type, in which case it is totally kept on the thread stack.
+
+
+local variable(Reference type)
+--------------
+
+->A local variable may also be a reference to an object. In that case the reference (the local variable) is stored on the thread stack, but the object itself if stored on the heap.
+
+
+
+EX:1
+
+->An object may contain methods and these methods may contain local variables. These local variables are also stored on the thread stack, even if the object the method belongs to is stored on the heap
+
+
+class Sample
+{
+    public void method1() {
+	int a=10;
+    }
+}
+
+public class SampleApp {
+
+	public static void main(String args[])
+	{
+		Sample sampleObjRef=new Sample();
+		
+		sampleObjRef.method1();
+	}
+}
+
+
+EX:2
+
+->An object's member variable are stored on the heap along with the object itself. That is true both when the member variable is of a primitive type, and if it is a reference to an 
+object.
+
+
+class Sample
+{
+
+    int num=5;
+    Person p=new Person();
+
+    public void method1() {
+	int a=10;
+    }
+}
+
+public class SampleApp {
+
+	public static void main(String args[])
+	{
+		Sample sampleObjRef=new Sample();
+		
+		sampleObjRef.method1();
+	}
+}
+
+
+
+
+
+IMP:
+
+->Static class variables are also stored on the heap along with the class definition.
+
+->Objects on the heap can be accessed by all threads that have a reference to the object.
+
+1.when a thread has access to an object, it can also get access to that object's member variables.
+
+2.if two threads call a method on the same object at the same time, they will both have access to the object's member variable, but each thread will have its own copy of the local variables
+
+
+
+
+PERMGEN(Permanent Generation)
+-------
+
+
+-->For practical purposes, the permanent generation consists mostly of class declarations loaded and stored into PermGen.
+
+This includes:
+-------------
+
+1.The name and fields of the class.
+
+2.Methods with the method bytecode.
+
+3.Constant pool information.
+
+4.Object arrays and type arrays associated with a class.
+
+5.Just In Time compiler optimizations.
+
+
+
+
+Heap and PermGen sizes
+
+There will be both minimum and maximum sizes.
+
+These details depend on many parameters like:
+
+1.Operating System
+
+2.CPU Architecture( ------>32-Bit or x86 ------->64-Bit or x64)
+
+3.Physical Memory(RAM)
+
+4.JVM(EG: Oracle JDK, Open JDK, IBM JDK etc
+
+
+
+
+
+
+java -XX:+PrintFlagsFinal -version | findstr /I "HeapSize PermSize ThreadStackSize"
+
+
+
+
+What is Garbage Collection?
+---------------------------
+
+->Java provides automatic memory management.
+
+->Garbage collector is a daemon thread that carries out garbage collection.
+
+->Garbage collection is tracking down all the objects that are still used and mark them as live objects.
+
+Generational Hypothesis:
+-----------------------
+
+1.Most objects soon become unreachable.
+
+2.References from OLD objects to YOUNG objects only exist in small numbers.
+
+Garbage Collection Roots:
+------------------------
+
+1.Local variables
+
+2.Active threads
+
+3.Static fields
+
+4.JNI references(Java Native Interface)
+
+
+
+MARK and SWEEP
+--------------
+
+The method used by JVM to track down all the reachable(live) objects and to make sure the memory claimed by non-reachable objects can be reused is called the Mark and Sweep algorithm. 
+
+It consists of two steps:
+
+Marking:
+-------
+
+Marking is walking through all reachable objects, starting from GC roots and keeping a ledger in native memory about all such objects.
+
+GC ROOTS--->ATTACHED--->REACHABLE OBJECTS
+
+GC ROOTS--->DETTACHED--->NON-REACHABLE OBJECTS
+
+Sweeping:
+--------
+
+Sweeping is making sure the memory addresses occupied by non-reachable objects can be reused by the next allocations.
+
+
+
+
+Compacting:
+----------
+
+Make the memory allocations contiguous by re-arranging them
+
+
+IMP
+
+1.objects created in EDEN
+
+2.EDEN is full then minor GC will run on the EDEN, SURVIVOR1, SURVIVOR2
+
+3.marking, sweeping, compacting
+
+4.At a time 1 SURVIVOR is active
+
+
+
+Points to Remember
+
+->Both Minor GC Cycle and Major GC Cycle trigger Stop the world pause.
+
+->we cannot force Garbage Collection. Even by using System.gc()
+
+->If Heap is full and new allocations can not  happen, then JVM throws java.lang.OutOfMemoryErrorHeap space.
+
+
+
+
+
 
 
 
@@ -2078,5 +2307,6 @@ Backward compatibility with Default method in interface
 
 Existing Immutability classes other than String in Java
 -------------------------------------------------------
+
 
 
