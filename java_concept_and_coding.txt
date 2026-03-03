@@ -118,7 +118,8 @@ innerClassObj.print()
 
 
 
-
+Java Memory Model
+-----------------
 
 
 Stack Memory:-
@@ -2077,4 +2078,5 @@ Backward compatibility with Default method in interface
 
 Existing Immutability classes other than String in Java
 -------------------------------------------------------
+
 
