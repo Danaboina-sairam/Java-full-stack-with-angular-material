@@ -2351,3 +2351,121 @@ Note:-
 
 
 hash code and address both are different
+
+
+
+
+
+importance of equals() and hashcode() 
+
+Agreement between equals() and hashcode()
+
+
+== operator
+-----------
+
+
+primitive datatypes----->value comparison
+
+object datatypes------->address comparison
+
+
+equals() in Object class
+------------------------
+
+primitive datatypes---->value comparison
+
+object datatypes----->value comparison
+
+
+equals() in String class
+------------------------
+
+
+
+
+
+Rules for equals() method in java
+---------------------------------
+
+Reflexive: 
+----------
+
+Object must be equal to itself.
+
+a.equals(a) must be true.
+
+
+Symmetric: 
+----------
+
+if  a.equals(b) is true
+
+then b.equals(a) must be true.
+
+Transitive:
+-----------
+
+if a.equals(b) is true
+
+and b.equals(c) is true
+
+then c.equals(a) must be true.
+
+Consistent:
+-----------
+
+multiple invocations of equals() method must return the same value until any of properties are modified.
+
+Null comparison:
+----------------
+
+Comparing any object to null must be false and should not result in NullPointerException
+
+
+
+
+Steps to override equals() method
+
+1.Do this check----> if yes, then return true.
+2.Do null check----> if yes, then return false.
+3.Do the getClass() check, if not equal then return false.
+
+Sometimes you see code that uses instanceof operator for checking the instances.
+but research had found that using getClass() method for type identification is better
+because instanceof check returns true for subclass also, so its not strictly equals comparison until required by business logic.
+
+4.Type cast the object; note the sequence getClass() check must be prior to casting object.
+
+5.Compare individual attribute starting with numeric attribute because comparing numeric 
+attribute is fast and use  short circuit operator for combining check. if first field does 
+not match, then don't try to match rest of attributes; just return false. Do null check on
+individual attribute before calling equals() method on them recursively to avoid 
+NullPointerException during equals check.
+
+
+Contract between hashcode() and equals()
+----------------------------------------
+
+1.if two objects are equal by equals() method then their hashcode returned by hashCode() method must be same.
+
+2.if two objects are not equal by equals() method then their hashcode might be equal or different. Though it's always good practice to return different hashCode for unequal object.
+
+3.Whenever hashCode() method is invoked on the same object more than once within single execution pf application, hashCode() must return same integer provided no information or fields used in equals and hashcode is modified. This integer is not required to be same 
+during multiple execution of application though.
+
+Steps to override hashcode() method in java
+-------------------------------------------
+
+1.Take a prime number as initial hash EX:5,7,17 or 31
+
+because prime number as a hash, results in distinct hashcode for distinct objects.
+
+2.Take another prime number as multiplier. its better if this is different than the initial hash.
+
+3.Compute hashcode for each member and add them into final hash.
+
+Repeat this for all the members that participated in equals() method.
+
+4.Return hash
+
