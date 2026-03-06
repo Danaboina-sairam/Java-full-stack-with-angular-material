@@ -2310,3 +2310,44 @@ Existing Immutability classes other than String in Java
 
 
 
+
+importance of toString() 
+
+usage of toString() 
+
+customization of toString() 
+
+
+
+
+println()
+
+1.println() taking object as parameter
+2.internally using String.valueOf()
+3.now String.valueOf() taking Object as parameter
+4.then calling toString() on object
+
+
+Object class------->contains toString()
+
+
+Default toString()
+------------------
+
+toString()---------->class name with base16 of hashcode for properties
+
+
+Customized toString()
+---------------------
+
+toString()---------->class name with property and value of that property
+
+
+Note:- 
+
+1.every class need to override for customized output
+2.when we print array directly in customized toString() also getting class name with hashcode so we need to call Arrays.toString()
+2.when we print ArrayList directly in customized toString() then we are getting value because by default toString() method called in Collection interface
+
+
+hash code and address both are different
