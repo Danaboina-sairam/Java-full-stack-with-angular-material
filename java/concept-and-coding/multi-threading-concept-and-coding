@@ -1855,6 +1855,9 @@ RejectedExecutionHandler
 4.new ThreadPoolExecutor.DiscardOldestPolicy
 
 
+
+
+
 life cycle of thread pool executor
 ----------------------------------
 
@@ -1877,6 +1880,9 @@ life cycle of thread pool executor
 ------------
 
 terminated method used to check shutdown and stop cases threads released to thread pool executor or not
+
+
+
 		
 
 Blocking queue
@@ -1984,18 +1990,45 @@ JVM---------------->platform thread
 platform thread around the os thread
 
 
+| Aspect         | Platform Thread (Normal)    | Virtual Thread                         |
+| -------------- | --------------------------- | -------------------------------------- |
+| Basic Idea     | Traditional thread          | Lightweight modern thread              |
+| Mapping        | 1 Java thread = 1 OS thread | Many Java threads share few OS threads |
+| Who controls   | OS + JVM                    | Mostly JVM                             |
+| Weight         | Heavy                       | Very light                             |
+| Memory Usage   | High (MB level)             | Very low (KB level)                    |
+| Creation Cost  | Expensive                   | Very cheap                             |
+| Max Threads    | Thousands                   | Millions                               |
+| Blocking       | Blocks OS thread (costly)   | JVM handles blocking (cheap)           |
+| Context Switch | Slow (OS level)             | Fast (JVM level)                       |
+| Thread Pool    | Required                    | Not required                           |
+| Best For       | CPU-heavy tasks             | I/O-heavy tasks (API calls, DB calls)  |
+| Introduced In  | Old Java                    | Java 21                                |
+
+
+
 
 Jvm wrapper for platform thread
-Each Thread has Thread local class
-Thread local class has Thread local variable
-Here once set the value to thread local variable
-Need to remove is best practice because thread local variable specific to thread but not task
 Jvm is mediator between os thread and platform thread
 One to mapping between platform thread and os thread
 Disadvantages
 1.Thread takes time for creation
 2.ThreadPoolExecutor also takes time but less compared to thread
 3.in thread, internally db calls that time also thread takes time
+
+
+
+ThreadLocal
+-----------
+Each Thread has Thread local class
+Thread local class has Thread local variable
+Here once set the value to thread local variable
+Need to remove is best practice because thread local variable specific to thread but not task
+
+
+
+Virtual Thread
+--------------
 Virtual thread introduced in java 19
 Virtual thread creates and managed by jvm
 Whenever thread want to run that time virtual thread attached with os thread
