@@ -1,0 +1,855 @@
+1.
+
+Today’s topic is a common pitfall which I faced in a technical discussion in one of my recent interviews: 
+Why does modifying an ArrayList during iteration throw a ConcurrentModificationException? Let’s break down a real coding problem that stumps many candidates!
+
+🔍 The Interview Scenario
+Question: "Write code to remove all even numbers from an ArrayList while iterating."
+Many candidates write something like this:
+
+𝙻𝚒𝚜𝚝<𝙸𝚗𝚝𝚎𝚐𝚎𝚛> 𝚗𝚞𝚖𝚋𝚎𝚛𝚜 = 𝚗𝚎𝚠 𝙰𝚛𝚛𝚊𝚢𝙻𝚒𝚜𝚝<>(𝙰𝚛𝚛𝚊𝚢𝚜.𝚊𝚜𝙻𝚒𝚜𝚝(𝟷, 𝟸, 𝟹, 𝟺, 𝟻));
+𝚏𝚘𝚛 (𝙸𝚗𝚝𝚎𝚐𝚎𝚛 𝚗𝚞𝚖 : 𝚗𝚞𝚖𝚋𝚎𝚛𝚜) {
+ 𝚒𝚏 (𝚗𝚞𝚖 % 𝟸 == 𝟶) {
+ 𝚗𝚞𝚖𝚋𝚎𝚛𝚜.𝚛𝚎𝚖𝚘𝚟𝚎(𝚗𝚞𝚖); // ❌ Throws ConcurrentModificationException!
+ }
+}
+Result:
+𝙴𝚡𝚌𝚎𝚙𝚝𝚒𝚘𝚗 𝚒𝚗 𝚝𝚑𝚛𝚎𝚊𝚍 "𝚖𝚊𝚒𝚗" 𝚓𝚊𝚟𝚊.𝚞𝚝𝚒𝚕.𝙲𝚘𝚗𝚌𝚞𝚛𝚛𝚎𝚗𝚝𝙼𝚘𝚍𝚒𝚏𝚒𝚌𝚊𝚝𝚒𝚘𝚗𝙴𝚡𝚌𝚎𝚙𝚝𝚒𝚘𝚗
+
+💡 Root Cause Analysis
+• Java's ArrayList uses a fail-fast iterator.
+• When you use a for-each loop, it internally uses an Iterator.
+• If you structurally modify the list (e.g., add(), remove()) directly on the list (not via the iterator) during iteration, it invalidates the iterator’s state.
+• As a result, the iterator throws a ConcurrentModificationException to prevent unpredictable behavior.
+
+✅ The Fix: 
+1️⃣ Use Iterator.remove()
+
+𝙻𝚒𝚜𝚝<𝙸𝚗𝚝𝚎𝚐𝚎𝚛> 𝚗𝚞𝚖𝚋𝚎𝚛𝚜 = 𝚗𝚎𝚠 𝙰𝚛𝚛𝚊𝚢𝙻𝚒𝚜𝚝<>(𝙰𝚛𝚛𝚊𝚢𝚜.𝚊𝚜𝙻𝚒𝚜𝚝(𝟷, 𝟸, 𝟹, 𝟺, 𝟻));
+𝙸𝚝𝚎𝚛𝚊𝚝𝚘𝚛<𝙸𝚗𝚝𝚎𝚐𝚎𝚛> 𝚒𝚝 = 𝚗𝚞𝚖𝚋𝚎𝚛𝚜.𝚒𝚝𝚎𝚛𝚊𝚝𝚘𝚛();
+𝚠𝚑𝚒𝚕𝚎 (𝚒𝚝.𝚑𝚊𝚜𝙽𝚎𝚡𝚝()) {
+ 𝙸𝚗𝚝𝚎𝚐𝚎𝚛 𝚗𝚞𝚖 = 𝚒𝚝.𝚗𝚎𝚡𝚝();
+ 𝚒𝚏 (𝚗𝚞𝚖 % 𝟸 == 𝟶) {
+ 𝚒𝚝.𝚛𝚎𝚖𝚘𝚟𝚎(); // This will help with safe removal!
+ }
+}
+
+2️⃣ Use CopyOnWriteArrayList(For thread-safe scenarios)
+
+𝙻𝚒𝚜𝚝<𝙸𝚗𝚝𝚎𝚐𝚎𝚛> 𝚗𝚞𝚖𝚋𝚎𝚛𝚜 = 𝚗𝚎𝚠 𝙲𝚘𝚙𝚢𝙾𝚗𝚆𝚛𝚒𝚝𝚎𝙰𝚛𝚛𝚊𝚢𝙻𝚒𝚜𝚝<>(𝙰𝚛𝚛𝚊𝚢𝚜.𝚊𝚜𝙻𝚒𝚜𝚝(𝟷, 𝟸, 𝟹, 𝟺, 𝟻));
+𝚏𝚘𝚛 (𝙸𝚗𝚝𝚎𝚐𝚎𝚛 𝚗𝚞𝚖 : 𝚗𝚞𝚖𝚋𝚎𝚛𝚜) {
+ 𝚒𝚏 (𝚗𝚞𝚖 % 𝟸 == 𝟶) {
+ 𝚗𝚞𝚖𝚋𝚎𝚛𝚜.𝚛𝚎𝚖𝚘𝚟𝚎(𝚗𝚞𝚖); // No exception (But it's inefficient for large, frequently modified lists, as it creates a new copy on every write)
+ }
+}
+
+🔥 Pro Tip
+• Single-threaded? Always use Iterator.remove().
+• Multi-threaded? Opt for CopyOnWriteArrayList or ConcurrentHashMap.
+• Avoid modifying collections directly during iteration.
+
+
+
+2.
+
+Today, let’s unravel a classic Java interview question: What’s the difference between Comparable and Comparator, and when should you use each? Let’s dive in! 👇
+
+✅ Comparable Interface:
+• It is part of the java.lang package.
+• Used to define the natural ordering of objects by implementing the compareTo() method inside the class itself.
+• Modifies the class whose objects need to be sorted.
+• Supports a single sorting sequence (e.g., sorting by age or name, but only one at a time).
+• Used when there is a clear default way to order objects.
+• Sorting is done using Collections.sort(list) or Arrays.sort(array) which rely on the class’s compareTo() method.
+• Example: A Person class implementing Comparable<Person> to sort by age.
+
+💻 Code example :
+
+𝚙𝚞𝚋𝚕𝚒𝚌 𝚌𝚕𝚊𝚜𝚜 𝙿𝚎𝚛𝚜𝚘𝚗 𝚒𝚖𝚙𝚕𝚎𝚖𝚎𝚗𝚝𝚜 𝙲𝚘𝚖𝚙𝚊𝚛𝚊𝚋𝚕𝚎<𝙿𝚎𝚛𝚜𝚘𝚗> {
+ 𝚙𝚛𝚒𝚟𝚊𝚝𝚎 𝚂𝚝𝚛𝚒𝚗𝚐 𝚗𝚊𝚖𝚎;
+ 𝚙𝚛𝚒𝚟𝚊𝚝𝚎 𝚒𝚗𝚝 𝚊𝚐𝚎;
+
+ @𝙾𝚟𝚎𝚛𝚛𝚒𝚍𝚎
+ 𝚙𝚞𝚋𝚕𝚒𝚌 𝚒𝚗𝚝 𝚌𝚘𝚖𝚙𝚊𝚛𝚎𝚃𝚘(𝙿𝚎𝚛𝚜𝚘𝚗 𝚘) {
+ 𝚛𝚎𝚝𝚞𝚛𝚗 𝙸𝚗𝚝𝚎𝚐𝚎𝚛.𝚌𝚘𝚖𝚙𝚊𝚛𝚎(𝚝𝚑𝚒𝚜.𝚊𝚐𝚎, 𝚘.𝚊𝚐𝚎);
+ }
+}
+
+✅ Comparator Interface:
+• It belongs to the java.util package.
+• Defines custom ordering by implementing the compare(Object o1, Object o2) method in a separate class or via lambda expressions.
+• Does not require modifying the original class.
+• Supports multiple sorting sequences — you can create different comparators to sort by name, age, salary, etc.
+• Useful when sorting criteria vary or when you cannot change the class’s code.
+• Sorting is done via Collections.sort(list, comparator) or list.sort(comparator).
+• Java 8 enhanced Comparator with methods like comparing(), thenComparing(), reversed(), and null handling (nullsFirst(), nullsLast()).
+• Example: A PersonNameComparator class or a lambda expression to sort by name.
+
+💻 Code example :
+
+𝚒𝚖𝚙𝚘𝚛𝚝 𝚓𝚊𝚟𝚊.𝚞𝚝𝚒𝚕.𝙲𝚘𝚖𝚙𝚊𝚛𝚊𝚝𝚘𝚛;
+
+𝚙𝚞𝚋𝚕𝚒𝚌 𝚌𝚕𝚊𝚜𝚜 𝙿𝚎𝚛𝚜𝚘𝚗𝙽𝚊𝚖𝚎𝙲𝚘𝚖𝚙𝚊𝚛𝚊𝚝𝚘𝚛 𝚒𝚖𝚙𝚕𝚎𝚖𝚎𝚗𝚝𝚜 𝙲𝚘𝚖𝚙𝚊𝚛𝚊𝚝𝚘𝚛<𝙿𝚎𝚛𝚜𝚘𝚗> {
+ @𝙾𝚟𝚎𝚛𝚛𝚒𝚍𝚎
+ 𝚙𝚞𝚋𝚕𝚒𝚌 𝚒𝚗𝚝 𝚌𝚘𝚖𝚙𝚊𝚛𝚎(𝙿𝚎𝚛𝚜𝚘𝚗 𝚙𝟷, 𝙿𝚎𝚛𝚜𝚘𝚗 𝚙𝟸) {
+ 𝚛𝚎𝚝𝚞𝚛𝚗 𝚙𝟷.𝚗𝚊𝚖𝚎.𝚌𝚘𝚖𝚙𝚊𝚛𝚎𝚃𝚘(𝚙𝟸.𝚗𝚊𝚖𝚎);
+ }
+}
+
+🔥 Pro Tip:
+• Use Comparable when your class has a natural, single way to be ordered. 
+• Use Comparator when you need flexibility for multiple sorting criteria or cannot modify the class.
+
+
+
+3.
+
+
+Today's topic will be Internal Working of HashMap and Java 8 Collision Handling.
+Let’s break down the internal mechanics of HashMap and how things evolved after Java 8 for better performance!
+
+🔧 Internal Working of HashMap:
+A HashMap stores key-value pairs. Internally, it uses an array of buckets, where each bucket is a LinkedList (pre-Java 8) or a tree structure (post-Java 8, in case of high collisions).
+
+♻️ Here's how the process works:
+1️⃣ 𝚑𝚊𝚜𝚑𝙲𝚘𝚍𝚎() is called on the key.
+A hash function applies a transformation:
+𝚑𝚊𝚜𝚑 = (𝚑 = 𝚔𝚎𝚢．𝚑𝚊𝚜𝚑𝙲𝚘𝚍𝚎()) ^ (𝚑 >>> 𝟷𝟼)
+2️⃣ The index in the array is calculated using:
+𝚒𝚗𝚍𝚎𝚡 = 𝚑𝚊𝚜𝚑 & (𝚗 - 𝟷)
+3️⃣ If a bucket is empty, the entry is stored.
+4️⃣ If a bucket is occupied, it checks for key equality:
+5️⃣ If keys are equal, it updates the value.
+If not, a collision occurs, and the new entry is added to the chain (LinkedList or Tree).
+
+💻 Java 8 Collision Change:
+👉 Before Java 8:
+• Collisions were handled via LinkedList chaining.
+• O(n) time complexity for search in case of many collisions.
+👉 After Java 8:
+• When the number of entries in a bucket exceeds 𝚃𝚁𝙴𝙴𝙸𝙵𝚈_𝚃𝙷𝚁𝙴𝚂𝙷𝙾𝙻𝙳 (default: 8), the list is converted into a balanced Red-Black Tree.
+• Reduces search time from O(n) to O(log n) in high-collision scenarios.
+🔄 Treeification only happens if the underlying array size is greater than 𝙼𝙸𝙽_𝚃𝚁𝙴𝙴𝙸𝙵𝚈_𝙲𝙰𝙿𝙰𝙲𝙸𝚃𝚈 (default: 64).
+
+🧠 Quick Tip for Interviews:
+• Be ready to explain why HashMap was improved (performance degradation due to many collisions).
+• Know the constants:
+𝚃𝚁𝙴𝙴𝙸𝙵𝚈_𝚃𝙷𝚁𝙴𝚂𝙷𝙾𝙻𝙳 = 𝟾 
+𝚄𝙽𝚃𝚁𝙴𝙴𝙸𝙵𝚈_𝚃𝙷𝚁𝙴𝚂𝙷𝙾𝙻𝙳 = 𝟼 
+𝙼𝙸𝙽_𝚃𝚁𝙴𝙴𝙸𝙵𝚈_𝙲𝙰𝙿𝙰𝙲𝙸𝚃𝚈 = 𝟼𝟺
+
+
+
+4.
+
+
+Let's break down Java Garbage Collection (GC) — a must-know topic for memory management and JVM internals!
+
+🧠 What is Garbage Collection?
+Garbage Collection in Java is the process of automatically identifying and reclaiming memory occupied by objects no longer in use, preventing memory leaks and improving performance.
+
+🔄 Java Memory Areas Relevant to GC
+• Young Generation (Eden + Survivor spaces) – where new objects are created
+• Old Generation (Tenured space) – where long-lived objects go
+• Permanent Generation / Metaspace (Java 8+) – for class metadata
+
+🔍 Types of Garbage Collectors
+1️⃣ Serial GC (Single-threaded)
+Best for small apps with limited memory.
+Use with: -𝚇𝚇:+𝚄𝚜𝚎𝚂𝚎𝚛𝚒𝚊𝚕𝙶𝙲 
+2️⃣ Parallel GC (Throughput collector)
+Uses multiple threads for GC in young and old gen.
+Use with: -𝚇𝚇:+𝚄𝚜𝚎𝙿𝚊𝚛𝚊𝚕𝚕𝚎𝚕𝙶𝙲 
+3️⃣ CMS (Concurrent Mark-Sweep)
+Minimizes pause time by doing most GC work concurrently.
+ Use with: -𝚇𝚇:+𝚄𝚜𝚎𝙲𝚘𝚗𝚌𝙼𝚊𝚛𝚔𝚂𝚠𝚎𝚎𝚙𝙶𝙲 
+4️⃣ G1 GC (Garbage First)
+Breaks heap into regions and performs parallel + concurrent collection (Default from Java 9+).
+Use with: -𝚇𝚇:+𝚄𝚜𝚎𝙶𝟷𝙶𝙲 
+5️⃣ ZGC & Shenandoah (Low latency collectors)
+Designed for massive heaps and ultra-low pause times.
+Use with: -𝚇𝚇:+𝚄𝚜𝚎𝚉𝙶𝙲 
+ -𝚇𝚇:+𝚄𝚜𝚎𝚂𝚑𝚎𝚗𝚊𝚗𝚍𝚘𝚊𝚑𝙶𝙲
+
+🧰 GC Algorithms (At a glance):
+👉Mark and Sweep – Mark live objects, sweep the rest.
+👉Copying – Copies live objects to a new space.
+👉Generational – Based on object age (Young vs Old gen).
+👉Region-based (G1, ZGC) – Breaks heap into regions for efficient GC.
+
+✅ GC tuning is key for performance-critical apps, especially when memory footprint and response times matter!
+
+
+
+
+5.
+
+
+Let’s explore the very popular interview topic — 
+🔍 Shallow Copy vs Deep Copy in Java - What's the difference?
+
+🔹 Shallow Copy:
+• Copies the object and references to the nested objects.
+• Changes in the nested object affect both copies.
+• Performed using clone() (default behavior).
+
+🔸 Deep Copy:
+• Copies the object and creates new instances of nested objects.
+• Original and copy are completely independent.
+• Requires manual handling or serialization.
+
+💻 Code Example: Shallow Copy
+
+𝚌𝚕𝚊𝚜𝚜 𝙰𝚍𝚍𝚛𝚎𝚜𝚜 {
+ 𝚂𝚝𝚛𝚒𝚗𝚐 𝚌𝚒𝚝𝚢;
+ 𝙰𝚍𝚍𝚛𝚎𝚜𝚜(𝚂𝚝𝚛𝚒𝚗𝚐 𝚌𝚒𝚝𝚢) { 𝚝𝚑𝚒𝚜.𝚌𝚒𝚝𝚢 = 𝚌𝚒𝚝𝚢; }
+}
+
+𝚌𝚕𝚊𝚜𝚜 𝙿𝚎𝚛𝚜𝚘𝚗 𝚒𝚖𝚙𝚕𝚎𝚖𝚎𝚗𝚝𝚜 𝙲𝚕𝚘𝚗𝚎𝚊𝚋𝚕𝚎 {
+ 𝚂𝚝𝚛𝚒𝚗𝚐 𝚗𝚊𝚖𝚎;
+ 𝙰𝚍𝚍𝚛𝚎𝚜𝚜 𝚊𝚍𝚍𝚛;
+ 𝙿𝚎𝚛𝚜𝚘𝚗(𝚂𝚝𝚛𝚒𝚗𝚐 𝚗𝚊𝚖𝚎, 𝙰𝚍𝚍𝚛𝚎𝚜𝚜 𝚊𝚍𝚍𝚛) {
+ 𝚝𝚑𝚒𝚜.𝚗𝚊𝚖𝚎 = 𝚗𝚊𝚖𝚎;
+ 𝚝𝚑𝚒𝚜.𝚊𝚍𝚍𝚛 = 𝚊𝚍𝚍𝚛;
+ }
+ 𝚙𝚞𝚋𝚕𝚒𝚌 𝙿𝚎𝚛𝚜𝚘𝚗 𝚌𝚕𝚘𝚗𝚎() 𝚝𝚑𝚛𝚘𝚠𝚜 𝙲𝚕𝚘𝚗𝚎𝙽𝚘𝚝𝚂𝚞𝚙𝚙𝚘𝚛𝚝𝚎𝚍𝙴𝚡𝚌𝚎𝚙𝚝𝚒𝚘𝚗 {
+ 𝚛𝚎𝚝𝚞𝚛𝚗 (𝙿𝚎𝚛𝚜𝚘𝚗) 𝚜𝚞𝚙𝚎𝚛.𝚌𝚕𝚘𝚗𝚎();
+ }
+}
+
+💻 Code Example: Deep Copy
+
+𝚙𝚞𝚋𝚕𝚒𝚌 𝙿𝚎𝚛𝚜𝚘𝚗 𝚌𝚕𝚘𝚗𝚎() 𝚝𝚑𝚛𝚘𝚠𝚜 𝙲𝚕𝚘𝚗𝚎𝙽𝚘𝚝𝚂𝚞𝚙𝚙𝚘𝚛𝚝𝚎𝚍𝙴𝚡𝚌𝚎𝚙𝚝𝚒𝚘𝚗 {
+ 𝙿𝚎𝚛𝚜𝚘𝚗 𝚌𝚕𝚘𝚗𝚎𝚍 = (𝙿𝚎𝚛𝚜𝚘𝚗) 𝚜𝚞𝚙𝚎𝚛.𝚌𝚕𝚘𝚗𝚎();
+ 𝚌𝚕𝚘𝚗𝚎𝚍.𝚊𝚍𝚍𝚛 = 𝚗𝚎𝚠 𝙰𝚍𝚍𝚛𝚎𝚜𝚜(𝚝𝚑𝚒𝚜.𝚊𝚍𝚍𝚛.𝚌𝚒𝚝𝚢);
+ 𝚛𝚎𝚝𝚞𝚛𝚗 𝚌𝚕𝚘𝚗𝚎𝚍;
+}
+
+🎯 Interview Insight:
+• Always clarify whether the interviewer is referring to shallow or deep cloning.
+• Demonstrating both approaches shows depth in understanding object memory management.
+
+
+
+
+6.
+
+
+
+Today’s focus will be on Cloneable Interface (Marker Interface) & == vs .equals() in Java!
+
+ 🔍Cloneable Interface:
+• Cloneable is a marker interface (contains no methods).
+• It tells the JVM that your class supports the clone() method.
+• Used to create object copies (shallow by default).
+
+💻 Code implementation:
+𝚌𝚕𝚊𝚜𝚜 𝙿𝚎𝚛𝚜𝚘𝚗 𝚒𝚖𝚙𝚕𝚎𝚖𝚎𝚗𝚝𝚜 𝙲𝚕𝚘𝚗𝚎𝚊𝚋𝚕𝚎 {
+ 𝚒𝚗𝚝 𝚊𝚐𝚎 = 𝟸𝟻;
+ 𝚙𝚞𝚋𝚕𝚒𝚌 𝙿𝚎𝚛𝚜𝚘𝚗 𝚌𝚕𝚘𝚗𝚎() 𝚝𝚑𝚛𝚘𝚠𝚜 𝙲𝚕𝚘𝚗𝚎𝙽𝚘𝚝𝚂𝚞𝚙𝚙𝚘𝚛𝚝𝚎𝚍𝙴𝚡𝚌𝚎𝚙𝚝𝚒𝚘𝚗 {
+ 𝚛𝚎𝚝𝚞𝚛𝚗 (𝙿𝚎𝚛𝚜𝚘𝚗) 𝚜𝚞𝚙𝚎𝚛.𝚌𝚕𝚘𝚗𝚎();
+ }
+}
+⚠️ If a class doesn't implement Cloneable and clone() is called, it throws CloneNotSupportedException.
+
+🔍 == vs .equals()
+• == → Compares references (memory address).
+• .equals() → Compares values (actual content of the object).
+
+💻 Code implementation:
+𝚂𝚝𝚛𝚒𝚗𝚐 𝚜𝟷 = "𝚃𝚎𝚜𝚝";
+𝚂𝚝𝚛𝚒𝚗𝚐 𝚜𝟸 = 𝚗𝚎𝚠 𝚂𝚝𝚛𝚒𝚗𝚐("𝚃𝚎𝚜𝚝");
+
+𝚜𝟷 == 𝚜𝟸; // false
+𝚜𝟷.𝚎𝚚𝚞𝚊𝚕𝚜(𝚜𝟸); // true
+
+
+
+
+
+7.
+
+
+We are continuing with the enthusiasm of the Prep Series!
+🧠 Today’s concept: Java Memory Model (JMM) — one of the most asked topics in Java multithreading interviews.
+
+🔍 What is JMM?
+The Java Memory Model (JMM) defines how threads interact through memory and what behaviors are allowed in concurrent execution. It's a crucial abstraction that ensures visibility, ordering, and atomicity of variables between threads.
+
+💡 Key Concepts:
+• Shared Memory: Threads don't communicate by passing messages but by reading/writing shared variables.
+ • Thread Working Memory: Each thread has its own copy of variables (cached).
+ • Main Memory: The actual memory shared by all threads.
+
+🔐 Visibility Problem:
+Changes made by one thread may not be visible to others due to thread-local caching.
+✅ Solution: Use 𝚟𝚘𝚕𝚊𝚝𝚒𝚕𝚎, 𝚜𝚢𝚗𝚌𝚑𝚛𝚘𝚗𝚒𝚣𝚎𝚍, or other concurrency utilities.
+
+🚦 Happens-Before Relationship (JMM’s backbone):
+• A 𝚝𝚑𝚛𝚎𝚊𝚍.𝚜𝚝𝚊𝚛𝚝() call happens-before the first action in the thread
+• 𝚕𝚘𝚌𝚔.𝚞𝚗𝚕𝚘𝚌𝚔() happens-before another thread’s 𝚕𝚘𝚌𝚔.𝚕𝚘𝚌𝚔()
+• 𝚟𝚘𝚕𝚊𝚝𝚒𝚕𝚎 writes happen-before reads
+
+🧪 Sample Code using 𝚟𝚘𝚕𝚊𝚝𝚒𝚕𝚎:
+
+𝚌𝚕𝚊𝚜𝚜 𝙼𝚢𝚃𝚊𝚜𝚔 𝚒𝚖𝚙𝚕𝚎𝚖𝚎𝚗𝚝𝚜 𝚁𝚞𝚗𝚗𝚊𝚋𝚕𝚎 {
+ 𝚟𝚘𝚕𝚊𝚝𝚒𝚕𝚎 𝚋𝚘𝚘𝚕𝚎𝚊𝚗 𝚛𝚞𝚗𝚗𝚒𝚗𝚐 = 𝚝𝚛𝚞𝚎;
+ 𝚙𝚞𝚋𝚕𝚒𝚌 𝚟𝚘𝚒𝚍 𝚛𝚞𝚗() {
+ 𝚠𝚑𝚒𝚕𝚎 (𝚛𝚞𝚗𝚗𝚒𝚗𝚐) {
+ // 𝚜𝚘𝚖𝚎 𝚠𝚘𝚛𝚔
+ }
+ }
+ 𝚙𝚞𝚋𝚕𝚒𝚌 𝚟𝚘𝚒𝚍 𝚜𝚝𝚘𝚙() {
+ 𝚛𝚞𝚗𝚗𝚒𝚗𝚐 = 𝚏𝚊𝚕𝚜𝚎;
+ }
+}
+
+🧵 One thread runs the task, another calls 𝚜𝚝𝚘𝚙() — due to 𝚟𝚘𝚕𝚊𝚝𝚒𝚕𝚎, changes are visible immediately.
+
+📌 Mastering the JMM helps prevent subtle concurrency bugs and boosts confidence in handling real-world multithreaded applications!
+
+
+
+
+
+8.
+
+
+
+Today we’re diving into one of the most asked multithreading topics in interviews — ExecutorService.
+It’s a powerful feature from the java.util.concurrent package that helps manage thread execution efficiently and cleanly.
+
+🧠 What is ExecutorService?
+• It’s an interface designed to handle asynchronous task execution, letting you focus more on what to run and less on how to run it.
+• It abstracts away thread creation and management, giving us easy-to-use tools for executing tasks concurrently.
+
+🔧 Types of ExecutorService:
+✅ 1. 𝚗𝚎𝚠𝚂𝚒𝚗𝚐𝚕𝚎𝚃𝚑𝚛𝚎𝚊𝚍𝙴𝚡𝚎𝚌𝚞𝚝𝚘𝚛()
+Executes one task at a time using a single worker thread.
+
+𝙴𝚡𝚎𝚌𝚞𝚝𝚘𝚛𝚂𝚎𝚛𝚟𝚒𝚌𝚎 𝚎𝚡𝚎𝚌𝚞𝚝𝚘𝚛 = 𝙴𝚡𝚎𝚌𝚞𝚝𝚘𝚛𝚜.𝚗𝚎𝚠𝚂𝚒𝚗𝚐𝚕𝚎𝚃𝚑𝚛𝚎𝚊𝚍𝙴𝚡𝚎𝚌𝚞𝚝𝚘𝚛();
+𝚎𝚡𝚎𝚌𝚞𝚝𝚘𝚛.𝚎𝚡𝚎𝚌𝚞𝚝𝚎(() -> 𝚂𝚢𝚜𝚝𝚎𝚖.𝚘𝚞𝚝.𝚙𝚛𝚒𝚗𝚝𝚕𝚗("𝚂𝚒𝚗𝚐𝚕𝚎 𝚃𝚑𝚛𝚎𝚊𝚍 𝙴𝚡𝚎𝚌𝚞𝚝𝚒𝚘𝚗"));
+𝚎𝚡𝚎𝚌𝚞𝚝𝚘𝚛.𝚜𝚑𝚞𝚝𝚍𝚘𝚠𝚗();
+
+✅ 2. 𝚗𝚎𝚠𝙵𝚒𝚡𝚎𝚍𝚃𝚑𝚛𝚎𝚊𝚍𝙿𝚘𝚘𝚕(𝚒𝚗𝚝 𝚗)
+Executes tasks using a fixed number of threads.
+
+𝙴𝚡𝚎𝚌𝚞𝚝𝚘𝚛𝚂𝚎𝚛𝚟𝚒𝚌𝚎 𝚎𝚡𝚎𝚌𝚞𝚝𝚘𝚛 = 𝙴𝚡𝚎𝚌𝚞𝚝𝚘𝚛𝚜.𝚗𝚎𝚠𝙵𝚒𝚡𝚎𝚍𝚃𝚑𝚛𝚎𝚊𝚍𝙿𝚘𝚘𝚕(𝟹);
+𝚏𝚘𝚛 (𝚒𝚗𝚝 𝚒 = 𝟶; 𝚒 < 𝟻; 𝚒++) {
+𝚎𝚡𝚎𝚌𝚞𝚝𝚘𝚛.𝚎𝚡𝚎𝚌𝚞𝚝𝚎(() -> 𝚂𝚢𝚜𝚝𝚎𝚖.𝚘𝚞𝚝.𝚙𝚛𝚒𝚗𝚝𝚕𝚗("𝚁𝚞𝚗𝚗𝚒𝚗𝚐 𝚒𝚗 𝚏𝚒𝚡𝚎𝚍 𝚝𝚑𝚛𝚎𝚊𝚍 𝚙𝚘𝚘𝚕"));
+}
+𝚎𝚡𝚎𝚌𝚞𝚝𝚘𝚛.𝚜𝚑𝚞𝚝𝚍𝚘𝚠𝚗();
+
+✅ 3. 𝚗𝚎𝚠𝙲𝚊𝚌𝚑𝚎𝚍𝚃𝚑𝚛𝚎𝚊𝚍𝙿𝚘𝚘𝚕()
+Creates new threads as needed, reuses them when available. Suitable for short-lived async tasks.
+
+𝙴𝚡𝚎𝚌𝚞𝚝𝚘𝚛𝚂𝚎𝚛𝚟𝚒𝚌𝚎 𝚎𝚡𝚎𝚌𝚞𝚝𝚘𝚛 = 𝙴𝚡𝚎𝚌𝚞𝚝𝚘𝚛𝚜.𝚗𝚎𝚠𝙲𝚊𝚌𝚑𝚎𝚍𝚃𝚑𝚛𝚎𝚊𝚍𝙿𝚘𝚘𝚕();
+𝚏𝚘𝚛 (𝚒𝚗𝚝 𝚒 = 𝟶; 𝚒 < 𝟻; 𝚒++) {
+𝚎𝚡𝚎𝚌𝚞𝚝𝚘𝚛.𝚎𝚡𝚎𝚌𝚞𝚝𝚎(() -> 𝚂𝚢𝚜𝚝𝚎𝚖.𝚘𝚞𝚝.𝚙𝚛𝚒𝚗𝚝𝚕𝚗("𝚁𝚞𝚗𝚗𝚒𝚗𝚐 𝚒𝚗 𝚌𝚊𝚌𝚑𝚎𝚍 𝚝𝚑𝚛𝚎𝚊𝚍 𝚙𝚘𝚘𝚕"));
+}
+𝚎𝚡𝚎𝚌𝚞𝚝𝚘𝚛.𝚜𝚑𝚞𝚝𝚍𝚘𝚠𝚗();
+
+✅ 4. 𝚗𝚎𝚠𝚂𝚌𝚑𝚎𝚍𝚞𝚕𝚎𝚍𝚃𝚑𝚛𝚎𝚊𝚍𝙿𝚘𝚘𝚕(𝚒𝚗𝚝 𝚌𝚘𝚛𝚎𝙿𝚘𝚘𝚕𝚂𝚒𝚣𝚎)
+Used for delayed or periodic task execution.
+
+𝚂𝚌𝚑𝚎𝚍𝚞𝚕𝚎𝚍𝙴𝚡𝚎𝚌𝚞𝚝𝚘𝚛𝚂𝚎𝚛𝚟𝚒𝚌𝚎 𝚎𝚡𝚎𝚌𝚞𝚝𝚘𝚛 = 𝙴𝚡𝚎𝚌𝚞𝚝𝚘𝚛𝚜.𝚗𝚎𝚠𝚂𝚌𝚑𝚎𝚍𝚞𝚕𝚎𝚍𝚃𝚑𝚛𝚎𝚊𝚍𝙿𝚘𝚘𝚕(𝟸);
+𝚎𝚡𝚎𝚌𝚞𝚝𝚘𝚛.𝚜𝚌𝚑𝚎𝚍𝚞𝚕𝚎(() -> 𝚂𝚢𝚜𝚝𝚎𝚖.𝚘𝚞𝚝.𝚙𝚛𝚒𝚗𝚝𝚕𝚗("𝚂𝚌𝚑𝚎𝚍𝚞𝚕𝚎𝚍 𝚝𝚊𝚜𝚔 𝚊𝚏𝚝𝚎𝚛 𝚍𝚎𝚕𝚊𝚢"), 𝟸, 𝚃𝚒𝚖𝚎𝚄𝚗𝚒𝚝．𝚂𝙴𝙲𝙾𝙽𝙳𝚂);
+𝚎𝚡𝚎𝚌𝚞𝚝𝚘𝚛.𝚜𝚑𝚞𝚝𝚍𝚘𝚠𝚗();
+
+
+📌 Quick Recommendations:
+• Use 𝚜𝚑𝚞𝚝𝚍𝚘𝚠𝚗() to close the executor gracefully.
+• Use 𝙵𝚒𝚡𝚎𝚍𝚃𝚑𝚛𝚎𝚊𝚍𝙿𝚘𝚘𝚕 for limited resources.
+• Use 𝙲𝚊𝚌𝚑𝚎𝚍𝚃𝚑𝚛𝚎𝚊𝚍𝙿𝚘𝚘𝚕 for flexible scaling.
+• Use 𝚂𝚌𝚑𝚎𝚍𝚞𝚕𝚎𝚍𝚃𝚑𝚛𝚎𝚊𝚍𝙿𝚘𝚘𝚕 for scheduled tasks.
+
+💡 Interview Pro Tip:
+Always mention why you would choose one Executor type over another — it's not just about writing code but making the right design decision!
+
+
+
+9.
+
+
+Today’s focus:
+🔍 𝙲𝚊𝚕𝚕𝚊𝚋𝚕𝚎, 𝙵𝚞𝚝𝚞𝚛𝚎, and 𝙾𝚙𝚝𝚒𝚘𝚗𝚊𝚕 in Java
+These are important topics in both multithreading and null-safety, and they often appear in interview discussions. Let's break them down 👇
+
+✅ What is 𝙲𝚊𝚕𝚕𝚊𝚋𝚕𝚎?
+ • 𝙲𝚊𝚕𝚕𝚊𝚋𝚕𝚎 is similar to 𝚁𝚞𝚗𝚗𝚊𝚋𝚕𝚎, but it can return a result and throw a checked exception.
+ • Used when you want your thread to return a computed value.
+
+𝚌𝚕𝚊𝚜𝚜 𝙼𝚢𝙲𝚊𝚕𝚕𝚊𝚋𝚕𝚎 𝚒𝚖𝚙𝚕𝚎𝚖𝚎𝚗𝚝𝚜 𝙲𝚊𝚕𝚕𝚊𝚋𝚕𝚎<𝚂𝚝𝚛𝚒𝚗𝚐> {
+ 𝚙𝚞𝚋𝚕𝚒𝚌 𝚂𝚝𝚛𝚒𝚗𝚐 𝚌𝚊𝚕𝚕() 𝚝𝚑𝚛𝚘𝚠𝚜 𝙴𝚡𝚌𝚎𝚙𝚝𝚒𝚘𝚗 {
+ 𝚛𝚎𝚝𝚞𝚛𝚗 "𝙷𝚎𝚕𝚕𝚘 𝚏𝚛𝚘𝚖 𝙲𝚊𝚕𝚕𝚊𝚋𝚕𝚎!";
+ }
+ }
+
+✅ What is 𝙵𝚞𝚝𝚞𝚛𝚎?
+• 𝙵𝚞𝚝𝚞𝚛𝚎 is used to store the result of an asynchronous computation.
+• It provides methods to check if the task is complete, wait for completion, and retrieve the result.
+
+𝙴𝚡𝚎𝚌𝚞𝚝𝚘𝚛𝚂𝚎𝚛𝚟𝚒𝚌𝚎 𝚜𝚎𝚛𝚟𝚒𝚌𝚎 = 𝙴𝚡𝚎𝚌𝚞𝚝𝚘𝚛𝚜.𝚗𝚎𝚠𝚂𝚒𝚗𝚐𝚕𝚎𝚃𝚑𝚛𝚎𝚊𝚍𝙴𝚡𝚎𝚌𝚞𝚝𝚘𝚛();
+𝙵𝚞𝚝𝚞𝚛𝚎<𝚂𝚝𝚛𝚒𝚗𝚐> 𝚏𝚞𝚝𝚞𝚛𝚎 = 𝚜𝚎𝚛𝚟𝚒𝚌𝚎.𝚜𝚞𝚋𝚖𝚒𝚝(𝚗𝚎𝚠 𝙼𝚢𝙲𝚊𝚕𝚕𝚊𝚋𝚕𝚎());
+𝚂𝚢𝚜𝚝𝚎𝚖.𝚘𝚞𝚝.𝚙𝚛𝚒𝚗𝚝𝚕𝚗(𝚏𝚞𝚝𝚞𝚛𝚎.𝚐𝚎𝚝());
+
+✅ What is 𝙾𝚙𝚝𝚒𝚘𝚗𝚊𝚕?
+• 𝙾𝚙𝚝𝚒𝚘𝚗𝚊𝚕 is a container object used to contain not-null objects.
+• It helps avoid NullPointerExceptions.
+
+𝙾𝚙𝚝𝚒𝚘𝚗𝚊𝚕<𝚂𝚝𝚛𝚒𝚗𝚐> 𝚘𝚙𝚝𝚒𝚘𝚗𝚊𝚕𝙽𝚊𝚖𝚎 = 𝙾𝚙𝚝𝚒𝚘𝚗𝚊𝚕.𝚘𝚏𝙽𝚞𝚕𝚕𝚊𝚋𝚕𝚎("𝙹𝚊𝚟𝚊");
+ 𝚒𝚏(𝚘𝚙𝚝𝚒𝚘𝚗𝚊𝚕𝙽𝚊𝚖𝚎.𝚒𝚜𝙿𝚛𝚎𝚜𝚎𝚗𝚝()) {
+ 𝚂𝚢𝚜𝚝𝚎𝚖.𝚘𝚞𝚝.𝚙𝚛𝚒𝚗𝚝𝚕𝚗(𝚘𝚙𝚝𝚒𝚘𝚗𝚊𝚕𝙽𝚊𝚖𝚎.𝚐𝚎𝚝());
+ }
+
+✨ Why 𝙾𝚙𝚝𝚒𝚘𝚗𝚊𝚕 is Powerful:
+• 𝚒𝚏𝙿𝚛𝚎𝚜𝚎𝚗𝚝() — Run logic only if value exists
+• 𝚘𝚛𝙴𝚕𝚜𝚎() / 𝚘𝚛𝙴𝚕𝚜𝚎𝙶𝚎𝚝() — Provide safe defaults
+• 𝚘𝚛𝙴𝚕𝚜𝚎𝚃𝚑𝚛𝚘𝚠() — Cleanly throw exceptions when value is absent
+• 𝚖𝚊𝚙() / 𝚏𝚕𝚊𝚝𝙼𝚊𝚙() — Transform data functionally and elegantly
+
+💡 When to Use What?
+• Use 𝙲𝚊𝚕𝚕𝚊𝚋𝚕𝚎 and 𝙵𝚞𝚝𝚞𝚛𝚎 for concurrent tasks that return results.
+• Use 𝙾𝚙𝚝𝚒𝚘𝚗𝚊𝚕 when you want to handle absence of values safely.
+
+📌 Save this for your interview prep!
+ And if you're building with Java — use these wisely to handle concurrency and null safety like a pro. 😎
+
+
+
+
+10.
+
+
+Today we’re going with one of the most asked topics in interviews — Multithreading in Java.
+Whether it’s improving performance, managing tasks in parallel, or building responsive apps, multithreading is an essential skill for any Java developer.
+
+🧠 What is Multithreading?
+Multithreading is a programming technique where multiple threads run concurrently, sharing the same process memory.
+Each thread is an independent path of execution — ideal for multitasking!
+
+💡 Why use Multithreading?
+• Faster execution
+• Efficient CPU usage
+• Better resource management
+• Useful in I/O operations, games, UI, etc.
+
+🛠️ How to Create Threads in Java?
+👉 By extending Thread class
+
+𝚌𝚕𝚊𝚜𝚜 𝙼𝚢𝚃𝚑𝚛𝚎𝚊𝚍 𝚎𝚡𝚝𝚎𝚗𝚍𝚜 𝚃𝚑𝚛𝚎𝚊𝚍 {
+ 𝚙𝚞𝚋𝚕𝚒𝚌 𝚟𝚘𝚒𝚍 𝚛𝚞𝚗() {
+ 𝚂𝚢𝚜𝚝𝚎𝚖.𝚘𝚞𝚝.𝚙𝚛𝚒𝚗𝚝𝚕𝚗("𝚃𝚑𝚛𝚎𝚊𝚍 𝚛𝚞𝚗𝚗𝚒𝚗𝚐 𝚞𝚜𝚒𝚗𝚐 𝚃𝚑𝚛𝚎𝚊𝚍 𝚌𝚕𝚊𝚜𝚜");
+ }
+}
+𝚙𝚞𝚋𝚕𝚒𝚌 𝚌𝚕𝚊𝚜𝚜 𝚃𝚎𝚜𝚝 {
+ 𝚙𝚞𝚋𝚕𝚒𝚌 𝚜𝚝𝚊𝚝𝚒𝚌 𝚟𝚘𝚒𝚍 𝚖𝚊𝚒𝚗(𝚂𝚝𝚛𝚒𝚗𝚐[] 𝚊𝚛𝚐𝚜) {
+ 𝙼𝚢𝚃𝚑𝚛𝚎𝚊𝚍 𝚝1 = 𝚗𝚎𝚠 𝙼𝚢𝚃𝚑𝚛𝚎𝚊𝚍();
+ 𝚝1.𝚜𝚝𝚊𝚛𝚝();
+ }
+}
+
+👉By implementing Runnable interface
+
+𝚌𝚕𝚊𝚜𝚜 𝙼𝚢𝚁𝚞𝚗𝚗𝚊𝚋𝚕𝚎 𝚒𝚖𝚙𝚕𝚎𝚖𝚎𝚗𝚝𝚜 𝚁𝚞𝚗𝚗𝚊𝚋𝚕𝚎 {
+ 𝚙𝚞𝚋𝚕𝚒𝚌 𝚟𝚘𝚒𝚍 𝚛𝚞𝚗() {
+ 𝚂𝚢𝚜𝚝𝚎𝚖.𝚘𝚞𝚝.𝚙𝚛𝚒𝚗𝚝𝚕𝚗("𝚃𝚑𝚛𝚎𝚊𝚍 𝚛𝚞𝚗𝚗𝚒𝚗𝚐 𝚞𝚜𝚒𝚗𝚐 𝚁𝚞𝚗𝚗𝚊𝚋𝚕𝚎 𝚒𝚗𝚝𝚎𝚛𝚏𝚊𝚌𝚎");
+ }
+}
+𝚙𝚞𝚋𝚕𝚒𝚌 𝚌𝚕𝚊𝚜𝚜 𝚃𝚎𝚜𝚝 {
+ 𝚙𝚞𝚋𝚕𝚒𝚌 𝚜𝚝𝚊𝚝𝚒𝚌 𝚟𝚘𝚒𝚍 𝚖𝚊𝚒𝚗(𝚂𝚝𝚛𝚒𝚗𝚐[] 𝚊𝚛𝚐𝚜) {
+ 𝚃𝚑𝚛𝚎𝚊𝚍 𝚝1 = 𝚗𝚎𝚠 𝚃𝚑𝚛𝚎𝚊𝚍(𝚗𝚎𝚠 𝙼𝚢𝚁𝚞𝚗𝚗𝚊𝚋𝚕𝚎());
+ 𝚝1.𝚜𝚝𝚊𝚛𝚝();
+ }
+}
+
+🤔 Which approach to choose?
+Use Runnable if:
+• Your class needs to extend another class
+• You want to separate task (Runnable) from thread execution (Thread)
+
+Multithreading is not just for interviews — it's a core concept in building high-performance systems. Make sure to prepare this well!
+
+
+
+11.
+
+
+
+Today’s post is about two of the most commonly asked and misunderstood topics in Java interviews:
+1️⃣ 𝚝𝚑𝚛𝚘𝚠 vs 𝚝𝚑𝚛𝚘𝚠𝚜
+2️⃣ 𝚏𝚒𝚗𝚊𝚕 vs 𝚏𝚒𝚗𝚊𝚕𝚕𝚢 vs 𝚏𝚒𝚗𝚊𝚕𝚒𝚣𝚎()
+We often get confused with these keywords due to similar spelling but very different purposes—so better to prepare them well!
+
+✅ 𝚝𝚑𝚛𝚘𝚠 vs 𝚝𝚑𝚛𝚘𝚠𝚜
+👉𝚝𝚑𝚛𝚘𝚠:
+• Used to explicitly throw an exception from a method or block.
+• Used inside method body.
+
+𝚝𝚑𝚛𝚘𝚠 𝚗𝚎𝚠 𝙰𝚛𝚒𝚝𝚑𝚖𝚎𝚝𝚒𝚌𝙴𝚡𝚌𝚎𝚙𝚝𝚒𝚘𝚗("𝙳𝚒𝚟𝚒𝚍𝚎 𝚋𝚢 𝚣𝚎𝚛𝚘");
+
+👉𝚝𝚑𝚛𝚘𝚠𝚜:
+• Declares the possibility of exceptions for a method.
+• Written in the method signature.
+
+𝚟𝚘𝚒𝚍 𝚖𝚢𝙼𝚎𝚝𝚑𝚘𝚍() 𝚝𝚑𝚛𝚘𝚠𝚜 𝙸𝙾𝙴𝚡𝚌𝚎𝚙𝚝𝚒𝚘𝚗, 𝚂𝚀𝙻𝙴𝚡𝚌𝚎𝚙𝚝𝚒𝚘𝚗 { ．．． }
+
+✅ 𝚏𝚒𝚗𝚊𝚕 vs 𝚏𝚒𝚗𝚊𝚕𝚕𝚢 vs 𝚏𝚒𝚗𝚊𝚕𝚒𝚣𝚎()
+👉𝚏𝚒𝚗𝚊𝚕:
+• Used to make variables immutable, methods un-overridable, and classes unextendable.
+
+𝚏𝚒𝚗𝚊𝚕 𝚒𝚗𝚝 𝚡 = 𝟷𝟶;
+
+👉𝚏𝚒𝚗𝚊𝚕𝚕𝚢:
+• A block that always executes after try-catch regardless of exception occurrence.
+
+𝚝𝚛𝚢 { ．．． } 𝚌𝚊𝚝𝚌𝚑(𝙴𝚡𝚌𝚎𝚙𝚝𝚒𝚘𝚗 𝚎) { ．．． } 𝚏𝚒𝚗𝚊𝚕𝚕𝚢 { ．．． }
+
+👉𝚏𝚒𝚗𝚊𝚕𝚒𝚣𝚎():
+• A method in Object class called by the Garbage Collector before destroying an object.
+• Rarely used now; deprecated in recent Java versions.
+
+@𝙾𝚟𝚎𝚛𝚛𝚒𝚍𝚎
+𝚙𝚛𝚘𝚝𝚎𝚌𝚝𝚎𝚍 𝚟𝚘𝚒𝚍 𝚏𝚒𝚗𝚊𝚕𝚒𝚣𝚎() 𝚝𝚑𝚛𝚘𝚠𝚜 𝚃𝚑𝚛𝚘𝚠𝚊𝚋𝚕𝚎 {
+
+𝚂𝚢𝚜𝚝𝚎𝚖.𝚘𝚞𝚝.𝚙𝚛𝚒𝚗𝚝𝚕𝚗("𝙾𝚋𝚓𝚎𝚌𝚝 𝚒𝚜 𝚐𝚊𝚛𝚋𝚊𝚐𝚎 𝚌𝚘𝚕𝚕𝚎𝚌𝚝𝚎𝚍");
+
+}
+
+
+
+
+12.
+
+
+Today we’re talking about something that every Java developer encounters – exception handling using try-catch-finally.
+
+⚠️ Why Handle Exceptions?
+Proper exception handling ensures your app doesn’t crash unexpectedly and allows you to:
+• Show user-friendly error messages
+• Perform cleanup tasks (like closing files/DB connections)
+• Avoid leaving your system in an inconsistent state
+
+🔁 Syntax Breakdown:
+𝚝𝚛𝚢 {
+
+// 𝚁𝚒𝚜𝚔𝚢 𝚌𝚘𝚍𝚎
+
+} 𝚌𝚊𝚝𝚌𝚑 (𝙴𝚡𝚌𝚎𝚙𝚝𝚒𝚘𝚗𝚃𝚢𝚙𝚎 𝚎) {
+
+// 𝙷𝚊𝚗𝚍𝚕𝚎 𝚎𝚡𝚌𝚎𝚙𝚝𝚒𝚘𝚗
+
+} 𝚏𝚒𝚗𝚊𝚕𝚕𝚢 {
+
+// 𝙲𝚘𝚍𝚎 𝚝𝚑𝚊𝚝 𝚊𝚕𝚠𝚊𝚢𝚜 𝚎𝚡𝚎𝚌𝚞𝚝𝚎𝚜 (𝚎𝚟𝚎𝚗 𝚒𝚏 𝚎𝚡𝚌𝚎𝚙𝚝𝚒𝚘𝚗 𝚘𝚌𝚌𝚞𝚛𝚜)
+
+}
+
+🧑‍💻 Example:
+𝚙𝚞𝚋𝚕𝚒𝚌 𝚌𝚕𝚊𝚜𝚜 𝙴𝚡𝚌𝚎𝚙𝚝𝚒𝚘𝚗𝙴𝚡𝚊𝚖𝚙𝚕𝚎 {
+
+𝚙𝚞𝚋𝚕𝚒𝚌 𝚜𝚝𝚊𝚝𝚒𝚌 𝚟𝚘𝚒𝚍 𝚖𝚊𝚒𝚗(𝚂𝚝𝚛𝚒𝚗𝚐[] 𝚊𝚛𝚐𝚜) {
+
+𝚝𝚛𝚢 {
+
+𝚒𝚗𝚝 𝚛𝚎𝚜𝚞𝚕𝚝 = 𝟷𝟶 / 𝟶;
+𝚂𝚢𝚜𝚝𝚎𝚖．𝚘𝚞𝚝．𝚙𝚛𝚒𝚗𝚝𝚕𝚗("𝚁𝚎𝚜𝚞𝚕𝚝: " + 𝚛𝚎𝚜𝚞𝚕𝚝);
+
+} 𝚌𝚊𝚝𝚌𝚑 (𝙰𝚛𝚒𝚝𝚑𝚖𝚎𝚝𝚒𝚌𝙴𝚡𝚌𝚎𝚙𝚝𝚒𝚘𝚗 𝚎) {
+
+𝚂𝚢𝚜𝚝𝚎𝚖．𝚘𝚞𝚝．𝚙𝚛𝚒𝚗𝚝𝚕𝚗("𝙴𝚡𝚌𝚎𝚙𝚝𝚒𝚘𝚗 𝚌𝚊𝚞𝚐𝚑𝚝: " + 𝚎．𝚐𝚎𝚝𝙼𝚎𝚜𝚜𝚊𝚐𝚎());
+
+} 𝚏𝚒𝚗𝚊𝚕𝚕𝚢 {
+
+𝚂𝚢𝚜𝚝𝚎𝚖．𝚘𝚞𝚝．𝚙𝚛𝚒𝚗𝚝𝚕𝚗("𝙵𝚒𝚗𝚊𝚕𝚕𝚢 𝚋𝚕𝚘𝚌𝚔 𝚎𝚡𝚎𝚌𝚞𝚝𝚎𝚍");
+
+}
+
+}
+
+}
+
+🧠 Output:
+𝙴𝚡𝚌𝚎𝚙𝚝𝚒𝚘𝚗 𝚌𝚊𝚞𝚐𝚑𝚝: / 𝚋𝚢 𝚣𝚎𝚛𝚘
+𝙵𝚒𝚗𝚊𝚕𝚕𝚢 𝚋𝚕𝚘𝚌𝚔 𝚎𝚡𝚎𝚌𝚞𝚝𝚎𝚍
+
+✅ Key Notes:
+• You can’t skip the catch or finally block together. One must exist.
+• The finally block always executes, even if an exception is thrown or a return is called in try/catch.
+• You can have multiple catch blocks for different exception types.
+
+⚡ Common Mistakes:
+• Catching a generic Exception too early in the hierarchy.
+• Forgetting resource cleanup (unless using try-with-resources).
+
+🔥 Pro Tip for Interviews:
+Explain why you used each block and demonstrate your understanding of execution order and resource handling.
+
+
+
+13.
+
+
+Today's topic is one you can’t escape in Java – Exceptions! They form the core of robust Java applications and interviewers love to test your depth here.
+
+⚠️ What is an Exception?
+An Exception is an event that disrupts the normal flow of a program. It’s a runtime error that can occur due to:
+• Invalid user input
+• File not found
+• Network failure
+• Division by zero
+...and many more!
+
+🧬 Java Exception Hierarchy:
+𝙹𝚊𝚟𝚊.𝚕𝚊𝚗𝚐.𝚃𝚑𝚛𝚘𝚠𝚊𝚋𝚕𝚎
+👉𝙴𝚛𝚛𝚘𝚛 (Not meant to be caught)
+𝙾𝚞𝚝𝙾𝚏𝙼𝚎𝚖𝚘𝚛𝚢𝙴𝚛𝚛𝚘𝚛, 𝚂𝚝𝚊𝚌𝚔𝙾𝚟𝚎𝚛𝚏𝚕𝚘𝚠𝙴𝚛𝚛𝚘𝚛
+👉𝙴𝚡𝚌𝚎𝚙𝚝𝚒𝚘𝚗 (Can be handled)
+𝙲𝚑𝚎𝚌𝚔𝚎𝚍 𝙴𝚡𝚌𝚎𝚙𝚝𝚒𝚘𝚗 – must be declared or handled
+ → 𝙸𝙾𝙴𝚡𝚌𝚎𝚙𝚝𝚒𝚘𝚗, 𝚂𝚚𝚕𝙴𝚡𝚌𝚎𝚙𝚝𝚒𝚘𝚗
+𝚄𝚗𝚌𝚑𝚎𝚌𝚔𝚎𝚍 𝙴𝚡𝚌𝚎𝚙𝚝𝚒𝚘𝚗 – runtime issues
+ → 𝙰𝚛𝚒𝚝𝚑𝚖𝚎𝚝𝚒𝚌𝙴𝚡𝚌𝚎𝚙𝚝𝚒𝚘𝚗, 𝙽𝚞𝚕𝚕𝙿𝚘𝚒𝚗𝚝𝚎𝚛𝙴𝚡𝚌𝚎𝚙𝚝𝚒𝚘𝚗
+
+🧑‍💻 Custom Exception in Java:
+You can create your own exception class by extending 𝙴𝚡𝚌𝚎𝚙𝚝𝚒𝚘𝚗 (checked) or 𝚁𝚞𝚗𝚝𝚒𝚖𝚎𝙴𝚡𝚌𝚎𝚙𝚝𝚒𝚘𝚗 (unchecked).
+
+𝚌𝚕𝚊𝚜𝚜 𝙼𝚢𝙴𝚡𝚌𝚎𝚙𝚝𝚒𝚘𝚗 𝚎𝚡𝚝𝚎𝚗𝚍𝚜 𝙴𝚡𝚌𝚎𝚙𝚝𝚒𝚘𝚗 {
+ 𝚙𝚞𝚋𝚕𝚒𝚌 𝙼𝚢𝙴𝚡𝚌𝚎𝚙𝚝𝚒𝚘𝚗(𝚂𝚝𝚛𝚒𝚗𝚐 𝚖𝚜𝚐) {
+ 𝚜𝚞𝚙𝚎𝚛(𝚖𝚜𝚐);
+ }
+}
+
+𝚌𝚕𝚊𝚜𝚜 𝚃𝚎𝚜𝚝 {
+ 𝚙𝚞𝚋𝚕𝚒𝚌 𝚜𝚝𝚊𝚝𝚒𝚌 𝚟𝚘𝚒𝚍 𝚖𝚊𝚒𝚗(𝚂𝚝𝚛𝚒𝚗𝚐[] 𝚊𝚛𝚐𝚜) 𝚝𝚑𝚛𝚘𝚠𝚜 𝙼𝚢𝙴𝚡𝚌𝚎𝚙𝚝𝚒𝚘𝚗 {
+ 𝚝𝚑𝚛𝚘𝚠 𝚗𝚎𝚠 𝙼𝚢𝙴𝚡𝚌𝚎𝚙𝚝𝚒𝚘𝚗("𝙲𝚞𝚜𝚝𝚘𝚖 𝚎𝚡𝚌𝚎𝚙𝚝𝚒𝚘𝚗!");
+ }
+}
+
+✅ Interview Tip:
+We often get confused about the security level or severity of exception types.
+Best practice: Know your hierarchy and practice custom exception code well before your interview!
+
+
+
+14.
+
+Today’s topic is a tricky one: Two interfaces with same variable names but different values – what happens when you implement both?
+This is a frequently asked coding problem that checks your grasp on Java interfaces and ambiguity resolution.
+
+🧪 Problem:
+What will be the output of the following code?
+
+𝚒𝚗𝚝𝚎𝚛𝚏𝚊𝚌𝚎 𝙰 {
+ 𝚒𝚗𝚝 𝚅𝙰𝙻𝚄𝙴 = 10;
+}
+
+𝚒𝚗𝚝𝚎𝚛𝚏𝚊𝚌𝚎 𝙱 {
+ 𝚒𝚗𝚝 𝚅𝙰𝙻𝚄𝙴 = 20;
+}
+
+𝚌𝚕𝚊𝚜𝚜 𝙳𝚎𝚖𝚘 𝚒𝚖𝚙𝚕𝚎𝚖𝚎𝚗𝚝𝚜 𝙰, 𝙱 {
+
+ 𝚟𝚘𝚒𝚍 𝚙𝚛𝚒𝚗𝚝𝚅𝚊𝚕𝚞𝚎() {
+ 𝚂𝚢𝚜𝚝𝚎𝚖.𝚘𝚞𝚝.𝚙𝚛𝚒𝚗𝚝𝚕𝚗(𝚅𝙰𝙻𝚄𝙴);
+ }
+
+ 𝚙𝚞𝚋𝚕𝚒𝚌 𝚜𝚝𝚊𝚝𝚒𝚌 𝚟𝚘𝚒𝚍 𝚖𝚊𝚒𝚗(𝚂𝚝𝚛𝚒𝚗𝚐[] 𝚊𝚛𝚐𝚜) {
+ 𝙳𝚎𝚖𝚘 𝚍 = 𝚗𝚎𝚠 𝙳𝚎𝚖𝚘();
+ 𝚍.𝚙𝚛𝚒𝚗𝚝𝚅𝚊𝚕𝚞𝚎();
+ }
+}
+
+✅ Output and Explanation:
+In Java, interface variables are implicitly public static final.
+Since both interfaces A and B declare 𝚅𝙰𝙻𝚄𝙴, referring to 𝚅𝙰𝙻𝚄𝙴 alone causes ambiguity → compilation error.
+
+To resolve this, we use qualified names like 𝙰.𝚅𝙰𝙻𝚄𝙴 or 𝙱.𝚅𝙰𝙻𝚄𝙴.
+
+🔥 Interview Tip:
+• Always remember interface variables are 𝚜𝚝𝚊𝚝𝚒𝚌 and 𝚏𝚒𝚗𝚊𝚕.
+• If two interfaces have same-named constants, use 𝙸𝚗𝚝𝚎𝚛𝚏𝚊𝚌𝚎𝙽𝚊𝚖𝚎.𝚅𝙰𝙻𝚄𝙴 to disambiguate.
+
+
+
+15.
+
+
+
+🔍 Abstract Class vs Interface in Java
+Let’s clear the confusion with real insights + examples 👇
+✅ What is an Abstract Class?
+An abstract class is a class that cannot be instantiated and may contain abstract methods (without a body) as well as concrete methods (with a body).
+
+𝚊𝚋𝚜𝚝𝚛𝚊𝚌𝚝 𝚌𝚕𝚊𝚜𝚜 𝙰𝚗𝚒𝚖𝚊𝚕 {
+ 𝚊𝚋𝚜𝚝𝚛𝚊𝚌𝚝 𝚟𝚘𝚒𝚍 𝚖𝚊𝚔𝚎𝚂𝚘𝚞𝚗𝚍();
+
+ 𝚟𝚘𝚒𝚍 𝚋𝚛𝚎𝚊𝚝𝚑𝚎() {
+ 𝚂𝚢𝚜𝚝𝚎𝚖.𝚘𝚞𝚝.𝚙𝚛𝚒𝚗𝚝𝚕𝚗("𝙱𝚛𝚎𝚊𝚝𝚑𝚒𝚗𝚐...");
+ }
+}
+
+✅ What is an Interface?
+An interface is a contract that defines what a class can do, without specifying how. All methods were abstract by default (until Java 8+ introduced default and static methods).
+
+𝚒𝚗𝚝𝚎𝚛𝚏𝚊𝚌𝚎 𝙵𝚕𝚢𝚊𝚋𝚕𝚎 {
+ 𝚟𝚘𝚒𝚍 𝚏𝚕𝚢(); // 𝚒𝚖𝚙𝚕𝚒𝚌𝚒𝚝𝚕𝚢 𝚙𝚞𝚋𝚕𝚒𝚌 𝚊𝚗𝚍 𝚊𝚋𝚜𝚝𝚛𝚊𝚌𝚝
+}
+
+💡 When to Use What?
+✅ Use Abstract Class when:
+• You want to share code among related classes.
+• You need constructors or state.
+• You expect the class to evolve in the future with new methods.
+✅ Use Interface when:
+• You want to define a capability (e.g., Comparable, Serializable).
+• You need to support multiple inheritance.
+• You're designing APIs for plug-and-play behavior.
+
+👇 Example in Action
+
+𝚊𝚋𝚜𝚝𝚛𝚊𝚌𝚝 𝚌𝚕𝚊𝚜𝚜 𝙰𝚗𝚒𝚖𝚊𝚕 {
+
+ 𝚊𝚋𝚜𝚝𝚛𝚊𝚌𝚝 𝚟𝚘𝚒𝚍 𝚖𝚊𝚔𝚎𝚂𝚘𝚞𝚗𝚍();
+
+ 𝚟𝚘𝚒𝚍 𝚎𝚊𝚝() {
+ 𝚂𝚢𝚜𝚝𝚎𝚖.𝚘𝚞𝚝.𝚙𝚛𝚒𝚗𝚝𝚕𝚗("𝙴𝚊𝚝𝚒𝚗𝚐...");
+ }
+}
+
+𝚒𝚗𝚝𝚎𝚛𝚏𝚊𝚌𝚎 𝙼𝚘𝚟𝚊𝚋𝚕𝚎 {
+ 𝚟𝚘𝚒𝚍 𝚖𝚘𝚟𝚎();
+}
+
+𝚌𝚕𝚊𝚜𝚜 𝙳𝚘𝚐 𝚎𝚡𝚝𝚎𝚗𝚍𝚜 𝙰𝚗𝚒𝚖𝚊𝚕 𝚒𝚖𝚙𝚕𝚎𝚖𝚎𝚗𝚝𝚜 𝙼𝚘𝚟𝚊𝚋𝚕𝚎 {
+
+ 𝚟𝚘𝚒𝚍 𝚖𝚊𝚔𝚎𝚂𝚘𝚞𝚗𝚍() {
+ 𝚂𝚢𝚜𝚝𝚎𝚖.𝚘𝚞𝚝.𝚙𝚛𝚒𝚗𝚝𝚕𝚗("𝙱𝚊𝚛𝚔!");
+ }
+
+ 𝚙𝚞𝚋𝚕𝚒𝚌 𝚟𝚘𝚒𝚍 𝚖𝚘𝚟𝚎() {
+ 𝚂𝚢𝚜𝚝𝚎𝚖.𝚘𝚞𝚝.𝚙𝚛𝚒𝚗𝚝𝚕𝚗("𝙳𝚘𝚐 𝚒𝚜 𝚛𝚞𝚗𝚗𝚒𝚗𝚐");
+ }
+}
+
+🔥 Pro Tip:
+Use abstract classes when you need a shared base structure; use interfaces when you want to define capabilities that can be added to any class.
+
+
+
+16.
+
+
+Over the past few months, I’ve been actively giving Java backend interviews — and guess what?
+I noticed certain Java questions keep popping up again and again across companies.
+
+So, I thought – why not help others in the same boat?
+
+Starting today, I'm launching a daily Java Interview Prep series — one solid concept per day, broken down clearly to help anyone prepping like me! 💡
+
+🔍 What’s the difference between 𝚜𝚝𝚊𝚝𝚒𝚌 and 𝚏𝚒𝚗𝚊𝚕?
+ Here’s the quick breakdown 👇
+✅ 𝚜𝚝𝚊𝚝𝚒𝚌 keyword
+ • Belongs to the class, not the instance
+ • Used for shared variables and methods
+ • Common in utility classes and constants
+ • No need to create an object to access static members
+
+𝚙𝚞𝚋𝚕𝚒𝚌 𝚌𝚕𝚊𝚜𝚜 𝙳𝚎𝚖𝚘 {
+ 𝚜𝚝𝚊𝚝𝚒𝚌 𝚒𝚗𝚝 𝚌𝚘𝚞𝚗𝚝𝚎𝚛 = 𝟶;
+ 𝚜𝚝𝚊𝚝𝚒𝚌 𝚟𝚘𝚒𝚍 𝚜𝚊𝚢𝙷𝚎𝚕𝚕𝚘() {
+ 𝚂𝚢𝚜𝚝𝚎𝚖.𝚘𝚞𝚝.𝚙𝚛𝚒𝚗𝚝𝚕𝚗("𝙷𝚎𝚕𝚕𝚘 𝚏𝚛𝚘𝚖 𝚜𝚝𝚊𝚝𝚒𝚌 𝚖𝚎𝚝𝚑𝚘𝚍!");
+ }
+}
+
+✅ 𝚏𝚒𝚗𝚊𝚕 keyword
+ • Makes variables unchangeable
+ • Makes methods non-overridable
+ • Makes classes non-extendable
+ • Ensures immutability in many use-cases
+
+𝚏𝚒𝚗𝚊𝚕 𝚒𝚗𝚝 𝙼𝙰𝚇_𝚄𝚂𝙴𝚁𝚂 = 𝟷𝟶𝟶; // 𝙲𝚊𝚗𝚗𝚘𝚝 𝚛𝚎𝚊𝚜𝚜𝚒𝚐𝚗
+𝚏𝚒𝚗𝚊𝚕 𝚟𝚘𝚒𝚍 𝚍𝚒𝚜𝚙𝚕𝚊𝚢() { } // 𝙲𝚊𝚗𝚗𝚘𝚝 𝚘𝚟𝚎𝚛𝚛𝚒𝚍𝚎
+𝚏𝚒𝚗𝚊𝚕 𝚌𝚕𝚊𝚜𝚜 𝚄𝚝𝚒𝚕𝚒𝚝𝚢 { } // 𝙲𝚊𝚗𝚗𝚘𝚝 𝚒𝚗𝚑𝚎𝚛𝚒𝚝
+
+🔐 Using 𝚜𝚝𝚊𝚝𝚒𝚌 𝚏𝚒𝚗𝚊𝚕 together?
+ • Used to create constants that belong to the class and never change
+ • Common in config values, math constants, etc.
+
+𝚙𝚞𝚋𝚕𝚒𝚌 𝚜𝚝𝚊𝚝𝚒𝚌 𝚏𝚒𝚗𝚊𝚕 𝚍𝚘𝚞𝚋𝚕𝚎 𝙿𝙸 = 𝟹.𝟷𝟺𝟷𝟻𝟿;
+
+
+
+
+
+🚀 Java & Spring Boot Interview Prep Tip!
+
+One question that almost always pops up in interviews:
+👉 “What is Idempotency in REST API?”
+
+✅ Idempotency means:
+No matter how many times a client sends the same request, the result on the server remains the same.
+
+💡 Example:
+
+DELETE /users/101 → Deleting the same user multiple times will still result in that user being deleted (same effect).
+
+PUT /users/101 with the same payload → Updating with identical data doesn’t change the state after the first request.
+
+
+❌ Non-idempotent: POST /users (creates a new record every time).
+✔ Idempotent: PUT, DELETE, GET
+
+🔑 Why interviewers ask this?
+Because it shows your understanding of HTTP methods, API design, and reliability in distributed systems.
+
+
+💬 What’s the most tricky REST API question you’ve faced in interviews? Drop it below ⬇
+
+hashtag#Java hashtag#SpringBoot hashtag#RESTAPI hashtag#InterviewPrep hashtag#Microservices hashtag#BackendDevelopment hashtag#CodingTips hashtag#Idempotency
+
+Idempotency ≠ Safe (GET is safe & idempotent, DELETE is idempotent but not safe).
+
+Critical for retry logic in APIs (network failures, duplicate requests, etc.)
+
+
+
+
+🚀What is CompletableFuture in Java ?
+
+It seems difficult to beginners but important to learn!
+
+When I was working on an API integration that required calling multiple services in parallel and merging their results, I came across CompletableFuture - and it became my go-to tool for async programming in Java.
+
+💡 What is CompletableFuture?
+ Introduced in Java 8 as part of java.util.concurrent, CompletableFuture represents the result of an asynchronous computation.
+ It allows you to run tasks in the background, chain their execution, combine results from multiple tasks, and handle errors gracefully - all without blocking the main thread unnecessarily.
+
+📌 Key Capabilities of CompletableFuture
+1️⃣ Asynchronous Execution – You can start tasks in a separate thread so that your main program continues without waiting.
+ 1.Use runAsync() for tasks that don’t return data. 
+ 2.Use supplyAsync() for tasks that return results.
+
+2️⃣ Chaining Operations - Once a task finishes, you can process its result using:
+ 1.thenApply() to transform the result.
+ 2.thenAccept() to consume the result.
+ 3.thenRun() to trigger a follow-up task without using the result.
+
+3️⃣ Combining Results – If you have multiple independent async tasks, you can combine them:
+ 1.thenCombine() merges results of two tasks.
+ 2.allOf() waits for all tasks to complete and then processes their results.
+ 3.anyOf() proceeds as soon as the first task finishes.
+
+4️⃣ Error Handling - Async tasks can fail too, and CompletableFuture gives you tools to handle that:
+ 1.exceptionally() to provide a fallback value if something goes wrong.
+ 2.handle() to manage both success and failure in one place.
+
+✅ Why I Use CompletableFuture
+ It’s perfect when:
+Calling multiple APIs or databases in parallel.
+Aggregating results from different services without unnecessary waiting.
+Building scalable and non-blocking backend systems.
+
+With CompletableFuture, I can design flows where multiple independent tasks start together, finish independently, and then get merged - all without slowing down the user experience.
+
+Real Life example for easy understanding ->
+Suppose you are in shopping mall buying multiple products instead of paying after selecting each product ,you collect it in a cart then pay for all which simply save your time and efforts, that's the same thing done by our hero CompletableFuture.
