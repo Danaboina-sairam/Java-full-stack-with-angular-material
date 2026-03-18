@@ -2034,3 +2034,75 @@ Virtual thread creates and managed by jvm
 Whenever thread want to run that time virtual thread attached with os thread
 Whenever the thread wants to wait state that time virtual thread detached with os thread
 Ex: 2 os thread and many  no of virtual threads
+
+
+JVM+OS---------------->CPU
+
+JVM----------->OS------------>CPU
+
+
+
+⚙️ Case 1: Platform Thread (Normal Thread)
+👉 Flow
+
+You create 100 threads
+
+OS maps them → 100 OS threads
+
+CPU picks few threads (based on cores)
+
+❗ Problem (VERY IMPORTANT)
+
+If thread does:
+
+Call DB / API → waits
+
+👉 What happens?
+
+Thread is blocked
+
+OS thread is also blocked
+
+CPU cannot use that thread efficiently
+
+🧠 Result
+
+CPU wastes time
+
+Threads are stuck waiting
+
+
+
+
+
+
+⚙️ Case 2: Virtual Thread
+👉 Flow
+
+You create 100,000 virtual threads
+
+JVM maps them → few OS threads (say 10)
+
+CPU runs those 10 threads
+
+❗ Magic happens when blocking
+
+If virtual thread does:
+
+Call DB / API → waits
+
+👉 What JVM does:
+
+Removes that virtual thread from CPU
+
+Frees OS thread
+
+Assigns another virtual thread
+
+🧠 Result
+
+CPU is always busy
+
+No waste
+
+High performance
