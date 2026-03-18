@@ -790,7 +790,7 @@ STOP :  Terminates the thread abruptly,No lock release,No resource clean up happ
 
 Suspend : Put the Thread on hold(Suspend) for temporarily.No lock is release too.
 
-RESUME : Used to Resume the executio of suspended thread.
+RESUME : Used to Resume the execution of suspended thread.
 
 Both this operation could led to issues like deadlock.
 
