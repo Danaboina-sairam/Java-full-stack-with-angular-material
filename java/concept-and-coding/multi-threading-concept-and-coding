@@ -1750,7 +1750,20 @@ single method in parent interface
 ExecutorService(I)
 ---------------
 
-multiple methods in child interface of Excutor(I)
+multiple methods in ExecutorService(I) so that is child interface of Excutor(I)
+
+
+
+| Feature              | Executor        | ExecutorService                         |
+| -------------------- | --------------- | --------------------------------------- |
+| Type                 | Basic Interface | Extended Interface                      |
+| Method               | `execute()`     | `submit()`, `invokeAll()`, `shutdown()` |
+| Return Value         | ❌ No result     | ✅ Returns `Future`                      |
+| Task Type            | Runnable only   | Runnable + Callable                     |
+| Thread Pool Control  | ❌ No            | ✅ Yes                                   |
+| Shutdown Support     | ❌ No            | ✅ Yes                                   |
+| Lifecycle Management | ❌ No            | ✅ Yes                                   |
+
 
 
 ThreadPoolExcutor(C)
