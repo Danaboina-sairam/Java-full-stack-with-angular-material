@@ -2305,6 +2305,8 @@ Existing Immutability classes other than String in Java
 
 
 
+toString() 
+----------
 
 importance of toString() 
 
@@ -2349,6 +2351,9 @@ hash code and address both are different
 
 
 
+
+equals() and hashcode() 
+-----------------------
 
 
 importance of equals() and hashcode() 
@@ -2420,7 +2425,10 @@ Comparing any object to null must be false and should not result in NullPointerE
 
 
 
+
+
 Steps to override equals() method
+---------------------------------
 
 1.Do this check----> if yes, then return true.
 2.Do null check----> if yes, then return false.
@@ -2439,6 +2447,9 @@ individual attribute before calling equals() method on them recursively to avoid
 NullPointerException during equals check.
 
 
+
+
+
 Contract between hashcode() and equals()
 ----------------------------------------
 
@@ -2448,6 +2459,9 @@ Contract between hashcode() and equals()
 
 3.Whenever hashCode() method is invoked on the same object more than once within single execution pf application, hashCode() must return same integer provided no information or fields used in equals and hashcode is modified. This integer is not required to be same 
 during multiple execution of application though.
+
+
+
 
 Steps to override hashcode() method in java
 -------------------------------------------
