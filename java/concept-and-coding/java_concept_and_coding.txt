@@ -2352,8 +2352,13 @@ hash code and address both are different
 
 public class ToStringDemo {
     public static void main(String args[]){
-        Courses c1=new Courses(1,"Java For Biggeners",45);
-        Student s1=new Student("Sairam","Danaboina",c1);
+        Course c1=new Course(1,"Java For Biggeners",45);
+        Course c2=new Course(2,"Python For Biggeners",45);
+//        Course[] course={c1,c2};
+        List<Course> courses=new ArrayList<>();
+        courses.add(c1);
+        courses.add(c2);
+        Student s1=new Student("Sairam","Danaboina",courses);
         System.out.println(s1);
     }
 }
@@ -2361,14 +2366,14 @@ public class ToStringDemo {
 class Student extends Object{
     String firstName;
     String lastName;
-    Courses courses;
+    List<Course> courses;
 
     public Student(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
     }
 
-    public Student(String firstName, String lastName, Courses courses) {
+    public Student(String firstName, String lastName, List<Course> courses) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.courses = courses;
@@ -2384,12 +2389,12 @@ class Student extends Object{
     }
 }
 
-class Courses extends Object{
+class Course extends Object{
     private long courseId;
     private String desc;
     private int duration;
 
-    public Courses(long courseId, String desc, int duration) {
+    public Course(long courseId, String desc, int duration) {
         this.courseId = courseId;
         this.desc = desc;
         this.duration = duration;
@@ -2397,7 +2402,7 @@ class Courses extends Object{
 
     @Override
     public String toString() {
-        return "Courses{" +
+        return "Course{" +
                 "courseId=" + courseId +
                 ", desc='" + desc + '\'' +
                 ", duration=" + duration +
