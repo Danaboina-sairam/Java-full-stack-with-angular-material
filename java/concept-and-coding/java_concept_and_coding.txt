@@ -2350,6 +2350,9 @@ Note:-
 hash code and address both are different
 
 
+EX:-Object,Strings,Arrays,ArrayList,Custom class
+
+
 public class ToStringDemo {
     public static void main(String args[]){
         Course c1=new Course(1,"Java For Biggeners",45);
