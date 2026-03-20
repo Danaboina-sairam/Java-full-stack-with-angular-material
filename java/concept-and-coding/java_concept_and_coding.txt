@@ -2350,7 +2350,7 @@ Note:-
 hash code and address both are different
 
 
-EX:-Object,Strings,Arrays,ArrayList,Custom class
+EX:-  Custom class,Object,Strings,Arrays,ArrayList
 
 
 public class ToStringDemo {
