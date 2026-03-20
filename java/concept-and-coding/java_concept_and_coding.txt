@@ -2544,6 +2544,70 @@ Repeat this for all the members that participated in equals() method.
 
 
 
+public class EqualsHashcodeDemo {
+    public static void main(String[] args){
+        Employee e1=new Employee(1,"Sairam");
+        Employee e2=new Employee(1,"Sairam");
+
+        //System.out.println(e1==e2);
+        System.out.println(e1.equals(e2));
+
+        Set<Employee> employees=new HashSet<>();
+        employees.add(e1);
+        employees.add(e2);
+
+        System.out.println(employees);
+    }
+}
+class Employee extends Object{
+    private int id;
+    private String name;
+
+    public Employee(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(this==obj)
+            return true;
+        if(obj==null)
+            return false;
+        if(getClass()!=obj.getClass())
+            return false;
+        Employee other=(Employee) obj;
+        if(id!=other.id)
+            return false;
+        if(name==null){
+            if(other.name!=null)
+                return false;
+        } else if (!name.equals(other.name))
+            return false;
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+       final int prime=31;
+       int result=1;
+       result=prime*result+id;
+       result=prime*result+((name==null)?0:name.hashCode());
+       return result;
+
+    }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
+    }
+}
+
+
+
 
 
 
