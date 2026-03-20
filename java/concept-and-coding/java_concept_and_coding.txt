@@ -2438,13 +2438,12 @@ object datatypes------->address comparison
 equals() in Object class
 ------------------------
 
-primitive datatypes---->value comparison
-
-object datatypes----->value comparison
+object datatypes----->address comparison
 
 
 equals() in String class
 ------------------------
+Strings--------------->value comparison
 
 
 
