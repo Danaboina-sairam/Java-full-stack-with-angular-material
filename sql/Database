@@ -84,3 +84,20 @@ SELECT * FROM T_ORDERS
 SELECT * FROM T_ORDERS_ORDER_LINE_ITEMS_LIST
 
 SELECT * FROM T_INVENTORY
+
+
+
+
+
+
+🎯 Golden Rules for Production
+-------------------------------
+
+✔ Always use EXPLAIN-------------->EXPLAIN ANALYZE SELECT * FROM orders WHERE user_id = 10;
+✔ Index on WHERE + JOIN columns
+✔ Avoid functions on indexed columns
+✔ Avoid SELECT *
+✔ Prefer JOIN,EXISTS over subquery,IN
+✔ Use composite indexes wisely(like crtd_on, crtd_by, updt_by, updt_on)
+
+PARTITION BY RANGE (created_at);
