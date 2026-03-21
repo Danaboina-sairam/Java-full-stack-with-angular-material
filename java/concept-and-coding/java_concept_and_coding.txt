@@ -2614,3 +2614,12 @@ class Employee extends Object{
 toString() vs valueOf() in Strings
 ----------------------------------
 
+
+
+
+Why String is immutable in Java
+-------------------------------
+
+1.Security------------>File paths,Url's
+2.Thread safety because of strings are immutable bydefault
+3.performance increase by using caching of hashcode(mostly used in HashMap and HashSet)
