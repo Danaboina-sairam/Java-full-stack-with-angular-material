@@ -668,12 +668,3 @@ If a user retries a request,
 your system should not panic.
 
 Design APIs so repeated requests don’t break your data.
-
-
-
-
-
-
-JPA performance issues
-----------------------
-
