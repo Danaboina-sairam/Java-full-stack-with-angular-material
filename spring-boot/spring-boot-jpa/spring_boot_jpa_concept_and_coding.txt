@@ -18,3 +18,19 @@ RESOURCE_LOCAL vs JTA
 RESOURCE_LOCAL------------>Local---------->1 DB
 
 JTA---------->Distributed----------->Multiple DB
+
+
+
+Hierarchy of Transaction Manager
+--------------------------------
+
+Local Transaction Manager
+
+1.DataSourceTransactionManager--------->JDBCTransactionManager
+2.HibernateTransactionManager
+3.JPATransactionManager
+
+Distributed Transaction Manager
+
+4.JTATransactionManager
+
