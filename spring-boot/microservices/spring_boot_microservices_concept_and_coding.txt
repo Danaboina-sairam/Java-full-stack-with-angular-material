@@ -285,3 +285,61 @@ ORDER OF COMPONENTS
 
 1.API GATEWAY(Client side Load balancer) 2.SERVICE DISCOVERY(Client side Load balancer) 3.Load balancer(Client side custom load balancer)
 
+
+
+
+
+
+
+
+Rate limiter->Bulk head->timeout->Circuit breaker->Retry 
+
+
+Rate limiter
+------------
+
+fixed window rate limiter
+-------------------------
+
+1.limit(request)
+2.window(time)
+
+Adavantage
+----------
+1.specified request processing any time in window
+
+disadvantage
+------------
+1.first window last second 5 request comming and next window first second comming 5 request comming that traffic is increasing
+
+
+sliding log(accept request ,storing exact timestamp)
+-----------
+
+1.limit(request)
+2.window(time)
+
+
+disadvantage
+------------
+
+1.extra memory for storing time stamp
+2.sliding log request proccess then need to clean timestamp
+
+
+sliding window counter
+----------------------
+
+sliding window counter with sub window
+--------------------------------------
+
+1.window 
+2.sub window
+
+sliding window counter with weighted window
+-------------------------------------------
+
+
+combination of fixed window and sliding log
+
+
