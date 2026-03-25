@@ -900,6 +900,83 @@ DB Locking Types
 
 
 
+Acid Properties
+---------------
+
+
+TransactionManager
+
+
+PlatformTransactionManager------------->getTransaction(),commit(),rollback()
+
+AbstractPlatformTransactionManager
+
+
+
+Local Transaction
+
+Distributed Transaction
+
+
+Types of Transaction Manager
+
+1.Declarative 
+
+Note: we can override default transaction manager  by using custom @Bean  to specified transaction manager
+
+
+2.Programatic
+ 
+we have 2 types of programmatic transaction manager
+
+
+1.first approach
+----------------
+
+manual calling of getTransaction(), commit(), rollback()
+
+2.second approach
+-----------------
+
+
+TransactionTemplate used to call methods like doInTransaction(),rollbackOnException()
+
+
+
+
+
+TransactionAspectSupport.currentTransactionStatus()
+
+
+
+
+
+
+controller class with @Transactional and service class with @Transactional
+
+
+different cases
+
+1.first transaction active then only second transaction active
+
+2.first transaction absent then also second transaction created
+
+3.first transaction absent then second transaction absent
+
+4.first transaction absent then second transaction throw error
+
+
+
+Isolation levels
+----------------
+
+1.controller injects the bean with 2 threads
+
+2.component class bean with 2 threads then one thread call the updateStock() and second thread call the checkStock()
+
+3.service class with 2 methods that is updateStock() and checkStock()
+
+
 
 
 👉 What is Idempotency in Backend Systems? 🖥️ 
@@ -1009,83 +1086,7 @@ Design APIs so repeated requests don’t break your data.
 
 
 
-Acid Properties
----------------
-
-
-TransactionManager
-
-
-PlatformTransactionManager------------->getTransaction(),commit(),rollback()
-
-AbstractPlatformTransactionManager
-
-
-
-Local Transaction
-
-Distributed Transaction
-
-
-Types of Transaction Manager
-
-1.Declarative 
-
-Note: we can override default transaction manager  by using custom @Bean  to specified transaction manager
-
-
-2.Programatic
- 
-we have 2 types of programmatic transaction manager
-
-
-1.first approach
-----------------
-
-manual calling of getTransaction(), commit(), rollback()
-
-2.second approach
------------------
-
-
-TransactionTemplate used to call methods like doInTransaction(),rollbackOnException()
-
-
-
-
-
-TransactionAspectSupport.currentTransactionStatus()
-
-
-
-
-
-
-controller class with @Transactional and service class with @Transactional
-
-
-different cases
-
-1.first transaction active then only second transaction active
-
-2.first transaction absent then also second transaction created
-
-3.first transaction absent then second transaction absent
-
-4.first transaction absent then second transaction throw error
-
-
-
-Isolation levels
-----------------
-
-1.controller injects the bean with 2 threads
-
-2.component class bean with 2 threads then one thread call the updateStock() and second thread call the checkStock()
-
-3.service class with 2 methods that is updateStock() and checkStock()
-
-
 
 JPA performance issues
+----------------------
 
