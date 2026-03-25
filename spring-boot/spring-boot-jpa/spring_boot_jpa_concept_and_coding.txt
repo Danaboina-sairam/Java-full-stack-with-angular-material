@@ -34,3 +34,27 @@ Distributed Transaction Manager
 
 4.JTATransactionManager
 
+
+
+Life cycle of Entity in Persistence Context
+-------------------------------------------
+
+
+
+persist()-------->save or update
+
+merge()--------->update
+
+find()--------->fetch
+
+remove()-------->delete
+
+
+flush() and commit() Both are not same
+--------------------------------------
+
+flush()--------->force execute sql query
+
+commit()---------->permanent store in Database
+
+
