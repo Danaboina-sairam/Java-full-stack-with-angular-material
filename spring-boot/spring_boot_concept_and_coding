@@ -356,15 +356,6 @@ supplyAsync()----->submit the task to thread pool
 completedFuture()------>not submit the task to thread pool(just wrap the response)
 
 
-bulk head types
----------------
-
-1.semaphore
-
-2.thread pool
-
-NOTE:- all resilience patterns applied for rest calls
-
 
 
 
