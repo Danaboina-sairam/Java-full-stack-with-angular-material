@@ -1,3 +1,20 @@
+JDBC Without SpringBoot------>Only POJO
+
+JDBC With SpringBoot------>Only POJO
+
+JPA in SpringBoot-------Entity
+
+
 
 JPA performance issues
 ----------------------
+
+
+
+RESOURCE_LOCAL vs JTA
+---------------------
+
+
+RESOURCE_LOCAL------------>Local---------->1 DB
+
+JTA---------->Distributed----------->Multiple DB
