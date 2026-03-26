@@ -2625,6 +2625,24 @@ Why String is immutable in Java
 3.performance increase by using caching of hashcode(mostly used in HashMap and HashSet)
 
 
+Method Calling In Constructor
+-----------------------------
+
+public class MethodCallingInConstructor {
+
+    MethodCallingInConstructor(){
+        normalMethod();
+    }
+
+    private void normalMethod(){
+        System.out.println("Sairam");
+    }
+    public static void main(String[] args){
+        new MethodCallingInConstructor();
+    }
+}
+
+
 Exception Handling in Java
 --------------------------
 
