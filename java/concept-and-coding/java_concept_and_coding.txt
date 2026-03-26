@@ -2644,6 +2644,63 @@ Force exit must used for try and catch blocks only
 System.exit(0);
 
 
+UNCHECKED EXCEPTION
+-------------------
+
+ArithmeticException
+
+ArrayIndexOutOfBoundsException
+
+ClassCastException
+
+IllegalArgumentException
+
+NullPointerException
+
+NumberFormatException
+
+
+
+CHECKED EXCEPTION
+-----------------
+
+IOException
+
+FileNotFoundException
+
+
+ERRORS IN JAVA
+--------------
+
+StackOverflowError
+
+NoClassDefFoundError
+
+ExceptionInInitializerError
+
+
+
+
+Parent and Child Relationship in Inheritence vs Exception Handling
+------------------------------------------------------------------
+
+Inheritence
+-----------
+
+Parent------->Less features
+
+Child------->More features
+
+Exception Handling
+------------------
+
+Parent------->More features
+
+Child------->Less features
+
+
+
+
 Checked Exception handling using declare or handle exception technique
 ----------------------------------------------------------------------
 
@@ -2690,4 +2747,29 @@ class NoMoreNonVegException extends Exception{
 class NoMoreSnacksException extends Exception{
 
 }
+
+
+
+Exception Object
+----------------
+java.lang.RuntimeException:can not hop
+
+exception type-------->java.lang.RuntimeException
+
+exception message-------->can not hop
+
+
+Printing an Exception 
+---------------------
+
+System.out.println(e);---------------->java.lang.RuntimeException:can not hop
+
+System.out.println(e.getMessage());------------->can not hop
+
+e.printStackTrace();
+
+
+
+
+
 
