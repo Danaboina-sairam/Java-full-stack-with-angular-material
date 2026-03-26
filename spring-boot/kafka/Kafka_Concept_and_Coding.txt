@@ -1,0 +1,278 @@
+Event Driven Architecture(EDA)
+-------------------------
+
+services not called directly each other
+
+
+Services
+--------
+OrderService
+
+PaymentService
+
+InventoryService
+
+NotificationService
+
+
+problems with synchronous chain
+-------------------------------
+
+1.Availability:
+
+->All services must be available at the same time. Any service down, request will fail.
+
+2.Latency Accumulation:
+
+->Total Latency=sum of all service latencies.
+
+3.Cascading Failure:
+
+->One slow service can bring down other services and entire flow
+
+4.Tight Coupling:
+
+->In above example, Order service knows about Payment, Inventory and Notification service.
+->Their endpoint, How to invoke, their response structure etc.
+
+5.Scaling Issue:
+
+->We can not scale one service independently based on load.
+
+
+Services
+--------
+
+OrderService
+
+EventRouter
+
+PaymentService
+
+InventoryService
+
+NotificationService
+
+
+Advantages of Event Driven Architecture:
+
+1.Loose Coupling:
+
+->No direct REST dependency.
+
+2.Better Scalability:
+
+->Services can scale independently.
+
+3.Better Resilience:
+
+->Temporary issue do not break the whole system.
+
+4.Replay:
+
+->We can re-process old event.
+
+5.Improvement in latency.
+
+
+Event Driven Architecture Components are:
+-----------------------------------------
+
+Producer->Event Router/Broker->Consumer1,Consumer2
+
+
+How do events move through EDA
+------------------------------
+
+
+Push Model
+----------
+
+Producer->Broker->Consumer
+
+
+Pull Model(Consumer process at own pace)
+----------
+
+Producer->Broker<-Consumer
+
+Note: Consumer process at own pace that's why consumer arrow kept the reverse
+
+
+
+EDA Models
+----------
+
+1.Pub/Sub:
+
+->Events are published to active consumers and then forgotten.
+
+->If new consumer joined say tomorrow, it wont get yesterday messages.
+
+Used When:
+
+->We care about just delivery.
+->Not about storing history.
+
+Example:
+->RabbitMQ Exchange
+
+2.Streaming:
+
+->Events are appended in logs forever or retention based.
+
+->If new consumer joined say tomorrow, it can read from latest offset or read from day1(if retention allows)
+
+Used When:
+
+->We want replay.
+->We want multiple consumer
+
+Example:
+->Kafka
+
+
+Challenges of Event Driven Architecture
+---------------------------------------
+
+1.Eventual Consistency:
+
+->As events are processed in Async manner. Get call might return stale data, but sub-sequent calls might give up-to-date information.
+
+2.Duplicate events:
+
+->Most event router guarantee "at-least once delivery". do duplicates are normal.
+
+3.Ordering problems:
+
+->Events might reached in out-of-order.
+
+4.Schema evolution:
+
+->If schema breaks, all consumer will crash.
+
+5.Debugging complexity:
+
+->Distributed tracing across async hops are little difficult.
+
+6.Poison messages:
+
+->1 bad message can block the Event router.
+
+7.Operational overhead:
+
+->Must Monitor for:
+
+a. Consumer lag
+
+b. Throughput
+
+c. Partition, Queue etc.
+
+
+Use-cases of Event Driven Architecture, When to go for it:
+----------------------------------------------------------
+
+1. 1 event->N consumer: when one action must trigger multiple independent actions.
+--------------------
+
+EX:
+
+OrderPlaced, then:
+
+a. Inventory reserves
+b. Payment charges
+c. Email sent
+d. Loyalty points added
+e. Analytics updated
+
+2. Long running business workflow:
+----------------------------------
+
+Ex:
+
+order->payment->shipment->delivery
+
+These flows take time and can fail midway. so flow is not in critical path, it can be broken into multi-step which is failure prone.
+
+
+3. Eventual consistency is acceptable.
+
+4. Real time analytics:
+
+Data need to be continuously processed.
+
+
+
+
+
+
+order-service(OrderPlacedEvent)
+
+notification-service(OrderPlacedEvent)
+
+removing duplication of class in between microservices using avro schema registry
+
+
+dependencies of avro
+--------------------
+
+avro file serialize by using below dependency
+
+<dependency>
+  <groupId>io.confluent</groupId>
+  <artifactId>kafka-avro-serializer</artifactId>
+  <version>7.5.1</version> <!-- or match your Confluent Platform version -->
+</dependency>
+
+schema register by using below dependencies
+
+<dependency>
+    <groupId>io.confluent</groupId>
+    <artifactId>kafka-schema-registry-client</artifactId>
+    <version>7.5.1</version>
+</dependency>
+
+enable avro for application
+
+<dependency>
+  <groupId>org.apache.avro</groupId>
+  <artifactId>avro</artifactId>
+  <version>1.11.1</version> <!-- or latest -->
+</dependency>
+
+AVRO maven plugin
+-----------------
+
+1.need to specify source location--------->that is in src/main/resources/avro folder of application
+
+2.need to specify destination location-----> that is in src/main/java folder of application
+
+<plugin>
+  <groupId>org.apache.avro</groupId>
+  <artifactId>avro-maven-plugin</artifactId>
+  <version>1.11.1</version>
+  <executions>
+    <execution>
+      <phase>generate-sources</phase>
+      <goals>
+        <goal>schema</goal>
+      </goals>
+      <configuration>
+        <sourceDirectory>${project.basedir}/src/main/avro</sourceDirectory>
+        <outputDirectory>${project.basedir}/src/main/java</outputDirectory>
+      </configuration>
+    </execution>
+  </executions>
+</plugin>
+
+
+properties
+----------
+
+
+key-------->StringSerializer
+
+value------>JsonSerializer
+
+

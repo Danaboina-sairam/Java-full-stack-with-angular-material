@@ -1,0 +1,537 @@
+CMD
+---
+minikube start
+
+minikube status
+
+vscode(front end)
+------
+
+docker images | grep angular-app
+
+clear
+
+docker images
+
+clear
+
+eval $(minikube docker-env)
+
+clear
+
+kubectl apply -f deployment.yml
+
+clear
+
+->angular8-crud-demo(package)
+
+docker images
+
+docker build -t angular-app
+
+docker images | grep angular
+
+kubectl apply -f deployment.yml
+
+kubectl get deployments
+
+kubectl get services
+
+kubectl get pods
+
+
+CMD
+---
+echo -n 'testuser' | base64
+
+echo -n 'testuser@123' | base64
+
+
+
+
+Intellij(Backend)
+--------
+
+->kubernates%
+
+eval $(minikube docker-env)
+
+clear
+
+docker build -t springboot-k8s-deployment:1.0 .
+
+clear
+
+->kubernates%
+
+cd..
+
+->springboot-crud-api%
+
+clear
+
+ls
+
+docker build -t springboot-k8s-deployment:1.0 .              -------->only use this path
+
+clear
+
+cd kubernates
+
+ls
+
+clear
+
+creation
+--------
+
+kubectl apply -f mysqldb-root-credential.yml
+
+kubectl apply -f mysqldb-credential.yml
+
+kubectl apply -f mysql-configmap.yml
+
+kubectl apply -f mysql-deployment.yml
+
+get or show
+-----------
+
+kubectl get secrets
+
+kubectl get configmap
+
+kubectl get deployments
+
+kubectl get services
+
+kubectl get pvc
+
+kubectl get pods
+
+logs
+----
+kubectl logs -f mysql-656c777d597-ml5b5
+
+note:- for exit logs,use ctrl+c
+----
+
+microservices
+-------------
+
+kubectl apply -f deployment.yml
+
+run service(springboot application)
+-----------
+
+minikube service springboot-k8s-mysql
+
+
+kubectl get deployments
+
+kubectl get services
+
+kubectl get pods
+
+
+
+
+
+eclipse JDK | Open JDK
+----------------------
+
+docker vs docker compose
+
+docker vs multi stage builds
+
+
+MANUAL FILES FOR IMAGE GENERATE
+-------------------------------
+
+single build
+------------
+
+1.docker build -t apigateway-dockerfile .
+
+NOTE:-
+
+--->giving user-defined name apigateway-dockerfile
+
+--->current directory denotes by dot(.)
+
+2.docker images
+
+
+multi stage build
+-----------------
+
+3.docker build -t apigateway-layered -f Dockerfile.layered .
+
+NOTE:-
+--->giving user-defined name apigateway-layered
+
+--->actual file name Dockerfile.layered
+
+--->current directory denotes by dot(.)
+
+4.docker images
+
+AUTOMATIC(which  one used in our projects?)
+---------
+
+how to build docker images without docker files
+-----------------------------------------------
+
+plugins-->jib-->container-->spring boot application code
+
+
+what does "JIB" do?
+
+
+JIB build flow:
+--------------
+
+project----------------->container image(registry)
+
+
+ADD IN ROOT PATH(IMP)
+----------------
+
+pom.xml (for all the projects)
+
+--->add plug-in for jib-maven-plugin
+
+plugins-->jib-->jib:build
+
+jib:build
+---------
+
+1.build image
+
+2.push into docker hub
+
+
+MAIN REPOSITORY
+---------------
+
+5.mvn clean compile jib:build
+
+.m2(settings.xml)
+---
+
+<servers>
+	<server>
+		<id>registry-hub.docker.com</id>
+		<username>saiupadhyayula007</username>
+		<password>test</password>
+	</server>
+</servers>
+
+6.docker images
+
+
+docker compose
+
+data.sql(src/resource/data.sql)
+
+7.docker compose up -d
+
+NOTE:- daemon mode denotes by -d
+
+clear
+
+8.docker logs -f broker
+
+9.docker logs -f order-service
+
+10.docker logs -f api-gateway
+
+CHANGE PORT FOR KEYCLOAK
+------------------------
+
+c:\windows\system32\driver\etc\hosts
+
+NOTE:-
+
+1.hosts---->file
+
+11.docker logs -f order-service
+
+
+12.docker logs -f notification-service
+
+
+
+HOW TO BUILD DOCKER IMAGES WITHOUT DOCKER FILES(Default spring boot)
+-----------------------------------------------
+
+plugins-->spring-boot-->spring-boot:build-image 
+
+NOTE:- 
+
+1.no need to create anything
+
+2.packetobuildpacks-->spring boot default plugin
+
+3.packetobuildpacks-->builder-jammy-base-->spring boot default plugin
+
+
+
+PUSH TO DOCKER HUB
+------------------
+
+<image>
+<name>saiupadhyayula007/new-${Project.artifactId}</name>
+<builder>dashaun/builder:tiny</builder>
+<publish>true</publish>
+</image>
+
+<docker>
+<publishRegistry></publishRegistry>
+</docker>
+
+DOCKER IMAGE--->DOCKER HUB--->DOCKER COMPOSE--->CONTAINER-->5431:5432
+
+NOTE:- localhost port : container port
+
+
+
+container
+
+expose--->port--->localhost port
+
+depend on
+
+environ
+
+volume(local db / container db)
+
+
+KUBERNATES(KIND)
+----------
+
+config.yml
+----------
+
+cluster--->nodes-->container port
+
+CLUSTER
+-------
+windows-->terminal-->commands
+
+mac-->shell script-->cluster
+
+
+BOTH ARE IN K8S/KIND
+--------------------
+
+->cd k8s/kind
+
+->./create-kind-cluster.sh(permission denied)
+->chmod (????) create-kind-cluster.sh
+->./create-kind-cluster.sh
+->cd..
+->cd manifests/infrastructure
+->kubectl create deployment mysql --image=mysql:8.3.0 --port=3306 --replicas=1 --dry-run=client -o yaml
+
+NOTE:- 
+
+1.export using -O
+
+2.mysql.yaml(pasted into this file)
+
+
+k8s/manifests/infrastructure/mysql.yaml(it will kubernate service)
+
+->kubectl create service clusterip mysql --tcp=3306:3306 --dry-run=client -O yaml
+
+NOTE:- export into yaml(current command 1)
+
+
+
+mysql.yaml
+----------
+
+previous command code
+
+-----
+
+current command code 1
+
+->kubectl create secret generic mysql-secrets --from-literal=mysql_root_password=mysql --dry-run=client -O yaml(current command 2)
+
+mysql.yaml
+----------
+1.previous command code
+----
+2.current command code 1
+----
+3.current command code 2
+
+
+
+
+docker and kubernates
+
+front end(service-nodeport)--->backend(service-nodeport)--->database(service-nodeport)
+
+
+
+USERNAME ans PASSWORD of DATABASE(secret files)
+
+URL(hostname and database name) of DATABASE(config map file)
+
+
+NOTE:- do we need to create root and database password for all
+
+NOTE:-Additionally Persistent Volume and Persistent Volume Claim for Database
+
+env key used to map properties for database(In Deployment File)
+---------------------------------------------------------------
+
+1.secretKeyRef(Username and Password)
+
+2.configMapKeyRef(URL---->hostname and database name)
+
+
+
+Microservice(in microservice DEPLOYMENT also provide ENV properties of DATABASE)
+
+Database(in database DEPLOYMENT also provide ENV properties of DATABASE)
+
+
+
+BACKEND MICROSERVICE
+--------------------
+
+deployment->service
+
+BACKEND DATABASE
+----------------
+
+secrets->config map->persistent volume claims->deployment->service
+
+
+FRONTEND
+--------
+
+deployment->service
+
+
+
+
+
+nodeport->load balancer->cluster ip(check port ,targer port,protocol different for 3 types)
+
+
+
+load balancer(AWS,GKS)
+
+
+external acccess
+----------------
+
+nodeport(first)
+
+port(second)
+
+targetPort(third)
+
+
+
+1.nodeport(dev/test)--------->external access
+
+2.load balancer---------->external access
+
+3.cluster ip(production)----------->don't have direct external access(we provide access by using Ingress controller | also called as path based routing)
+
+
+
+
+Docker realtime practice
+------------------------
+
+cd api-gateway
+
+docker build -t apigateway-dockerfile .
+
+docker images
+
+docker build -t apigateway-layered -f Dockerfile.layered .
+
+
+cd spring-boot-microserivces
+
+maven installation
+------------------
+download maven and path setting in the environment variables
+
+mvn clean compile jib:build
+
+docker images
+
+
+docker hub
+----------
+
+sairam8276/discovery-server:latest
+
+
+docker compose up -d  
+
+docker logs -f broker
+
+docker logs -f  order-service
+
+docker logs -f api-gateway
+
+docker logs -f discovery-server
+
+docker logs -f  product-service
+
+docker logs -f  order-service
+
+docker logs -f  inventory-service
+
+docker logs -f  notification-service
+
+
+
+
+docker exec -it mysql-inventory-service mysql -uroot -proot -e "SHOW DATABASES;"
+
+docker exec -it mysql-inventory-service mysql -uroot -proot -e "CREATE DATABASE inventory_service;"
+
+docker compose restart inventory-service
+
+
+
+
+docker run -p 127.0.0.1:9191:8080 -e KC_BOOTSTRAP_ADMIN_USERNAME=admin -e KC_BOOTSTRAP_ADMIN_PASSWORD=admin quay.io/keycloak/keycloak:26.5.2 start-dev
+
+
+
+
+1️⃣ Create Realm from Keycloak Admin Console (UI)
+
+2️⃣ Auto-Create Realm using Docker (Best for Microservices)
+
+3️⃣ Create Realm using REST API (Automation / CI/CD)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
