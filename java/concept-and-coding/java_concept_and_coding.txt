@@ -2790,4 +2790,29 @@ e.printStackTrace();
 
 
 
+File 
 
+File Helper Methods
+
+
+Opening, Reading, Writing
+-------------------------
+
+1 Byte
+------
+
+FileInputStream
+
+FileOutputStream
+
+8192 Bytes
+----------
+
+BufferedInputStream
+
+BufferedOutputStream
+
+
+DataInputStream
+
+DataOutputStream
