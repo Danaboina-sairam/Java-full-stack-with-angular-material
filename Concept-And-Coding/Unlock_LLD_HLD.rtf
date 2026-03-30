@@ -1,0 +1,601 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2822
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fswiss\fcharset0 Helvetica-Bold;\f2\froman\fcharset0 Times-Roman;
+}
+{\colortbl;\red255\green255\blue255;\red13\green13\blue13;\red255\green255\blue255;\red66\green1\blue120;
+\red0\green0\blue233;}
+{\*\expandedcolortbl;;\cssrgb\c5882\c5882\c5882;\cssrgb\c100000\c100000\c100000;\cssrgb\c33333\c10196\c54510;
+\cssrgb\c0\c0\c93333;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww34360\viewh18040\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 \
+\pard\pardeftab720\partightenfactor0
+
+\f1\b\fs32 \cf2 \cb3 \expnd0\expndtw0\kerning0
+Distributed Microservices PDF Notes:\
+------------------------------------------------------\
+\pard\pardeftab720\partightenfactor0
+
+\f0\b0 \cf2 \
+1. RestTemplate: https://drive.google.com/file/d/1tFNmDMauszX3K8wcAxBaVAX3FidyEfei/view?usp=drive_link\
+\
+2. RestClient: https://drive.google.com/file/d/1a2Yx3g99nXUw1UlvreHcBJj04ktMBhcD/view?usp=drive_link\
+\
+3. FeignClient: https://drive.google.com/file/d/1xev4wWJ1dceBUi7l77z2KgTx_YZDbfg1/view?usp=drive_link\
+\
+4. ServiceDiscovery: https://drive.google.com/file/d/11DAZgXFoArZ17xVLhkIxTYQtUYAJNnr-/view?usp=drive_link\
+\
+5. Client Side Load Balancer: https://drive.google.com/file/d/1uERH11qv6xWBvwHc0BoOJlnn89IzWt95/view?usp=drive_link\
+\
+6. Rate Limiter: https://drive.google.com/file/d/1EwfhhSiBNJw87tqvoaseW5ZKUKB-YJDx/view?usp=drive_link\
+\
+7. Bulkhead: https://drive.google.com/file/d/1CSXu3bNRsvwhsvIr2EdTkbyP7fUHQMt7/view?usp=drive_link\
+\
+8. Retry: https://drive.google.com/file/d/1F4e2EwjCfi11-q7RdujOqiPgt7oCbO7B/view?usp=drive_link\
+\
+9. Circuit Breaker: https://drive.google.com/file/d/1ApUVMYBXzsEiW_tCL_ZpfX0IGKZQ2IZe/view?usp=drive_link\
+\
+10. Api Gateway Part1: https://drive.google.com/file/d/1CbIz2ZgwcinR0y69Q7O-MRSgWgu-b-Ze/view?usp=drive_link\
+\
+11. Api Gateway Part2: https://drive.google.com/file/d/14bbYUgLn3q5CXVKL90pMYb9TbAuu0GKd/view?usp=drive_link\
+\
+12. Centralized Configuration: https://drive.google.com/file/d/1jyj0NGktH3DEA6dQr2ziAVQk0PwaS3S9/view?usp=drive_link\
+\
+13. Refresh Scope: https://drive.google.com/file/d/1Yb-qJjcNWHNtIZ7QaZxgKdHNoty9i-1F/view?usp=drive_link\
+\
+14. Cloud Bus: https://drive.google.com/file/d/1Byww5BZPKMRqwHLgMJnx7_CczEHNDcFi/view?usp=drive_link\
+\
+15. Distributed Tracing: https://drive.google.com/file/d/10ngkU6IzaZ_htyX3g1oSZ2e9FnwRrRJQ/view?usp=drive_link\
+\
+16. Distributed Logging Part1: https://drive.google.com/file/d/1A9UfCSivJt8MS6opPfxZc3CvkxodXajk/view?usp=drive_link\
+\
+17. Distributed Logging Part2: https://drive.google.com/file/d/1Np9DxNIssaTBarQuyPjz87e5T9-8sVwQ/view?usp=drive_link\
+\
+18. Distributed Logging Part3: https://drive.google.com/file/d/1KOl9X0M1RfhUEUW5gwOB2M93dH0yH89P/view?usp=drive_link\
+\
+19. Distributed Logging Part4: https://drive.google.com/file/d/1NbsMDboh1pVvYffURP4zy2dO3HoFaE9U/view?usp=drive_link\
+\
+20. Distributed Scheduler Part1(Leader-Follower): https://drive.google.com/file/d/1Uc1VRhyPYeqLSAzuSFIdWBVsLwwtLIwp/view?usp=drive_link\
+\
+21. Distributed Scheduler Part2 : https://drive.google.com/file/d/1skz-q6DSH7_UCpaJ5gcuJR7aznGNOOkJ/view?usp=drive_link\
+\
+22. Distributed Scheduler Part3: https://drive.google.com/file/d/1-Js_ki_mWgCWyJWzmBP3dVMWy0XU-EcF/view?usp=drive_link\
+\
+23. Distributed Scheduler Part4: https://drive.google.com/file/d/1-Js_ki_mWgCWyJWzmBP3dVMWy0XU-EcF/view?usp=drive_link\
+\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b \cf2 \ul \ulc2 Git link\ulnone : 
+\f0\b0 https://gitlab.com/shrayansh8/springboot-microservices \
+
+\f1\b \ul \
+\
+\
+\pard\pardeftab720\partightenfactor0
+\cf2 \ulnone Event Driven Architecture :\
+---------------------------------------\
+\
+
+\f0\b0 1. What is EDA: 
+\f2\fs24 \cf4 \ul \ulc4 \outl0\strokewidth0 \strokec5 https://drive.google.com/file/d/1IqKfjQMbnMj0RX6jkfqZmOT9WLvuwNZI/view?usp=drive_link
+\f0\fs32 \cf2 \ulnone \outl0\strokewidth0 \
+\
+2. Kafka Architecture: 
+\f2\fs24 \cf4 \cb1 \ul \ulc4 \outl0\strokewidth0 \strokec5 https://1drv.ms/o/c/6b364628c29feb52/IgBMj092rB7WTpdf1fEHRa_nAVD4F1ye0GGueBTN_BR-0ew
+\f0\fs32 \cf2 \cb3 \ulnone \outl0\strokewidth0 \
+\
+3. Cluster Setup: 
+\f2\fs24 \cf4 \cb1 \ul \ulc4 \outl0\strokewidth0 \strokec5 https://1drv.ms/o/c/6b364628c29feb52/IgBMj092rB7WTpdf1fEHRa_nAVD4F1ye0GGueBTN_BR-0ew
+\f1\b\fs32 \cf2 \cb3 \ul \ulc2 \outl0\strokewidth0 \
+\pard\pardeftab720\partightenfactor0
+\cf2 \
+\
+\ulnone JUnit5 PDF Notes link:\
+------------------------------
+\f0\b0 \
+\
+1. Unit Test Introduction: https://drive.google.com/file/d/10lTNGehyQgCYqYnnmyVNfBbtXHwtSFdn/view?usp=sharing\
+\
+2. Architecture: https://drive.google.com/file/d/1kkRHpzmraD1iWItaw7sgbydd_5VPsQBJ/view?usp=drive_link\
+\
+3. Lifecycle, Parallel Execution & AAA: https://drive.google.com/file/d/1XT_j4OricSbhn3nXvrFMGeHcy7bo-SmQ/view?usp=drive_link\
+\
+4. Assertions: https://drive.google.com/file/d/1TXqNgJog6f4rSCu9ouXA_eN8dx3_n5Gq/view?usp=drive_link\
+\
+5. Extensions: https://drive.google.com/file/d/1UyOlUshyZUfIZzGaGVCQ7WhJQHTkG4Zz/view?usp=drive_link\
+\
+6. Repeated Tests: https://drive.google.com/file/d/1FVujWepZGk5WrddsUbkOfa54z3dAJbAs/view?usp=drive_link\
+\
+7. Parametrized Test (Part1) \
+and\
+8. Parametrized Test (Part2): https://drive.google.com/file/d/1QDxSwXpfJSwQ9B7j3VLrjV0-gR17pFBz/view?usp=drive_link\
+\
+9. Assumptions: https://drive.google.com/file/d/1ck01D8nSeDWNUj32a3Lj4hDZtSmVSl24/view?usp=drive_link\
+\
+10. Tagging and Filtering: https://drive.google.com/file/d/15I8fPVOCIrsxRZW2QwZpqXC_snLBQEk8/view?usp=drive_link\
+\
+11. Test Suite:\
+https://drive.google.com/file/d/1_CZy-k_XumwkKr9EFBfcFaikAsp6vxew/view?usp=drive_link\
+\
+12. Dynamic Tests (@TestFactory): https://drive.google.com/file/d/1SyAeshZXWFajeHMhCpaCLkQBe5ZXEMbD/view?usp=drive_link\
+\
+
+\f1\b \ul Mockito Notes link:\
+\
+\ulnone 13. 
+\f0\b0 Introduction: https://drive.google.com/file/d/1yIIL0yQtgjMqASO60gTf5WmMikVhoRyO/view?usp=drive_link\
+\
+14. Architecture: https://drive.google.com/file/d/1VDBBdNLASIU3t7eOBUKlFQVw1u7X5K7g/view?usp=drive_link\
+\
+15. @InjectMocks: https://drive.google.com/file/d/1pMtHVtTptpe6I4_1u837QIjqkRzytOov/view?usp=drive_link\
+\
+16. @Mock in Constructor and Method Parameter: https://drive.google.com/file/d/13fWzPthTNPzXLfMgMBqr-Jux_EkNxu42/view?usp=drive_link\
+\
+\
+
+\f1\b Git link
+\f0\b0 : https://gitlab.com/shrayansh8/junit5andmockito/-/tree/main/Junit5Lectures/src/test/java/concepts?ref_type=heads\
+\
+\
+\
+
+\f1\b LLD PDF Notes link:\
+------------------------------
+\f0\b0 \
+\
+SOLID principles PDFs: https://drive.google.com/drive/folders/14Bigi6TB53HHjFJX8h5SjwZky4hJOO-W?usp=drive_link\
+\
+Creational Design Patterns PDFs: https://drive.google.com/drive/folders/19th5gDxaDXI15eXolORUhWh_Uoclm8LP?usp=drive_link\
+\
+Structural Design Patterns PDFs: https://drive.google.com/drive/folders/13hg1N0piFmP4uBEH3jd9fvjIoA4SK4Dt?usp=drive_link\
+\
+Behavioral Design Patterns PDFs : https://drive.google.com/drive/folders/1lWvP56SEei_xrKFupFvxQNI96VPQHvp-?usp=drive_link\
+\
+Interview Questions PDFs: https://drive.google.com/drive/folders/1N9m-IYyzokSvFK0ALSToDkqo_fglrvu6?usp=drive_link\
+\
+Git Links:\
+----------------\
+SOLID principles Git link:  https://gitlab.com/shrayansh8/lld-lowleveldesign/-/tree/main/src/main/java/com/conceptcoding/video1solid?ref_type=heads\
+\
+Creation Design Patterns Git link: https://gitlab.com/shrayansh8/lld-lowleveldesign/-/tree/main/src/main/java/com/conceptcoding/creationalpatterns?ref_type=heads\
+\
+Structural Design Patterns Git link: https://gitlab.com/shrayansh8/lld-lowleveldesign/-/tree/main/src/main/java/com/conceptcoding/structuralpatterns?ref_type=heads\
+\
+Behavioral Design Patterns Git link: https://gitlab.com/shrayansh8/lld-lowleveldesign/-/tree/main/src/main/java/com/conceptcoding/behavioralpatterns?ref_type=heads\
+\
+Interview Questions: https://gitlab.com/shrayansh8/lld-lowleveldesign/-/tree/main/src/main/java/com/conceptcoding/interviewquestions?ref_type=heads\
+\
+\
+LLD:\
+\'97\'97\
+1.  SOLID: https://drive.google.com/drive/folders/14Bigi6TB53HHjFJX8h5SjwZky4hJOO-W?usp=drive_link\
+\
+2.  Strategy pattern: https://drive.google.com/file/d/1smTeCvuc9aQwZS7gd-vxPs75wezuYAFp/view?usp=drive_link\
+\
+3.  Observer pattern: https://drive.google.com/file/d/1l3T-TsuhWyQx8us5lxeh-bt4KR_8tr9w/view?usp=drive_link\
+\
+4.  Decorator Pattern: https://drive.google.com/file/d/19W73JBOtOtOzIHmKBA-4ACqCXwv60pB0/view?usp=drive_link\
+\
+5.  Factory and Abstract Factory: \
+abstract factory: https://drive.google.com/file/d/1iyouXyHYdbhTyptjN17oqFW8RmGKTQ87/view?usp=drive_link\
+factory method: https://drive.google.com/file/d/1nsb2UJ1y8YTYSCllNDu7xx-YuxfRRUAg/view?usp=drive_link\
+\
+6.  Parking Lot: https://drive.google.com/file/d/1aE9QhlRZgtUDI-p_2NiPdVWaq3eP-Mn7/view?usp=drive_link\
+https://gitlab.com/shrayansh8/lld-lowleveldesign/-/tree/main/src/main/java/com/conceptcoding/interviewquestions/parking_lot?ref_type=heads\
+\
+7.  Design Tic Tac Toe game: https://drive.google.com/file/d/1JgTipI2hutFrd3YxDpE8L2KukIr0VC7H/view?usp=drive_link\
+https://gitlab.com/shrayansh8/lld-lowleveldesign/-/tree/main/src/main/java/com/conceptcoding/interviewquestions/tictactoe\
+\
+8.  Elevator System: https://drive.google.com/file/d/1MGudMSiJj2JMC75qq3o34gW2Kz-UAYPl/view?usp=drive_link\
+https://gitlab.com/shrayansh8/lld-lowleveldesign/-/tree/main/src/main/java/com/conceptcoding/interviewquestions/elevator\
+\
+9.  LLD of Car Rental System: https://drive.google.com/file/d/1QR51mRs_1cM7Cq5aDlPLKAvrjHMtLiU0/view?usp=drive_link\
+https://drive.google.com/file/d/11UNsQAciYNTr1iDkkR_H9hJ5lj4A4kr4/view?usp=drive_link\
+\
+10.  Chain of Responsibility: https://drive.google.com/file/d/1niWAA5Vy3gC8i6xU96igcYVR_ygZmboT/view?usp=drive_link\
+\
+11.  LLD of Snake and Ladder game: https://drive.google.com/file/d/1cGyGGWOrp_b4Jm2xHFlI_FitPivDHgiN/view?usp=drive_link\
+https://gitlab.com/shrayansh8/lld-lowleveldesign/-/tree/main/src/main/java/com/conceptcoding/interviewquestions/snakeNladder?ref_type=heads\
+\
+12.  Hashmap Internal Implementation in java: https://gitlab.com/shrayansh8/interviewcodingpractise/-/blob/main/src/main/java/com/conceptandcoding/LowLevelDesign/DesignDataStructures/MyHashMap.java?ref_type=heads\
+\
+13.  Proxy Design Pattern: https://drive.google.com/file/d/1S0fRkyGAmhGupC02Xqi6YEfMmeaBxi_K/view?usp=drive_link\
+\
+14.  LLD of BookMyShow: https://drive.google.com/file/d/1XbWo8m1hOOdKGww0UO1x3zIskdQjqf2i/view?usp=drive_link and \
+https://gitlab.com/shrayansh8/lld-lowleveldesign/-/tree/main/src/main/java/com/conceptcoding/interviewquestions/book_my_show?ref_type=heads\
+\
+15.  Null Object Pattern: https://drive.google.com/file/d/1LUQFI4vDRn6mAsgmDMVCO4lmOXX50dDc/view?usp=drive_link\
+\
+16.  Design Vending Machine: https://drive.google.com/file/d/1FDEdh2xhvlZpftC_392pml9h2lcl_q3A/view?usp=drive_link\
+\
+17.  LLD of ATM: https://gitlab.com/shrayansh8/lld-lowleveldesign/-/tree/main/src/main/java/com/conceptcoding/interviewquestions/atm?ref_type=heads\
+\
+18.  Chess Mock Interview: https://gitlab.com/shrayansh8/lld-lowleveldesign/-/tree/main/src/main/java/com/conceptcoding/interviewquestions/chess?ref_type=heads\
+\
+19.  Design File System using Composite Design Pattern: https://drive.google.com/file/d/1FIBgNSJY-YkZYJO7WIKsY_io6tVIBkCa/view?usp=drive_link\
+\
+20.  Adapter Design Pattern with Examples: https://drive.google.com/file/d/1BKx6HITzyw-c1RjX4372aH_L4b1-5S1w/view?usp=drive_link\
+\
+21.  LLD of Splitwise: https://gitlab.com/shrayansh8/lld-lowleveldesign/-/tree/main/src/main/java/com/conceptcoding/interviewquestions/splitwise?ref_type=heads\
+\
+22.  Splitwise implementation - Notes not applicable\
+\
+23.  Builder Design Pattern: https://drive.google.com/file/d/1V5qnfvYpNiEzb3bu9221HMD8QDaTkVC9/view?usp=drive_link\
+\
+24.  LLD of Cricbuzz: https://gitlab.com/shrayansh8/lld-lowleveldesign/-/tree/main/src/main/java/com/conceptcoding/interviewquestions/cricbuzz?ref_type=heads\
+\
+25.  Facade design pattern: https://drive.google.com/file/d/1YpWHwZmOFIlFd-ftign3jtZWhOWEjwy0/view?usp=drive_link\
+\
+26.  Bridge design pattern: https://drive.google.com/file/d/1byU7bYbjdkhIFU2je3Ck8IqjrFZvrRkr/view?usp=drive_link\
+\
+27.  All Creational Design Patterns: https://drive.google.com/drive/folders/19th5gDxaDXI15eXolORUhWh_Uoclm8LP?usp=drive_link\
+\
+28.  Singleton: https://drive.google.com/file/d/1P_ptiVovd0ERLtMqVbgJVd9r5mYme-k_/view?usp=drive_link\
+\
+29.  LLD of Inventory Management System: https://gitlab.com/shrayansh8/interviewcodingpractise/-/tree/main/src/main/java/com/conceptandcoding/LowLevelDesign/DesignOrderManagementSystem?ref_type=heads\
+\
+30.  Design Word Processor using Flyweight Design Pattern: https://drive.google.com/file/d/1oCmas08vpcpiEMqYkIYEvjkNWIQ9lDGm/view?usp=drive_link\
+\
+31.  Design Undo, Redo feature with Command Pattern: https://drive.google.com/file/d/183IjgJ6pQDHswDQiwWMazetTpdK6SWaV/view?usp=drive_link\
+\
+32.  All Structural Design Patterns: https://notebook.zohopublic.in/public/notes/74tdo33c5b7060d544b1c986e519dd3ba4d1b 
+\f1\b and
+\f0\b0  https://drive.google.com/drive/folders/13hg1N0piFmP4uBEH3jd9fvjIoA4SK4Dt?usp=drive_link\
+\
+33.  Iterator Design Pattern: https://drive.google.com/file/d/1-AR6mJkZydatqHIxA58EreRzDt33_MqQ/view?usp=drive_link\
+\
+34.  Mediator Pattern : https://drive.google.com/file/d/1SVx1ZYrJ_nqdHQ6Uq390wSt1TMX5vPOU/view?usp=drive_link\
+\
+35.  Apply Coupon on Shopping cart: https://gitlab.com/shrayansh8/lld-lowleveldesign/-/tree/main/src/main/java/com/conceptcoding/interviewquestions/couponappln?ref_type=heads\
+\
+36.  Visitor Design Pattern: https://drive.google.com/file/d/1vX_USKxmI-wqOwsV3tMD4OGj6a-usJdn/view?usp=drive_link\
+\
+37.  MVC - https://drive.google.com/file/d/1oKEaL_-2SnfeRIJUDzX7WNEOtqqcMTJ0/view?usp=drive_link\
+https://gitlab.com/shrayansh8/lld-lowleveldesign/-/tree/main/src/main/java/com/conceptcoding/additionalpatterns/mvc?ref_type=heads\
+\
+38.  Memento Design Pattern: https://drive.google.com/file/d/1hc0cbjPKURcsvlMMkfMsq4yFXisS9Z2b/view?usp=drive_link\
+\
+39.  Template Method Design Pattern: https://drive.google.com/file/d/15qaWbbBxXeZD3uC_7jfVHwPZxxiAm-jV/view?usp=drive_link\
+\
+41.  Interpreter Design Pattern: https://drive.google.com/file/d/1jnzOCqy1ICoPkI0d-N9HolZacVtlbeJD/view?usp=drive_link\
+\
+42. LLD of Payment Gateway: https://notebook.zohopublic.in/public/notes/bietv6993f5a023ec4e9f89436149ac3ed2f7\
+https://gitlab.com/shrayansh8/lld-lowleveldesign/-/tree/main/src/main/java/com/conceptcoding/interviewquestions/paymentgateway?ref_type=heads\
+\
+43. Object Pool Design Pattern: https://drive.google.com/file/d/1NymzCEjJq7c_w1XQrjpt77xk-M1KrvWo/view?usp=drive_link\
+https://gitlab.com/shrayansh8/lld-lowleveldesign/-/tree/main/src/main/java/com/conceptcoding/creationalpatterns/objectpool?ref_type=heads\
+\
+Design Meeting Scheduler Mock Interview: https://gitlab.com/shrayansh8/lld-lowleveldesign/-/tree/main/src/main/java/com/conceptcoding/interviewquestions/meetingscheduler?ref_type=heads\
+\
+\
+\
+
+\f1\b Spring Boot PDF Notes Link:\
+-------------------------------------------\
+\
+
+\f0\b0 1. Introduction: \
+Handwritten: https://drive.google.com/file/d/1a2_BIwB2k7TZLiLrVuzUbQngqnNzSFUd/view?usp=drive_link \
+Original: https://drive.google.com/file/d/1J-RxhAg6gQXthbfcB2HOYIwOIt3qcji2/view?usp=drive_link\
+\
+2. Setup and Layered Architecture: https://drive.google.com/file/d/1R4N4COx9zqW733io4mL5NSZtlQGOvLJo/view?usp=drive_link\
+\
+3. Maven and its Lifecycle: https://drive.google.com/file/d/11bGdZiUqQy54wB8p8RjMZDzV_7VwzFn9/view?usp=drive_link\
+\
+4.Annotations:\
+Handwritten: https://drive.google.com/file/d/1xWhI8B3t9vX1ya5nPelg4jnIXd8VeosO/view?usp=drive_link\
+Original: https://drive.google.com/file/d/1YrkztBBsuf7vq--0npU_KG931RlCEjLx/view?usp=drive_link\
+\
+5. Bean and its Lifecycle: \
+Handwritten: https://drive.google.com/file/d/1Gf55XqAlBIrpHsm-rbbSDdQJobkipUEX/view?usp=drive_link\
+Original: https://drive.google.com/file/d/1wsbMfoGdqbyNT725zZqhxLT5PSQJBcPc/view?usp=drive_link\
+\
+6. Dependency Injection: \
+Handwritten: https://drive.google.com/file/d/1e-kG19FdiHG4t2r2eBwWq6Rp0_vEbYwF/view?usp=drive_link 
+\f1\b and
+\f0\b0  https://drive.google.com/file/d/1nW3nVdxYPct3mY7jBxTl11QLKcHrJPqr/view?usp=drive_link\
+Original: https://drive.google.com/file/d/1X04R94t_JHLABFC58MKL7rgh5XuFSSrK/view?usp=drive_link\
+\
+7. Bean Scope: \
+Handwritten: https://drive.google.com/file/d/1NdatPKCp-_oj2SWu-wjlEqsuH6FN4OjB/view?usp=drive_link\
+Original: https://drive.google.com/file/d/1mx9uh0eNiRpL-PRKSm-l3cJi4AITQ_HL/view?usp=drive_link\
+\
+8. Dynamic initialized Beans: \
+Handwritten: https://drive.google.com/file/d/1I0mxDg8TNkfYasiCcDqSY8pev5gXKliN/view?usp=drive_link\
+Original: https://drive.google.com/file/d/1_Hlhchrear_5K_9-nngMqMTQyyUVTH1i/view?usp=drive_link\
+\
+9. ConditionalOnProperty: \
+Handwritten: https://drive.google.com/file/d/1WCnayljjpiTAxy_nB9y3qHt5lEFIM3wr/view?usp=drive_link\
+Original: https://drive.google.com/file/d/1biUukaclNSM6yWQiNDUPzU5OCPuzhcQI/view?usp=drive_link\
+\
+10.Profile: \
+Handwritten: https://drive.google.com/file/d/1Y1FF8szVjoqEW8-GhpBThvxuYhhf4aLk/view?usp=drive_link\
+Original: https://drive.google.com/file/d/1zTdvVUDWwL0QQ48RJ0jLmVRde29W5GXu/view?usp=drive_link\
+\
+11.AOP:\
+Handwritten: https://drive.google.com/file/d/1z7Owlrq2kB9m19DXHu563yBe1_XjN2CB/view?usp=drive_link 
+\f1\b and
+\f0\b0  https://drive.google.com/file/d/1wDT5eUrSp7ekSD-mYcGlmWpc9zknNhw-/view?usp=drive_link\
+Original: https://drive.google.com/file/d/17HyrB63q40jFytNo-Y9RE4nnUTq7_lEy/view?usp=drive_link\
+\
+12.Transactional (Part1): \
+Handwritten: https://drive.google.com/file/d/194qNz7zM-QKN07mGjePwPNBiezXipQKx/view?usp=drive_link\
+Original: https://drive.google.com/file/d/19zlghPGjkqcoF0hmIZlXsUdozTA5tfkl/view?usp=drive_link\
+\
+13. Transactional (Part2): \
+Handwritten: https://drive.google.com/file/d/1cpN5lZTg9fV_k006IHRi0WoHUG48yzOR/view?usp=drive_link\
+Original: https://drive.google.com/file/d/1BhvfTIqMuOBMNDmrtDrLhmrt3X5V9D14/view?usp=drive_link\
+\
+14. Transactional (Part3): \
+Handwritten: https://drive.google.com/file/d/1Ui4YIUhaFRuHyq600JfqDD1R5O4ZnjTq/view?usp=drive_link\
+Original: https://drive.google.com/file/d/1gfLeLaRGyMpHLQ0B0voMirl2hGtmFqmM/view?usp=sharing\
+\
+15. Async Annotation (Part1): https://drive.google.com/file/d/1gw3frdhMRJY47k9kji7sMellmtu4hfSQ/view?usp=drive_link\
+\
+16. Async Annotation (Part2): https://drive.google.com/file/d/1fRT6PzpZcW2m2ZxvkLB-dAIGAh7QFIFX/view?usp=drive_link\
+\
+17. Custom Interceptors: https://drive.google.com/file/d/1vrrz89rlN3Zdkndwi2WyWQ2rwkax0yFi/view?usp=drive_link\
+\
+18. Filters vs Interceptors: https://drive.google.com/file/d/1mFhfPQ5NH7kl4hghdw02B-cGe4Eyzosa/view?usp=drive_link\
+\
+19. HATEOS: https://drive.google.com/file/d/1Q2hAaaO3n-xKk6zR2VMf_ob_VGwHB24V/view?usp=drive_link\
+\
+20. Response Entity and Response Codes: https://drive.google.com/file/d/14R3BOVfHs2rP9wyPKVAk9WcEaksVZnI5/view?usp=drive_link\
+\
+21.Exception Handling: \
+Handwritten: https://drive.google.com/file/d/1JgtoXbqSdqMYvNbAh-ygaMs0h6m5TRPl/view?usp=drive_link\
+Original: https://drive.google.com/file/d/1TczdAMC2Lcj8ZP6ecS9ruLneEAuIzf-v/view?usp=drive_link\
+\
+22. JPA (Part1) :  \
+Handwritten: https://drive.google.com/file/d/19wKUSN1C1pLDMxDLPiP7NR3NQMmylmFP/view?usp=drive_link\
+Original: https://drive.google.com/file/d/1z_wfjk6BFfHXl7pUVXlmTpJXBO-1mbqm/view?usp=drive_link\
+\
+23 to 26. JPA (Part2 to Part5): \
+Handwritten: https://drive.google.com/file/d/1q3SnpHRPu3DWsiKS-T8DAhNJjYjaJTD1/view?usp=drive_link\
+Original: \
+23. JPA(Part2) Setup and JPA Architecture -> https://drive.google.com/file/d/1BlVZJak3YDyYQ63pvhaF5C4LqRoZDCQM/view?usp=drive_link\
+24 JPA(Part3) First level caching -> https://drive.google.com/file/d/1u-sdAh3GYkuLtwIzcNAVFfudqxUhZrTB/view?usp=drive_link\
+25 JPA(Part4) Second level caching -> https://drive.google.com/file/d/1rAoppmeNzzrrBnrvgq2mjlgke_gjCXQk/view?usp=drive_link\
+26 JPA(Part5) DTO to Table -> https://drive.google.com/file/d/1JHs1Q3oLwfcVogOFiAbWdJzQauGCcCpY/view?usp=drive_link\
+\
+27 to 30. JPA (Part6 to Part10): \
+Handwritten: https://drive.google.com/file/d/1iZW9GWDyQH_64vq3syuWkkx7xtBkFkmZ/view?usp=drive_link\
+Original: \
+27. JPA(Part6) One to One -> https://drive.google.com/file/d/1Vss45B7tJUKZCOGjirGR_gld56QYO6eL/view?usp=drive_link\
+28 JPA(Part7) One to Many -> https://drive.google.com/file/d/1CkoG2O9NsYu33qYaspn5k4bFlP2rt8LM/view?usp=drive_link\
+29 JPA(Part8) Derived and JPQL -> https://drive.google.com/file/d/1_WfPVCjo2xmaw0ZKhdzEKMfWM9eKdQ30/view?usp=drive_link\
+30 JPA(Part9) Native and Criteria API -> https://drive.google.com/file/d/1mijhERCBLoUFFHfz_ZS1-o2t1EU7qCIo/view?usp=drive_link\
+31. JPA (Part10): Specification API -> https://drive.google.com/file/d/1mijhERCBLoUFFHfz_ZS1-o2t1EU7qCIo/view?usp=drive_link\
+\
+32 to 41. Security (All Parts): \
+Handwritten: https://drive.google.com/file/d/141vCj7skqYhz12hdTGAyYns6Kw1CFCvG/view?usp=drive_link\
+Original:\
+32. Attacks -> https://drive.google.com/file/d/1JINOQHR7j2B-R_9IaduT6wDn1MLpKfTX/view?usp=drive_link\
+33. Security Part1, Set up and Architecture -> https://drive.google.com/file/d/1mBC4cBF9CIoEhBEPJMQuNkymocGcvyJ6/view?usp=drive_link\
+34. Security Part2, Multiple User Creation -> https://drive.google.com/file/d/1HKMoc-gPt8Sv05ePDcJmRg_XXA2_h1Ua/view?usp=drive_link\
+35. Security Part3, Form Based Authentication -> https://drive.google.com/file/d/1HKMoc-gPt8Sv05ePDcJmRg_XXA2_h1Ua/view?usp=drive_link\
+36. Security Part4, Basic Authentication -> https://drive.google.com/file/d/17oyaGwIItZpsRyQsDjXwHr1WUuFcVUAe/view?usp=drive_link\
+37, 38. Security Part5 and Part6, JWT -> https://drive.google.com/file/d/1Rbi5j7aA0JEt_ctzQLwQCUXFxQ0Y04vZ/view?usp=drive_link 
+\f1\b and
+\f0\b0  https://drive.google.com/file/d/14GgIwnzFW50cSV4mx_hcU2Vd8gHPAeXN/view?usp=drive_link\
+https://gitlab.com/shrayansh8/interviewcodingpractise/-/tree/main/src/main/java/com/conceptandcoding/learningspringboot/JWT?ref_type=heads\
+\
+39, 40. Security Part7 and Part8, OAuth -> https://drive.google.com/file/d/1KyVQvaGbSFeMAl9cVgY27Zwgy68UevSn/view?usp=drive_link\
+https://gitlab.com/shrayansh8/interviewcodingpractise/-/tree/main/src/main/java/com/conceptandcoding/learningspringboot/OAuth?ref_type=heads\
+\
+41. Security Part9, Method Security -> https://drive.google.com/file/d/1ip1EDOlGBGJWtD1wGHro1P7OLbnhXIPR/view?usp=drive_link\
+\
+42. Actuator: https://drive.google.com/file/d/1cwQnr2E24hQlt9x-3yo5QiNb9wmk3Ldy/view?usp=drive_link\
+\
+43. ConfigurationProperties: https://drive.google.com/file/d/1b1u8atXsHyP_cNWyPFV7BP5G8ApI3VPs/view?usp=drive_link\
+\
+
+\f1\b Git link
+\f0\b0 : https://gitlab.com/shrayansh8/springboot-microservices
+\f1\b \
+
+\f0\b0 \
+\
+
+\f1\b JAVA PDF Notes Link:\ul \
+\ulnone ------------------------------\
+
+\f0\b0 \
+1. OOPs Concept: https://drive.google.com/file/d/1eg_I2kdII2_KPtzGifky-YEvFcgaCX4H/view?usp=drive_link\
+\
+2. How Java program works: https://drive.google.com/file/d/1orNECv5ucicgyhcC58tsQ10lTqj0Xc0K/view?usp=drive_link\
+\
+3. Why only 1 public class: https://drive.google.com/file/d/1orNECv5ucicgyhcC58tsQ10lTqj0Xc0K/view?usp=drive_link\
+\
+4. Primitive data types: https://drive.google.com/file/d/1vWVJ9nAIbih0vier0XD-jFaUCujWuYnU/view?usp=drive_link\
+\
+5. How Float and double works: https://drive.google.com/file/d/1vWVJ9nAIbih0vier0XD-jFaUCujWuYnU/view?usp=drive_link\
+\
+6. Reference and Non Primitive data types: https://drive.google.com/file/d/1y23GVqAKPxQ72ZAP1_uOsJW2XfnBDhX5/view?usp=drive_link\
+\
+7. Methods: https://drive.google.com/file/d/1KEMCFaA5phnL1qneiWPPsSeDGoRqFyWK/view?usp=drive_link\
+\
+8. Constructor: https://drive.google.com/file/d/1KEMCFaA5phnL1qneiWPPsSeDGoRqFyWK/view?usp=drive_link\
+\
+9. Memory Management and Garbage Collector: https://drive.google.com/file/d/1VLbaVl69r9FlKw2q_nI4qS6mlGx1t9Js/view?usp=drive_link\
+\
+10. Classes: https://drive.google.com/file/d/1eE5Pculcp0qem6tMPHDz9h-jhMclzGIt/view?usp=drive_link  \
+\
+11. Generic Classes: https://drive.google.com/file/d/1eE5Pculcp0qem6tMPHDz9h-jhMclzGIt/view?usp=drive_link\
+\
+12. Enum, POJO: https://drive.google.com/file/d/1MplD0GcXSgk1qCGQ7NFx4tWh8LDP_HtK/view?usp=drive_link\
+ \
+13. Singleton and Immutable: https://drive.google.com/file/d/1MplD0GcXSgk1qCGQ7NFx4tWh8LDP_HtK/view?usp=drive_link\
+\
+14. Interfaces: https://drive.google.com/file/d/17tRa9KAj2RrAUbhAT_N8fBOT5BzU_PKb/view?usp=drive_link\
+\
+15. Default, Static and Private Methods in Interface: https://drive.google.com/file/d/17tRa9KAj2RrAUbhAT_N8fBOT5BzU_PKb/view?usp=drive_link\
+\
+16. Functional Interface and Lambda Expressions: https://drive.google.com/file/d/10-_r4_MUxosOGzjhw7Snv4NrGhOpoy5s/view?usp=drive_link\
+\
+17. Java Reflection: https://drive.google.com/file/d/1cxxPVU7NrOr_TChkIXE1C7khli31UlIf/view?usp=drive_link\
+\
+18. Annotations: https://drive.google.com/file/d/1zlZFUnNwuksAUJKwRXiIHkx2_8YrDWgb/view?usp=drive_link\
+\
+19. Exception Handling: https://drive.google.com/file/d/1-J8ppiadzHsgBEJuFOCEVFsOFA5GbeGL/view?usp=drive_link\
+\
+20. Operators: https://drive.google.com/file/d/1lAMOdu4_4R4uiwE_h0dTaxMmrHwvLfhl/view?usp=drive_link\
+\
+21. Control Flow Statements: https://drive.google.com/file/d/1C8YexhwkW_Z11g4mqbqhNoQROFvK3pqm/view?usp=drive_link\
+\
+22. Collections (Part-1) Framework: https://drive.google.com/file/d/1gMXDCjmbNrPC_igkTFBoOSfZzUOvCuXy/view?usp=drive_link\
+\
+23. Collections (Part-2) Comparator vs Comparable: https://drive.google.com/file/d/1gMXDCjmbNrPC_igkTFBoOSfZzUOvCuXy/view?usp=drive_link\
+\
+24. Collections (Part-3) Deque and List: https://drive.google.com/file/d/1gMXDCjmbNrPC_igkTFBoOSfZzUOvCuXy/view?usp=drive_link\
+\
+25. Collections (Part-4) HashMap internals: https://drive.google.com/file/d/1gzU1W6i_KW8RLy4vVCFqQX5Wac_3tx3j/view?usp=drive_link\
+\
+26. Collections (Part-5) LinkedHashMap: https://drive.google.com/file/d/1gzU1W6i_KW8RLy4vVCFqQX5Wac_3tx3j/view?usp=drive_link\
+\
+27. Collections (Part-6) SET: https://drive.google.com/file/d/1gzU1W6i_KW8RLy4vVCFqQX5Wac_3tx3j/view?usp=drive_link\
+\
+28. Collections (Part-7) Streams: https://drive.google.com/file/d/1A2BAJ2o8sMQlizTOgIBe-kLRmgNPI614/view?usp=drive_link\
+\
+29. Multithreading (Part-1) Process vs Threads: https://drive.google.com/file/d/15GLro4BgRTIFFyMAarBuqO5K_R9C1_ie/view?usp=drive_link\
+\
+30. Multithreading (Part-2) Thread Creation: https://drive.google.com/file/d/1IA_6vfEvBopFBEH5ubOMPEC1I632KaMM/view?usp=drive_link\
+\
+31. Multithreading (Part-3) Thread Joining: https://notebook.zohopublic.in/public/notes/74tdob1b1f9bf584f44228974656f4d93519d\
+\
+32. Multithreading (Part-4) Locks and Condition: https://drive.google.com/file/d/1LOjJ_lMzOhF2ebY6aiXf2i5voqSM_0sv/view?usp=drive_link\
+\
+33. Multithreading (Part-5) Lock Free Concurrency: https://drive.google.com/file/d/1Zx662N0AwNu2gha5QDn8Ga4D_sxPjxn0/view?usp=drive_link\
+\
+34. Multithreading (Part-6) ThreadPools: https://drive.google.com/file/d/1KYoFTnEGJl2dmkIYNdYd4YHoHolWEK-d/view?usp=drive_link\
+\
+35. Multithreading (Part-7) CompletableFuture: https://drive.google.com/file/d/16AgWyZ0WwisQUHw4eGwOsOQDOgbO2DO5/view?usp=drive_link\
+\
+36. Multithreading (Part-8) Fork-Join Pool: \
+https://drive.google.com/file/d/1KKf8vPtl6sOi085sRr-QpQd-WGNnE4VI/view\
+\
+37. Multithreading (Part-9) Scheduled ThreadPool: https://drive.google.com/file/d/1vZZU-zUBxp603rRsZOmxottQYsA-W443/view?usp=drive_link\
+\
+38. Virtual thread vs Normal Thread: https://drive.google.com/file/d/1hw87Y-up_1wvZL4lRLgv4T2b3k5K8zhZ/view?usp=drive_link\
+\
+39. Project Lombok: https://drive.google.com/file/d/1griShscTmjIpPz1gO1fO-MmvnPPWXtCI/view?usp=drive_link\
+\
+40. Sequenced Collection (Java 21): https://drive.google.com/file/d/1SpDB_VClW_XGCIDH_BfZmKwYkXUDL7yI/view?usp=drive_link\
+\
+41. Sealed Classes and Interfaces (Java 17): https://drive.google.com/file/d/1Vay3BP3eOD--1uECyvE3OGKEAdEvAFQF/view?usp=drive_link\
+\
+42. Switch Expression (Java 14): https://drive.google.com/file/d/17jEt2f60PahuVWqU-kipke-itwJCrcA0/view?usp=drive_link\
+\
+43. Pattern Matching InstanceOf (Java 16): https://1drv.ms/o/c/6b364628c29feb52/IgBJQS9wVkkaRI78ISwP-lLlAfGEeBDYaF6j_APJuTQmUmQ \
+\
+44. Pattern Matching Switch (Java 21): https://1drv.ms/o/c/6b364628c29feb52/IgBJQS9wVkkaRI78ISwP-lLlAfGEeBDYaF6j_APJuTQmUmQ\
+\
+45. Record Class (Java 16): https://1drv.ms/o/c/6b364628c29feb52/IgBJQS9wVkkaRI78ISwP-lLlAfGEeBDYaF6j_APJuTQmUmQ\
+\
+46. Text Blocks (Java 15): https://drive.google.com/file/d/1DkRnpbBtgQQiFCuhWtjteWFWcEBGYS-9/view?usp=drive_link\
+\
+47. Optionals (Java 8-11): https://drive.google.com/file/d/14g1osv4HfhVIZ2rSlHeOW6F3tVkjqGZq/view?usp=drive_link
+\f1\b \
+\
+\
+\ul \
+\ulnone HLD PDF Notes Link:\
+------------------------------\
+\
+
+\f0\b0 1.  Network protocols: https://drive.google.com/file/d/1iegvlzgcLJtcGvbjJbPqF4hZaB5u_nrh/view?usp=drive_link\
+\
+2.  CAP Theorem: https://drive.google.com/file/d/1rEs7p_Hrgdu57xakTyxgO1k3Zyp3zu-C/view?usp=drive_link\
+\
+3.  Microservices Patter Part1: https://drive.google.com/file/d/1d8R5wkQo9gnCcB_e2DFKCn-TgxWoJMsd/view?usp=drive_link\
+\
+4.  Microservices Pattern Part2: https://drive.google.com/file/d/1d8R5wkQo9gnCcB_e2DFKCn-TgxWoJMsd/view?usp=drive_link\
+\
+5.  Scale from O to Million : https://drive.google.com/file/d/16FIwh_zZ2nowjFh_vzeUq7nAwoaQct6f/view?usp=drive_link\
+\
+6.  Consistent Hashing: https://drive.google.com/file/d/1dMSY_fHaKwADw_zeQJfoWQUiHwgwDL6H/view?usp=drive_link\
+\
+7.  URL Shortening : https://drive.google.com/file/d/1iegvlzgcLJtcGvbjJbPqF4hZaB5u_nrh/view?usp=drive_link\
+\
+8.  Back of the envelope estimation : https://drive.google.com/file/d/1AH37a-iSXNquC01PUIi14yDO8jscnaA6/view?usp=drive_link\
+\
+9.  Key-Value DB: https://drive.google.com/file/d/1iegvlzgcLJtcGvbjJbPqF4hZaB5u_nrh/view?usp=drive_link\
+\
+10.  SQL vs NOSQL: https://drive.google.com/file/d/1CuxKzs00W6meH_6PdF2la8xBkXnyvhcO/view?usp=drive_link\
+\
+11.  Design WhatsApp: https://drive.google.com/file/d/1iegvlzgcLJtcGvbjJbPqF4hZaB5u_nrh/view?usp=drive_link\
+\
+12.  Rate Limiter: https://drive.google.com/file/d/1EwfhhSiBNJw87tqvoaseW5ZKUKB-YJDx/view?usp=drive_link\
+\
+13.  Design Video Calling App: Will recreate it and upload again.\
+\
+14.  Idempotent POST API: https://drive.google.com/file/d/1pzl_Pr0iUD3jyRUtS58Sq9DyCsrr2dmE/view?usp=drive_link\
+\
+15.  Design High Availability System: https://drive.google.com/file/d/1k7OUopYnC2fpEHDLw-zbFDdyNvoba4mo/view?usp=drive_link\
+\
+16.  Distributed Messaging Queue: https://drive.google.com/file/d/1kfnXbRlobCeK-U9kT56nyXI-4VY9EBAo/view?usp=drive_link\
+\
+17.  Proxy vs Reverse Proxy: https://drive.google.com/file/d/18wyJRj2g11NE1Ll1c6GJSiqnhwSao01U/view?usp=drive_link\
+\
+18.  Load Balancer & Different Algorithms: https://drive.google.com/file/d/1dAg77qQ1t9mlHXc1VvO-dZXvaGWnvmaZ/view?usp=drive_link\
+\
+19.  Distributed Cache and Caching Strategies: https://drive.google.com/file/d/1C7f5kvsWQ45ECA3sR0jgpym1cy96CgR0/view?usp=drive_link and https://notebook.zohopublic.in/public/notes/u3i1s6d12db6764b94cff9ad7f4ddef5b5348 \
+\
+20.  Handle Distributed Transactions: https://drive.google.com/file/d/1kPHF4MMoqc2xFXNXaXHfqqrEDdeU0kLO/view?usp=drive_link and https://notebook.zohopublic.in/public/notes/u3i1sc0949c83b482441887cc4eba8031560e \
+\
+21.  Database Indexing: https://notebook.zohopublic.in/public/notes/74tdo7871dd86eb99414bb94d8737a8b73b84 \
+\
+22. Concurrency Control in Distributed System: https://notebook.zohopublic.in/public/notes/u3i1s8441ef17edee467bb020cc6974b3d7f9 \
+\
+23.  Two Phase Locking (2PL): https://notebook.zohopublic.in/public/notes/74tdoc7e4be4e091e4005916a9721b69ee7b3 \
+\
+24. OAuth 2.0: https://drive.google.com/file/d/1DTuw_AyH2ByBV8tldT4kha87MXLplXdi/view?usp=drive_link and https://notebook.zohopublic.in/public/notes/bietv949cfd82a5804e0ea1d18400d3ff6fa3 \
+\
+25.  Symmetric & Asymmetric Encryption: https://drive.google.com/file/d/13oOxr-aZu0K3u7FqBS1ONOCNENjoWERm/view?usp=drive_link and https://notebook.zohopublic.in/public/notes/bietvf603d76e50a04c989bb3522c763be0ee \
+\
+26.  JWT Explained: https://drive.google.com/file/d/1jURIUs6grcQBkXl_mnx3nvZDlpHAqof8/view?usp=drive_link and https://notebook.zohopublic.in/public/notes/bietvcd2cffdd8c7d449c839c007fecf8d562\
+\
+27. Thundering Herd : https://drive.google.com/file/d/1s_rhkuSserKURoOTwolrnMGifGHd9oKI/view?usp=drive_link\
+\
+28. API Gateway: https://drive.google.com/file/d/1eQxotRxC4q1c12uXn7IY4oLcuZgt-iBx/view?usp=drive_link and https://notebook.zohopublic.in/public/notes/9wn9of886c95da92e4778b0d3bc23cb0b8106\
+\
+29. Service Mesh: https://notebook.zohopublic.in/public/notes/9wn9od9ab6075a35b4258aadedbf53aca805e\
+\
+30. DNS: https://notebook.zohopublic.in/public/notes/9wn9oa7b313dd344b426288e0efca9f0eeaa6\
+\
+31. How many microservices : Not applicable\
+\
+32. Common Attacks with Demo: https://drive.google.com/file/d/1JINOQHR7j2B-R_9IaduT6wDn1MLpKfTX/view?usp=drive_link\
+\
+33.Dual Write Problem: https://drive.google.com/file/d/14wwKmtzMEgvctlQhiSrLU0gw9fhmMAGn/view?usp=drive_link and https://1drv.ms/o/c/6b364628c29feb52/EpHzxZpvUj9ChPoZKABB6hYB3ThLz9J66-3csHIWs_G_ZA\
+\
+34. Service Discovery: https://drive.google.com/file/d/11DAZgXFoArZ17xVLhkIxTYQtUYAJNnr-/view?usp=drive_link\
+\
+35. Client Side load balancer: https://drive.google.com/file/d/1uERH11qv6xWBvwHc0BoOJlnn89IzWt95/view?usp=drive_link\
+\
+36. Rate Limiter: https://drive.google.com/file/d/1EwfhhSiBNJw87tqvoaseW5ZKUKB-YJDx/view?usp=drive_link\
+\
+37. BulkHead: https://drive.google.com/file/d/1CSXu3bNRsvwhsvIr2EdTkbyP7fUHQMt7/view?usp=drive_link\
+\
+38. Retry Pattern: https://drive.google.com/file/d/1F4e2EwjCfi11-q7RdujOqiPgt7oCbO7B/view?usp=drive_link\
+\
+39. Circuit Breaker: https://drive.google.com/file/d/1ApUVMYBXzsEiW_tCL_ZpfX0IGKZQ2IZe/view?usp=drive_link\
+\
+40. API Gateway Part1: https://drive.google.com/file/d/1CbIz2ZgwcinR0y69Q7O-MRSgWgu-b-Ze/view?usp=drive_link\
+\
+41: API Gateway Part2: https://drive.google.com/file/d/14bbYUgLn3q5CXVKL90pMYb9TbAuu0GKd/view?usp=drive_link\
+\
+
+\f1\b \
+\
+Spring AI:\
+----------------\
+\
+
+\f0\b0 Spring AI:\
+https://1drv.ms/o/c/6b364628c29feb52/EqpkRzx2MaFKrsXvLK9sIswBV5x6gO5e01ccFr1IAwJtEw\
+Git:https://gitlab.com/shrayansh8/spring-ai/-/tree/main/src/main/java/com/conceptandcoding?ref_type=heads
+\f1\b \
+\ul \
+}
