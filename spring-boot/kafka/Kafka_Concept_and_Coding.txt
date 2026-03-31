@@ -1,3 +1,42 @@
+Introduction
+
+Kafka architecture
+
+->Partitions
+
+->Segments
+
+->Consumer Group
+
+->Cluster
+
+->Leader-Follower Pattern
+
+->Controller
+
+->Kraft
+
+->Log Compaction stratagies
+
+->Why kafka is so fast
+
+->Failure Scenarios
+
+Complete cluster setup
+
+Producer setup
+
+Consumer setup
+
+Exception handling
+
+
+
+
+
+
+
+
 Event Driven Architecture(EDA)
 -------------------------
 
