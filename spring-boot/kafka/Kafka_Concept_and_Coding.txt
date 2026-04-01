@@ -322,3 +322,51 @@ Partition divided into replicas
 Partition(one leader and one follower)
 
 controller decides who is leader and follower
+
+
+controller
+
+1.dual responsibility-------->normal broker+controller role
+
+2.single responsibility-------->controller role
+
+
+Kraft(modern)------->own
+
+zookeeper(legacy)--------->external
+
+Kraft consensus
+
+Quorum
+
+Active, Stand-By
+
+ISR(In-Sync Replica)--------ACK
+
+Partition(L, F, F)
+
+
+completed
+---------
+1.producer
+
+2.topic
+
+3.partition-segment
+
+4.Broker
+
+5.Cluster
+
+6.Controller
+
+7.Kraft
+
+
+
+Log Compaction strategies
+-------------------------
+
+Policy1: Delete(default)
+
+Policy2: Compact
