@@ -320,3 +320,5 @@ Offset commit stratagy
 Partition divided into replicas
 
 Partition(one leader and one follower)
+
+controller decides who is leader and follower
