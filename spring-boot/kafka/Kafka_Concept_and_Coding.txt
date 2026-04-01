@@ -246,7 +246,7 @@ Data need to be continuously processed.
 
 
 
-
+Producer
 
 
 
@@ -257,4 +257,22 @@ Topic->Partition->Offset
 Topic->Partition->Segment->Offset
 
 Topic->Partition->Segment->Index->Offset
+
+
+Partition
+
+
+
+storing stratagy in the partion
+-------------------------------
+
+1.Key-Based Partitioning(passing key)
+
+2.Round Robin(loop)
+
+3.Custom partitioning(India or USA)
+
+
+
+Broker: Not store all the topics and all the partitions
 
