@@ -276,3 +276,41 @@ storing stratagy in the partion
 
 Broker: Not store all the topics and all the partitions
 
+
+ConsumerGroup rules
+-------------------
+
+1.Sinle Consumer
+
+scenario:1
+
+consumers=partitions
+
+scenario:2
+
+consumer<partitions
+
+scenario:3
+
+consumer>partitions
+
+
+2.Multiple Consumers
+
+
+
+
+
+
+
+
+ConsumerGroup->Topic->partition->commited offset(processed up to this offset)
+
+
+note: not focus on the consumer in the ConsumerGroup
+
+
+Offset commit stratagy
+----------------------
+1.Automatic
+2.Manual
