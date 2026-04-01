@@ -314,3 +314,9 @@ Offset commit stratagy
 ----------------------
 1.Automatic
 2.Manual
+
+
+
+Partition divided into replicas
+
+Partition(one leader and one follower)
