@@ -241,3 +241,20 @@ These flows take time and can fail midway. so flow is not in critical path, it c
 
 Data need to be continuously processed.
 
+
+
+
+
+
+
+
+
+
+Topic->Partition
+
+Topic->Partition->Offset
+
+Topic->Partition->Segment->Offset
+
+Topic->Partition->Segment->Index->Offset
+
