@@ -372,7 +372,8 @@ Policy1: Delete(default)
 Policy2: Compact
 
 
-
+each one communicate with heart beat
+------------------------------------
 
 1.what happens when active controller fails
 
