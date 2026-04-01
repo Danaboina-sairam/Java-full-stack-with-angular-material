@@ -370,3 +370,18 @@ Log Compaction strategies
 Policy1: Delete(default)
 
 Policy2: Compact
+
+
+
+
+1.what happens when active controller fails
+
+2.what happens when leader partition fails
+
+3.what happens when follower partition fails
+
+4.what happens when topic fails
+
+5.what happens when consumer fails
+
+6.what happens when broker fails
