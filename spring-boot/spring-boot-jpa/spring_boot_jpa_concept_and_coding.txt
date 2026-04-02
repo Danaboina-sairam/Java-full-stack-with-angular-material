@@ -239,15 +239,15 @@ b.@BatchSize(size=10)
 c.@EntityGraph(attributePaths="userAddressList")
 
 
-3.named query
+3.named query(JPQL)
 
 4.native query
 
+a.native query with pagination and sorting
+
 5.named native query
 
-6.native query with pagination and sorting
-
-7.criteria api
+6.criteria api
 
 a.select
 
@@ -255,6 +255,6 @@ b.from
 
 c.where----------->predicate(specification api)
 
-8.specification api
+7.specification api
 
 
