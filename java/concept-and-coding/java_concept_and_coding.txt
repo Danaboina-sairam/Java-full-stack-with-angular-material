@@ -2591,13 +2591,16 @@ class Employee extends Object{
         Employee other=(Employee) obj;
         if(id!=other.id)
             return false;
-        if(name==null){
+        if(name==null){                      
             if(other.name!=null)
                 return false;
         } else if (!name.equals(other.name))
             return false;
         return true;
     }
+
+Note: in equals() need to check null for string but not required for integer
+
 
     @Override
     public int hashCode() {
