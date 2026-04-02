@@ -2350,7 +2350,17 @@ Note:-
 hash code and address both are different
 
 
-EX:-  Custom class,Object,Strings,Arrays,ArrayList
+EX:
+
+Object
+
+Custom class: prints meaning full string when we override object class
+
+String: String class already override the object class
+
+Arrays:Arrays class already override the object class(we need to call explicitly)
+
+ArrayList: AbstractArrayList class already override the object class
 
 
 public class ToStringDemo {
