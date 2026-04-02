@@ -1094,25 +1094,7 @@ Exception handling
 
 
 
-String response = """
-        {
-          "eisFlcWithdrawResp": {
-            "REQUEST_REFERENCE_NUMBER": "58TY225297192297707011061",
-            "EIS_RESPONSE": {
-              "status": "SUCCESS",
-              "statusMsg": "Case Withdrawn Successfully",
-              "objList": [
-                {
-                  "fleStatus": "FLC Request Withdrawn"
-                }
-              ],
-              "ERROR_CODE": "10",
-              "ERROR_DESCRIPTION": "",
-              "RESPONSE_STATUS": "OK"
-            }
-          }
-        }
-        """;  
+String response = """    """;  
 
 ObjectMapper mapper = new ObjectMapper();
 
