@@ -213,7 +213,20 @@ What's your go-to HikariCP config for high-traffic services?
 
 
 
-1.Derived query with pagination and sorting
+1.Derived query
+
+a.Derived query with pagination and sorting
+
+b.Derived query with only pagination
+
+c.Derived query with only sorting
+
+d.Derived query with only sorting(with 2 fields by applied sorting in order--------->ascending order)
+
+e.Derived query with pagination and page
+
+f.Derived query with only sorting(with 2 fields by applied sorting in order---------->1 ascending order,1 decending order)
+
 
 2.JPQL with pagination and sorting
 
