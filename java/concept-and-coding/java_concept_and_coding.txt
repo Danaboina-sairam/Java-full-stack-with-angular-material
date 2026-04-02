@@ -519,6 +519,8 @@ extension class loader---->java extension library( javax.* or javax.jakarta)--->
 
 application class loader--->java application specific classes loads from classpath (environment variables)
 
+Note:- Loading time getting ClassNotFoundException
+
 
 Linking
 -------
@@ -527,7 +529,9 @@ verification(is byte code generated from valid compiler or not, is there any vir
 
 preparation(initialize with default values for static variables)
 
-resolution(symbolic references replace with original references)
+resolution(symbolic references replace with original references)------------------>ClassDefNotFoundException
+
+
 
 Initialization
 --------------
