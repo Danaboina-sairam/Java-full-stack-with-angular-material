@@ -2533,7 +2533,7 @@ Contract between hashcode() and equals()
 
 2.if two objects are not equal by equals() method then their hashcode might be equal or different. Though it's always good practice to return different hashCode for unequal object.
 
-3.Whenever hashCode() method is invoked on the same object more than once within single execution pf application, hashCode() must return same integer provided no information or fields used in equals and hashcode is modified. This integer is not required to be same 
+3.Whenever hashCode() method is invoked on the same object more than once within single execution of application, hashCode() must return same integer provided no information or fields used in equals and hashcode is modified. This integer is not required to be same 
 during multiple execution of application though.
 
 
