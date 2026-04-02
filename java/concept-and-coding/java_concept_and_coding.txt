@@ -2435,15 +2435,26 @@ primitive datatypes----->value comparison
 object datatypes------->address comparison
 
 
-equals() in Object class
-------------------------
+
+equals() in String class overrides Object class equals()
+--------------------------------------------------------
+Strings--------------->value comparison
+
+
+
+equals() in Employee class not overrides Object class equals()
+--------------------------------------------------------------
 
 object datatypes----->address comparison
 
 
-equals() in String class
-------------------------
-Strings--------------->value comparison
+
+equals() in Employee class overrides Object class equals()
+----------------------------------------------------------
+
+object datatypes----->value comparison
+
+
 
 
 
@@ -2495,6 +2506,7 @@ Steps to override equals() method
 ---------------------------------
 
 1.Do this check----> if yes, then return true.
+EX: Reflexive
 2.Do null check----> if yes, then return false.
 3.Do the getClass() check, if not equal then return false.
 
