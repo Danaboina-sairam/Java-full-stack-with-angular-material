@@ -207,3 +207,34 @@ Connection pooling is one of those things no one teaches you in college.
 But every senior backend engineer learns it the hard way. 😅
 
 What's your go-to HikariCP config for high-traffic services?
+
+
+
+
+
+
+1.Derived query with pagination and sorting
+
+2.JPQL with pagination and sorting
+
+3.named query
+
+4.native query
+
+5.named native query
+
+6.native query with pagination and sorting
+
+7.criteria api
+
+a.select
+
+b.from
+
+c.where----------->predicate(specification api)
+
+8.specification api
+
+9.N+1 problem
+
+
