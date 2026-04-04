@@ -15,7 +15,7 @@ Dynamic Programming – 700+ problems → just 8 patterns
 
 
 
-
+All Array Problems
 
 𝗗𝘆𝗻𝗮𝗺𝗶𝗰 𝗣𝗿𝗼𝗴𝗿𝗮𝗺𝗺𝗶𝗻𝗴 𝗼𝗻 𝗦𝘁𝗿𝗶𝗻𝗴𝘀
 1. Longest Common Subsequence
@@ -28,8 +28,17 @@ Dynamic Programming – 700+ problems → just 8 patterns
 8. Edit Distance
 9. Wildcard Matching
 
+L3. Longest Substring Without Repeating Characters | 2 Pointers and Sliding Window Playlist
+L6. Longest Substring With At Most K Distinct Characters | 2 Pointers and Sliding Window Playlist
+L7. Number of Substrings Containing All Three Characters | 2 Pointers and Sliding Window Playlist
+L8. Longest Repeating Character Replacement | 2 Pointers and Sliding Window Playlist
+L11. Valid Parenthesis String | Multiple Approaches
+L12. Minimum Window Substring | 2 Pointers and Sliding Window Playlist
+
+
 𝗦𝗼𝗿𝘁𝗶𝗻𝗴 𝗔𝗹𝗴𝗼𝗿𝗶𝘁𝗵𝗺𝘀 (𝗾𝘂𝗶𝗰𝗸 𝗿𝗲𝘃𝗶𝘀𝗶𝗼𝗻)
 1. Selection Sort
 2. Bubble Sort
 3. Insertion Sort
 4. Merge Sort
+5. Quick Sort
