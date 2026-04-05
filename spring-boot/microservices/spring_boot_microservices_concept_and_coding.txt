@@ -1,3 +1,153 @@
+RestTemplate
+
+
+OrderService
+
+ProductService
+
+
+
+Http Versions
+
+1.http/1.0
+
+2.http/1.1
+
+3.http/2
+
+
+Plain Java used to Call Third Party services
+
+
+1. Using HttpURLConnection (Most Common – Legacy but widely used)
+
+📌 Key Classes
+
+java.net.URL
+java.net.HttpURLConnection
+
+📌 Common Methods
+openConnection()
+setRequestMethod("GET"/"POST"/...)
+setRequestProperty() → set headers
+setDoOutput(true) → for POST/PUT
+getResponseCode()
+getInputStream() / getErrorStream()
+
+
+
+
+🚀 2. Using HttpClient (Modern Java 11+ – Recommended)
+
+📌 Key Classes
+
+java.net.http.HttpClient
+java.net.http.HttpRequest
+java.net.http.HttpResponse
+
+📌 Common Methods
+
+HttpClient.newHttpClient()
+HttpRequest.newBuilder()
+.GET(), .POST()
+.header()
+.bodyPublisher()
+send() → synchronous
+sendAsync() → async (CompletableFuture)
+
+
+
+
+disadvantage
+------------
+
+1.manual configure http method, URL, etc
+
+2.manual Response mapping
+
+3.no connection pooling
+
+4.no filters and no interceptors
+
+
+Synchronous Communication
+
+1.RestTemplate
+
+2.RestClient
+
+3.Feign Client(Spring Cloud)
+
+
+1.RestTemplate
+
+
+Sample GET and POST Request call
+
+Sample GET and POST Response call with Keep alive
+
+
+getForObject() : return only body
+
+getForEntity() : return header and body
+
+put()
+
+delete()
+
+exchange(): customize http method, header, body
+
+execute(): customize all connection, http method, header, body, Request Call Back, ResponseExtracter
+
+
+limitations of RestTemplate
+
+1. overloaded methods
+
+2. no Retry and Circuit Breaker functionality
+
+
+
+
+
+
+2. RestClient
+-------------
+
+fluent Api: 
+
+1.fluent Api is nothing but chain methods available in different classes
+
+2.each method in fluent api returns object
+
+3.also available methods for exception handling
+
+
+
+Adding filter and interceptors
+
+
+
+methods
+
+1.ClientRequest
+
+2.ClientResponse
+
+
+
+Asynchronous Communication
+
+4.Web Client
+
+
+
+
+
+
+
+
+
 server.port
 
 allow parallel run
