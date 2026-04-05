@@ -1,3 +1,8 @@
+Compulsory one public static void main(String[] ARGS) mandatory
+
+
+
+
 abstraction achieve 2 ways
 
 1.interface 
