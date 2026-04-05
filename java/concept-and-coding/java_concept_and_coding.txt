@@ -435,6 +435,53 @@ Points to Remember
 
 
 
+new
+---
+
+Java application+ jvm----->memory allocated by os
+
+Local variables storing in the stack
+
+Static , instance  variables and along with reference variables storing in the heap
+
+
+Only stack used in memory whenever no object created
+
+Once execution completed stack will be deleted
+
+Once execution completed then objects available in the heap but it will be removed when the garbage collector run
+
+Every thread will have one stack
+
+All threads use common heap
+
+
+Member variables primitive or object stored in the heap
+
+
+But method which are dependent on object that contains any variables that store in the 
+stack
+
+
+
+
+
+Garbage collector
+
+Fragment issue in EDEN
+
+Mark and sweep
+
+Mark with reachable and unreachable
+
+Young generation minor GC
+
+Old generation major GC
+
+Each time moving from EDEN TO SURVIVOR 1 SURVIVOR 2
+
+
+
 
 
 
