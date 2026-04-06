@@ -1149,13 +1149,15 @@ Exception handling
 2.child class(less information)
 
 
+HardCode Response with Debugging
+--------------------------------
 
 String response = """    """;  
 
 ObjectMapper mapper = new ObjectMapper();
 
 try {
-    HashMap<String, Object> eisFlcWithdrawResp = mapper.readValue(response, HashMap.class);
+    HashMap<String, Object> rawResp = mapper.readValue(response, HashMap.class);
 } catch (Exception e) {
     e.printStackTrace();
 }
