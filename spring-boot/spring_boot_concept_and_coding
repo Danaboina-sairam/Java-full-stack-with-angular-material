@@ -281,6 +281,323 @@ Note:-1.update 2.none(production use only none)
 
 
 
+@Component:
+
+1.it is used to tell spring boot, you have to create bean and life cycle of bean 
+2.it is used in @Controller, @Service, @Repository because you have to create bean and life cycle of bean along with specific purpose
+
+
+Note:
+
+1.everything related to constructor only
+
+2.default constructor
+
+3.parameterized constructor
+
+
+TYPE:1
+
+1.Java will automatically create default constructor whenever our own constructor not provided
+
+
+
+@Component
+public class User{
+
+String username;
+String email;
+
+public String gerUsername() { return username; }
+
+public void setUsername(String username) { this.username=username; }
+
+public String getEmail() { return email; }
+
+public void setEmail(String email) { this.email=email; }
+
+}
+
+
+
+
+TYPE:2
+
+1.Java will not create default constructor whenever our own constructor provided
+
+2.@Component unable to create our own constructor
+
+@Component
+public class User{
+
+String username;
+String email;
+
+public User(String username, String email){
+
+this.username=username;
+this.email=email;
+
+}
+
+public String gerUsername() { return username; }
+
+public void setUsername(String username) { this.username=username; }
+
+public String getEmail() { return email; }
+
+public void setEmail(String email) { this.email=email; }
+
+}
+
+
+
+
+TYPE:3
+
+
+
+@Component:
+-----------
+
+1.it is auto configuration
+
+
+
+@Configuration
+--------------
+
+1.it is external configuration 
+
+
+
+public class User{
+
+String username;
+String email;
+
+
+public User(String username, String email){
+
+this.username=username;
+this.email=email;
+
+}
+
+
+public String gerUsername() { return username; }
+
+public void setUsername(String username) { this.username=username; }
+
+public String getEmail() { return email; }
+
+public void setEmail(String email) { this.email=email; }
+
+}
+
+
+
+
+@Configuration
+public class AppConfig
+{
+
+
+@Bean
+public User createUserBean(){
+
+return new User("defaultusername","defaultemail");
+
+}
+
+}
+
+
+
+
+
+
+
+
+
+TYPE:4
+
+
+
+
+@Component and @Configuration
+-----------------------------
+
+Whenever we have both that scenario first priority for @Configuration because it is external configuration
+
+
+
+@Component
+public class User{
+
+String username;
+String email;
+
+
+public User(String username, String email){
+
+this.username=username;
+this.email=email;
+
+}
+
+
+public String gerUsername() { return username; }
+
+public void setUsername(String username) { this.username=username; }
+
+public String getEmail() { return email; }
+
+public void setEmail(String email) { this.email=email; }
+
+}
+
+
+
+
+@Configuration
+public class AppConfig
+{
+
+
+@Bean
+public User createUserBean(){
+
+return new User("defaultusername","defaultemail");
+
+}
+
+}
+
+
+
+
+
+
+
+More than 1 Bean created in @Configuration class
+------------------------------------------------
+
+
+@Configuration
+public class AppConfig
+{
+
+
+@Bean
+public User createUserBean(){
+
+return new User("defaultusername","defaultemail");
+
+}
+
+
+@Bean
+public User createAnotherUserBean(){
+
+return new User("anotherusername","anotheremail");
+
+}
+
+}
+
+
+
+
+How Spring boot find these Bean?
+
+--------------------------------
+
+
+Method:1
+--------
+
+using @ComponentScan annotation, it will scan the specified package and sub-package for classes annotated with @Component, @Controller, @Service, @Repository
+
+@ComponentScan : it is used for auto configuration
+
+
+Method:2
+--------
+
+Through Explicit defining of bean via @Bean annotation in @Configuration class.
+
+
+@Configuration
+public class AppConfig
+{
+
+@Bean
+public User createUserBean()
+{
+	return new User("defaultusername", "defaultemail");
+}
+
+}
+
+
+
+At what time, these beans get created
+-------------------------------------
+
+1.Eagerness(Singleton scope)
+
+2.Lazy(we can use with @Component class)
+
+
+
+
+Bean Life Cycle
+---------------
+
+1.Application Start
+
+Initializing spring embedded WebApplicationContext
+
+Root WebApplicationContext: initialization completed
+
+2.IOC Container Started: configuration loaded
+
+a.@ComponentScan
+
+b.@Configuration
+
+3.Construct Bean: Eager and Lazy
+
+4.Inject Dependency Into Constructed Bean
+
+
+Parent class(Constructed Bean)
+
+
+Child class(dependency)
+
+
+
+
+5.@PostConstruct: if you want to perform any operation use @PostConstruct ,before ready to use fully constructed bean.
+
+6.Use the Bean
+
+7.@PreDestroy: perform any operation before actually bean destroyed.
+
+8.Bean Destroyed
+
+
+
+
+
+
+
+
+
+
+
 WebClient webClient;(whatever created in config class that is used in required class but access decrease from high to low)
 -------------------
 
