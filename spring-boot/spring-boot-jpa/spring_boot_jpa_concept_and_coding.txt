@@ -210,6 +210,25 @@ What's your go-to HikariCP config for high-traffic services?
 
 
 
+Parent Class and Child Class Infinite Loop
+------------------------------------------
+
+Method:1
+
+NOTE: Property Level
+
+Parent Class: @JsonManagedReference-------->Parent to Child fetch
+
+Child Class: @JsonBackReference-------->Only Child fetch
+
+Method:2
+
+NOTE: Class Level
+
+Parent Class: @JsonIdentityInfo--------->Parent to Child fetch
+
+Child Class: @JsonIdentityInfo------->Child to Parent fetch
+
 
 
 
