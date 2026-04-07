@@ -2883,3 +2883,24 @@ BufferedOutputStream
 DataInputStream
 
 DataOutputStream
+
+
+
+
+
+PDF storing in Mount Path of Open Shift
+---------------------------------------
+
+String filePath = "E:/softwares/download_policy_debug.txt";
+
+s.readAllBytes(Paths.get(filePath)); byte[] encodedBytes = Files.readAllBytes(
+
+String fileName="eshield.pdf";
+
+String filePath1-pdfOutputPathQuickAction+fileName;
+
+boolean createEshield new File(pdfOutputPath + PDF FOLDER_PATH +QUICK_ACTIONS).mkdir();
+
+try(FileOutputStream fos-new FileOutputStream(filePath1)){
+
+}
