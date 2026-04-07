@@ -210,6 +210,56 @@ What's your go-to HikariCP config for high-traffic services?
 
 
 
+Unique Constraint On Single Column
+
+Unique Constraint On Composite Column
+
+
+
+Index On Sinle Column 
+
+Index On Composite Column
+
+
+
+Composite Primary Keys
+----------------------
+
+Method:1
+
+Parent Class
+------------
+
+@IdClass------->Class Level
+
+@Id--------->Property Level
+
+NOTE: above 2 annotations are in same class only
+
+Child Class
+-----------
+
+Composite Key Properties
+
+
+
+Method:2
+
+
+Parent Class
+------------
+
+@EmbeddableId--------->Property Level
+
+
+Child Class
+-----------
+
+@Embeddable---------->Class Level
+
+
+
+
 Parent Class and Child Class Infinite Loop
 ------------------------------------------
 
