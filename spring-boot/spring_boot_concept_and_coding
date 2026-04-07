@@ -1,3 +1,13 @@
+application.properties vs application.yml
+-----------------------------------------
+1.We can use both at a time but first priority application.properties file contain properties only
+2.if  application.properties and application.yml files contains same properties then application.properties overrides application.yml
+
+Note: application.properties is most strong in spring boot application
+
+
+
+
 Controller->role of accepting client request in controller layer
 
 service->implementing business logic in the service layer
