@@ -1,0 +1,15 @@
+User creation
+
+1.
+
+2.
+
+3.
+
+
+Types of Spring security
+------------------------
+1.Form Based Authentication
+2.Basic Authentication
+3.JWT Authentication
+4.OAuth Authentication
