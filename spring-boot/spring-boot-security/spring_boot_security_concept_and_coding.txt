@@ -15,6 +15,10 @@ Stateful Authentication
 
 1.Form Based Authentication
 
+Request(Username and Password)----------->Session created
+
+Request(Session)------------>Authenticated
+
 
 Stateless Authenction
 ---------------------
@@ -24,3 +28,9 @@ Stateless Authenction
 2.JWT Authentication
 
 3.OAuth Authentication
+
+
+1.Basic Authentication
+
+Encoded vs Encrypted Both are not same
+
