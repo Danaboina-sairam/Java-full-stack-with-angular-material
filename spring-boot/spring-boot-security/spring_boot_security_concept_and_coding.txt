@@ -9,7 +9,18 @@ User creation
 
 Types of Spring security
 ------------------------
+
+Stateful Authentication
+-----------------------
+
 1.Form Based Authentication
-2.Basic Authentication
-3.JWT Authentication
-4.OAuth Authentication
+
+
+Stateless Authenction
+---------------------
+
+1.Basic Authentication
+
+2.JWT Authentication
+
+3.OAuth Authentication
