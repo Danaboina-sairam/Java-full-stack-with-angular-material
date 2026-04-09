@@ -10,11 +10,11 @@ User creation
 PasswordEncoder---------->Default to specific
 
 
-UserDetailsService
+UserDetailsService(Grand Parent)
 
-UserDetailsManager
+UserDetailsManager(Parent)
 
-InMemoryUserDetailsManager
+InMemoryUserDetailsManager(Child)
 
 
 4.
