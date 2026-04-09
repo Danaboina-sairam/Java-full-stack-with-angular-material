@@ -9,6 +9,14 @@ User creation
 
 PasswordEncoder---------->Default to specific
 
+
+UserDetailsService
+
+UserDetailsManager
+
+InMemoryUserDetailsManager
+
+
 4.
 
 
