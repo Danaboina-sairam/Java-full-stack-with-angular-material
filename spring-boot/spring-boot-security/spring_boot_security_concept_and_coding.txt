@@ -3,9 +3,11 @@ User creation
 
 1.Default user creation when spring security dependency added
 
-2.user,password,role configuration in properties to override default SecurityProperties class
+2.user,password,role configuration in application.properties to override default SecurityProperties class(Single user)
 
-3.InMemory-Db used to create user
+3.InMemory-Db used to create user(more than 1 user)
+
+PasswordEncoder---------->Default to specific
 
 4.
 
