@@ -1,4 +1,17 @@
 User creation
+
+
+user authentication(By using Form Based, Basic, JWT, OAuth)
+
+user authorization(By using roles created with user)
+
+
+
+
+
+
+
+User creation
 -------------
 
 1.Default user creation when spring security dependency added
