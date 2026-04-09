@@ -1,10 +1,13 @@
 User creation
+-------------
 
-1.
+1.Default user creation when spring security dependency added
 
-2.
+2.user,password,role configuration in properties to override default SecurityProperties class
 
-3.
+3.InMemory-Db used to create user
+
+4.
 
 
 Types of Spring security
