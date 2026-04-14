@@ -20,6 +20,12 @@ User creation
 
 3.InMemory-Db used to create user(more than 1 user)
 
+
+UserDetails-------->interface
+
+User--------->class
+
+
 PasswordEncoder---------->Default to specific
 
 
