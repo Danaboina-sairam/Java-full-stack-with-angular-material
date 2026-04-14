@@ -7,7 +7,7 @@ user authorization(By using roles created with user)
 
 
 
-InMemoryUserDetailsManager(Spring security  vs In-Memory Database(H2 Database))
+InMemoryUserDetailsManager(Spring security)  vs In-Memory Database(H2 Database)
 
 
 
