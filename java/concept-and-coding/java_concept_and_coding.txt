@@ -1,3 +1,9 @@
+State --- variables,data, properties, attributes
+
+Behaviour --- method
+
+
+
 Compulsory one public static void main(String[] ARGS) mandatory
 
 
