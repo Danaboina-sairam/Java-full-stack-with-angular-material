@@ -14,7 +14,7 @@ user authorization(By using roles created with user)
 User creation
 -------------
 
-1.Default user creation when spring security dependency added
+1.Default username  is user and password randomly generated in logs when spring security dependency added
 
 2.user,password,role configuration in application.properties to override default SecurityProperties class(Single user)
 
