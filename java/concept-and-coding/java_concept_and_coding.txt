@@ -4,6 +4,429 @@ Behaviour --- method
 
 
 
+Constructor scenarios:
+
+
+
+Method:1
+
+public class Parent
+{
+
+	Parent()
+	{
+		System.out.println("Parent no argument constructor called");
+	}
+	
+	Parent(String firstName,String lastName)
+	{
+		System.out.println("Parent parameterized constructor called"+firstName+" and "+lastName);
+	}
+}
+
+
+public class Child extends Parent
+{
+	Child()
+	{
+		System.out.println("Child no argument constructor called");
+	}
+	
+	Child(String firstName,String lastName)
+	{
+		System.out.println("Child parameterized constructor called"+firstName+" and "+lastName);
+	}
+
+	public static void main(String args[])
+	{
+		new Child();
+	}
+}
+
+
+
+
+Method:2
+
+public class Parent
+{
+
+	Parent()
+	{
+		System.out.println("Parent no argument constructor called");
+	}
+	
+	Parent(String firstName,String lastName)
+	{
+		System.out.println("Parent parameterized constructor called"+firstName+" and "+lastName);
+	}
+}
+
+
+public class Child extends Parent
+{
+	Child()
+	{
+		System.out.println("Child no argument constructor called");
+	}
+	
+	Child(String firstName,String lastName)
+	{
+		System.out.println("Child parameterized constructor called"+firstName+" and "+lastName);
+	}
+
+	public static void main(String args[])
+	{
+		new Child("sai","ram");
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Method:3
+
+public class Parent
+{
+
+	Parent()
+	{
+		System.out.println("Parent no argument constructor called");
+	}
+	
+	Parent(String firstName,String lastName)
+	{
+		System.out.println("Parent parameterized constructor called"+firstName+" and "+lastName);
+	}
+}
+
+
+public class Child extends Parent
+{
+	Child()
+	{
+		System.out.println("Child no argument constructor called");
+	}
+	
+	Child(String firstName,String lastName)
+	{
+		this();
+		System.out.println("Child parameterized constructor called"+firstName+" and "+lastName);
+	}
+
+	public static void main(String args[])
+	{
+		new Child("sai","ram");
+	}
+}
+
+
+
+
+
+
+Method:4
+
+public class Parent
+{
+
+	Parent()
+	{
+		System.out.println("Parent no argument constructor called");
+	}
+	
+	Parent(String firstName,String lastName)
+	{
+		System.out.println("Parent parameterized constructor called"+firstName+" and "+lastName);
+	}
+}
+
+
+public class Child extends Parent
+{
+	Child()
+	{
+		System.out.println("Child no argument constructor called");
+	}
+	
+	Child(String firstName,String lastName)
+	{
+		super();
+		System.out.println("Child parameterized constructor called"+firstName+" and "+lastName);
+	}
+
+	public static void main(String args[])
+	{
+		new Child("sai","ram");
+	}
+}
+
+
+
+
+Method:5
+
+public class Parent
+{
+
+	Parent()
+	{
+		System.out.println("Parent no argument constructor called");
+	}
+	
+	Parent(String firstName,String lastName)
+	{
+		System.out.println("Parent parameterized constructor called"+firstName+" and "+lastName);
+	}
+}
+
+
+public class Child extends Parent
+{
+	Child()
+	{
+		System.out.println("Child no argument constructor called");
+	}
+	
+	Child(String firstName,String lastName)
+	{
+		this(firstName,lastName);
+		System.out.println("Child parameterized constructor called"+firstName+" and "+lastName);
+	}
+
+	public static void main(String args[])
+	{
+		new Child("sai","ram");
+	}
+}
+
+
+
+
+
+Method:6
+
+public class Parent
+{
+
+	Parent()
+	{
+		System.out.println("Parent no argument constructor called");
+	}
+	
+	Parent(String firstName,String lastName)
+	{
+		System.out.println("Parent parameterized constructor called"+firstName+" and "+lastName);
+	}
+}
+
+
+public class Child extends Parent
+{
+	Child()
+	{
+		System.out.println("Child no argument constructor called");
+	}
+	
+	Child(String firstName,String lastName)
+	{
+		super(firstName,lastName);
+		System.out.println("Child parameterized constructor called"+firstName+" and "+lastName);
+	}
+
+	public static void main(String args[])
+	{
+		new Child("sai","ram");
+	}
+}
+
+
+
+
+
+
+
+Method:7
+
+public class Parent
+{
+
+	Parent()
+	{
+		System.out.println("Parent no argument constructor called");
+	}
+	
+	Parent(String firstName,String lastName)
+	{
+		System.out.println("Parent parameterized constructor called"+firstName+" and "+lastName);
+	}
+}
+
+
+public class Child extends Parent
+{
+	Child()
+	{
+		System.out.println("Child no argument constructor called");
+	}
+	
+	Child(String firstName,String lastName)
+	{
+		super();
+		this();
+		System.out.println("Child parameterized constructor called"+firstName+" and "+lastName);
+	}
+
+	public static void main(String args[])
+	{
+		new Child("sai","ram");
+	}
+}
+
+
+
+
+
+Method:8
+
+public class Parent
+{
+
+	Parent()
+	{
+		System.out.println("Parent no argument constructor called");
+	}
+	
+	Parent(String firstName,String lastName)
+	{
+		System.out.println("Parent parameterized constructor called"+firstName+" and "+lastName);
+	}
+}
+
+
+public class Child extends Parent
+{
+	Child()
+	{
+		System.out.println("Child no argument constructor called");
+	}
+	
+	Child(String firstName,String lastName)
+	{
+		this();
+		super();
+		System.out.println("Child parameterized constructor called"+firstName+" and "+lastName);
+	}
+
+	public static void main(String args[])
+	{
+		new Child("sai","ram");
+	}
+}
+
+
+
+
+
+
+
+Method:9
+
+public class Parent
+{
+
+	Parent()
+	{
+		System.out.println("Parent no argument constructor called");
+	}
+	
+	Parent(String firstName,String lastName)
+	{
+		System.out.println("Parent parameterized constructor called"+firstName+" and "+lastName);
+	}
+}
+
+
+public class Child extends Parent
+{
+	Child()
+	{
+		System.out.println("Child no argument constructor called");
+	}
+	
+	Child(String firstName,String lastName)
+	{
+		this();
+		System.out.println("Child parameterized constructor called"+firstName+" and "+lastName);
+		super();
+	}
+
+	public static void main(String args[])
+	{
+		new Child("sai","ram");
+	}
+}
+
+
+
+
+
+
+
+Method:9
+
+public class Parent
+{
+
+	Parent()
+	{
+		System.out.println("Parent no argument constructor called");
+	}
+	
+	Parent(String firstName,String lastName)
+	{
+		System.out.println("Parent parameterized constructor called"+firstName+" and "+lastName);
+	}
+}
+
+
+public class Child extends Parent
+{
+	Child()
+	{
+		System.out.println("Child no argument constructor called");
+	}
+	
+	Child(String firstName,String lastName)
+	{
+		super();
+		System.out.println("Child parameterized constructor called"+firstName+" and "+lastName);
+		this();
+	}
+
+	public static void main(String args[])
+	{
+		new Child("sai","ram");
+	}
+}
+
+
+
+
+
+
+
 
 
 Here’s a curated list of 20 must-do LLD problems that will level up your design thinking 👇
