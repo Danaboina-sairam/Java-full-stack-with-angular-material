@@ -92,6 +92,11 @@ on authentication method we are using Basic, JWT, Form etc. it will try to load 
 
 
 
+Authentication ByPassing for Some of the URL's
+----------------------------------------------
+
+SecurityFilterChain
+
 
 
 Types of Spring security
