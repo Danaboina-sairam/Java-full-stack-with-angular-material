@@ -45,6 +45,12 @@ InMemory Db
 4.
 
 
+Encoder created with Static vs Dynamic
+--------------------------------------
+
+
+
+
 Types of Spring security
 ------------------------
 
