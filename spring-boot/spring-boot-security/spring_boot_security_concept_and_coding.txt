@@ -51,6 +51,11 @@ Encoder created with Static vs Dynamic
 
 
 
+Encoding vs Hashing
+-------------------
+
+
+
 Types of Spring security
 ------------------------
 
