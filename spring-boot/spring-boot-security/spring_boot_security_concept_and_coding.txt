@@ -48,6 +48,19 @@ InMemory Db
 Encoder created with Static vs Dynamic
 --------------------------------------
 
+With Hardcode
+--------------
+
+1."{noop}password"
+
+2."{bcrypt}+passing password in new encoder object and then concat with {bcrypt}"
+
+
+Without Hardcode
+----------------
+
+3.create passwordEncoder bean
+
 
 
 
