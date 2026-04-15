@@ -14,6 +14,9 @@ InMemoryUserDetailsManager(Spring security)  vs In-Memory Database(H2 Database)
 User creation
 -------------
 
+InMemoryUserDetailsManager
+--------------------------
+
 1.Default username  is user and password randomly generated in logs when spring security dependency added
 
 2.user,password,role configuration in application.properties to override default SecurityProperties class(Single user)
@@ -35,6 +38,9 @@ UserDetailsManager(Parent)
 
 InMemoryUserDetailsManager(Child)
 
+
+InMemory Db 
+-----------
 
 4.
 
