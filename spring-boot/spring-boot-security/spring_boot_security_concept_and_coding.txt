@@ -69,6 +69,31 @@ Encoding vs Hashing
 
 
 
+
+
+public class UserAuthEntity implements UserDetails
+--------------------------------------------------
+
+
+Implements UserDetails because, During Authentication (Form, Basic, JWT etc) security
+framework tries to fetch the user and return the object of UserDetails only, if we don't
+implement it, then we have to do the mapping (from UserAuthEntity to UserDetails)
+
+
+
+
+public class UserAuthEntityService implements UserDetailsService
+----------------------------------------------------------------
+
+
+Implements UserDetailsService because, for the same reason, during authentication, based
+on authentication method we are using Basic, JWT, Form etc. it will try to load user first, but since we are using DB for storing the username and password, spring security don't know how to fetch it, so we have to implement UserDetailsService and override the method "loadUserByUsername"
+
+
+
+
+
+
 Types of Spring security
 ------------------------
 
