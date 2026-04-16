@@ -14,6 +14,11 @@ InMemoryUserDetailsManager(Spring security)  vs In-Memory Database(H2 Database)
 User creation
 -------------
 
+
+ctrl+shift+N
+
+
+
 InMemoryUserDetailsManager
 --------------------------
 
