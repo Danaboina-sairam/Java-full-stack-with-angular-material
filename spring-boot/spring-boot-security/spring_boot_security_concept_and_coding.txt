@@ -30,9 +30,11 @@ InMemoryUserDetailsManager
 3.InMemoryUserDetailsManager Bean with InMemoryUserDetailsManager : used to create user(more than 1 user)
 
 
+UserDetailsService
+
 UserDetails-------->interface
 
-User--------->class
+User--------->class(User.withUsername(),password(),roles.build())
 
 
 PasswordEncoder---------->Default to specific
@@ -48,7 +50,18 @@ InMemoryUserDetailsManager(Child)
 InMemory Db 
 -----------
 
-4.
+4.InMemory-Db
+
+
+UserAuthEntity
+
+UserAuthEntityRepository
+
+UserAuthEntityService
+
+save--->UserAuthEntity--->return UserDetails
+
+loading-->username----->return UserAuthEnity
 
 
 
