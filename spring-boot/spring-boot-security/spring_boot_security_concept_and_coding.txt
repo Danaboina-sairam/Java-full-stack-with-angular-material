@@ -15,7 +15,7 @@ User creation
 -------------
 
 
-ctrl+shift+N------------------->spring security and spring security core
+ctrl+shift+N------------------->spring boot security and spring boot security core
 
 
 
