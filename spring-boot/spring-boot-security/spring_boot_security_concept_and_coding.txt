@@ -17,11 +17,11 @@ User creation
 InMemoryUserDetailsManager
 --------------------------
 
-1.Default username  is user and password randomly generated in logs when spring security dependency added
+1.default with InMemoryUserDetailsManager : Default username  is user and password randomly generated in logs when spring security dependency added
 
-2.user,password,role configuration in application.properties to override default SecurityProperties class(Single user)
+2.application.properties with InMemoryUserDetailsManager : user,password,role configuration in application.properties to override default SecurityProperties class(Single user)
 
-3.InMemory-Db used to create user(more than 1 user)
+3.InMemoryUserDetailsManager Bean with InMemoryUserDetailsManager : used to create user(more than 1 user)
 
 
 UserDetails-------->interface
@@ -43,6 +43,15 @@ InMemory Db
 -----------
 
 4.
+
+
+
+
+
+SecurityFilterChain method used to override the default Authentication method like from Form to Basic,JWT,OAuth. so this is not related to user creation
+
+
+
 
 
 Encoder created with Static vs Dynamic
@@ -96,6 +105,13 @@ Authentication ByPassing for Some of the URL's
 ----------------------------------------------
 
 SecurityFilterChain
+
+
+
+
+Default Form Based Authentication for InMemoryUserDetailsManager
+
+
 
 
 
