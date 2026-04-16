@@ -47,13 +47,6 @@ InMemory Db
 
 
 
-
-SecurityFilterChain method used to override the default Authentication method like from Form to Basic,JWT,OAuth. so this is not related to user creation
-
-
-
-
-
 Encoder created with Static vs Dynamic
 --------------------------------------
 
@@ -101,10 +94,11 @@ on authentication method we are using Basic, JWT, Form etc. it will try to load 
 
 
 
-Authentication ByPassing for Some of the URL's
-----------------------------------------------
+Authentication ByPassing for Some of the URL's And Overriding Authentication Methods
+------------------------------------------------------------------------------------
 
-SecurityFilterChain
+SecurityFilterChain: SecurityFilterChain method used to override the default Authentication method like from Form to Basic,JWT,OAuth. so this is not related to user creation
+
 
 
 
