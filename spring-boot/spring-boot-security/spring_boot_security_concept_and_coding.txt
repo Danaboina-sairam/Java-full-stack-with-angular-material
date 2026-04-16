@@ -64,6 +64,8 @@ save--->UserAuthEntity--->return UserDetails
 loading-->username----->return UserAuthEnity
 
 
+UserAuthEntityController
+
 
 
 Encoder created with Static vs Dynamic
