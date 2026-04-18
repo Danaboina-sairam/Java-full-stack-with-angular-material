@@ -153,17 +153,30 @@ SecurityFilterChain: SecurityFilterChain method used to override the default Aut
 
 
 
-Default Form Based Authentication for InMemoryUserDetailsManager
-
-
-
-
-
 Types of Spring security
 ------------------------
 
 Stateful Authentication
 -----------------------
+
+1.Form Based Authentication
+
+
+Stateless Authenction
+---------------------
+
+2.Basic Authentication
+
+3.JWT Authentication
+
+4.OAuth Authentication
+
+
+Note:-Form Authentication(Default) vs Basic Authentication
+
+Default Form Based Authentication for InMemoryUserDetailsManager
+
+
 
 1.Form Based Authentication(HTML FORM)
 
@@ -172,17 +185,7 @@ Request(Username and Password)----------->Server(Session created)
 Request(Session)------------>Server(Authenticated)
 
 
-Stateless Authenction
----------------------
-
-1.Basic Authentication(PROMPT)
-
-2.JWT Authentication
-
-3.OAuth Authentication
-
-
-1.Basic Authentication
+2.Basic Authentication(PROMPT)
 
 Encoded vs Encrypted Both are not same
 
