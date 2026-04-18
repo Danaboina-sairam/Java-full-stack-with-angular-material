@@ -59,9 +59,13 @@ UserAuthEntityRepository
 
 UserAuthEntityService
 
-save--->UserAuthEntity--->return UserDetails
+save--->UserAuthEntity--->return UserDetails(interface)
 
-loading-->username----->return UserAuthEnity
+loading-->username----->return UserAuthEnity(class)
+
+Note:
+
+1.if UserAuthEntity class not override the UserDetails class then we need to explicitly provide the mapping logic with UserAuthEntity to UserDetails class
 
 
 UserAuthEntityController
