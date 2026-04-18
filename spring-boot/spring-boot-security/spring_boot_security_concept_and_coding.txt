@@ -180,9 +180,41 @@ Default Form Based Authentication for InMemoryUserDetailsManager
 
 1.Form Based Authentication(HTML FORM)
 
-Request(Username and Password)----------->Server(Session created)
+Step:1
 
-Request(Session)------------>Server(Authenticated)
+Request(Username and Password)
+
+Step:2
+
+Server(Session created)
+
+Step:3
+
+setCookie(created session stored by server)
+
+Step:4
+
+Request(cookie: Session)
+
+Step:5
+
+Server(server side client and server session same or not check and Authenticated)
+
+
+if it is found and valid then FulFill Request
+
+otherwise
+
+Redirect to Login page
+
+
+
+
+
+
+HTTPSession------>stored in------>Servlet(Default) or Database
+
+
 
 
 2.Basic Authentication(PROMPT)
