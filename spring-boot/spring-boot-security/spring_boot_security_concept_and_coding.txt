@@ -229,5 +229,11 @@ Session stored in Database is good experience
 
 2.Basic Authentication(PROMPT)
 
+
+why creditial are passed in headers?
+------------------------------------
+
+header are light weight and agreement between all people 
+
 Encoded vs Encrypted Both are not same
 
