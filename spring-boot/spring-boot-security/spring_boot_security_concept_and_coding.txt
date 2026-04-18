@@ -230,8 +230,8 @@ Session stored in Database is good experience
 2.Basic Authentication(PROMPT)
 
 
-why creditial are passed in headers?
-------------------------------------
+why creditial are passed in headers(Authorization headers)?
+-----------------------------------------------------------
 
 header are light weight and agreement between all people 
 
