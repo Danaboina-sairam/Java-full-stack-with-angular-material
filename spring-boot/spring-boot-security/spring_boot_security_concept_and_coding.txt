@@ -73,6 +73,21 @@ User authentication time
 ------------------------
 1.user authentication time require to overide UserDetailsService(UserDetailsService is only for loading user details, NOT for creating users) 
 
+
+Note:
+
+With Override UserDetailsService
+--------------------------------
+1.directly return UserAuthEntity because already UserAuthEntity implements UserDetails 
+
+Without Override UserDetailsService
+-----------------------------------
+
+1.Reuest-->UserAuthEntity  need to map with UserDetails(interface)
+
+2.after that again return UserDetails
+
+
 Note:
 
 1.if UserAuthEntity class not override the UserDetails class then we need to explicitly provide the mapping logic with UserAuthEntity to UserDetails class
