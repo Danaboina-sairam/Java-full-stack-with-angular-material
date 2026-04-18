@@ -53,15 +53,25 @@ InMemory Db
 4.InMemory-Db
 
 
-UserAuthEntity
+UserAuthEntity implements UserDetails
 
 UserAuthEntityRepository
 
-UserAuthEntityService
+UserAuthEntityService implements UserDetailsService
 
 save--->UserAuthEntity--->return UserDetails(interface)
 
 loading-->username----->return UserAuthEnity(class)
+
+Note:
+
+User creation time
+------------------
+1.user creation time not require to override UserDetailsService (UserDetailsService is only for loading user details, NOT for creating users)
+
+User authentication time
+------------------------
+1.user authentication time require to overide UserDetailsService(UserDetailsService is only for loading user details, NOT for creating users) 
 
 Note:
 
