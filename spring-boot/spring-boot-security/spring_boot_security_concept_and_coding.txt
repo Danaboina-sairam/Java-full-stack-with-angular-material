@@ -165,7 +165,7 @@ Types of Spring security
 Stateful Authentication
 -----------------------
 
-1.Form Based Authentication
+1.Form Based Authentication(HTML FORM)
 
 Request(Username and Password)----------->Session created
 
@@ -175,7 +175,7 @@ Request(Session)------------>Authenticated
 Stateless Authenction
 ---------------------
 
-1.Basic Authentication
+1.Basic Authentication(PROMPT)
 
 2.JWT Authentication
 
