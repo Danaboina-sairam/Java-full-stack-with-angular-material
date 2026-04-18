@@ -167,9 +167,9 @@ Stateful Authentication
 
 1.Form Based Authentication(HTML FORM)
 
-Request(Username and Password)----------->Session created
+Request(Username and Password)----------->Server(Session created)
 
-Request(Session)------------>Authenticated
+Request(Session)------------>Server(Authenticated)
 
 
 Stateless Authenction
