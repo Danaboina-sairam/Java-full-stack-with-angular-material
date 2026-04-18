@@ -215,6 +215,16 @@ Redirect to Login page
 HTTPSession------>stored in------>Servlet(Default) or Database
 
 
+Single Server
+-------------
+Session stored in Servlet is good experience
+
+
+Multiple Server
+---------------
+Session stored in Database is good experience
+
+
 
 
 2.Basic Authentication(PROMPT)
