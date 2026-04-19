@@ -215,8 +215,8 @@ Redirect to Login page
 HTTPSession------>stored in------>Servlet(Default) or Database
 
 
-HTTPSession consists
---------------------
+HTTPSession Object consists
+---------------------------
 
 1.Session Id
 
