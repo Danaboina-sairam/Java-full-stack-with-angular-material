@@ -258,6 +258,19 @@ pom.xml
     <artifactId>spring-session-jdbc</artifactId>
 </dependency>
 
+application.properties
+----------------------
+
+spring.session.store-type=jdbc
+spring.session.jdbc.initialize-schema=always
+spring.session.timeout=30m
+
+
+Spring Boot automatically create Tables
+---------------------------------------
+
+SELECT * FROM SPRING_SESSION
+
 
 
 
