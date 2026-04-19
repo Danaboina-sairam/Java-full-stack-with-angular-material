@@ -236,6 +236,17 @@ Session stored in Database is good experience
 
 
 
+Bydefault Session Expiry Time 30 min but we can able MODIFY
+-----------------------------------------------------------
+
+application.properties
+----------------------
+
+server.servlet.session.timeout=1m
+
+
+
+
 
 2.Basic Authentication(PROMPT)
 
