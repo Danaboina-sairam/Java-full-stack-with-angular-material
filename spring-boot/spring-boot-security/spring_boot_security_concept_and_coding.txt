@@ -186,7 +186,7 @@ Request(Username and Password)
 
 Step:2
 
-Server(Session created)
+Server(Session created(JSESSIONID))
 
 Step:3
 
@@ -213,6 +213,16 @@ Redirect to Login page
 
 
 HTTPSession------>stored in------>Servlet(Default) or Database
+
+
+HTTPSession consists
+--------------------
+
+1.Session Id
+
+2.created date
+
+3.expiry date
 
 
 Single Server
