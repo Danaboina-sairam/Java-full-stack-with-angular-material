@@ -247,6 +247,22 @@ server.servlet.session.timeout=1m
 
 
 
+Session Storing in DB
+---------------------
+
+pom.xml
+-------
+
+<dependency>
+    <groupId>org.springframework.session</groupId>
+    <artifactId>spring-session-jdbc</artifactId>
+</dependency>
+
+
+
+
+
+
 
 2.Basic Authentication(PROMPT)
 
