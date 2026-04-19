@@ -325,6 +325,13 @@ Disadvantages of Form Authentication
 
 
 
+H2 Database Setup
+-----------------
+1.H2 database dependency
+2.H2 database console dependency
+3.H2 database creditial properties and console enabled properties
+
+
 
 2.Basic Authentication(PROMPT)
 
