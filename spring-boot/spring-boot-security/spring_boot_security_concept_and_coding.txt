@@ -281,7 +281,47 @@ User Validation by Spring internally But Role Validation in SecurityFilterChain
 We can create user and role in multiple ways
 
 
+How to control the Sessions per user?
+-------------------------------------
 
+@Bean
+public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+    http
+        .authorizeHttpRequests(auth -> auth
+            .requestMatchers("/auth/register", "/h2-console/**").permitAll()
+            .anyRequest().authenticated()
+        )
+        .formLogin(Customizer.withDefaults())
+        .sessionManagement(session -> session
+            .maximumSessions(1) // 🔥 only 1 session per user
+        );
+
+    return http.build();
+}
+
+
+What are Session Creation Policies
+----------------------------------
+
+
+Types of Session Creation Policies
+----------------------------------
+
+1.IF_REQUIRED
+
+2.ALWAYS
+
+3.NEVER
+
+4.STATELESS
+
+Disadvantages of Form Authentication
+------------------------------------
+1.CSRF vulernabilities and Session Hijacking
+
+2.Session Management: extra overhead in distributed system
+
+3.Database
 
 
 
