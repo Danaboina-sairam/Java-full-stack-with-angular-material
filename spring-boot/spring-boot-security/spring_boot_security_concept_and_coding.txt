@@ -271,6 +271,15 @@ Spring Boot automatically create Tables
 
 SELECT * FROM SPRING_SESSION
 
+Note:- We can also create customized class
+
+
+
+User Validation by Spring internally But Role Validation in SecurityFilterChain 
+-------------------------------------------------------------------------------
+
+We can create user and role in multiple ways
+
 
 
 
