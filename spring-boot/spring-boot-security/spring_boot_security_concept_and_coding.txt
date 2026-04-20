@@ -179,6 +179,7 @@ Default Form Based Authentication for InMemoryUserDetailsManager
 
 
 1.Form Based Authentication(HTML FORM)
+--------------------------------------
 
 Step:1
 
@@ -334,12 +335,36 @@ H2 Database Setup
 
 
 2.Basic Authentication(PROMPT)
+------------------------------
 
+HTTPS
 
-why creditial are passed in headers(Authorization headers)?
------------------------------------------------------------
-
-header are light weight and agreement between all people 
 
 Encoded vs Encrypted Both are not same
+
+
+
+Why creditial passed in header?
+-------------------------------
+
+Authorised header calling time
+
+Header called time
+
+Basic with base64 of username:password
+
+
+possible reasons
+----------------
+
+1.Standard: all api's and clients accepting pattern and also light weight. so every one follow http standardization RFC 7617
+
+2.Security: header are not possible to print in the headers
+
+3.headers support all http requests(GET not supported RequestBody)
+
+UsernamePasswordAuthenticationToken
+
+
+
 
