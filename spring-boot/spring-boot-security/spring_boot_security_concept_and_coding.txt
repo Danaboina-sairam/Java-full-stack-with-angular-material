@@ -339,6 +339,12 @@ H2 Database Setup
 3.H2 database creditial properties and console enabled properties
 
 
+Postgre Database
+----------------
+1.we need to create primary key database command 
+2.while creation table with columns need to check proper names with spaces also matter in editor
+
+
 
 
 
