@@ -326,11 +326,19 @@ Disadvantages of Form Authentication
 
 
 
+Must disable in Form SecurityFilterChain Bean
+---------------------------------------------
+
+.csrf(csrf -> csrf.disable())
+
+
 H2 Database Setup
 -----------------
 1.H2 database dependency
 2.H2 database console dependency
 3.H2 database creditial properties and console enabled properties
+
+
 
 
 
