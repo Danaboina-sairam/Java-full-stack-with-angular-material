@@ -435,7 +435,7 @@ configuration Api:
 
 1.user creation Api
 
-2.generate token Api(calling from filter)
+2.generate token Api(calling from JWTAuthenticationFilter)
 
 4.refresh token Api(calling from filter)
 
@@ -469,6 +469,8 @@ JWTAuthenticationFilter
 OncePerRequestFilter: some times recursive filter calling time need to restrict 1 time only for per request
 
 
+
+LoginRequest----------->UsernamePasswordAuthenticationToken------------>AuthenticationManager
 
 
 
