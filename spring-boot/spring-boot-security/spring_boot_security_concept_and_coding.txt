@@ -441,7 +441,7 @@ configuration Api:
 
 business Api: 
 
-3.validate token Api : validate token Api used in business Api internally
+3.validate token Api(calling from  : validate token Api used in business Api internally
 
 
 
@@ -463,14 +463,76 @@ Note: above dependencies for generate token and sign token
 3.jjwt-jackson------------>required for jackson processing
 
 
-JWTAuthenticationFilter
+JWTAuthenticationFilter:generate token
+-----------------------
 
 
 OncePerRequestFilter: some times recursive filter calling time need to restrict 1 time only for per request
 
 
 
-LoginRequest----------->UsernamePasswordAuthenticationToken------------>AuthenticationManager
+doFilterInternal of OncePerRequestFilter
+----------------------------------------
+
+if generate_token
+
+LoginRequest----------->UsernamePasswordAuthenticationToken------------>AuthenticationManager---------->generateToken(JWTUtil)
+
+
+SecurityFilterChain----------->AuthenticationManager and JWTUtil
+
+DaoAuthenticationProvider
+
+else
+
+next filter
+
+
+
+
+
+
+
+JwtValidationFilter
+-------------------
+
+
+Any type of HTTP Request(only checking the header)
+
+
+token------------>JwtAuthenticationToken------------>AuthenticationManager
+
+
+UsernamePasswordAuthenticationToken
+
+
+
+
+
+
+Method:1
+
+JWTAuthenticationFilter:refresh token
+-----------------------
+
+method:1
+
+response header
+
+
+method:2
+
+cookie
+
+
+
+
+Method:2
+
+JWTRefreshFilter
+----------------
+
+
 
 
 
