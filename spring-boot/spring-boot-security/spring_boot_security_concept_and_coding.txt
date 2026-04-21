@@ -435,9 +435,9 @@ configuration Api:
 
 1.user creation Api
 
-2.generate token Api
+2.generate token Api(calling from filter)
 
-4.refresh token Api
+4.refresh token Api(calling from filter)
 
 business Api: 
 
@@ -448,3 +448,35 @@ business Api:
 
 
 ProviderManager.java: will ask who will handle current filter
+
+
+
+
+dependencies required
+---------------------
+
+1.jjwt-api
+2.jjwt-impl
+
+Note: above dependencies for generate token and sign token
+
+3.jjwt-jackson------------>required for jackson processing
+
+
+JWTAuthenticationFilter
+
+
+OncePerRequestFilter: some times recursive filter calling time need to restrict 1 time only for per request
+
+
+
+
+
+
+UsernamePasswordAuthenticationToken------------------>DaoAuthenticationProvider
+
+
+filter(Authentication object)--------------->Authentication Manager------------>Authentication Provider
+
+
+JwtAuthenticationToken----------------------->jwtAuthenticationProvider
