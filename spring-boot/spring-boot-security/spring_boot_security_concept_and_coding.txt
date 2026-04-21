@@ -390,3 +390,61 @@ UsernamePasswordAuthenticationToken
 
 
 
+3.JWT Authentication
+--------------------
+
+base64(header).base64(body).base64(signature)
+
+
+
+No of Api's
+-----------
+1.user creation Api
+
+request:
+1.username
+2.password
+3.role
+
+response:
+
+user created 
+
+
+2.generate token Api: whatever creditial stored in db and passed by user creditial if it is both are matched then token generated
+
+request:
+1.username
+2.password
+
+response:
+
+token generated
+
+
+3.validate token Api
+
+
+4.refresh token Api
+
+
+
+Note: 
+
+configuration Api:
+
+1.user creation Api
+
+2.generate token Api
+
+4.refresh token Api
+
+business Api: 
+
+3.validate token Api : validate token Api used in business Api internally
+
+
+
+
+
+ProviderManager.java: will ask who will handle current filter
