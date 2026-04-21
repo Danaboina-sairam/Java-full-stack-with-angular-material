@@ -156,14 +156,14 @@ SecurityFilterChain: SecurityFilterChain method used to override the default Aut
 Types of Spring security
 ------------------------
 
-Stateful Authentication
------------------------
+Stateful Authentication(With Session)
+-------------------------------------
 
 1.Form Based Authentication
 
 
-Stateless Authenction
----------------------
+Stateless Authenction(Without Session)
+--------------------------------------
 
 2.Basic Authentication
 
