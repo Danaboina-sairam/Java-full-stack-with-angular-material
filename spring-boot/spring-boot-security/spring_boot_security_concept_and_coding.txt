@@ -357,6 +357,14 @@ HTTPS
 Encoded vs Encrypted Both are not same
 
 
+UsernamePasswordAuthenticationToken
+
+
+BasicAuthenticationFilter
+
+AuthorizationFilter
+
+
 
 Why creditial passed in header?
 -------------------------------
@@ -371,7 +379,7 @@ Basic with base64 of username:password
 possible reasons
 ----------------
 
-1.Standard: all api's and clients accepting pattern and also light weight. so every one follow http standardization RFC 7617
+1.Standard: Api's and clients Universal accepted standard pattern and also light weight. so every one follow http standardization RFC 7617
 
 2.Security: header are not possible to print in the headers
 
