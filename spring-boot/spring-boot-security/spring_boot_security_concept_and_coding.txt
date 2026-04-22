@@ -346,6 +346,43 @@ Postgre Database
 
 
 
+UsernamePasswordAuthenticationToken
+[
+  Principal=user,
+  Credentials=[PROTECTED],
+  Authenticated=false,
+  Details=null,
+  Granted Authorities=[]
+]
+
+
+
+
+
+UsernamePasswordAuthenticationToken 
+[
+  Principal=org.springframework.security.core.userdetails.User 
+  [
+    Username=user, 
+    Password=[PROTECTED], 
+    Enabled=true, 
+    AccountNonExpired=true, 
+    CredentialsNonExpired=true, 
+    AccountNonLocked=true, 
+    Granted Authorities=[ROLE_ADMIN]
+  ], 
+  Credentials=[PROTECTED], 
+  Authenticated=true, 
+  Details=WebAuthenticationDetails 
+  [
+    RemoteIpAddress=0:0:0:0:0:0:0:1, 
+    SessionId=null
+  ], 
+  Granted Authorities=[ROLE_ADMIN]
+]
+
+
+
 
 
 2.Basic Authentication(PROMPT)
