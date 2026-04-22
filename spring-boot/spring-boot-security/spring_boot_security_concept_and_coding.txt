@@ -581,3 +581,37 @@ filter(Authentication object)--------------->Authentication Manager------------>
 
 
 JwtAuthenticationToken----------------------->jwtAuthenticationProvider
+
+
+
+
+
+
+
+
+
+Filters not called automatically so we need call in the SecurityFilterChain
+
+
+
+
+
+SecurityContextHolderFilter
+
+
+UsernamePasswordAuthenticationFilter
+
+
+BasicAuthenticationFilter
+
+
+AuthorizationFilter
+
+
+
+
+
+generate_token--------------->DaoAuthenticationProvider
+
+
+validate_token--------------->JwtAuthenticationProvider
