@@ -615,3 +615,9 @@ generate_token--------------->DaoAuthenticationProvider
 
 
 validate_token--------------->JwtAuthenticationProvider
+
+
+
+generate token --- LoginRequest
+
+Validate token --- JwtAuthenticationToken
