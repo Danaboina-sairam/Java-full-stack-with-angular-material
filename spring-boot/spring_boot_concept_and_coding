@@ -1062,7 +1062,11 @@ LIReconmsApplication-------------->run--------------->getCurrentJobName---------
 eshieldBatchJob
 
 
-tncStep
+
+
+tncStep(stepname,jobRepository)
+
+chunk
 
 reader---------->jdbcPagingItemReader(time info takinf yono_batch.BATCH_JOB_EXECUTION) , CustomRowMapper , (reading from our table) -----------> select, from , where , group clauses
 
@@ -1073,4 +1077,16 @@ writer------------->buildWriter(mountPath)---------->getEshieldDTOFlatFileItemWr
 listener------------->beforeStep, afterStep
 
 
+
+
 auditdb------------>yono_batch------------>BATCH_JOB_EXECUTION
+
+
+Kafka integration with batch job
+
+
+save to DB OR call another API
+
+Debugging in batch job
+
+
