@@ -1104,3 +1104,19 @@ Spring Batch Terminalogy
 7.JobRepository
 
 
+Types of Tables in Spring Batch
+
+1. Job-level tables
+2. Step-level tables
+3. Context & Params tables
+
+
+
+BATCH_JOB_INSTANCE
+BATCH_JOB_EXECUTION
+BATCH_JOB_EXECUTION_PARAMS
+BATCH_JOB_EXECUTION_CONTEXT
+BATCH_STEP_EXECUTION
+BATCH_STEP_EXECUTION_CONTEXT
+
+
