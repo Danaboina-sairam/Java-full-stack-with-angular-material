@@ -1092,3 +1092,15 @@ save to DB OR call another API
 Debugging in batch job
 
 
+Spring Batch Terminalogy
+------------------------
+
+1.JobLauncher
+2.Job
+3.Step
+4.ItemReader
+5.ItemProcessor
+6.ItemWriter
+7.JobRepository
+
+
