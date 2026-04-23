@@ -1040,3 +1040,37 @@ If a user retries a request,
 your system should not panic.
 
 Design APIs so repeated requests don’t break your data.
+
+
+
+
+
+
+
+
+
+
+
+BATCH JOB
+---------
+
+
+
+LIReconmsApplication-------------->run--------------->getCurrentJobName------------->BatchJobsConfig------------>BatchConfig
+
+
+eshieldBatchJob
+
+
+tncStep
+
+reader---------->jdbcPagingItemReader(time info takinf yono_batch.BATCH_JOB_EXECUTION) , CustomRowMapper , (reading from our table) -----------> select, from , where , group clauses
+
+processor----------->tncProcessor------------->CustomItemProcessor
+
+writer------------->buildWriter(mountPath)---------->getEshieldDTOFlatFileItemWriter(encryption)
+
+listener------------->beforeStep, afterStep
+
+
+auditdb------------>yono_batch------------>BATCH_JOB_EXECUTION
