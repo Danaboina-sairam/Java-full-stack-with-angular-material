@@ -692,22 +692,34 @@ abstract--->final, static(static allowing on java 8),default(default allowing on
 5.we can't declare interface variables with the following modifiers. private, protected, transient, volatile.
 
 6.for interface variables compulsory we should perforn initialization at the time of declaration otherwise we will get compile time error.
+
 7.inside interface we can't declare instance and static blocks otherwise we will get compile time error.
 
 8.inside interface we can't declare constructors.
+
+9.best for unrelated classes needing common behavior
 
 
 
 abstract class
 --------------
 1.if we are talking about implementation but not completely(partial implementation) then we should go for abstract class.
+
 2.every method present in abstract class need not be public and abstract. in addition to abstract methods we can take concreate methods also.
+
 3.there are no restrictions on abstract class method modifiers.
+
 4.the variables present inside abstract class need not be public, static and final
+
 5.there are no restrictions on abstract class variable modifiers.
+
 6.for abstract class variables it is not required to perform initialization at the time of declaration.
+
 7.inside abstract class we can declare instance and static blocks.
+
 8.inside abstract class we can declare constructor, which will be executed at the time fo child object creation.
+
+9.ideal for related classes sharing common code
 
 
 
