@@ -1120,3 +1120,6 @@ BATCH_STEP_EXECUTION
 BATCH_STEP_EXECUTION_CONTEXT
 
 
+
+
+java -jar app.jar --job.name=myJob
