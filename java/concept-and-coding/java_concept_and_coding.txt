@@ -728,7 +728,7 @@ Note:
 
 1.interface used for references like new object assign to interface reference
 
-2.interface used for return type like method return we are specifying with primitive type,object,class,interface,collections
+2.interface used for return type like method return we are specifying with primitive type,object,class,interface,collections and along with abstract class
 
 3.interface used for inheritence like multipe class implements interface
 
