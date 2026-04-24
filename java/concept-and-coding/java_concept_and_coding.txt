@@ -423,7 +423,7 @@ public class Child extends Parent
 
 
 
-
+Note: we are unable to call constructor in method but we are able create object with new 
 
 
 
