@@ -1,3 +1,29 @@
+Attacks
+
+
+1.CSRF(Cross-Site Request Forgery)
+
+
+2.XSS(Cross-Site Scripting)
+
+
+3.CORS(Cross-Origin Resource Sharing)
+
+
+4.SQL Injection
+
+
+
+
+
+
+
+
+
+
+
+
+
 User creation
 
 
