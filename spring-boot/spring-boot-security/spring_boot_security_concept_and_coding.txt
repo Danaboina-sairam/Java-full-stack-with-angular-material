@@ -316,6 +316,20 @@ Types of Session Creation Policies
 
 4.STATELESS
 
+
+
+
+1.SecurityContextPersistenceFilter
+2.UsernamePasswordAuthenticationFilter-------------->DaoAuthenticationProvider
+3.SecurityContextHolderFilter
+
+SecurityContext
+
+HttpSessionSecurityContextRepository
+
+
+
+
 Disadvantages of Form Authentication
 ------------------------------------
 1.CSRF vulernabilities and Session Hijacking
