@@ -616,8 +616,8 @@ Filters not called automatically so we need call in the SecurityFilterChain
 
 
 
-1.UsernamePasswordAuthenticationFilter-------------->DaoAuthenticationProvider
-2.Jwt------------>JWTAuthenticationProvider
+1.UsernamePasswordAuthenticationFilter(ResponseBody)-------------->DaoAuthenticationProvider
+2.Jwt(header)------------>JWTAuthenticationProvider
 
 
 
