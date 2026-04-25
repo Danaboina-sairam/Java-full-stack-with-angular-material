@@ -417,6 +417,14 @@ AuthorizationFilter
 
 
 
+
+
+
+1.BasicAuthenticationFilter-------------->DaoAuthenticationProvider
+
+
+
+
 Why creditial passed in header?
 -------------------------------
 
@@ -608,6 +616,17 @@ Filters not called automatically so we need call in the SecurityFilterChain
 
 
 
+1.UsernamePasswordAuthenticationFilter-------------->DaoAuthenticationProvider
+2.Jwt------------>JWTAuthenticationProvider
+
+
+
+SecurityContextHolder
+
+
+
+
+
 
 
 SecurityContextHolderFilter
@@ -635,3 +654,19 @@ validate_token--------------->JwtAuthenticationProvider
 generate token --- LoginRequest
 
 Validate token --- JwtAuthenticationToken
+
+
+
+
+
+
+
+
+
+
+1.OAuth2LoginAuthenticationFilter--------------->OAuth2LoginAuthenticationProvider
+
+
+SecurityContextHolder
+
+HttpSessionSecurityContextRepository
