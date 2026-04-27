@@ -209,7 +209,11 @@ Default Form Based Authentication for InMemoryUserDetailsManager
 
 Step:1
 
-Request(Username and Password)
+Request(Username and Password): 
+
+Default Login URL :  /login
+
+Default Logout URL : /logout
 
 Step:2
 
@@ -263,8 +267,8 @@ Session stored in Database is good experience
 
 
 
-Bydefault Session Expiry Time 30 min but we can able MODIFY
------------------------------------------------------------
+Bydefault Session Expiry Time 30 min(Depend on Servlet Container) but we can able MODIFY
+----------------------------------------------------------------------------------------
 
 application.properties
 ----------------------
