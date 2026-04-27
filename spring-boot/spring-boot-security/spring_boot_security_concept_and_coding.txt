@@ -468,6 +468,57 @@ We can change HTML page below place
 
 
 
+
+
+AuthorizationFilter:Any resource accessing authorization is mandatory
+-------------------
+
+Note:By default, we don't have any Authorization restriction
+
+
+Types of Authorization
+----------------------
+
+1.Filter level Authorization
+
+2.Controller level Authorization
+
+
+1.Filter level Authorization
+----------------------------
+
+Authorization Role Checking 
+---------------------------
+
+SINGLE
+-------
+
+application.properties
+----------------------
+spring.security.user.roles=USER
+
+Config
+------
+
+auth -> auth.requestMatchers("/user").hasRole("USER")
+
+
+MULTIPLE
+--------
+
+application.properties
+----------------------
+spring.security.user.roles=USER,ADMIN
+
+Config
+------
+
+auth -> auth.requestMatchers("/user").hasAnyRole("USER","ADMIN")
+
+
+
+
+
 What are Session Creation Policies
 ----------------------------------
 
@@ -481,7 +532,7 @@ Types of Session Creation Policies
 
 3.NEVER
 
-4.STATELESS
+4.STATELESS(BASIC,JWT,OAuth2)
 
 
 
@@ -495,8 +546,8 @@ Disadvantages of Form Authentication
 
 
 
-Must disable in Form SecurityFilterChain Bean
----------------------------------------------
+Must disable in Form SecurityFilterChain Bean(Don't disable in Form Based Authentication)
+-----------------------------------------------------------------------------------------
 
 .csrf(csrf -> csrf.disable())
 
