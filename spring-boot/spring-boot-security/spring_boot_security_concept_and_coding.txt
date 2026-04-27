@@ -389,6 +389,10 @@ After Default Login Successful Specific End Point Called
 2.After Authentication, User is invoking any subsequent APIs
 ------------------------------------------------------------
 
+1.SecurityContextHolderFilter--------->HttpSessionSecurityContextRepository
+
+2.AuthorizationFilter
+
 
 
 FLOW
