@@ -552,16 +552,21 @@ Disadvantages of Form Authentication
 ------------------------------------
 1.CSRF vulernabilities and Session Hijacking
 
-2.Session Management: extra overhead in distributed system
-
-3.Database
-
 
 
 Must disable in Form SecurityFilterChain Bean(Don't disable in Form Based Authentication)
 -----------------------------------------------------------------------------------------
 
 .csrf(csrf -> csrf.disable())
+
+
+
+2.Session Management: extra overhead in distributed system
+
+3.Database
+
+
+
 
 
 H2 Database Setup
