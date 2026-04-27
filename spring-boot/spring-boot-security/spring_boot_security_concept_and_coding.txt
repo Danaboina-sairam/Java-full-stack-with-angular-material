@@ -306,6 +306,10 @@ Note:- We can also create customized class
 
 
 
+1.Before Authentication, User is invoking any APIs
+--------------------------------------------------
+
+
 
 1.UsernamePasswordAuthenticationFilter-------------->DaoAuthenticationProvider
 
@@ -381,6 +385,9 @@ After Default Login Successful Specific End Point Called
 
 1.SecurityContextPersistenceFilter
 
+
+2.After Authentication, User is invoking any subsequent APIs
+------------------------------------------------------------
 
 
 
