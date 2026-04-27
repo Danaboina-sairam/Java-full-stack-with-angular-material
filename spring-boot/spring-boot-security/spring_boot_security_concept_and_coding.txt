@@ -311,6 +311,12 @@ Note:- We can also create customized class
 2.SecurityContextHolderFilter
 
 
+FLOW
+----
+
+AuthenticationManager-------------->ProviderManager--------------->AuthenticationProvider
+
+
 
 UsernamePasswordAuthenticationToken
 [
