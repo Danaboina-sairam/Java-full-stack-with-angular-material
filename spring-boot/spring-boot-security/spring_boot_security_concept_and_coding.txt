@@ -204,6 +204,23 @@ Default Form Based Authentication for InMemoryUserDetailsManager
 
 
 
+pom.xml
+-------
+
+<dependency>
+   <groupId>org.springframework.boot</groupId>
+   <artifactId>spring-boot-starter-security</artifactId>
+</dependency>
+
+
+application.properties
+----------------------
+
+spring.security.user.name=user
+spring.security.user.password=pass
+
+
+
 1.Form Based Authentication(HTML FORM)
 --------------------------------------
 
