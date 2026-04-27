@@ -451,7 +451,7 @@ public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Excepti
 With By Pass Authentication
 ---------------------------
 
-.requestMatchers("/auth/register", "/h2-console/**").permitAll()
+auth -> auth.requestMatchers("/auth/register", "/h2-console/**").permitAll()
 
 
 Without By Pass Authentication
