@@ -306,6 +306,61 @@ Note:- We can also create customized class
 
 
 
+
+1.UsernamePasswordAuthenticationFilter-------------->DaoAuthenticationProvider
+2.SecurityContextHolderFilter
+
+
+
+UsernamePasswordAuthenticationToken
+[
+  Principal=user,
+  Credentials=[PROTECTED],
+  Authenticated=false,
+  Details=null,
+  Granted Authorities=[]
+]
+
+
+
+
+
+UsernamePasswordAuthenticationToken 
+[
+  Principal=org.springframework.security.core.userdetails.User 
+  [
+    Username=user, 
+    Password=[PROTECTED], 
+    Enabled=true, 
+    AccountNonExpired=true, 
+    CredentialsNonExpired=true, 
+    AccountNonLocked=true, 
+    Granted Authorities=[ROLE_ADMIN]
+  ], 
+  Credentials=[PROTECTED], 
+  Authenticated=true, 
+  Details=WebAuthenticationDetails 
+  [
+    RemoteIpAddress=0:0:0:0:0:0:0:1, 
+    SessionId=null
+  ], 
+  Granted Authorities=[ROLE_ADMIN]
+]
+
+
+
+
+1.SecurityContextPersistenceFilter
+
+
+SecurityContext
+
+HttpSessionSecurityContextRepository
+
+
+
+
+
 User Validation by Spring internally But Role Validation in SecurityFilterChain 
 -------------------------------------------------------------------------------
 
@@ -348,18 +403,6 @@ Types of Session Creation Policies
 
 
 
-
-1.SecurityContextPersistenceFilter
-2.UsernamePasswordAuthenticationFilter-------------->DaoAuthenticationProvider
-3.SecurityContextHolderFilter
-
-SecurityContext
-
-HttpSessionSecurityContextRepository
-
-
-
-
 Disadvantages of Form Authentication
 ------------------------------------
 1.CSRF vulernabilities and Session Hijacking
@@ -387,44 +430,6 @@ Postgre Database
 ----------------
 1.we need to create primary key database command 
 2.while creation table with columns need to check proper names with spaces also matter in editor
-
-
-
-UsernamePasswordAuthenticationToken
-[
-  Principal=user,
-  Credentials=[PROTECTED],
-  Authenticated=false,
-  Details=null,
-  Granted Authorities=[]
-]
-
-
-
-
-
-UsernamePasswordAuthenticationToken 
-[
-  Principal=org.springframework.security.core.userdetails.User 
-  [
-    Username=user, 
-    Password=[PROTECTED], 
-    Enabled=true, 
-    AccountNonExpired=true, 
-    CredentialsNonExpired=true, 
-    AccountNonLocked=true, 
-    Granted Authorities=[ROLE_ADMIN]
-  ], 
-  Credentials=[PROTECTED], 
-  Authenticated=true, 
-  Details=WebAuthenticationDetails 
-  [
-    RemoteIpAddress=0:0:0:0:0:0:0:1, 
-    SessionId=null
-  ], 
-  Granted Authorities=[ROLE_ADMIN]
-]
-
 
 
 
