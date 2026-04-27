@@ -305,10 +305,24 @@ SELECT * FROM SPRING_SESSION
 Note:- We can also create customized class
 
 
+SELECT * FROM SPRING_SESSION_ATTRIBUTES
 
 
 1.UsernamePasswordAuthenticationFilter-------------->DaoAuthenticationProvider
 2.SecurityContextHolderFilter
+
+a.SecurityContext
+
+b.HttpSessionSecurityContextRepository(New HTTP Session created here)
+
+
+
+
+
+
+1.SecurityContextPersistenceFilter
+
+
 
 
 FLOW
@@ -316,6 +330,10 @@ FLOW
 
 AuthenticationManager-------------->ProviderManager--------------->AuthenticationProvider
 
+
+
+Before Authentication "UsernamePasswordAuthenticationToken" Object
+------------------------------------------------------------------
 
 
 UsernamePasswordAuthenticationToken
@@ -328,6 +346,9 @@ UsernamePasswordAuthenticationToken
 ]
 
 
+
+After Authentication "UsernamePasswordAuthenticationToken" Object
+-----------------------------------------------------------------
 
 
 
@@ -352,16 +373,6 @@ UsernamePasswordAuthenticationToken
   ], 
   Granted Authorities=[ROLE_ADMIN]
 ]
-
-
-
-
-1.SecurityContextPersistenceFilter
-
-
-SecurityContext
-
-HttpSessionSecurityContextRepository
 
 
 
