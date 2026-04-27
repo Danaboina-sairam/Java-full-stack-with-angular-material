@@ -445,6 +445,24 @@ public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Excepti
 }
 
 
+
+
+
+With By Pass Authentication
+---------------------------
+
+.requestMatchers("/auth/register", "/h2-console/**").permitAll()
+
+
+Without By Pass Authentication
+------------------------------
+
+auth -> auth.anyRequest().authenticated()
+
+
+
+
+
 What are Session Creation Policies
 ----------------------------------
 
