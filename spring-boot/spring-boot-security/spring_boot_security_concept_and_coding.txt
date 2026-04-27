@@ -309,26 +309,7 @@ SELECT * FROM SPRING_SESSION_ATTRIBUTES
 
 
 1.UsernamePasswordAuthenticationFilter-------------->DaoAuthenticationProvider
-2.SecurityContextHolderFilter
 
-a.SecurityContext
-
-b.HttpSessionSecurityContextRepository(New HTTP Session created here)
-
-
-
-
-
-
-1.SecurityContextPersistenceFilter
-
-
-
-
-FLOW
-----
-
-AuthenticationManager-------------->ProviderManager--------------->AuthenticationProvider
 
 
 
@@ -374,6 +355,30 @@ UsernamePasswordAuthenticationToken
   Granted Authorities=[ROLE_ADMIN]
 ]
 
+
+
+
+
+2.SecurityContextHolderFilter
+
+a.SecurityContext
+
+b.HttpSessionSecurityContextRepository(New HTTP Session created here)
+
+
+
+
+
+
+1.SecurityContextPersistenceFilter
+
+
+
+
+FLOW
+----
+
+AuthenticationManager-------------->ProviderManager--------------->AuthenticationProvider
 
 
 
