@@ -370,6 +370,13 @@ SELECT * FROM SPRING_SESSION_ATTRIBUTES
 
 
 
+Default End Point Called After Default Login URL Called
+-------------------------------------------------------
+
+
+Specific End Point Called After Default Login URL Called
+--------------------------------------------------------
+
 
 
 1.SecurityContextPersistenceFilter
