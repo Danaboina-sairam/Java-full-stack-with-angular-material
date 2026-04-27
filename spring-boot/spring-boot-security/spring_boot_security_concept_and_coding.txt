@@ -305,7 +305,6 @@ SELECT * FROM SPRING_SESSION
 Note:- We can also create customized class
 
 
-SELECT * FROM SPRING_SESSION_ATTRIBUTES
 
 
 1.UsernamePasswordAuthenticationFilter-------------->DaoAuthenticationProvider
@@ -365,6 +364,9 @@ a.SecurityContext
 
 b.HttpSessionSecurityContextRepository(New HTTP Session created here)
 
+
+
+SELECT * FROM SPRING_SESSION_ATTRIBUTES
 
 
 
