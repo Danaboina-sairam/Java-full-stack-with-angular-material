@@ -518,9 +518,21 @@ auth -> auth.requestMatchers("/user").hasAnyRole("USER","ADMIN")
 
 
 
+How to control the Sessions per user?
+-------------------------------------
+
+.sessionManagement(session->session.maximumSession(1).maxSessionsPreventsLogin(true))
+
+Note:Any browser or window open 1 session only
+
+
+
+
 
 What are Session Creation Policies
 ----------------------------------
+
+.sessionManagement(session->session.sessionCreationPolicy.IF_REQUIRED))
 
 
 Types of Session Creation Policies
