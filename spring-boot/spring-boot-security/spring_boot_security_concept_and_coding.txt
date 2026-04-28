@@ -609,13 +609,62 @@ Authorization headers and headers Both are not same
 
 
 
-UsernamePasswordAuthenticationToken
-
-
 
 1.BasicAuthenticationFilter-------------->DaoAuthenticationProvider
 
+
+
+Before Authentication "UsernamePasswordAuthenticationToken" Object
+------------------------------------------------------------------
+
+
+UsernamePasswordAuthenticationToken
+[
+  Principal=user,
+  Credentials=[PROTECTED],
+  Authenticated=false,
+  Details=null,
+  Granted Authorities=[]
+]
+
+
+
+After Authentication "UsernamePasswordAuthenticationToken" Object
+-----------------------------------------------------------------
+
+
+
+UsernamePasswordAuthenticationToken 
+[
+  Principal=org.springframework.security.core.userdetails.User 
+  [
+    Username=user, 
+    Password=[PROTECTED], 
+    Enabled=true, 
+    AccountNonExpired=true, 
+    CredentialsNonExpired=true, 
+    AccountNonLocked=true, 
+    Granted Authorities=[ROLE_ADMIN]
+  ], 
+  Credentials=[PROTECTED], 
+  Authenticated=true, 
+  Details=WebAuthenticationDetails 
+  [
+    RemoteIpAddress=0:0:0:0:0:0:0:1, 
+    SessionId=null
+  ], 
+  Granted Authorities=[ROLE_ADMIN]
+]
+
+
+
+
 AuthorizationFilter
+
+
+
+
+
 
 
 Why we need to send username and password in Authorization header only ? why not in RequestBody or any other way?
