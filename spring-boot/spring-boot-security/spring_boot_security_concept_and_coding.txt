@@ -618,6 +618,8 @@ UsernamePasswordAuthenticationToken
 AuthorizationFilter
 
 
+Why we need to send username and password in Authorization header only ? why not in RequestBody or any other way?
+-----------------------------------------------------------------------------------------------------------------
 
 possible reasons
 ----------------
