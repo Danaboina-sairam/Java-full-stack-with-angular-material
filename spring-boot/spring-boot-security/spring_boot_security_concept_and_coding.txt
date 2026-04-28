@@ -587,28 +587,6 @@ Postgre Database
 2.Basic Authentication(PROMPT)
 ------------------------------
 
-HTTPS
-
-
-Encoded vs Encrypted Both are not same
-
-
-UsernamePasswordAuthenticationToken
-
-
-BasicAuthenticationFilter
-
-AuthorizationFilter
-
-
-
-
-
-
-1.BasicAuthenticationFilter-------------->DaoAuthenticationProvider
-
-
-
 
 Why creditial passed in header?
 -------------------------------
@@ -619,6 +597,23 @@ Header called time
 
 Basic with base64 of username:password
 
+Creditial are encoded using base64
+
+Must used in HTTPS environment only
+
+Note: Encoded vs Encrypted Both are not same
+
+
+
+UsernamePasswordAuthenticationToken
+
+
+
+1.BasicAuthenticationFilter-------------->DaoAuthenticationProvider
+
+AuthorizationFilter
+
+
 
 possible reasons
 ----------------
@@ -628,8 +623,6 @@ possible reasons
 2.Security: header are not possible to print in the headers
 
 3.headers support all http requests(GET not supported RequestBody)
-
-UsernamePasswordAuthenticationToken
 
 
 
