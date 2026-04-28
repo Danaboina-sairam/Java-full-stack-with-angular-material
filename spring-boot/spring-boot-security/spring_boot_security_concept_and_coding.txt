@@ -601,7 +601,11 @@ Creditial are encoded using base64
 
 Must used in HTTPS environment only
 
-Note: Encoded vs Encrypted Both are not same
+Note:
+
+Encoded vs Encrypted Both are not same
+
+Authorization headers and headers Both are not same
 
 
 
