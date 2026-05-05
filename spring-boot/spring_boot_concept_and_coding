@@ -1056,10 +1056,10 @@ BATCH JOB
 
 
 
-LIReconmsApplication-------------->run--------------->getCurrentJobName------------->BatchJobsConfig------------>BatchConfig
+ReconmsApplication-------------->run--------------->getCurrentJobName------------->BatchJobsConfig------------>BatchConfig
 
 
-eshieldBatchJob
+shieldBatchJob
 
 
 
@@ -1072,7 +1072,7 @@ reader---------->jdbcPagingItemReader(time info takinf yono_batch.BATCH_JOB_EXEC
 
 processor----------->tncProcessor------------->CustomItemProcessor
 
-writer------------->buildWriter(mountPath)---------->getEshieldDTOFlatFileItemWriter(encryption)
+writer------------->buildWriter(mountPath)---------->getShieldDTOFlatFileItemWriter(encryption)
 
 listener------------->beforeStep, afterStep
 
@@ -1081,7 +1081,7 @@ listener------------->beforeStep, afterStep
 Delimiter
 
 
-auditdb------------>yono_batch------------>BATCH_JOB_EXECUTION
+auditing db------------>gono_batch------------>BATCH_JOB_EXECUTION
 
 
 Kafka integration with batch job
