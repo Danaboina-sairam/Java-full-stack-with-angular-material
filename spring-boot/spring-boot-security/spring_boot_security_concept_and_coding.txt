@@ -895,6 +895,8 @@ Validate token --- JwtAuthenticationToken
 
 
 
+4.OAuth2
+--------
 
 
 1.OAuth2LoginAuthenticationFilter--------------->OAuth2LoginAuthenticationProvider
@@ -903,3 +905,11 @@ Validate token --- JwtAuthenticationToken
 SecurityContextHolder
 
 HttpSessionSecurityContextRepository
+
+
+Different Grant Types
+---------------------
+
+1.Authorization code grant
+2.Implicit grant
+3.Client Credentials grant
