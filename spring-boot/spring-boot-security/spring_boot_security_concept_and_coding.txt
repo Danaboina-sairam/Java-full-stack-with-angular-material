@@ -899,7 +899,43 @@ Validate token --- JwtAuthenticationToken
 --------
 
 
+Different Grant Types
+---------------------
+
+1.Authorization code grant
+2.Implicit grant
+3.Client Credentials grant
+
+
+1.Authorization code grant flow
+-------------------------------
+
+Resource Owner---->Client(Insta)------->Gmail Authorization Server----->Gmail Resource Server(profile, gmail, username, mobile no)
+
+
+
+OIDC:OpenID Conect
+----
+
+Authentication
+
+OAuth2
+------
+
+Authorization
+
+
+Authorization Server
+--------------------
+DefaultLoginPageGeneratingFilter.java--------->generatingLoginPageHTML()
+
+
+
+
+
 1.OAuth2LoginAuthenticationFilter--------------->OAuth2LoginAuthenticationProvider
+
+1.OAuth2LoginAuthenticationFilter--------------->OidcAuthorizationCodeAuthenticationProvider.java
 
 
 SecurityContextHolder
@@ -907,9 +943,5 @@ SecurityContextHolder
 HttpSessionSecurityContextRepository
 
 
-Different Grant Types
----------------------
 
-1.Authorization code grant
-2.Implicit grant
-3.Client Credentials grant
+JWT Token and Opaque Token Both are not same
