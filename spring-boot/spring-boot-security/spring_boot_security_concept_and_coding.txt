@@ -895,7 +895,7 @@ Validate token --- JwtAuthenticationToken
 
 
 
-4.OAuth2
+4.OAuth2 : it's an open authorization framework, enables secure third party access to user protected
 --------
 
 
