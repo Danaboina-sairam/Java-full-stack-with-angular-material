@@ -956,3 +956,20 @@ Internally calling URL's
 
 
 JWT Token and Opaque Token Both are not same
+
+
+
+
+
+DefaultLoginPageGeneratingFilter
+
+OAuth2AuthorizationRequestRedirectFilter----------->Authorization Server(Gitlab)
+
+
+OAuth2LoginAuthenticationFilter
+
+SecurityContextHolderFilter
+
+
+OAuth2 Stateful vs OAuth2 Stateless
+-----------------------------------
