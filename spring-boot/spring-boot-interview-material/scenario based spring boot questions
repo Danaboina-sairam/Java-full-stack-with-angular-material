@@ -1,1 +1,113 @@
 
+
+
+
+
+1. A downstream service becomes slow and starts affecting all other services. How would you isolate the issue?
+2. API Gateway latency suddenly increases after a deployment. What would you check first?
+3. One microservice keeps restarting in Kubernetes without clear application errors. How would you debug it?
+4. A retry mechanism creates traffic spikes during partial outages. How would you handle it?
+5. Distributed tracing is missing during failures across services. What would you implement?
+6. Different microservices show inconsistent data for the same user request. How would you investigate it?
+7. Kafka consumers suddenly fall behind during peak traffic. What could cause this?
+8. A cache shared across services starts returning stale responses. How would you fix it?
+9. A service works perfectly in staging but fails behind the production load balancer. What would you verify?
+10. Database connections are getting exhausted across multiple service instances. What would you inspect?
+11. Scheduled jobs start executing multiple times after scaling the application horizontally. How would you control it?
+12. One service failure slowly increases latency across the entire system. Why can this happen?
+13. APIs start returning random 5xx errors without infrastructure alerts. How would you approach debugging?
+14. Autoscaling adds more instances, but response time still keeps increasing. What could be wrong?
+15. Message ordering breaks between asynchronous microservices. How would you solve it?
+16. Circuit breakers are configured, but the system still becomes unstable during failures. What would you check?
+17. Inter-service communication starts timing out intermittently. How would you investigate it?
+18. Logging exists, but debugging across multiple services is still difficult. What is missing?
+19. Memory usage increases slowly across service instances over several hours. How would you debug it?
+20. A deployment causes sudden spikes in 4xx responses instead of 5xx errors. What might have changed?
+
+
+
+
+
+1. A deployment succeeds, but response time suddenly doubles in production.
+2. One slow external API starts blocking all incoming requests.
+3. Database connections keep increasing until the service crashes.
+4. Kafka consumers stop processing messages during traffic spikes.
+5. Duplicate transactions appear after retry failures.
+6. Logs show success, but users still report failed operations.
+7. Memory usage looks stable, but latency keeps increasing.
+8. Cache improves performance, but users start seeing stale data.
+9. One microservice failure slowly impacts the entire system.
+10. Scheduled jobs start running multiple times after scaling.
+11. Thread pools get exhausted even with moderate traffic.
+12. APIs work fine locally but fail behind the load balancer.
+13. A retry mechanism creates even more pressure on the system.
+14. Database queries become slower after data growth.
+15. Message ordering breaks in asynchronous processing.
+16. A sudden GC pause causes request timeout spikes.
+17. Autoscaling happens, but response latency still increases.
+18. APIs randomly return 500 errors without clear logs.
+19. Distributed tracing is missing during production incidents.
+20. A production issue cannot be reproduced locally.
+
+
+
+
+
+
+1. An API suddenly starts responding in 8 seconds after deployment. How would you debug it?
+2. Database connections are getting exhausted during peak traffic. What would you check first?
+3. A service works fine in staging but crashes randomly in production. How would you investigate?
+4. Kafka consumers are falling behind and message lag keeps increasing. What could be causing it?
+5. Multiple requests are creating duplicate payments in the system. How would you prevent that?
+6. A memory issue appears only after the application runs for several hours. How would you debug it?
+7. A retry mechanism is causing even more traffic during failures. How would you handle it?
+8. CPU usage is low, but requests are timing out continuously. What could be wrong?
+9. A cache layer improves performance initially but later causes inconsistent data. How would you solve it?
+10. Thread pool exhaustion starts happening under moderate traffic. What areas would you inspect?
+11. Logs exist, but tracing a request across services is still difficult. What would you implement?
+12. A deployment suddenly increases 4xx errors across APIs. What might have changed?
+13. One slow database query starts affecting the entire application. How would you identify it?
+14. Scheduled jobs start running multiple times in distributed instances. How would you control it?
+15. APIs are returning stale data after scaling the application horizontally. What could cause that?
+16. A service becomes slow only during garbage collection cycles. How would you optimize it?
+17. Message processing works locally but fails intermittently in production queues. What would you check?
+18. High traffic causes sudden spikes in response latency even after autoscaling. Why could this happen?
+19. Users report data inconsistency between two microservices. How would you debug the issue?
+20. A production issue cannot be reproduced locally. What would be your debugging approach?
+
+
+
+
+
+
+
+1. A Spring Boot API becomes slow after deployment, but CPU and memory usage look normal. What would you investigate first?
+2. A Java application crashes after running for several hours. How would you debug it?
+3. Multiple concurrent requests are causing inconsistent database updates. How would you handle this?
+4. A service works perfectly in staging but fails in production. What differences would you check?
+5. Response latency keeps increasing over time even with stable traffic. What could be happening internally?
+6. A downstream service failure starts affecting your entire system. How would you isolate the issue?
+7. A database query performs well locally but becomes slow in production. How would you debug it?
+8. A retry mechanism increases load instead of improving reliability. What could be wrong?
+9. Logs are available, but tracing a request across services is still difficult. What would you implement?
+10. A cache improves performance initially but later returns stale or inconsistent data. How would you fix it?
+11. A thread pool gets exhausted under moderate traffic. What could be causing this?
+12. A deployment suddenly increases 4xx errors instead of 5xx errors. What might have changed?
+13. JVM heap usage remains stable, but application response time keeps increasing. What would you check?
+14. A scheduled job runs multiple times across instances in production. How would you control it?
+15. Kafka consumers slowly fall behind and message backlog keeps growing. How would you investigate it?
+
+
+
+
+
+1. An API suddenly becomes slow after a release, but CPU and memory look normal. Where do you start?
+2. A Spring Boot service returns 500 errors randomly without clear logs. What will you check?
+3. Response time keeps increasing over time, even though traffic is stable. What could be happening?
+4. A database query works fine locally but is slow in production. How will you debug it?
+5. Multiple threads are causing inconsistent data updates. How will you fix it?
+6. A memory issue crashes the application after a few hours. How will you identify the root cause?
+7. A service call blocks threads and leads to timeouts under load. What’s your approach?
+8. Logs are present but still not enough to trace a request end-to-end. What will you implement?
+9. A deployment works in staging but breaks in production. What differences will you verify?
+10. A cache improves performance initially but later causes data inconsistency. How will you handle it?
