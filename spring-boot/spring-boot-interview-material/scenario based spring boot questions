@@ -1,7 +1,5 @@
 
-
-
-
+PART:1
 
 1. A downstream service becomes slow and starts affecting all other services. How would you isolate the issue?
 2. API Gateway latency suddenly increases after a deployment. What would you check first?
@@ -26,7 +24,7 @@
 
 
 
-
+PART:2
 
 1. A deployment succeeds, but response time suddenly doubles in production.
 2. One slow external API starts blocking all incoming requests.
@@ -51,7 +49,7 @@
 
 
 
-
+PART:3
 
 
 1. An API suddenly starts responding in 8 seconds after deployment. How would you debug it?
@@ -78,7 +76,7 @@
 
 
 
-
+PART:4
 
 
 1. A Spring Boot API becomes slow after deployment, but CPU and memory usage look normal. What would you investigate first?
@@ -99,7 +97,7 @@
 
 
 
-
+PART:5
 
 1. An API suddenly becomes slow after a release, but CPU and memory look normal. Where do you start?
 2. A Spring Boot service returns 500 errors randomly without clear logs. What will you check?
