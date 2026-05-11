@@ -711,6 +711,30 @@ possible reasons
 3.headers support all http requests(GET not supported RequestBody)
 
 
+First Time
+----------
+
+
+1.Decode the Authorization Header
+
+2.Create and Pass the "Authentication" Object to
+
+3.Delegates Authentication to
+
+4.Incoming raw password is hashed
+
+5.Fetch UserDetails Like username, password, Roles etc
+
+6.Validate Incoming Username and hashed password with Stored username and hashed password.
+
+7.Updated "Authentication" Object
+
+8.Return back fully "Authentication" Object
+
+9.Save the Authentication Object in SecurityContext
+
+
+
 
 
 3.JWT Authentication
