@@ -946,7 +946,19 @@ Validate token --- JwtAuthenticationToken
 
 
 
+First Time
+----------
 
+
+3.pass the "Authentication" request to
+
+4.Delegates Authentication to
+
+5.Return back fully "Authentication" response
+
+6.Return back fully "Authentication" response
+
+7.Store in
 
 
 
