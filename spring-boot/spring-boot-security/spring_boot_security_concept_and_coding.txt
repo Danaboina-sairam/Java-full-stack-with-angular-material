@@ -1040,3 +1040,30 @@ SecurityContextHolderFilter
 
 OAuth2 Stateful vs OAuth2 Stateless
 -----------------------------------
+
+
+
+
+First Time
+----------
+
+
+1.Once User Authorize the Third party App, Authorization Server calls the Redirect URI and return the Authorization code
+
+2.Creates OAuth2LoginAuthenticationToken Object
+
+3.Pass the "Authentication" request to
+
+4.Delegates Authentication to
+
+5.Invokes the Token URI of the Authorization Server to fetch the Access and ID_Token, passes the ClientID, Secret and Authorization Code
+
+6.Return Access Token, Refresh Token, ID_TOKEN
+
+7.Return back fully "Authentication" Response, contains all the tokens and user details
+
+8.Return back fully "Authentication" Response, contains all the tokens and user details
+
+9.Stores the User details like Tokens and other profile info
+
+10.Creates HTTPSession & store it in SecurityContextHolder
