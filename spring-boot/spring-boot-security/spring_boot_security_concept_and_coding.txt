@@ -584,6 +584,37 @@ Postgre Database
 
 
 
+
+First Time
+----------
+
+1.Create and Pass the "Authentication" Object to
+
+2.Delegates Authentication to
+
+3.Incoming raw password is hashed
+
+4.Fetch UserDetails Like username, password, Roles etc.
+
+5.Validate Incoming Username and hashed password with Stored username and hashed password
+
+6.Updated "Authentication" Object
+
+7.Return back fully "Authentication" Object
+
+8.Next filter invoked
+
+9.Save the Authentication Object in SecurityContext
+
+10.Pass the SecurityContext  Object to
+
+11.Creates New HTTPSession Object
+
+12.Stores the SecurityContext Object Inside the HTTPSession
+
+
+
+
 2.Basic Authentication(PROMPT)
 ------------------------------
 
