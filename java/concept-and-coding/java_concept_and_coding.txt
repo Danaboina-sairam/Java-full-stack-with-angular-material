@@ -2182,6 +2182,7 @@ List<Integer> numbers = new ArrayList<>(List.of(1,2,3,4,5,6,7,8,9,10));
 
 
 //void forEach(Cosumer<? super T> action)
+-----------------------------------------
 
 numbers.stream().forEach(e->System.out.println(e));
 
@@ -2189,6 +2190,7 @@ Note:- forEach() for traversing each element and apply some logic on that elemen
 
 
 //Stream<T> filter(Predicate<? super T> predicate)
+--------------------------------------------------
 
 numbers.stream().filter(e->e%2==0).forEach(e->System.out.println(e));
 
@@ -2199,15 +2201,28 @@ Return type for each operation type
 1.Intermediate----------->Stream<T>
 2.Terminal--------------->void,Optional<T>
 
+
+
 //<R> Stream<R> map(Function<? super T,? extends R> mapper)
+-----------------------------------------------------------
+
+Integer Format
+--------------
 
 numbers.stream().map(e->e*e).forEach(e->System.out.println(e));
 
+String Format
+-------------
 
 numbers.stream().map(e->"number :"+e).forEach(e->System.out.println(e));
 
-Multiple list in map()
-----------------------
+
+NOTE: map taking any type of input(integer,string etc) and return any type of response(integer,string etc) 
+
+
+
+Returning list in map() : Below single element converted to list
+-----------------------
 
 numbers.stream().map(e->List.of(e*2,e*5,e*8)).forEach(e->System.out.println(e));
 
@@ -2223,7 +2238,9 @@ Note:-
 flatMap() used to convert into single list
 ------------------------------------------
 
+
 //<R> Stream<R> flatMap(Function<? super T, ? extends Stream<? extends R>> mapper);
+-----------------------------------------------------------------------------------
 
 note:- list object not accepting directly in flatMap() ,so convert to stream
 
