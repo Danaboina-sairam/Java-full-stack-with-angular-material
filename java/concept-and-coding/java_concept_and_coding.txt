@@ -2242,9 +2242,15 @@ flatMap() used to convert into single list
 //<R> Stream<R> flatMap(Function<? super T, ? extends Stream<? extends R>> mapper);
 -----------------------------------------------------------------------------------
 
-note:- list object not accepting directly in flatMap() ,so convert to stream
+
+
+NOTE:- list or object not accepting directly in flatMap() ,so convert to stream
+
+
+
 
 List.of() vs Stream.of()
+------------------------
 
 List.of() 
 ---------
@@ -2257,7 +2263,12 @@ Stream.of()
 numbers.stream().flatMap(e->Stream.of(e*2,e*5,e*8)).forEach(e->System.out.println(e));
 
 
+
+
+
+
 //T reduce(T identity, BinaryOperator<T> accumulator);
+------------------------------------------------------
 
 System.out.println(number.stream().reduce(0,(e,carry)->e+carry)));
 
