@@ -1972,6 +1972,10 @@ Streams: not able to store and mutate
 1.spliterator
 
 
+
+java.util package(stream()-------->method name all lower case letters)
+-----------------
+
 java.util.stream.ReferencePipeline$Head@6d311334----------->after stream() method
 java.util.stream.ReferencePipeline$2@6d311335
 java.util.stream.ReferencePipeline$3@6d311336
