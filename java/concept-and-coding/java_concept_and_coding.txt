@@ -1969,7 +1969,7 @@ Collection: able to store and mutate
 
 Streams: not able to store and mutate
 -------
-1.spliterator
+1.spliterator------------>parallel streams---------->linked list
 
 
 
