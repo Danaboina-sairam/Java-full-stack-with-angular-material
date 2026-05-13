@@ -2141,7 +2141,7 @@ Map printing working in Java 8
 
 numbers.stream().map(e->{ System.out.println("Squaring:"+e); return e*e;).count();
 
-Map printing not working in Java 9
+Map printing not working in Java 9(Based on Terminal operation optimization will performed on the intermediate operation----------------->mutation,side effects,alter on the map not consider)
 ----------------------------------
 
 numbers.stream().map(e->{ System.out.println("Squaring:"+e); return e*e;).count();
