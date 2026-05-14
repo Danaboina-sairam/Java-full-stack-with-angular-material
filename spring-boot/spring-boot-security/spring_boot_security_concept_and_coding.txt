@@ -1044,7 +1044,7 @@ JWT Token and Opaque Token Both are not same
 
 
 
-DefaultLoginPageGeneratingFilter
+DefaultLoginPageGeneratingFilter--------------->load all the authorization servers from application.properties
 
 OAuth2AuthorizationRequestRedirectFilter----------->Authorization Server(Gitlab)
 
