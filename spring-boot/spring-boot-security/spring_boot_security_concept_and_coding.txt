@@ -1089,7 +1089,11 @@ sample end points
 
 
 
-Custom0Auth2SuccessHandler  custom0Auth2SuccessHandler
+Custom0Auth2SuccessHandler  custom0Auth2SuccessHandler;
+
+
+.sessionManagement(session->session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+.0Auth2Login(0auth->0Auth.successHandler(custom0Auth2SuccessHandler));
 
 
 
