@@ -470,6 +470,57 @@ We can change HTML page below place
 
 
 
+
+
+First Time
+----------
+
+1.Create and Pass the "Authentication" Object to
+
+2.Delegates Authentication to
+
+3.Incoming raw password is hashed
+
+4.Fetch UserDetails Like username, password, Roles etc.
+
+5.Validate Incoming Username and hashed password with Stored username and hashed password
+
+6.Updated "Authentication" Object
+
+7.Return back fully "Authentication" Object
+
+8.Next filter invoked
+
+9.Save the Authentication Object in SecurityContext
+
+10.Pass the SecurityContext  Object to
+
+11.Creates New HTTPSession Object
+
+12.Stores the SecurityContext Object Inside the HTTPSession
+
+
+
+
+Second Time
+-----------
+
+1.Pass the Request to 
+
+2.Try to Fetch HTTPSession based on JSESSIONID
+
+3.HTTPSession found, get the SecurityContext from it
+
+4.Return Security Contextt from HttpSession
+
+5.Store the SecurityContext in SecurityContextHolder, so that Authentication object is available in complete lifecycle of the request
+
+6.Pass the SecurityContextHolder to 
+
+
+
+
+
 AuthorizationFilter:Any resource accessing authorization is mandatory
 -------------------
 
@@ -580,57 +631,6 @@ Postgre Database
 ----------------
 1.we need to create primary key database command 
 2.while creation table with columns need to check proper names with spaces also matter in editor
-
-
-
-
-
-First Time
-----------
-
-1.Create and Pass the "Authentication" Object to
-
-2.Delegates Authentication to
-
-3.Incoming raw password is hashed
-
-4.Fetch UserDetails Like username, password, Roles etc.
-
-5.Validate Incoming Username and hashed password with Stored username and hashed password
-
-6.Updated "Authentication" Object
-
-7.Return back fully "Authentication" Object
-
-8.Next filter invoked
-
-9.Save the Authentication Object in SecurityContext
-
-10.Pass the SecurityContext  Object to
-
-11.Creates New HTTPSession Object
-
-12.Stores the SecurityContext Object Inside the HTTPSession
-
-
-
-
-Second Time
------------
-
-1.Pass the Request to 
-
-2.Try to Fetch HTTPSession based on JSESSIONID
-
-3.HTTPSession found, get the SecurityContext from it
-
-4.Return Security Contextt from HttpSession
-
-5.Store the SecurityContext in SecurityContextHolder, so that Authentication object is available in complete lifecycle of the request
-
-6.Pass the SecurityContextHolder to 
-
-
 
 
 
