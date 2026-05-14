@@ -1089,6 +1089,10 @@ sample end points
 
 
 
+Custom0Auth2SuccessHandler  custom0Auth2SuccessHandler
+
+
+
 WEB page or Postman
 
 
