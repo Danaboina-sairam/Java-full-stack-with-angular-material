@@ -615,6 +615,27 @@ First Time
 
 
 
+Second Time
+-----------
+
+1.Pass the Request to 
+
+2.Try to Fetch HTTPSession based on JSESSIONID
+
+3.HTTPSession found, get the SecurityContext from it
+
+4.Return Security Contextt from HttpSession
+
+5.Store the SecurityContext in SecurityContextHolder, so that Authentication object is available in complete lifecycle of the request
+
+6.Pass the SecurityContextHolder to 
+
+
+
+
+
+
+
 2.Basic Authentication(PROMPT)
 ------------------------------
 
