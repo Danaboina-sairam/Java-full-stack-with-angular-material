@@ -962,7 +962,7 @@ First Time
 
 
 
-4.OAuth2 : it's an open authorization framework, enables secure third party access to user protected
+4.OAuth2 : it's an open authorization framework, enables secure third party access to user protected data
 --------
 
 
@@ -971,13 +971,29 @@ Different Grant Types
 
 1.Authorization code grant
 2.Implicit grant
-3.Client Credentials grant
+3.Client Credentials grant etc....
 
 
 1.Authorization code grant flow
 -------------------------------
 
 Resource Owner---->Client(Insta)------->Gmail Authorization Server----->Gmail Resource Server(profile, gmail, username, mobile no)
+
+
+step:1
+------
+Third party app registration to Authorization server.
+
+2 types of registration
+-----------------------
+1.GitLab Registration------>settings--->edit profile--->application---->your application(openid)-------> Application ID, Secret
+2.Auth0 Registration--------->Basic Information, JWT Web Token Signature Algorithm------------>OIDC Conformant
+
+
+Note: 
+
+1.we can use at a time both GitLab and Auth0
+2.we can use any one GitLab or Auth0
 
 
 
@@ -1040,6 +1056,40 @@ SecurityContextHolderFilter
 
 OAuth2 Stateful vs OAuth2 Stateless
 -----------------------------------
+
+
+
+
+pom.xml
+-------
+
+
+
+
+application.properties
+----------------------
+gitlab and auth0
+
+
+
+SecurityConfig.java
+-------------------
+
+0auth2Login(Customizer.withDefaults())
+
+
+UserDetailsController.java
+---------------------------
+
+sample end points
+
+
+
+0Auth2: By default stateful because it creates SESSION
+
+
+
+WEB page or Postman
 
 
 
