@@ -1,1 +1,44 @@
+AWS: provides reliable, scalable, on-demand cloud computing services
 
+scalable: increase or decrease on requirement basis
+
+on-demand: provide services based on the rent
+
+
+
+IAAS: INFRASTRUCTURE AS A SERVICE
+
+PAAS: PLATFORM AS A SERVICE
+
+CAAS: CONTAINER AS A SERVICE
+
+FAAS: FUNCTION AS A SERVICE
+
+SAAS: SOFTWARE AS A SERVICE
+
+
+
+
+
+
+
+
+Application : spring boot application
+
+Data : like mysql, s3
+
+Runtime : like jvm
+
+Middleware : tomcat which sits between application and os(request routing, http handling, connection management)
+
+OS : windows, linux
+
+Virtulization : virtual server
+
+RAM : In memory
+
+CPU : Computing
+
+storage : HDD, SDD
+
+Networking : Router, switch, cables etc
