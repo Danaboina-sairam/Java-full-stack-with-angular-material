@@ -1161,3 +1161,155 @@ First Time
 9.Stores the User details like Tokens and other profile info
 
 10.Creates HTTPSession & store it in SecurityContextHolder
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Here are some highly asked Spring Boot Security interview situations that test real backend understanding rather than theoretical knowledge.
+
+1. Public vs Protected APIs
+You have:
+/login
+/health
+/swagger
+/api/orders
+
+Questions:
+
+How will you secure only selected APIs?
+Difference between permitAll() and ignoring()?
+Should Swagger remain public in production?
+How do you secure actuator endpoints?
+
+
+2. JWT Authentication Flow
+
+Questions:
+Explain complete JWT request lifecycle
+Where should token validation happen?
+What happens when token expires?
+How do refresh tokens work?
+Can JWT be revoked immediately?
+Cross Discussion:
+Stateless authentication
+SecurityContext
+Custom filters
+Token tampering
+
+
+3. Role Based Authorization
+Scenario:
+USER → read
+MANAGER → update
+ADMIN → full access
+Questions:
+hasRole() vs hasAuthority()
+Roles vs permissions
+Dynamic permissions from DB
+Multiple role handling
+Permission updates while token is active
+
+4. Spring Security Filter Chain
+
+Questions:
+How request travels inside Spring Security?
+Why filter ordering matters?
+Where should JWT filter be added?
+Difference between authentication and authorization filters?
+What happens if filter throws exception?
+
+
+5. CSRF & CORS
+
+Interviewers often combine both topics.
+Questions:
+
+Why disable CSRF in stateless APIs?
+Difference between CSRF and XSS?
+Why CORS issue happens only in browser?
+What is preflight OPTIONS request?
+Risks of allowing * origins?
+
+6. Session vs Stateless Authentication
+
+Questions:
+Why microservices prefer JWT?
+Problems with distributed sessions?
+What are sticky sessions?
+Session replication challenges
+Scalability impact
+
+7. Password Security
+
+Questions:
+Why BCrypt instead of encryption?
+What is salting?
+Can hashed passwords be reversed?
+How login verification works internally?
+
+8. OAuth2 & SSO
+Scenario: Google login integration required.
+
+Questions:
+OAuth2 vs JWT
+OAuth2 vs SSO
+Authorization Code flow
+Client secret handling
+Callback URL validation
+
+
+9. Microservice Security
+Architecture:
+API Gateway
+Auth Service
+Order Service
+Payment Service
+
+Questions:
+
+Should every service validate JWT?
+How is authentication propagated?
+How to secure internal communication?
+Gateway-only security risks
+
+
+10. Production Debugging Scenarios
+Real interview differentiators:
+
+Unauthorized API access investigation
+Missing filter debugging
+Security logs analysis
+Token validation tracing
+Actuator exposure issues
+Secret leakage prevention
+Strong Spring Security knowledge is not about memorizing annotations.
+It’s about understanding:
+Request flow
+Filters
+Authentication lifecycle
+Attack prevention
+Scalability
+Real production debugging
