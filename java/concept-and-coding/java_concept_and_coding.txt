@@ -1261,6 +1261,8 @@ Local record can't declare with public, private, protected
 
 
 
+
+
 Access specifier level in record
 --------------------------------
 
@@ -1281,8 +1283,12 @@ public record->constructor
 
 
 
+
+
 Defensive Copying
 -----------------
+
+
 
 
 accessor or getter method both are same
@@ -1291,8 +1297,11 @@ accessor or getter method both are same
 direct record component parameters used to call getter method like name()
 
 
+
 We can override equals() , hashcode(), toString()
 -------------------------------------------------
+
+
 
 
 nested records: nested records by default static only
@@ -1303,10 +1312,17 @@ nested records: nested records by default static only
 2.nested records only consists of nested static records
 
 
+
+
+records, static nested records(there is no non static nested records), local records(there is no static local records)
+-----------------------------------------------------------------------------------------------------------------------
+
+
+
 Lombok vs Record
 ----------------
 
-Lombok is external dependency
+Lombok is external dependency need to add in pom.xml
 
 Record is java feature, so it can restrict add setter method
 
