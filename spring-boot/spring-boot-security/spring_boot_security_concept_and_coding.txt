@@ -501,6 +501,21 @@ First Time
 
 
 
+Note:
+
+SecurityContextHolderFilter
+---------------------------
+
+1.create SecurityContext object then store the Authentication object inside it
+
+2.pass the SecurityContext object to HttpSessionSecurityContextRepository class
+
+3.HttpSessionSecurityContextRepository class it Creates New HttpSession Object
+
+4.Stores the SecurityContext Object Inside the HttpSession Object
+
+
+
 
 Second Time
 -----------
