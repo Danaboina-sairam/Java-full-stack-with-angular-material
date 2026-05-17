@@ -1229,6 +1229,37 @@ extends(not allowed) vs implements(allowed)-------------------------->same like 
 
 
 
+values()--------->iterates all the constants 
+
+ordinal()---------->return the default values of constants
+
+valueOf()
+
+name()
+
+
+
+
+
+Types of Enum
+-------------
+1.Normal Enum class
+
+2.Enum with Custom Values
+
+3.Method Override by Constants
+
+4.Abstract method in Enum
+
+5.Interface implementation in Enum
+
+6.Advantage of Enum
+
+
+
+
+
+
 Record
 ------
 
