@@ -1210,6 +1210,24 @@ Immutable class
 
 
 
+Enum
+----
+
+java.lang.Enum
+
+
+extends(not allowed) vs implements(allowed)-------------------------->same like records
+-------------------------------------------
+
+1.variables
+
+2.private constructor bydefault
+
+3.methods
+
+4.abstract methods: all constants sholud implement that abstract method
+
+
 
 Record
 ------
@@ -1232,7 +1250,7 @@ User.java  vs User.class
 
 
 
-extends(not allowed) vs implements(allowed)
+extends(not allowed) vs implements(allowed)----------->java.lang.Record
 -------------------------------------------
 
 Record keyword is equivalent to "final class"
