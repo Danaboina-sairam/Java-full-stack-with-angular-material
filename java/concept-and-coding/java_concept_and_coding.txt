@@ -1171,6 +1171,44 @@ We can able to create reference for object and interface
 
 
 
+POJO
+----
+
+1.public,protected,default and private variables
+
+2.default constructor
+
+3.setter and getters
+
+4.there is no annotations used in the class
+
+5.there is no extend and implement class
+
+
+
+
+Encapsulation
+-------------
+
+1.only private variables
+
+2.default constructor
+
+3.setter and getter
+
+
+
+
+Immutable class
+---------------
+
+1.only private variables
+
+2.parameterized constructor
+
+3.only getters
+
+
 
 
 Record
