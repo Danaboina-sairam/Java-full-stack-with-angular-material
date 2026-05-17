@@ -1176,21 +1176,93 @@ We can able to create reference for object and interface
 Record
 ------
 
-Record is final class
 
-java.lang.Record class
+Immutable class
+---------------
 
-Note:- in record parameter fields called as canonical constructor
+Immutable class nothing but final class with private variables, constructor, getters methods
+
+
+Record Concept
+--------------
+
+
+User.java  vs User.class
+------------------------
+
+
+
+
+
+extends(not allowed) vs implements(allowed)
+-------------------------------------------
+
+Record keyword is equivalent to "final class"
+
+record class by default extends "java.lang.Record" class implicitly
+
+that's why, extends not allowed on Record, but can allowed implements
+
+
+
+
+
+
+Instance variables vs Static variables in Record
+------------------------------------------------
+
+Record singnature
+-----------------
+
+Method:1
+--------
+
+public record User(String name, int age){ }
+
+
+Method:2
+--------
+
+public record User(String name, int age){
+
+	public static String lastName;
+}
+
+
+Note:
+
+1.instance variables allowed in record signature only but static variables allowed in record class also
+
+
+
+
 
 canonical constructor :
+-----------------------
+
+Note:- in record parameter fields called as canonical constructor
 
 Automatically generates "canonical constructor", means constructor that takes all record components(fields) in order.
 
 we can override the canonical constructor if want.
 
-Compact constructor:- compact constructor nothing but constructor with empty record component, in this case record automatically add record component and initialize automatically.
+
+
+
+
+Compact constructor:
+--------------------
+
+compact constructor nothing but constructor with empty record component, in this case record automatically add record component and initialize automatically.
 
 Local record can't declare with public, private, protected
+
+
+
+
+
+Lombok vs Record
+----------------
 
 Lombok is external dependency
 
@@ -1199,6 +1271,9 @@ Record is java feature, so it can restrict add setter method
 Also provide accessor method nothing but getter method like name()
 
 nested records:- nested records only consists of nested static records
+
+
+
 
 
 
