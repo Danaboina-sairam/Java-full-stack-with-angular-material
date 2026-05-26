@@ -639,17 +639,9 @@ abstraction achieve 2 ways
 ->abstract class contains abstract, static, normal methods(default and normal methods both are different)
 ->class can able to extend only once that is also immediate concreate sub class
 
-Interface vs Abstract Class – REAL decision rule
 
-| Situation                | Use              |
-| ------------------------ | ---------------- |
-| Multiple implementations | ✅ Interface      |
-| API contract             | ✅ Interface      |
-| Spring DI                | ✅ Interface      |
-| Feign / JPA / Kafka      | ✅ Interface      |
-| Common code + template   | ✅ Abstract class |
-| Shared fields            | ✅ Abstract class |
-| Partial implementation   | ✅ Abstract class |
+
+
 
 
 
@@ -734,16 +726,230 @@ NOTE(VERY IMP OF INTERFACE):
 3.interface used for inheritence like multipe class implements interface
 
 
-In microservices:
 
--->Interfaces define service boundaries
 
--->Abstract classes reduce code duplication
 
-IMP POINTS:-
 
--->Interface is used to keep microservices loosely coupled, mockable, and extendable.
--->Abstract class is used only to enforce common logic or shared fields.
+
+
+
+interface scenarios
+-------------------
+
+
+reference:
+----------
+
+
+interface Payment {
+    void pay();
+}
+
+class PhonePe implements Payment {
+    public void pay() {
+        System.out.println("PhonePe payment");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+        Payment p = new PhonePe();
+
+        p.pay();
+    }
+}
+
+
+
+method parameter :
+------------------
+
+interface Payment {
+    void pay();
+}
+
+class PhonePe implements Payment {
+    public void pay() {
+        System.out.println("PhonePe payment");
+    }
+}
+
+class PaymentService {
+
+    void process(Payment payment) {
+        payment.pay();
+    }
+}
+
+
+method return type :
+--------------------
+
+interface Payment {
+    void pay();
+}
+
+class PhonePe implements Payment {
+
+    public void pay() {
+        System.out.println("Payment done");
+    }
+}
+
+class PaymentService {
+
+    Payment getPayment() {
+        return new PhonePe();
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+abstract class scenarios
+------------------------
+
+reference:
+----------
+
+abstract class Animal {
+    abstract void sound();
+}
+
+class Dog extends Animal {
+    void sound() {
+        System.out.println("Bark");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+        Animal a = new Dog();
+
+        a.sound();
+    }
+}
+
+
+method parameter:
+-----------------
+
+abstract class Animal {
+    abstract void sound();
+}
+
+class Dog extends Animal {
+
+    void sound() {
+        System.out.println("Bark");
+    }
+}
+
+void test(Animal animal) {
+    animal.sound();
+}
+
+
+method return type:
+-------------------
+
+abstract class Animal {
+    abstract void sound();
+}
+
+class Dog extends Animal {
+
+    void sound() {
+        System.out.println("Bark");
+    }
+}
+
+class AnimalService {
+
+    Animal getAnimal() {
+        return new Dog();
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+Concreate class
+---------------
+
+reference:
+----------
+
+class Car {
+    void drive() {
+        System.out.println("Driving");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+        Car c = new Car();
+
+        c.drive();
+    }
+}
+
+method parameter:
+-----------------
+
+class Employee {
+
+    void work() {
+        System.out.println("Employee working");
+    }
+}
+
+class Company {
+
+    void process(Employee emp) {
+        emp.work();
+    }
+}
+
+method return type:
+-------------------
+
+class Car {
+
+    void drive() {
+        System.out.println("Driving");
+    }
+}
+
+class CarService {
+
+    Car getCar() {
+        return new Car();
+    }
+}
+
+
+
+
 
 
 super class:- class through which sub class class derived is called super class
