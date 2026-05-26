@@ -782,6 +782,18 @@ class PaymentService {
     }
 }
 
+public class Main {
+    public static void main(String[] args) {
+
+        Payment payment = new PhonePe();
+
+        PaymentService service = new PaymentService();
+
+        service.process(payment);
+    }
+}
+
+
 
 method return type :
 --------------------
@@ -801,6 +813,18 @@ class PaymentService {
 
     Payment getPayment() {
         return new PhonePe();
+    }
+}
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        PaymentService service = new PaymentService();
+
+        Payment payment = service.getPayment();
+
+        payment.pay();
     }
 }
 
@@ -852,10 +876,20 @@ class Dog extends Animal {
     void sound() {
         System.out.println("Bark");
     }
+
+    void test(Animal animal) {
+        animal.sound();
+    }
 }
 
-void test(Animal animal) {
-    animal.sound();
+public class Main {
+
+    public static void main(String[] args) {
+
+        Dog dog = new Dog();
+
+        dog.test(dog);
+    }
 }
 
 
@@ -880,6 +914,17 @@ class AnimalService {
     }
 }
 
+public class Main {
+
+    public static void main(String[] args) {
+
+        AnimalService service = new AnimalService();
+
+        Animal animal = service.getAnimal();
+
+        animal.sound();
+    }
+}
 
 
 
@@ -930,6 +975,19 @@ class Company {
     }
 }
 
+public class Main {
+
+    public static void main(String[] args) {
+
+        Employee emp = new Employee();
+
+        Company company = new Company();
+
+        company.process(emp);
+    }
+}
+
+
 method return type:
 -------------------
 
@@ -944,6 +1002,18 @@ class CarService {
 
     Car getCar() {
         return new Car();
+    }
+}
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        CarService service = new CarService();
+
+        Car car = service.getCar();
+
+        car.drive();
     }
 }
 
