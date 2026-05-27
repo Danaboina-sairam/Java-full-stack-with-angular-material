@@ -4118,3 +4118,26 @@ boolean createSample new File(pdfOutputPath + PDF_FOLDER_PATH +QUICK_ACTIONS).mk
 try(FileOutputStream fos-new FileOutputStream(filePath1)){
 
 }
+
+
+
+scale 0 to million users
+------------------------
+
+1.single server
+
+2.application(multiple tomcat servers) and DB server separation
+
+3.load balancer + multiple app servers
+
+4.Database Replication(master Db(write) and multiple slave(read) Db)
+
+5.Cache
+
+6.CDN(client call directly------>data missing time connected with DB for static data)
+
+7.Data center(multiple)
+
+8.Messaging queue
+
+9.Database scaling
