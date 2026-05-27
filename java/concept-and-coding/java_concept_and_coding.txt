@@ -625,6 +625,37 @@ Master this → You already stand out as a strong Java engineer.
 
 
 
+Parent and Child Relationship in Constructor vs Inheritence vs Exception Handling
+---------------------------------------------------------------------------------
+
+Constructor
+-----------
+
+Parent------->first executed
+
+Child------->second executed
+
+
+Inheritence
+-----------
+
+Parent------->Less features
+
+Child------->More features
+
+
+Exception Handling
+------------------
+
+Parent------->More features
+
+Child------->Less features
+
+
+
+
+
+
 abstraction achieve 2 ways
 
 1.interface 
@@ -3954,25 +3985,6 @@ NoClassDefFoundError
 
 ExceptionInInitializerError
 
-
-
-
-Parent and Child Relationship in Inheritence vs Exception Handling
-------------------------------------------------------------------
-
-Inheritence
------------
-
-Parent------->Less features
-
-Child------->More features
-
-Exception Handling
-------------------
-
-Parent------->More features
-
-Child------->Less features
 
 
 
