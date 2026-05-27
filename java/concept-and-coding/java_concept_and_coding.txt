@@ -625,6 +625,32 @@ Master this → You already stand out as a strong Java engineer.
 
 
 
+Method Calling In Constructor
+-----------------------------
+
+public class MethodCallingInConstructor {
+
+    MethodCallingInConstructor(){
+        normalMethod();
+    }
+
+    private void normalMethod(){
+        System.out.println("Sairam");
+    }
+    public static void main(String[] args){
+        new MethodCallingInConstructor();
+    }
+}
+
+
+
+Constructor Calling In Method: Constructor calling in method not possible because we only able to create object in method(IMPORTANT----------->we can able to create object class level and method level)
+-----------------------------
+
+
+
+
+
 Parent and Child Relationship in Constructor vs Inheritence vs Exception Handling
 ---------------------------------------------------------------------------------
 
@@ -3914,22 +3940,7 @@ Why String is immutable in Java
 3.performance increase by using caching of hashcode(mostly used in HashMap and HashSet)
 
 
-Method Calling In Constructor
------------------------------
 
-public class MethodCallingInConstructor {
-
-    MethodCallingInConstructor(){
-        normalMethod();
-    }
-
-    private void normalMethod(){
-        System.out.println("Sairam");
-    }
-    public static void main(String[] args){
-        new MethodCallingInConstructor();
-    }
-}
 
 
 Exception Handling in Java
