@@ -42,3 +42,78 @@ CPU : Computing
 storage : HDD, SDD
 
 Networking : Router, switch, cables etc
+
+
+
+
+
+
+
+
+AWS Global Infrastructure:
+--------------------------
+->Region
+->Availability Zones(AZ)
+->Local Zone
+->Edge Location(Pop i.e Point of Presence)
+
+Disaster Recovery Metrics:
+--------------------------
+->RPO
+->RTO
+
+Disaster Recover Strategies:
+----------------------------
+->Backup and Restore
+->Pilot Light
+->Active-Passive(Warm Standby)
+->Active-Active
+
+
+
+
+
+
+Reginal Services: EC2, RDS, Lambda
+
+Global Services: IAM, CloudFront(CDN), Route 53(DNS)
+
+Zonal Services: EC2, EBS
+
+Reginal Services but not Zonal: S3, DynamoDB, Lambda
+
+
+
+
+
+
+
+
+{geography area}-{sub area}-{seq no}
+
+
+ap: Asia pacific
+
+south: South Asia
+
+1: 1st region in this sub area
+
+
+
+Region:
+
+Latency
+
+compliance: china/india are independent rules for data storing
+
+Disaster Isolation:
+
+
+
+
+2.Availability Zone:physical servers 
+
+3.Local Zone: minimum configuration maintain at nearest location
+
+4.edge: CloudFront with CDN , Route53 with DNS
+
