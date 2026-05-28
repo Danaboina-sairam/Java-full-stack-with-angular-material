@@ -3714,6 +3714,151 @@ But understanding marker interfaces helps you understand:
 
 
 
+Serializable
+------------
+
+Serializable: method1
+---------------------
+
+interface Serializable {
+  	// Marker Interface
+}
+
+class Person implements Serializable {
+    public Person() {
+        System.out.println("Person object created");
+    }
+}
+
+class Animal {
+    public Animal() {
+        System.out.println("Animal object created");
+    }
+}
+
+public class Geeks
+{
+    public static void main(String[] args) 
+    {
+        Person person = new Person();
+        Animal animal = new Animal();
+
+        if (person instanceof Serializable)
+            System.out.println("Person is serializable");
+        else 
+            System.out.println("Person is not serializable");
+       
+
+        if (animal instanceof Serializable)
+            System.out.println("Animal is serializable");
+        else
+            System.out.println("Animal is not serializable");
+    }
+}
+
+
+
+
+
+
+Serializable: method2
+---------------------
+
+import java.io.*;
+
+class A implements Serializable
+{
+    int i;
+    String s;
+
+    
+    public A(int i,String s)
+    {
+        this.i = i;
+        this.s = s;
+    }
+}
+
+public class Geeks
+{
+    public static void main(String[] args) throws IOException, ClassNotFoundException
+    {
+        A a = new A(20,"GeeksForGeeks");
+
+        // Serializing 'a'
+        FileOutputStream fos = new FileOutputStream("xyz.txt");
+        ObjectOutputStream oos = new ObjectOutputStream(fos);
+        oos.writeObject(a);
+
+        // De-serializing 'a'
+        FileInputStream fis = new FileInputStream("xyz.txt");
+        ObjectInputStream ois = new ObjectInputStream(fis);
+        A b = (A)ois.readObject(); // down-casting object
+
+        System.out.println(b.i+" "+b.s);
+
+        // closing streams
+        oos.close();
+        ois.close();
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+Cloneable
+---------
+
+
+
+import java.lang.Cloneable;
+
+class A implements Cloneable
+{
+    int i;
+  
+    public A(int i) {
+        this.i = i;
+    }
+
+    protected Object clone() throws CloneNotSupportedException
+    {
+        return super.clone();
+    }
+}
+
+public class Geeks
+{
+    public static void main(String[] args)
+        throws CloneNotSupportedException
+    {
+        A a = new A(20);
+
+        // cloning 'a' and holding new cloned object reference in b
+
+        // down-casting as clone() return type is Object
+        A b = (A)a.clone();
+
+        System.out.println(b.i);
+    }
+}
+
+
+
+
+
+
+
+
+
+
 
 
 Backward compatibility with Default method in interface
