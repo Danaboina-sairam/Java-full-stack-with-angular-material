@@ -794,8 +794,8 @@ interface scenarios
 -------------------
 
 
-reference:
-----------
+interface as reference:
+-----------------------
 
 
 interface Payment {
@@ -819,8 +819,8 @@ public class Main {
 
 
 
-method parameter :
-------------------
+interface as method parameter :
+-------------------------------
 
 interface Payment {
     void pay();
@@ -852,8 +852,8 @@ public class Main {
 
 
 
-method return type :
---------------------
+interface as method return type :
+---------------------------------
 
 interface Payment {
     void pay();
@@ -898,8 +898,8 @@ public class Main {
 abstract class scenarios
 ------------------------
 
-reference:
-----------
+abstract class as reference:
+----------------------------
 
 abstract class Animal {
     abstract void sound();
@@ -921,8 +921,8 @@ public class Main {
 }
 
 
-method parameter:
------------------
+abstract class as method parameter:
+-----------------------------------
 
 abstract class Animal {
     abstract void sound();
@@ -950,8 +950,8 @@ public class Main {
 }
 
 
-method return type:
--------------------
+abstract class as method return type:
+-------------------------------------
 
 abstract class Animal {
     abstract void sound();
@@ -997,8 +997,8 @@ public class Main {
 Concreate class
 ---------------
 
-reference:
-----------
+concreate class as reference:
+-----------------------------
 
 class Car {
     void drive() {
@@ -1015,8 +1015,8 @@ public class Main {
     }
 }
 
-method parameter:
------------------
+concreate class as method parameter:
+------------------------------------
 
 class Employee {
 
@@ -1045,8 +1045,8 @@ public class Main {
 }
 
 
-method return type:
--------------------
+concreate class as method return type:
+--------------------------------------
 
 class Car {
 
@@ -1079,11 +1079,128 @@ public class Main {
 
 
 
+
+
+
+
+
+
+
+
+
+
+IS-A Relationship
+
+1.IS-A with extends
+-------------------
+
+
+class Animal {
+    void eat() {
+        System.out.println("Eating...");
+    }
+}
+
+class Dog extends Animal {
+    void bark() {
+        System.out.println("Barking...");
+    }
+}
+
+
+2.IS-A with Interface
+---------------------
+
+interface Payment {
+    void pay();
+}
+
+class UpiPayment implements Payment {
+    public void pay() {
+        System.out.println("Paying via UPI");
+    }
+}
+
+
+
+HAS-A Relationship
+------------------
+
+
+@Service
+class OrderService {
+
+    private final PaymentService paymentService;
+
+    public OrderService(PaymentService paymentService) {
+        this.paymentService = paymentService;
+    }
+}
+
+
+1️⃣ Composition (Strong HAS-A)
+-----------------------------
+
+class Engine {
+    void start() {
+        System.out.println("Engine started");
+    }
+}
+
+class Car {
+    private Engine engine;
+
+    Car() {
+        engine = new Engine(); // Created inside
+    }
+}
+
+2️⃣ Aggregation (Weak HAS-A)
+---------------------------
+
+class Department {
+    String name;
+}
+
+class Employee {
+    private Department department;
+
+    Employee(Department department) {
+        this.department = department; // Injected from outside
+    }
+}
+
+
+
+Note:
+
+1.Has-A better to use over IS-A
+2.Aggregation better to use over Composition
+
+
+
+
+
+
+
+
+
+
+
+
 super class:- class through which sub class class derived is called super class
 
 sub class:-class that is derived from another class is called sub class
 
 NOTE:- in java,in the absence of any other explict super class, every class implicitly a subclass of object class
+
+
+
+
+
+
+
+
 
 
 
