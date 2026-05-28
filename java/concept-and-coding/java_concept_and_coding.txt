@@ -1089,53 +1089,214 @@ public class Main {
 
 
 
-IS-A Relationship
+IS-A Relationship using interface, abstract class, concreate class
+------------------------------------------------------------------
 
-1.IS-A with extends
--------------------
+IS-A using interface 
+--------------------
+
+interface Worker {
+
+    void work();
+}
+
+class Employee implements Worker {
+
+    @Override
+    public void work() {
+        System.out.println("Employee working");
+    }
+
+	public static void main(String[] args) {
+
+        Employee emp = new Employee();
+                   
+		emp.work();              
+    }
+
+}
 
 
-class Animal {
-    void eat() {
-        System.out.println("Eating...");
+IS-A using abstract class 
+-------------------------
+
+abstract class Person {
+
+    void details() {
+        System.out.println("Person details");
+    }
+
+    abstract void role();
+}
+
+class Employee extends Person {
+
+    @Override
+    void role() {
+        System.out.println("Employee role");
+    }
+
+  	public static void main(String[] args) {
+
+        Employee emp = new Employee();
+
+        emp.details(); 
+        emp.role();             
+    }
+
+}
+
+
+IS-A using concreate class
+--------------------------
+
+class Person {
+
+    void details() {
+        System.out.println("Person details");
     }
 }
 
-class Dog extends Animal {
-    void bark() {
-        System.out.println("Barking...");
+class Employee extends Person {
+
+	public static void main(String[] args) {
+
+        Employee emp = new Employee();
+
+        emp.details();  
     }
+
 }
 
 
-2.IS-A with Interface
+
+
+HAS-A Relationship using interface, abstract class, concreate class
+-------------------------------------------------------------------
+
+
+Has-A using interface
 ---------------------
 
 interface Payment {
     void pay();
 }
 
-class UpiPayment implements Payment {
+class PhonePePayment implements Payment {
+
     public void pay() {
-        System.out.println("Paying via UPI");
+        System.out.println("Payment done using PhonePe");
+    }
+}
+
+class Order {
+
+    // HAS-A relationship
+    Payment payment;
+
+    Order(Payment payment) {
+        this.payment = payment;
+    }
+
+    void placeOrder() {
+        System.out.println("Order placed");
+        payment.pay();
+    }
+}
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        Payment p = new PhonePePayment();
+
+        Order order = new Order(p);
+
+        order.placeOrder();
     }
 }
 
 
 
-HAS-A Relationship
-------------------
+Has-A using abstract class
+--------------------------
 
 
-@Service
-class OrderService {
+abstract class Engine {
 
-    private final PaymentService paymentService;
+    abstract void start();
+}
 
-    public OrderService(PaymentService paymentService) {
-        this.paymentService = paymentService;
+class PetrolEngine extends Engine {
+
+    void start() {
+        System.out.println("Petrol Engine Started");
     }
 }
+
+class Car {
+
+    // HAS-A relationship
+    Engine engine;
+
+    Car(Engine engine) {
+        this.engine = engine;
+    }
+
+    void drive() {
+        engine.start();
+        System.out.println("Car is Driving");
+    }
+}
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        Engine e = new PetrolEngine();
+
+        Car car = new Car(e);
+
+        car.drive();
+    }
+}
+
+
+
+
+Has-A using concreate class
+---------------------------
+
+class Engine {
+
+    void start() {
+        System.out.println("Engine started");
+    }
+}
+
+class Car {
+
+    // Has-A relationship
+    Engine engine = new Engine();
+
+    void drive() {
+        engine.start();
+        System.out.println("Car is driving");
+    }
+}
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        Car car = new Car();
+
+        car.drive();
+    }
+}
+
+
+
 
 
 1️⃣ Composition (Strong HAS-A)
