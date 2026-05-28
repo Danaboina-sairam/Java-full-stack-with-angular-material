@@ -1835,12 +1835,22 @@ sometimes, you may need to execute code that is not written in java(e.g.., c/c++
 
 
 
-JAR(Java archive):-group of .class files
 
+
+
+
+
+JAR(Java archive):-group of .class files
 
 WAR(Web archive):- group of xml, html, css, js, jsp, servlet etc
 
 EAR(enterprise archive):- EJB,JMS along with jar and war files
+
+
+
+
+
+
 
 
 
@@ -1852,10 +1862,21 @@ classpath:- it is looking for bytecode files(.class files)
 
 
 
-inversion of control
 
+
+
+Inversion of control
+--------------------
 
 we are not control the object creation and life cycle of bean but someone creating and control of life cycle of bean
+
+
+
+
+
+
+
+
 
 
 
@@ -1972,14 +1993,6 @@ worst case---->O(n)
 
 
 
-singleton 
-
-hashmap
-
-java memory model
-
-solid principles
-
 How HashSet Works Internally in Java?
 
 
@@ -2088,6 +2101,12 @@ All HashMap rules (hashing, buckets, collisions) apply underneath
 
 
 
+
+
+
+
+
+
 HashMap-------->for comparision equals() used
 
 IdentityHashMap-------->for comparision == reference operator used
@@ -2111,6 +2130,13 @@ Else
 
 
 If tree nodes in a bucket drop to ≤ 6, it converts back to a linked list.
+
+
+
+
+
+
+
 
 
 
@@ -2241,7 +2267,15 @@ Note:-Reflection and Annotations works at runtime
 
 
 
-sealed classes
+
+
+
+
+
+
+
+
+Sealed classes
 --------------
 
 final,sealed,non-sealed Vs permits
@@ -2277,10 +2311,13 @@ class CashPayment extends Payment {
 
 
 
+
+
 Defult functional interfaces
 ----------------------------
 
 1. Methods that take Predicate<T>
+---------------------------------
 
 filter(Predicate)------------->Keep elements matching predicate
 anyMatch(Predicate)------------->At least one element matches
@@ -2289,35 +2326,51 @@ noneMatch(Predicate)------------->None match
 dropWhile(Predicate)------------->Drop until predicate false
 takeWhile(Predicate)------------->Take until predicate false
 
+
 2. Methods that take Function<T, R>
+-----------------------------------
 
 map(Function)------------->Convert T → R
 flatMap(Function)------------->Convert T → Stream<R>
 mapToInt, mapToLong, mapToDouble------------->Primitive mapping
 collect(Collectors.mapping(Function))------------->Mapping inside collector
 
+
 3. Methods that take Consumer<T>
+--------------------------------
 
 forEach(Consumer)------------->Action on each element
 peek(Consumer)------------->Debug/inspect each element
 
+
 4. Methods that take Supplier<R>
+--------------------------------
 
 collect(Supplier, BiConsumer, BiConsumer)------------->Custom collection
 Stream.generate(Supplier)------------->Infinite stream generation
 
+
 5. Methods that take BinaryOperator<T>
+--------------------------------------
 
 reduce(BinaryOperator)------------->Combine two values
 Collectors.reducing(BinaryOperator)------------->Combine during collection
 
+
 6. Methods that take BiConsumer<T, U>
+-------------------------------------
 
 collect(Supplier, BiConsumer, BiConsumer)------------->Accumulate + combine
 
+
 7. Methods that take Comparator<T>
+----------------------------------
 
 sorted(Comparator)------------->Sort stream
+
+
+
+
 
 
 
@@ -2329,15 +2382,10 @@ sorted(Comparator)------------->Sort stream
 
 
 
-Inheritence
------------
-1.super class(less information)
-2.child class(more information)
 
-Exception handling
 
-1.super class(more information)
-2.child class(less information)
+
+
 
 
 HardCode Response with Debugging
@@ -2352,6 +2400,12 @@ try {
 } catch (Exception e) {
     e.printStackTrace();
 }
+
+
+
+
+
+
 
 
 
@@ -2405,12 +2459,22 @@ New API: Date, Time & Formatting → java.time (with sub-packages)
 The old Date API is split between java.util for date/time and java.text for formatting, making it fragmented and unsafe for concurrency, whereas the new Java Date & Time API is unified under the java.time package hierarchy, providing immutability, thread safety, and cleaner design.
 
 
+
+
+
+
+
+
+
 NOT USING EQUAL OPERATOR: Instantiation and Initialization both are same place
 ------------------------
 
 int[] arr = new int[] {10, 20, 30};
 
 String[] arr= new String[] { "a", "b", "c" };
+
+
+
 
 
 USING EQUAL OPERATOR: without Instantiation we are using Initialization,so using EQUAL OPERATOR
@@ -2421,19 +2485,35 @@ int[] arr = {10, 20, 30};
 String[] arr = {"Java", "Spring", "Kafka"};
 
 
-Fail-Safe: What actually happens
+
+
+
+
+
+
+
+Fail-Safe: 
+----------
 
 👉 Removal / modification happens on the ORIGINAL collection
 👉 Iteration happens on a COPY (snapshot) of the collection
 
 
-Fail-Fast:What actually happens
+Fail-Fast:
+----------
 
 👉 Iteration and Removal / modification happens on the ORIGINAL collection
 
 
 
+
+
+
+
+
 Madhan neelapu
+
+
 Lambda expression
 -----------------
 ---->primitives and objects are first class citizens in java(so only first class citizens able to pass in method parameter)
@@ -2458,27 +2538,35 @@ Generics used to create functional interface with multiple data types
 
 We can able to assign lambda expression to function interfaces and test method in functional interfaces
 
+
+
 input and output types based
+----------------------------
 
 predicate
 ---------
 Input: Any Datatype
 Output: Boolean
 
+
 consumer
 --------
 Input: Any Datatype
 Output: void
+
 
 supplier
 --------
 Input: empty 
 Output: Any Datatype
 
+
 function
 --------
 Input: Any Datatype
 Output: Any Datatype
+
+
 
 ->lambda expression only create most used class
 ->annonymous inner class create every class used in that
@@ -3397,6 +3485,11 @@ Multi Types
 
 
 
+
+
+
+
+
 Shallow copy
 ------------
 
@@ -3411,6 +3504,8 @@ Shallow copy
 -->Only primitive fields
 
 -->Mutable reference fields
+
+
 
 
 Deep copy
@@ -3496,92 +3591,11 @@ But understanding marker interfaces helps you understand:
 
 
 
-IS-A Relationship
-
-1.IS-A with extends
--------------------
-
-
-class Animal {
-    void eat() {
-        System.out.println("Eating...");
-    }
-}
-
-class Dog extends Animal {
-    void bark() {
-        System.out.println("Barking...");
-    }
-}
-
-
-2.IS-A with Interface
----------------------
-
-interface Payment {
-    void pay();
-}
-
-class UpiPayment implements Payment {
-    public void pay() {
-        System.out.println("Paying via UPI");
-    }
-}
 
 
 
-HAS-A Relationship
 
 
-@Service
-class OrderService {
-
-    private final PaymentService paymentService;
-
-    public OrderService(PaymentService paymentService) {
-        this.paymentService = paymentService;
-    }
-}
-
-
-1️⃣ Composition (Strong HAS-A)
------------------------------
-
-class Engine {
-    void start() {
-        System.out.println("Engine started");
-    }
-}
-
-class Car {
-    private Engine engine;
-
-    Car() {
-        engine = new Engine(); // Created inside
-    }
-}
-
-2️⃣ Aggregation (Weak HAS-A)
----------------------------
-
-class Department {
-    String name;
-}
-
-class Employee {
-    private Department department;
-
-    Employee(Department department) {
-        this.department = department; // Injected from outside
-    }
-}
-
-
-
-Note:
-
-1.Has-A better to use over IS-A
-2.Aggregation better to use over Composition
 
 
 
