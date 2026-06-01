@@ -1050,6 +1050,260 @@ Design APIs so repeated requests don’t break your data.
 
 
 
+ResponseEntity
+--------------
+
+status : Http return codes
+
+header : Additional information(optional)
+
+body : Data need to be sent in response
+
+
+
+ResponseEntity<T> : we can use ResponseEntity<T> to create response, where T represents type of the 'Body'
+
+
+
+
+HttpEntity<T> -----------> Parent Class
+
+ResponseEntity<T>---------> Child Class
+
+
+
+
+
+
+@GetMapping(path="/get-user")
+public ResponseEntity<String> getUser(){
+
+	HttpHeaders headers=new HttpHeaders();
+	headers.add("My-Header1","SomeValue1");
+	headers.add("My-Header2","SomeValue2");
+
+	return ResponseEntity
+		.status(HttpStatus.OK)
+		.header(headers)
+		.body("My Response body Object can go here");
+}
+			
+
+
+
+
+
+
+
+body should be last, actually its kind of using Builder design pattern, so 'status' , 'headers'  all are returning Builder object and 'body' method call returns the ResponseEntity object.
+
+public static BodyBuilder status(HttpStatusCode status){
+
+	Assert.notNull(status,"HttpStatusCode must not be null");
+	return new DefaultBuilder(status);
+}
+
+
+
+
+B headers(@Nullable HttpHeaders headers);
+
+
+<T> ResponseEntity<T> body(@Nullable T body);
+
+
+
+
+
+so, what to do, when we don't want to add any body in the response: @DeleteMapping
+-------------------------------------------------------------------
+
+Then, we should use 'build' method
+
+
+<T> ResponseEntity<T> build();
+
+
+
+@GetMapping(path="/get-user")
+public ResponseEntity<String> getUser(){
+
+	HttpHeaders headers=new HttpHeaders();
+	headers.add("My-Header1","SomeValue1");
+	headers.add("My-Header2","SomeValue2");
+
+	return ResponseEntity
+		.status(HttpStatus.OK)
+		.header(headers)
+		.build();
+}
+
+
+
+
+
+
+body() vs build()
+
+
+
+
+
+
+@Controller : Explicitly need to add @ResponseBody annotation then automatically convert to     
+ResponseEntity<T>
+
+
+
+@RestController: by default contains @ResponseBody annotation then automatically covert to ResponseEntity<T>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Exception Handling
+------------------
+
+Input
+-----
+
+HanderExceptionResolverComposite
+
+
+
+Processing
+----------
+
+ExceptionHandlerExceptionResolver
+
+ResponseStatusExceptionResolver
+
+DafaultHandlerExceptionResolver
+
+
+Output
+------
+DefaultErrorAttributes : by default ResponseEntity Object created by DefaultErrorAttributes then that above 3 resolver(processing) involved in th response
+
+
+
+
+CustomErrorResponse class
+-------------------------
+
+above 3 resolver(processing) not involved
+
+
+
+
+
+
+
+
+
+in both the example, we are not creating the ResponseEntity object, we are just returning the exception, some other class is creating the ResponseEntity Object.
+
+
+if we need full control and don't want to rely on Exception Resolvers, then we have to create the ResponseEntity Object
+
+
+
+
+
+
+
+1.ExceptionHandlerExceptionResolver
+-----------------------------------
+
+
+Local: First priority
+---------------------
+
+controller+@ExceptionHandler
+
+
+Global: Second priority
+-----------------------
+
+Controller+@ControllerAdvice+@ExceptionHandler
+
+
+
+2.ResponseStatusExceptionResolver
+
+
+
+
+Individual Case
+---------------
+
+
+@ExceptionHandler
+
+
+@ResponseStatus
+
+
+Note: if @ExceptionHandler missing so in that case looking for @ResponseStatus then that is executed
+
+
+
+
+
+Combine Case
+------------
+
+
+@ExceptionHandler
+
+
+@ResponseStatus : it is executed by spring framework so it is 
+not executed by ResponseStatusExceptionResolver
+
+
+Note: @ResponseStatus overrides the @ExceptionHandler
+
+
+
+3.DefaultHandlerExceptionResolver
+
+
+-->Handles Spring framework related exceptions only like MethodNotFound , NoResourceFound etc
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 BATCH JOB
 ---------
