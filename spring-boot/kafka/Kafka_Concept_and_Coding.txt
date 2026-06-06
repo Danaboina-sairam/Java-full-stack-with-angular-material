@@ -421,4 +421,12 @@ Outbox Pattern
 --------------
 1.Polling Strategy
 
-2.CDC(Change Data Capture) Strategy also called as Debezium Strategy
+2.Debezium Tool which implements CDC(Change Data Capture)
+
+Note:
+
+same like 
+
+cdc(interface)
+
+Debezium(class)
