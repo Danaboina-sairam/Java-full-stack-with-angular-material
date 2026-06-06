@@ -386,3 +386,39 @@ each one communicate with heart beat
 5.what happens when consumer fails
 
 6.what happens when broker fails
+
+
+
+
+
+Kafka Producer Internal Working
+-------------------------------
+
+
+Kafka Consumer Internal Working
+-------------------------------
+
+
+Kafka Consumer Exception Handling With Dead Letter Queue
+--------------------------------------------------------
+
+
+
+Kafka Producer Transaction Handling(Coordinator, Epoch, PID, Zombie Fencing & 2PC)
+-----------------------------------
+
+
+Kafka Consumer Transaction Handling(EOS, LSO, Read Committed & Abort Handling)
+-----------------------------------
+
+
+Kafka Schema Registry With AVRO
+-------------------------------
+
+
+
+Outbox Pattern
+--------------
+1.Polling Strategy
+
+2.CDC(Change Data Capture) Strategy also called as Debezium Strategy
