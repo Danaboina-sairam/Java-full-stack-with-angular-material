@@ -537,6 +537,88 @@ offsets.topic.replication.factor=2
 
 
 
+
+
+
+commands
+--------
+
+
+PS D:\kafka-setup\compose> docker run --rm apache/kafka:4.2.0 /opt/kafka/bin/kafka-storage.sh random-uuid
+
+IVccCoWDRb2nIyFli3ewmg
+
+
+
+
+
+docker run --rm `
+-v ${PWD}/properties/controller1.properties:/opt/kafka-setup/properties/controller1.properties `
+-v ${PWD}/data/controller1:/var/lib/kafka/data `
+apache/kafka:4.2.0 `
+/opt/kafka/bin/kafka-storage.sh format `
+-t IVccCoWDRb2nIyFli3ewmg `
+-c /opt/kafka-setup/properties/controller1.properties
+
+
+
+docker run --rm `
+-v ${PWD}/properties/controller2.properties:/opt/kafka-setup/properties/controller2.properties `
+-v ${PWD}/data/controller2:/var/lib/kafka/data `
+apache/kafka:4.2.0 `
+/opt/kafka/bin/kafka-storage.sh format `
+-t IVccCoWDRb2nIyFli3ewmg `
+-c /opt/kafka-setup/properties/controller2.properties
+
+
+docker run --rm `
+-v ${PWD}/properties/broker1.properties:/opt/kafka-setup/properties/broker1.properties `
+-v ${PWD}/data/broker1:/var/lib/kafka/data `
+apache/kafka:4.2.0 `
+/opt/kafka/bin/kafka-storage.sh format `
+-t IVccCoWDRb2nIyFli3ewmg `
+-c /opt/kafka-setup/properties/broker1.properties
+
+
+docker run --rm `
+-v ${PWD}/properties/broker2.properties:/opt/kafka-setup/properties/broker2.properties `
+-v ${PWD}/data/broker2:/var/lib/kafka/data `
+apache/kafka:4.2.0 `
+/opt/kafka/bin/kafka-storage.sh format `
+-t IVccCoWDRb2nIyFli3ewmg `
+-c /opt/kafka-setup/properties/broker2.properties
+
+
+
+
+
+
+
+
+
+
+D:\kafka-setup\compose> docker compose down    
+
+PS D:\kafka-setup\compose> docker-compose build    
+                                                      
+PS D:\kafka-setup\compose> docker compose up -d  
+
+
+
+
+D:\kafka-setup\compose>docker logs controller1
+
+
+
+
+
+
+
+
+
+
+
+
 Kafka Producer Internal Working
 -------------------------------
 
