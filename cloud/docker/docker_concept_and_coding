@@ -63,7 +63,7 @@ NOTE:-
 
 
 
-how to build docker images without docker files
+HOW TO BUILD DOCKER IMAGES WITHOUT DOCKER FILES
 -----------------------------------------------
 
 plugins-->jib-->container-->spring boot application code
