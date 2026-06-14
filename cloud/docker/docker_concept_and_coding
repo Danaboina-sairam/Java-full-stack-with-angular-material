@@ -42,8 +42,8 @@ NOTE:-
 
 
 
-AUTOMATIC DOCKER IMAGE GENERATE WITH POM.XML AND .M2 FOLDER(which  one used in our projects?)
------------------------------------------------------------
+AUTOMATIC DOCKER IMAGE GENERATE WITH POM.XML AND SETTINGS.XML FROM .M2 FOLDER(which  one used in our projects?)
+-----------------------------------------------------------------------------
 
 
 HOW TO BUILD DOCKER IMAGES WITHOUT DOCKER FILES(Default spring boot)
