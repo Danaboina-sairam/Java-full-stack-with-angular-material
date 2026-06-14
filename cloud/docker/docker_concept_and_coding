@@ -9,8 +9,8 @@ Single build vs multi stage builds
 MANUAL FILES FOR DOCKER IMAGE GENERATE
 --------------------------------------
 
-single stage build command
---------------------------
+single stage build command by using Dockerfile
+----------------------------------------------
 
 1.docker build -t apigateway-dockerfile .
 
@@ -21,8 +21,8 @@ NOTE:-
 --->current directory denotes by dot(.)
 
 
-multi stage build command
--------------------------
+multi stage build command by using Dockerfile
+---------------------------------------------
 
 2.docker build -t apigateway-layered -f Dockerfile.layered .
 
@@ -36,7 +36,7 @@ NOTE:-
 
 
 
-4.docker images
+
 
 
 
@@ -131,10 +131,8 @@ PUSH TO DOCKER HUB
 
 
 
-MAIN REPOSITORY
----------------
-
-5.mvn clean compile jib:build
+LOCAL MAIN REPOSITORY
+---------------------
 
 .m2(settings.xml)
 ---
@@ -149,25 +147,11 @@ MAIN REPOSITORY
 
 
 
-
-6.docker images
-
-
-docker compose
+INITIAL DATABASE SETUP
+----------------------
 
 data.sql(src/resource/data.sql)
 
-7.docker compose up -d
-
-NOTE:- daemon mode denotes by -d
-
-clear
-
-8.docker logs -f broker
-
-9.docker logs -f order-service
-
-10.docker logs -f api-gateway
 
 CHANGE PORT FOR KEYCLOAK
 ------------------------
@@ -178,15 +162,29 @@ NOTE:-
 
 1.hosts---->file
 
-11.docker logs -f order-service
 
 
-12.docker logs -f notification-service
+3.docker images
 
+4.mvn clean compile jib:build
 
+5.docker images
 
+6.docker compose up -d
 
+NOTE:- daemon mode denotes by -d
 
+clear
+
+7.docker logs -f broker
+
+8.docker logs -f order-service
+
+9.docker logs -f api-gateway
+
+10.docker logs -f order-service
+
+11.docker logs -f notification-service
 
 
 
