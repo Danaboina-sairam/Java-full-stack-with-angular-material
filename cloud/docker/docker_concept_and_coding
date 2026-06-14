@@ -9,8 +9,8 @@ Single build vs multi stage builds
 MANUAL DOCKER IMAGE GENERATE WITH DOCKERFILE
 --------------------------------------------
 
-single stage build command by using Dockerfile
-----------------------------------------------
+single stage build command with Dockerfile
+------------------------------------------
 
 1.docker build -t apigateway-dockerfile .
 
@@ -21,8 +21,8 @@ NOTE:-
 --->current directory denotes by dot(.)
 
 
-multi stage build command by using Dockerfile
----------------------------------------------
+multi stage build command with Dockerfile
+-----------------------------------------
 
 2.docker build -t apigateway-layered -f Dockerfile.layered .
 
@@ -46,8 +46,8 @@ AUTOMATIC DOCKER IMAGE GENERATE WITH POM.XML AND SETTINGS.XML FROM .M2 FOLDER(wh
 -----------------------------------------------------------------------------
 
 
-HOW TO BUILD DOCKER IMAGES WITHOUT DOCKER FILES(Default spring boot)
------------------------------------------------
+HOW TO BUILD DOCKER IMAGES WITH POM.XML AND SETTINGS.XML FROM .M2 FOLDER(Default spring boot)
+------------------------------------------------------------------------
 
 plugins-->spring-boot-->spring-boot:build-image 
 
@@ -63,8 +63,8 @@ NOTE:-
 
 
 
-HOW TO BUILD DOCKER IMAGES WITHOUT DOCKER FILES
------------------------------------------------
+HOW TO BUILD DOCKER IMAGES WITH POM.XML AND SETTINGS.XML FROM .M2 FOLDER
+------------------------------------------------------------------------
 
 plugins-->jib-->container-->spring boot application code
 
