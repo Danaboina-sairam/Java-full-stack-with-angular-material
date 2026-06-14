@@ -6,8 +6,8 @@ Dockerfile vs docker-compose.yml
 Single build vs multi stage builds
 
 
-MANUAL FILES FOR DOCKER IMAGE GENERATE
---------------------------------------
+MANUAL DOCKER IMAGE GENERATE WITH DOCKERFILE
+--------------------------------------------
 
 single stage build command by using Dockerfile
 ----------------------------------------------
@@ -42,8 +42,8 @@ NOTE:-
 
 
 
-AUTOMATIC(which  one used in our projects?)
----------
+AUTOMATIC DOCKER IMAGE GENERATE WITHOUT DOCKERFILE(which  one used in our projects?)
+--------------------------------------------------
 
 
 HOW TO BUILD DOCKER IMAGES WITHOUT DOCKER FILES(Default spring boot)
