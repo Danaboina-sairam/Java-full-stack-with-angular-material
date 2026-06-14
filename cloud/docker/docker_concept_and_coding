@@ -1,13 +1,13 @@
 eclipse JDK | Open JDK
 ----------------------
 
-docker vs docker compose
+Dockerfile vs docker-compose.yml
 
-docker vs multi stage builds
+Single build vs multi stage builds
 
 
-MANUAL FILES FOR IMAGE GENERATE
--------------------------------
+MANUAL FILES FOR DOCKER IMAGE GENERATE
+--------------------------------------
 
 single build
 ------------
@@ -20,13 +20,11 @@ NOTE:-
 
 --->current directory denotes by dot(.)
 
-2.docker images
-
 
 multi stage build
 -----------------
 
-3.docker build -t apigateway-layered -f Dockerfile.layered .
+2.docker build -t apigateway-layered -f Dockerfile.layered .
 
 NOTE:-
 --->giving user-defined name apigateway-layered
@@ -34,6 +32,9 @@ NOTE:-
 --->actual file name Dockerfile.layered
 
 --->current directory denotes by dot(.)
+
+
+
 
 4.docker images
 
