@@ -38,13 +38,40 @@ NOTE:-
 
 4.docker images
 
+
+
+
+
 AUTOMATIC(which  one used in our projects?)
 ---------
+
+
+HOW TO BUILD DOCKER IMAGES WITHOUT DOCKER FILES(Default spring boot)
+-----------------------------------------------
+
+plugins-->spring-boot-->spring-boot:build-image 
+
+NOTE:- 
+
+1.no need to create anything
+
+2.packetobuildpacks-->spring boot default plugin
+
+3.packetobuildpacks-->builder-jammy-base-->spring boot default plugin
+
+
+
+
 
 how to build docker images without docker files
 -----------------------------------------------
 
 plugins-->jib-->container-->spring boot application code
+
+
+
+
+
 
 
 what does "JIB" do?
@@ -73,6 +100,37 @@ jib:build
 2.push into docker hub
 
 
+
+
+
+PUSH TO DOCKER HUB
+------------------
+
+<plugin>
+                <groupId>com.google.cloud.tools</groupId>
+                <artifactId>jib-maven-plugin</artifactId>
+                <version>3.2.1</version>
+                <configuration>
+                    <from>
+                        <image>eclipse-temurin:17.0.4.1_1-jre</image>
+                    </from>
+                    <to>
+                        <image>registry.hub.docker.com/sairam8276/${project.artifactId}</image>
+                    </to>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>dockerBuild</goal>
+                        </goals>
+                    </execution>
+                </executions>
+</plugin>
+
+
+
+
 MAIN REPOSITORY
 ---------------
 
@@ -88,6 +146,9 @@ MAIN REPOSITORY
 		<password>test</password>
 	</server>
 </servers>
+
+
+
 
 6.docker images
 
@@ -124,45 +185,11 @@ NOTE:-
 
 
 
-HOW TO BUILD DOCKER IMAGES WITHOUT DOCKER FILES(Default spring boot)
------------------------------------------------
-
-plugins-->spring-boot-->spring-boot:build-image 
-
-NOTE:- 
-
-1.no need to create anything
-
-2.packetobuildpacks-->spring boot default plugin
-
-3.packetobuildpacks-->builder-jammy-base-->spring boot default plugin
 
 
 
-PUSH TO DOCKER HUB
-------------------
 
-<plugin>
-                <groupId>com.google.cloud.tools</groupId>
-                <artifactId>jib-maven-plugin</artifactId>
-                <version>3.2.1</version>
-                <configuration>
-                    <from>
-                        <image>eclipse-temurin:17.0.4.1_1-jre</image>
-                    </from>
-                    <to>
-                        <image>registry.hub.docker.com/sairam8276/${project.artifactId}</image>
-                    </to>
-                </configuration>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>dockerBuild</goal>
-                        </goals>
-                    </execution>
-                </executions>
-</plugin>
+
 
 DOCKER IMAGE--->DOCKER HUB--->DOCKER COMPOSE--->CONTAINER-->5431:5432
 
