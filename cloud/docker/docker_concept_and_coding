@@ -9,8 +9,8 @@ Single build vs multi stage builds
 MANUAL FILES FOR DOCKER IMAGE GENERATE
 --------------------------------------
 
-single build
-------------
+single stage build command
+--------------------------
 
 1.docker build -t apigateway-dockerfile .
 
@@ -21,8 +21,8 @@ NOTE:-
 --->current directory denotes by dot(.)
 
 
-multi stage build
------------------
+multi stage build command
+-------------------------
 
 2.docker build -t apigateway-layered -f Dockerfile.layered .
 
