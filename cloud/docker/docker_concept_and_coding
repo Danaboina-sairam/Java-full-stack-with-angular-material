@@ -38,6 +38,18 @@ NOTE:-
 
 
 
+Different layers in spring boot jar files
+-----------------------------------------
+Wherever made change that layer only buliding
+. Dot is present directory or default directory
+-f Dockerfile.layered .
+-f Dockerfile.layered .
+This is used to tell custom directory
+
+
+
+
+
 
 
 
@@ -127,6 +139,17 @@ PUSH TO DOCKER HUB
                     </execution>
                 </executions>
 </plugin>
+
+
+
+
+
+
+
+401 UNAUTHORIZED EXCEPTION
+--------------------------
+Because creditials not provided in settings.xml in .m2 folder
+
 
 
 
