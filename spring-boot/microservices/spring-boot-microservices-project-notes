@@ -180,7 +180,7 @@ Type : OAuth2.0
 
 Access Token: below all for this only if it already available from available token section of manage tokens
 
-Configuration Options
+Configuration Options : whenever scroll that time only getting options
 ---------------------
 
 Access Token URL: token_endpoint
