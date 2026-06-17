@@ -77,7 +77,9 @@ Enabled: on
 
 Endpoints: openid endpoint configuration
 
-Issuer url copy for api gateway
+Issuer url : Issuer url copy for api gateway
+
+token_endpoint
 
 
 
@@ -125,6 +127,36 @@ public class SecurityConfig {
         return serverHttpSecurity.build();
     }
 }
+
+
+
+
+
+POSTMAN
+-------
+
+URL: our configuration microservice url 
+
+Authorization header:
+---------------------
+
+Type : OAuth2.0 
+---------------
+
+Access Token: below all for this only if it already available from available token section of manage tokens
+
+Configuration Options
+---------------------
+
+Access Token URL: token_endpoint
+
+Client ID: 
+
+Client Secret
+
+
+USE TOKEN
+---------
 
 
 
