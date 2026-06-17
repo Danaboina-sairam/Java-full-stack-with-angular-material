@@ -35,12 +35,43 @@ api-gateway
 -----------
 
 pom.xml
+-------
+
+ <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
+ </dependency>
+ <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+ </dependency>
 
 application.properties
+----------------------
+
+spring.security.oauth2.resourceserver.jwt.issuer-uri= http://localhost:8181/realms/spring-boot-microservices-realm
+
 
 SecurityConfig.java 
+-------------------
 
-main class enabling annotations
+@Configuration
+@EnableWebFluxSecurity
+public class SecurityConfig {
+
+    @Bean
+    public SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity serverHttpSecurity) {
+        serverHttpSecurity
+                .csrf(ServerHttpSecurity.CsrfSpec::disable)
+                .authorizeExchange(exchange ->
+                        exchange.pathMatchers("/eureka/**")
+                                .permitAll()
+                                .anyExchange()
+                                .authenticated())
+                .oauth2ResourceServer(spec -> spec.jwt(Customizer.withDefaults()));
+        return serverHttpSecurity.build();
+    }
+}
 
 
 
@@ -48,10 +79,58 @@ discovery-server
 ----------------
 
 pom.xml
+-------
 
-application.properties
+ <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+ </dependency>
+
 
 SecurityConfig.java 
+-------------------
+
+@Configuration
+@EnableWebSecurity
+public class SecurityConfig {
+
+    @Value("${app.eureka.username}")
+    private String username;
+
+    @Value("${app.eureka.password}")
+    private String password;
+
+    @Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+
+        http
+                .csrf(csrf -> csrf.disable())
+                .authorizeHttpRequests(auth -> auth
+                        .anyRequest().authenticated()
+                )
+                .httpBasic(Customizer.withDefaults());
+
+        return http.build();
+    }
+
+    @Bean
+    public UserDetailsService userDetailsService() {
+
+        UserDetails user = User.builder()
+                .username(username)
+                .password(passwordEncoder().encode(password))
+                .roles("USER")
+                .build();
+
+        return new InMemoryUserDetailsManager(user);
+    }
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+}
+
 
 main class enabling annotations
 
