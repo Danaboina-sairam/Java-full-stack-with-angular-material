@@ -8,22 +8,75 @@ Password: admin
 8181:8080
 We are hitting using 8181
 Administration Console for logging
+
+
+
 Group all logical OAuth client as single entity called realm
-Master-add realm-spring-boot-microservice-realm
+
+Master-Add realm
+----------------
+Name: spring-boot-microservice-realm
+
 Create
-Clients -create-add client
-spring-cloud-client-save-settings
+
+Realm settings of Master-Add realm
+----------------------------------
+
+
+
+
+
+Clients-Create 
+-------
+
+Add client
+
+client id: spring-cloud-client
+
+client protocol: openid
+
+save
+
+
+
+
+
+
+Settings(spring-cloud-client) of Clients
+----------------------------------------
+
 Access-type: confidential
+
 Standard flow enabled: off
+
 Direct-Access-Grant enabled: off
+
 Service account enabled: on
+
 Backchannel logout session required: on
-Backchannel logout session required: on
+
 Automatically when click on save
-Creditials -secret
+
+
+
+
+
+Creditials(spring-cloud-client) of Clients
+------------------------------------------
+
+Secret
+
+
+
+
+
 Realm settings
+--------------
+
 Enabled: on
+
 Endpoints: openid endpoint configuration
+
 Issuer url copy for api gateway
 
 
