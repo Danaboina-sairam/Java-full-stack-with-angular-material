@@ -1,1 +1,57 @@
+keycloak.org
+Guides
+Docker
+Docker image install in the pc
+With creditials
+Username: admin
+Password: admin
+8181:8080
+We are hitting using 8181
+Administration Console for logging
+Group all logical OAuth client as single entity called realm
+Master-add realm-spring-boot-microservice-realm
+Create
+Clients -create-add client
+spring-cloud-client-save-settings
+Access-type: confidential
+Standard flow enabled: off
+Direct-Access-Grant enabled: off
+Service account enabled: on
+Backchannel logout session required: on
+Backchannel logout session required: on
+Automatically when click on save
+Creditials -secret
+Realm settings
+Enabled: on
+Endpoints: openid endpoint configuration
+Issuer url copy for api gateway
+
+
+
+
+
+
+api-gateway
+-----------
+
+pom.xml
+
+application.properties
+
+SecurityConfig.java 
+
+main class enabling annotations
+
+
+
+discovery-server
+----------------
+
+pom.xml
+
+application.properties
+
+SecurityConfig.java 
+
+main class enabling annotations
 
