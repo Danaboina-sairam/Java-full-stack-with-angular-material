@@ -9,31 +9,51 @@ Password: admin
 We are hitting using 8181
 Administration Console for logging
 
+docker run -p 127.0.0.1:8181:8080 -e KC_BOOTSTRAP_ADMIN_USERNAME=admin -e KC_BOOTSTRAP_ADMIN_PASSWORD=admin quay.io/keycloak/keycloak:26.6.3 start-dev
 
 
-Group all logical OAuth client as single entity called realm
 
-Master-Add realm
-----------------
-Name: spring-boot-microservice-realm
+
+
+
+Def: Group all logical OAuth client as single entity called realm
+
+Manage realms-Create realm
+--------------------------
+Realm Name: spring-boot-microservice-realm
 
 Create
 
-Realm settings of Master-Add realm
-----------------------------------
 
 
 
 
 
-Clients-Create 
+
+
+
+Clients
 -------
 
-Add client
+Create client
+-------------
 
-client id: spring-cloud-client
+General settings
+----------------
 
-client protocol: openid
+Client type: OpenID Connect
+
+Client ID: spring-cloud-client
+
+save
+
+
+Capability config
+-----------------
+
+Client authentication
+
+Authentication flow : Service account roles
 
 save
 
@@ -42,35 +62,34 @@ save
 
 
 
-Settings(spring-cloud-client) of Clients
-----------------------------------------
 
-Access-type: confidential
-
-Standard flow enabled: off
-
-Direct-Access-Grant enabled: off
-
-Service account enabled: on
-
-Backchannel logout session required: on
-
-Automatically when click on save
-
-
-
-
-
-Creditials(spring-cloud-client) of Clients
+Creditials(spring-cloud-client) of Clients: Secret
 ------------------------------------------
 
-Secret
+Clients
+-------
+
+Clients list
+------------
+
+spring-cloud-client----->Creditials--------->Client Secret
 
 
 
 
 
-Realm settings
+
+
+
+
+
+
+
+
+
+
+
+Realm settings: only for isuer used in application.properties and token_endpoint used for postman
 --------------
 
 Enabled: on
@@ -132,6 +151,22 @@ public class SecurityConfig {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 POSTMAN
 -------
 
@@ -150,13 +185,23 @@ Configuration Options
 
 Access Token URL: token_endpoint
 
-Client ID: 
+Client ID: spring-cloud-client
 
-Client Secret
+Client Secret : it is generated from key cloak
 
 
 USE TOKEN
 ---------
+
+
+
+
+
+
+
+
+
+
 
 
 
