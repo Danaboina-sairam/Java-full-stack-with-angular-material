@@ -105,6 +105,10 @@ token_endpoint
 
 
 
+Configure OAuth2 as a resource server in api gateway and enable spring security in the api gateway
+
+
+
 api-gateway
 -----------
 
