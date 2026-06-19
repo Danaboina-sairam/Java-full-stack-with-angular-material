@@ -674,6 +674,49 @@ Need to implement Global Exception Handler for order-service
 
 
 
+
+Almost every Spring Boot developers uses "@Value".
+
+But very few know one place where it simply doesn't work.
+
+Take this example:
+
+@Component
+public class AppConfig {
+
+ @Value("${app.name}")
+ private static String appName;
+}
+
+Looks perfectly valid...
+
+But "appName" will be "null".
+
+Why?
+
+Because "@Value" is processed when Spring creates a bean instance.
+
+"static" fields belong to the class, not to the object.
+
+Spring injects dependencies into objects, not into class-level static fields.
+
+---
+
+A simple way to remember:
+
+👉 Instance field → "@Value" works ✅
+
+👉 Static field → "@Value" won't work ❌
+
+
+
+
+
+
+
+
+
+
 MAVEN
 -----
 
