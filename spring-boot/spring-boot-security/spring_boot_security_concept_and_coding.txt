@@ -1313,3 +1313,30 @@ Authentication lifecycle
 Attack prevention
 Scalability
 Real production debugging
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@EnableWebSecurity:Spring MVC
+------------------
+
+configure(AuthenticationManagerBuilder authenticationManagerBuilder), configure(HttpSecurity httpSecurity) vs SecurityWebFilterChain
+
+
+@EnableWebFluxSecurity:Spring WebFlux
+----------------------
+
+SecurityWebFilterChain
