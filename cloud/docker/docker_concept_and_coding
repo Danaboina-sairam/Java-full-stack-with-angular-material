@@ -181,6 +181,11 @@ CHANGE PORT FOR KEYCLOAK
 
 c:\windows\system32\driver\etc\hosts
 
+SAIRAM SYSTEM:
+--------------
+C:\Windows\System32\drivers\etc
+
+
 NOTE:-
 
 1.hosts---->file
