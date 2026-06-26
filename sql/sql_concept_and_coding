@@ -239,6 +239,6 @@ VALUES
 
 
 
-Automatic Partition Creation:Automatic partitions are created by using the PL/SQL procedures
+Automatic Partition Creation:Automatic partitions are created for each day by using the PL/SQL procedures
 ----------------------------
 
