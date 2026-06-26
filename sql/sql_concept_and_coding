@@ -200,3 +200,45 @@ JSONB OPERATORS
 |              10 | `LIMIT` / `OFFSET` | Return only the requested number of rows.       |
 
 
+
+
+Manual Partition Creation
+-------------------------
+
+CREATE TABLE public.orders (
+    order_id BIGINT,
+    customer_name VARCHAR(100),
+    order_date DATE,
+    amount NUMERIC(10,2)
+)
+
+
+PARTITION BY RANGE (order_date);
+
+
+CREATE TABLE orders_2025
+PARTITION OF orders
+FOR VALUES FROM ('2025-01-01') TO ('2026-01-01');
+
+
+CREATE TABLE orders_2026
+PARTITION OF orders
+FOR VALUES FROM ('2026-01-01') TO ('2027-01-01');
+
+
+
+
+
+INSERT INTO orders
+VALUES
+(1,'John','2025-05-12',500);
+
+INSERT INTO orders
+VALUES
+(2,'David','2026-08-15',700);
+
+
+
+Automatic Partition Creation:Automatic partitions are created by using the PL/SQL procedures
+----------------------------
+
