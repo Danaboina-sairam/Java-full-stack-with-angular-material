@@ -101,3 +101,85 @@ SELECT * FROM T_INVENTORY
 ✔ Use composite indexes wisely(like crtd_on, crtd_by, updt_by, updt_on)
 
 PARTITION BY RANGE (created_at);
+
+
+
+Spaces
+------
+No spaces allowed in the pgadmin
+
+For selecting multiple columns
+------------------------------
+
+Shift+ down arrow 
+
+For getting related items
+-------------------------
+
+Ctrl+space 
+
+For comma and single quote usage
+--------------------------------
+
+Alt + cursor 
+
+comment lines(--)
+-------------
+
+that is starting or middle onwards wherever required
+
+For related match
+-----------------
+
+where column_name like '%validate%'
+
+For last 
+--------
+
+where column_name like '%auth'
+
+For start 
+---------
+
+where column_name like 'auth%'
+
+For json 
+--------
+
+where column_name::text ILIKE '%pan%'
+
+
+
+| Requirement             | Query                                   |
+| ----------------------- | --------------------------------------- |
+| Search anywhere in JSON | details::text ILIKE '%pan%'           |
+| Search top-level key    | details->>'key' = 'value'             |
+| Search nested key       | details->'parent'->>'child' = 'value' |
+| Fast JSONB search       | details @> '{"key":"value"}'          |
+
+
+
+
+SELECT
+INSERT
+UPDATE
+DELETE
+JOIN
+LEFT JOIN
+RIGHT JOIN
+GROUP BY
+HAVING
+ORDER BY
+LIMIT
+OFFSET
+UNION
+EXISTS
+IN
+LIKE
+ILIKE
+CASE
+COALESCE
+WITH (CTE)
+WINDOW FUNCTIONS
+JSONB OPERATORS
+
