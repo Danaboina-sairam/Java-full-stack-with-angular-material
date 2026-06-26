@@ -183,3 +183,20 @@ WITH (CTE)
 WINDOW FUNCTIONS
 JSONB OPERATORS
 
+
+
+
+| Execution Order | Clause             | Purpose                                         |
+| --------------: | ------------------ | ----------------------------------------------- |
+|               1 | `FROM`             | Identify the source table(s) and perform joins. |
+|               2 | `ON`               | Apply join conditions.                          |
+|               3 | `JOIN`             | Combine rows from multiple tables.              |
+|               4 | `WHERE`            | Filter individual rows.                         |
+|               5 | `GROUP BY`         | Group rows based on one or more columns.        |
+|               6 | `HAVING`           | Filter groups.                                  |
+|               7 | `SELECT`           | Choose the columns/expressions to return.       |
+|               8 | `DISTINCT`         | Remove duplicate rows from the result.          |
+|               9 | `ORDER BY`         | Sort the result set.                            |
+|              10 | `LIMIT` / `OFFSET` | Return only the requested number of rows.       |
+
+
