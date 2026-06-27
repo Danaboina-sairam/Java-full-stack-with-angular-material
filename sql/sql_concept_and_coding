@@ -89,6 +89,11 @@ SELECT * FROM T_INVENTORY
 
 
 
+PGADMIN UI vs Postgres DB server 
+--------------------------------
+
+
+
 
 🎯 Golden Rules for Production
 -------------------------------
