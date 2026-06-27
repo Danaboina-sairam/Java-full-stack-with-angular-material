@@ -242,3 +242,48 @@ VALUES
 Automatic Partition Creation:Automatic partitions are created for each day by using the PL/SQL procedures
 ----------------------------
 
+
+
+
+etb customer profile database
+-----------------------------
+
+RMN-mobile number
+
+
+audit err
+---------
+
+err_stts
+
+
+
+audit trn
+---------
+
+traceid
+
+txn id
+
+session token id
+
+command id
+
+CIF-user relationship number
+
+
+
+audit service
+-------------
+
+txn id 
+
+session token id
+
+service id
+
+RRN
+
+date format in database table
+
+
