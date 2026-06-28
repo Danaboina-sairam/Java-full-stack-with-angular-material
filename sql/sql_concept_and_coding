@@ -250,21 +250,21 @@ Automatic Partition Creation:Automatic partitions are created for each day by us
 
 
 
-etb customer profile database
------------------------------
+etb cust profile 
+----------------
 
-RMN-mobile number
-
-
-audit err
----------
-
-err_stts
+mobile number
 
 
+error
+-----
 
-audit trn
----------
+error status
+
+
+
+transaction
+-----------
 
 traceid
 
@@ -274,16 +274,16 @@ session token id
 
 command id
 
-CIF-user relationship number
+URN
 
 
 
-audit service
--------------
+service
+-------
 
 txn id 
 
-session token id
+session id
 
 service id
 
