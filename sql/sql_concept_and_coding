@@ -304,3 +304,82 @@ onoy otp.ext sys status
 -----------------------
 
 
+
+
+
+
+
+BATCH JOB
+---------
+
+
+
+ReconmsApplication-------------->run--------------->getCurrentJobName------------->BatchJobsConfig------------>BatchConfig
+
+
+shieldBatchJob
+
+
+
+
+tncStep(stepname,jobRepository)
+
+chunk
+
+reader---------->jdbcPagingItemReader(time info takinf yono_batch.BATCH_JOB_EXECUTION) , CustomRowMapper , (reading from our table) -----------> select, from , where , group clauses
+
+processor----------->tncProcessor------------->CustomItemProcessor
+
+writer------------->buildWriter(mountPath)---------->getShieldDTOFlatFileItemWriter(encryption)
+
+listener------------->beforeStep, afterStep
+
+
+
+Delimiter
+
+
+auditing db------------>gono_batch------------>BATCH_JOB_EXECUTION
+
+
+Kafka integration with batch job
+
+
+save to DB OR call another API
+
+Debugging in batch job
+
+
+Spring Batch Terminalogy
+------------------------
+
+1.JobLauncher
+2.Job
+3.Step
+4.ItemReader
+5.ItemProcessor
+6.ItemWriter
+7.JobRepository
+
+
+Types of Tables in Spring Batch
+
+1. Job-level tables
+2. Step-level tables
+3. Context & Params tables
+
+
+
+BATCH_JOB_INSTANCE
+BATCH_JOB_EXECUTION
+BATCH_JOB_EXECUTION_PARAMS
+BATCH_JOB_EXECUTION_CONTEXT
+BATCH_STEP_EXECUTION
+BATCH_STEP_EXECUTION_CONTEXT
+
+
+
+
+java -jar app.jar --job.name=myJob
+
+
