@@ -298,6 +298,8 @@ date format in database table 2026-MM-DD HH:MM
 onoy comm.sms msg response
 --------------------------
 
+msg typ, crtd on
+
 onoy otp.ext sys status
 -----------------------
 
