@@ -250,10 +250,13 @@ Automatic Partition Creation:Automatic partitions are created for each day by us
 
 
 
-etb cust profile 
-----------------
+Use arrows frequently
 
-mobile number
+
+etb cust
+--------
+
+mobile number-URN, user id
 
 
 error
@@ -289,6 +292,13 @@ service id
 
 RRN
 
-date format in database table
+date format in database table 2026-MM-DD HH:MM
+
+
+onoy comm.sms msg response
+--------------------------
+
+onoy otp.ext sys status
+-----------------------
 
 
