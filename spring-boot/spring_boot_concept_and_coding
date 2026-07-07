@@ -61,6 +61,69 @@ repository->going to access the database in the repository layer
 
 
 
+
+
+MAVEN
+-----
+
+mvn clean      ----->  Deletes the /target directory (cleans previous build artifacts)
+
+mvn validate   ----->  Validates the project structure and configuration (pom.xml)
+
+mvn compile    ----->  .class files generated from .java files
+
+mvn test       ----->  Unit tests are compiled and run (using JUnit/TestNG)
+
+mvn package    ----->  .jar/.war file generated in target/
+
+mvn verify     ----->  Runs integration tests, checks packaged artifact
+
+mvn install    ----->  .jar placed into local repository (~/.m2)
+
+mvn site       ----->  Generates project documentation (in target/site) using plugins like maven-site-plugin
+
+mvn deploy     ----->  .jar pushed to remote Maven repository (like Nexus/Artifactory)
+
+
+<project>
+    <modelVersion>...</modelVersion>
+    <groupId>...</groupId>
+    <artifactId>...</artifactId>
+    <version>...</version>
+    <packaging>...</packaging>
+    <name>...</name>
+    <description>...</description>
+    <url>...</url>
+    <parent>...</parent>
+    <modules>...</modules>
+    <properties>...</properties>
+    <dependencies>...</dependencies>
+    <dependencyManagement>...</dependencyManagement>
+    <build>...</build>
+    <reporting>...</reporting>
+    <profiles>...</profiles>
+    <repositories>...</repositories>
+    <pluginRepositories>...</pluginRepositories>
+    <distributionManagement>...</distributionManagement>
+    <scm>...</scm>
+    <ciManagement>...</ciManagement>
+    <issueManagement>...</issueManagement>
+    <developers>...</developers>
+    <contributors>...</contributors>
+    <licenses>...</licenses>
+    <organization>...</organization>
+</project>
+
+
+
+
+
+
+
+
+
+
+
 application.properties vs application.yml
 -----------------------------------------
 1.We can use both at a time but first priority application.properties file contain properties only
@@ -746,58 +809,6 @@ A simple way to remember:
 
 
 
-
-
-MAVEN
------
-
-mvn clean      ----->  Deletes the /target directory (cleans previous build artifacts)
-
-mvn validate   ----->  Validates the project structure and configuration (pom.xml)
-
-mvn compile    ----->  .class files generated from .java files
-
-mvn test       ----->  Unit tests are compiled and run (using JUnit/TestNG)
-
-mvn package    ----->  .jar/.war file generated in target/
-
-mvn verify     ----->  Runs integration tests, checks packaged artifact
-
-mvn install    ----->  .jar placed into local repository (~/.m2)
-
-mvn site       ----->  Generates project documentation (in target/site) using plugins like maven-site-plugin
-
-mvn deploy     ----->  .jar pushed to remote Maven repository (like Nexus/Artifactory)
-
-
-<project>
-    <modelVersion>...</modelVersion>
-    <groupId>...</groupId>
-    <artifactId>...</artifactId>
-    <version>...</version>
-    <packaging>...</packaging>
-    <name>...</name>
-    <description>...</description>
-    <url>...</url>
-    <parent>...</parent>
-    <modules>...</modules>
-    <properties>...</properties>
-    <dependencies>...</dependencies>
-    <dependencyManagement>...</dependencyManagement>
-    <build>...</build>
-    <reporting>...</reporting>
-    <profiles>...</profiles>
-    <repositories>...</repositories>
-    <pluginRepositories>...</pluginRepositories>
-    <distributionManagement>...</distributionManagement>
-    <scm>...</scm>
-    <ciManagement>...</ciManagement>
-    <issueManagement>...</issueManagement>
-    <developers>...</developers>
-    <contributors>...</contributors>
-    <licenses>...</licenses>
-    <organization>...</organization>
-</project>
 
 
 
