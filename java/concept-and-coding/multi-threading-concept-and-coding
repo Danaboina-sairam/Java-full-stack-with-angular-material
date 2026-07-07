@@ -2143,3 +2143,30 @@ CPU is always busy
 No waste
 
 High performance
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+multi threading 
+
+aop(this is used in scenarios rate limiter,bulk head,time limiter)
+
+supplyAsync()----->submit the task to thread pool
+
+completedFuture()------>not submit the task to thread pool(just wrap the response)
