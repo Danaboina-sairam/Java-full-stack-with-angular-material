@@ -268,3 +268,113 @@ public class SecurityConfig {
 
 main class enabling annotations
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+product-service:-getting details of product
+
+order-service:-posting details of product
+
+multiple instance of infrastructure microservices(API Gateway,Service discovery,Load balancer)
+
+multiple instance of business microservices(Producr service , Order service)
+
+
+NOTE :- 
+
+1.multiple instaces are generating by  using Region and Availabilty zone only
+
+2.client request also split by using DNS(AWS 53 Route , Azure traffic manager) and share to API Gateway
+
+3.DNS also not a single point failure because in that also different DNS available
+
+4.API Gateway very intelligent compare to Load balancer 
+
+5.Load balancer after traffic distribute to different instance of microservice again inform to API Gateway
+
+6.API Gateway--->Routing capability
+
+7.Load balancer--->only distributing capability
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Service we are going to build
+
+Product service:-Create and view products,act as Catalog
+
+Order service:- can order products
+
+Inventory service:-can check if product is in stock or not
+
+Notification service:-can send notifications,after order is placed
+
+Order service ,inventory service,Notification service are going to interact with each other
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+WebClient webClient;(whatever created in config class that is used in required class but access decrease from high to low)
+-------------------
+
+Microservice Communication(Called Response DTO also need to place at calling side)
+--------------------------
+
+Need to implement Global Exception Handler for order-service
+------------------------------------------------------------
+
