@@ -544,9 +544,16 @@ return new User("defaultusername","defaultemail");
 
 
 
-More than 1 Bean created in @Configuration class
-------------------------------------------------
+More than 1 Bean created in @Configuration class by using @Primary and @Qualifier overcome the issue
+----------------------------------------------------------------------------------------------------
 
+@Primary: it is used in configuration class
+
+
+@Qualifier: it is used in service class
+
+
+Example:
 
 @Configuration
 public class AppConfig
@@ -569,6 +576,13 @@ return new User("anotherusername","anotheremail");
 }
 
 }
+
+
+
+
+
+
+
 
 
 
@@ -606,12 +620,21 @@ public User createUserBean()
 
 
 
+
+
+
+
+
 At what time, these beans get created
 -------------------------------------
 
 1.Eagerness(Singleton scope)
 
 2.Lazy(we can use with @Component class)
+
+
+
+
 
 
 
