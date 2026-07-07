@@ -124,6 +124,66 @@ mvn deploy     ----->  .jar pushed to remote Maven repository (like Nexus/Artifa
 
 
 
+
+
+How Spring boot is proccessing HTTP request
+-------------------------------------------
+
+1. Client sends HTTP request
+2. DispatcherServlet receives request
+3. DispatcherServlet asks HandlerMapping:
+      "Which handler?"
+4. HandlerMapping returns:
+      → Controller object + method info
+5. DispatcherServlet asks HandlerAdapter:
+      "Can you handle this controller?"
+6. HandlerAdapter invokes the controller method
+7. Controller executes business logic
+8. HandlerAdapter returns ModelAndView / ResponseBody
+9. DispatcherServlet sends response to client
+
+
+
+
+1️⃣ DispatcherServlet → HandlerMapping
+
+“Who should handle this request?”
+
+Uses RequestMappingHandlerMapping
+
+Finds the controller method annotated with:
+
+@GetMapping
+
+@PostMapping, etc.
+
+
+
+2️⃣ DispatcherServlet → HandlerAdapter
+
+“How do I invoke this handler?”
+
+Uses RequestMappingHandlerAdapter
+
+Prepares:
+
+Method arguments (@PathVariable, @RequestBody)
+
+Validation
+
+Conversion
+
+
+
+
+
+
+
+
+
+
+
+
 application.properties vs application.yml
 -----------------------------------------
 1.We can use both at a time but first priority application.properties file contain properties only
@@ -191,62 +251,6 @@ IOC-------->ApplicationContext----------->Dependency Injection(it is automatical
 
 IOC----->Dependency Injection,Bean Factory,Application Context
 
-
-
-
-
-
-
-
-
-
-
-How Spring boot is proccessing HTTP request
--------------------------------------------
-
-1. Client sends HTTP request
-2. DispatcherServlet receives request
-3. DispatcherServlet asks HandlerMapping:
-      "Which handler?"
-4. HandlerMapping returns:
-      → Controller object + method info
-5. DispatcherServlet asks HandlerAdapter:
-      "Can you handle this controller?"
-6. HandlerAdapter invokes the controller method
-7. Controller executes business logic
-8. HandlerAdapter returns ModelAndView / ResponseBody
-9. DispatcherServlet sends response to client
-
-
-
-
-1️⃣ DispatcherServlet → HandlerMapping
-
-“Who should handle this request?”
-
-Uses RequestMappingHandlerMapping
-
-Finds the controller method annotated with:
-
-@GetMapping
-
-@PostMapping, etc.
-
-
-
-2️⃣ DispatcherServlet → HandlerAdapter
-
-“How do I invoke this handler?”
-
-Uses RequestMappingHandlerAdapter
-
-Prepares:
-
-Method arguments (@PathVariable, @RequestBody)
-
-Validation
-
-Conversion
 
 
 
