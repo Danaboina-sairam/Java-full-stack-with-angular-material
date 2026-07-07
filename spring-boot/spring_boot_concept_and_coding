@@ -184,12 +184,177 @@ Conversion
 
 
 
+
+
+👉 What is Idempotency in Backend Systems? 🖥️ 
+--------------------------------------------
+
+Let’s understand this simply.
+
+Imagine a light switch 💡
+
+Turn it ON once → Light turns ON 
+Turn it ON again → Still ON 
+
+Nothing changes after the first action.
+
+That is idempotent behavior.
+
+Now imagine clicking “Pay ₹1000” 💳 twice.
+
+First click → ₹1000 deducted 
+Second click → ₹1000 deducted again 
+
+That is NOT idempotent.
+
+In backend terms:
+
+An operation is idempotent if 
+making the same request multiple times 
+produces the same result as making it once.
+
+No additional side effects.
+
+Why does this matter?
+
+Because networks fail.
+
+• Client times out 
+• User refreshes page 
+• Request is retried 
+• Server responds late 
+
+If your API is not idempotent, you risk:
+
+• Duplicate payments 
+• Double orders 
+• Repeated database updates 
+• Data inconsistency 
+
+Now let’s connect this to HTTP methods.
+
+GET → Idempotent 
+PUT → Idempotent 
+DELETE → Idempotent 
+POST → Usually NOT idempotent 
+
+Why?
+
+PUT replaces a resource. 
+Calling it again keeps the same final state.
+
+POST usually creates new resources. 
+Calling it again creates duplicates.
+
+But here’s the important part:
+
+POST can be made idempotent.
+
+How to Solve Idempotency Problems 👇
+
+1️⃣ Idempotency Keys 
+
+Client sends a unique key with the request. 
+Server stores the key and result. 
+
+If the same key is received again → 
+Return previous response instead of processing again.
+
+Common in payment systems like Stripe.
+
+2️⃣ Database Unique Constraints 
+
+Use unique fields (e.g., orderId, transactionId). 
+If duplicate request comes → database prevents duplication.
+
+3️⃣ Upsert Logic 
+
+Instead of “create new”, 
+use insert-or-update pattern.
+
+4️⃣ Proper HTTP Method Usage 
+
+Use PUT when updating known resources. 
+Use POST carefully for creation.
+
+5️⃣ Request Deduplication Layer 
+
+Store request fingerprints in cache (Redis) 
+and block duplicates within a time window.
+
+Golden Rule 🧠 
+
+If a user retries a request, 
+your system should not panic.
+
+Design APIs so repeated requests don’t break your data.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 application.properties vs application.yml
 -----------------------------------------
 1.We can use both at a time but first priority application.properties file contain properties only
 2.if  application.properties and application.yml files contains same properties then application.properties overrides application.yml
 
 Note: application.properties is most strong in spring boot application
+
+
+
+
+
+
+
+
+
+@Value 
+------
+
+Almost every Spring Boot developers uses "@Value".
+
+But very few know one place where it simply doesn't work.
+
+Take this example:
+
+@Component
+public class AppConfig {
+
+ @Value("${app.name}")
+ private static String appName;
+}
+
+Looks perfectly valid...
+
+But "appName" will be "null".
+
+Why?
+
+Because "@Value" is processed when Spring creates a bean instance.
+
+"static" fields belong to the class, not to the object.
+
+Spring injects dependencies into objects, not into class-level static fields.
+
+---
+
+A simple way to remember:
+
+👉 Instance field → "@Value" works ✅
+
+👉 Static field → "@Value" won't work ❌
+
+
 
 
 
@@ -261,87 +426,6 @@ IOC----->Dependency Injection,Bean Factory,Application Context
 
 
 
-product-service:-getting details of product
-
-order-service:-posting details of product
-
-multiple instance of infrastructure microservices(API Gateway,Service discovery,Load balancer)
-
-multiple instance of business microservices(Producr service , Order service)
-
-
-NOTE :- 
-
-1.multiple instaces are generating by  using Region and Availabilty zone only
-
-2.client request also split by using DNS(AWS 53 Route , Azure traffic manager) and share to API Gateway
-
-3.DNS also not a single point failure because in that also different DNS available
-
-4.API Gateway very intelligent compare to Load balancer 
-
-5.Load balancer after traffic distribute to different instance of microservice again inform to API Gateway
-
-6.API Gateway--->Routing capability
-
-7.Load balancer--->only distributing capability
-
-
-
-
-
-
-HashMap:-
-
-1.hash
-
-2.key
-
-3.value
-
-4.node
-
-hashcode(hashcode generate based on the key )
-
-storing in hashmap(after hashcode generate now apply on that (hashcode%size of hashmap----------->now getting inserting place of hashmap)
-
-collision:-collision is nothing but multiple time value replacing for same key
-
-case 1:
-
-2 objects same then hashcode same
-
-case 2:
-
-2 objects hashcode same then objects are not same sometimes
-
-
-note 
-----
-
-1.object noting but key
-
-2.every where hash code with object used(both are not independent)
-
-
-
-
-
-Service we are going to build
-
-Product service:-Create and view products,act as Catalog
-
-Order service:- can order products
-
-Inventory service:-can check if product is in stock or not
-
-Notification service:-can send notifications,after order is placed
-
-Order service ,inventory service,Notification service are going to interact with each other
-
-
-
-
 Classes
 -------
 
@@ -357,12 +441,28 @@ Controller,Service(@RequiredArgsConstructor)
 
 @NoArgsConstructor(NONE)
 
+
+
+
+
+
+
+
+
 postman hitting
 ---------------
 
 by using Dto fields reference variable passing in postman
 
 NOTE:- parent and child class not using class names but using there references of fields
+
+
+
+
+
+
+
+
 
 Integration Tests
 -----------------
@@ -371,10 +471,28 @@ Integration Tests
 
 2.while calling content() used to send data but that is accepting only string data.so,converting json to string format by using object mapper
 
+
+
+
+
+
+
+
+
+
 SPRING BOOT PROJECT CONVENTION
 ------------------------------
 
 1.Artifact name and Project name Hyphan used(Note:- Hyphans not reflected in package name,so use hyphans in Artifact name and Project name)
+
+
+
+
+
+
+
+
+
 
 
 @PostConstruct vs @Bean CommandLineRunner
@@ -404,6 +522,15 @@ spring.jpa.hibernate.ddl-auto=create-drop
 
 
 Note:-1.update 2.none(production use only none)
+
+
+
+
+
+
+
+
+
 
 
 
@@ -760,74 +887,6 @@ Child class(dependency)
 
 
 
-WebClient webClient;(whatever created in config class that is used in required class but access decrease from high to low)
--------------------
-
-Microservice Communication(Called Response DTO also need to place at calling side)
---------------------------
-
-Need to implement Global Exception Handler for order-service
-------------------------------------------------------------
-
-
-
-
-
-Almost every Spring Boot developers uses "@Value".
-
-But very few know one place where it simply doesn't work.
-
-Take this example:
-
-@Component
-public class AppConfig {
-
- @Value("${app.name}")
- private static String appName;
-}
-
-Looks perfectly valid...
-
-But "appName" will be "null".
-
-Why?
-
-Because "@Value" is processed when Spring creates a bean instance.
-
-"static" fields belong to the class, not to the object.
-
-Spring injects dependencies into objects, not into class-level static fields.
-
----
-
-A simple way to remember:
-
-👉 Instance field → "@Value" works ✅
-
-👉 Static field → "@Value" won't work ❌
-
-
-
-
-
-
-
-
-
-
-
-
-multi threading 
-
-aop(this is used in scenarios rate limiter,bulk head,time limiter)
-
-supplyAsync()----->submit the task to thread pool
-
-completedFuture()------>not submit the task to thread pool(just wrap the response)
-
-
-
-
 
 
 @Transactional annotation
@@ -1039,112 +1098,6 @@ Isolation levels
 2.component class bean with 2 threads then one thread call the updateStock() and second thread call the checkStock()
 
 3.service class with 2 methods that is updateStock() and checkStock()
-
-
-
-
-👉 What is Idempotency in Backend Systems? 🖥️ 
---------------------------------------------
-
-Let’s understand this simply.
-
-Imagine a light switch 💡
-
-Turn it ON once → Light turns ON 
-Turn it ON again → Still ON 
-
-Nothing changes after the first action.
-
-That is idempotent behavior.
-
-Now imagine clicking “Pay ₹1000” 💳 twice.
-
-First click → ₹1000 deducted 
-Second click → ₹1000 deducted again 
-
-That is NOT idempotent.
-
-In backend terms:
-
-An operation is idempotent if 
-making the same request multiple times 
-produces the same result as making it once.
-
-No additional side effects.
-
-Why does this matter?
-
-Because networks fail.
-
-• Client times out 
-• User refreshes page 
-• Request is retried 
-• Server responds late 
-
-If your API is not idempotent, you risk:
-
-• Duplicate payments 
-• Double orders 
-• Repeated database updates 
-• Data inconsistency 
-
-Now let’s connect this to HTTP methods.
-
-GET → Idempotent 
-PUT → Idempotent 
-DELETE → Idempotent 
-POST → Usually NOT idempotent 
-
-Why?
-
-PUT replaces a resource. 
-Calling it again keeps the same final state.
-
-POST usually creates new resources. 
-Calling it again creates duplicates.
-
-But here’s the important part:
-
-POST can be made idempotent.
-
-How to Solve Idempotency Problems 👇
-
-1️⃣ Idempotency Keys 
-
-Client sends a unique key with the request. 
-Server stores the key and result. 
-
-If the same key is received again → 
-Return previous response instead of processing again.
-
-Common in payment systems like Stripe.
-
-2️⃣ Database Unique Constraints 
-
-Use unique fields (e.g., orderId, transactionId). 
-If duplicate request comes → database prevents duplication.
-
-3️⃣ Upsert Logic 
-
-Instead of “create new”, 
-use insert-or-update pattern.
-
-4️⃣ Proper HTTP Method Usage 
-
-Use PUT when updating known resources. 
-Use POST carefully for creation.
-
-5️⃣ Request Deduplication Layer 
-
-Store request fingerprints in cache (Redis) 
-and block duplicates within a time window.
-
-Golden Rule 🧠 
-
-If a user retries a request, 
-your system should not panic.
-
-Design APIs so repeated requests don’t break your data.
 
 
 
