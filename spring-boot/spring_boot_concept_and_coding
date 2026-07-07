@@ -48,6 +48,15 @@ Remember, 𝗰𝗼𝗺𝗺𝘂𝗻𝗶𝗰𝗮𝘁𝗶𝗼𝗻 𝗶𝘀 𝗸𝗲
 
 
 
+Controller->role of accepting client request in controller layer
+
+service->implementing business logic in the service layer
+
+repository->going to access the database in the repository layer
+
+
+
+
 
 
 
@@ -62,11 +71,10 @@ Note: application.properties is most strong in spring boot application
 
 
 
-Controller->role of accepting client request in controller layer
 
-service->implementing business logic in the service layer
 
-repository->going to access the database in the repository layer
+
+
 
 
 Creation → Dependency Injection → Initialization → Usage → Destruction
@@ -74,12 +82,16 @@ Creation → Dependency Injection → Initialization → Usage → Destruction
 
 Object creation,Object initialization,object usage,Object destruction
 
+
+
 DI----------->Design pattern
 
 IOC---------->Principle
 
-
 IOC-------->ApplicationContext----------->Dependency Injection(it is automatically done by ApplicationContext)
+
+
+
 
 
 1. BeanFactory
@@ -114,7 +126,6 @@ IOC-------->ApplicationContext----------->Dependency Injection(it is automatical
 	6.Used in almost all Spring applications.
 
 
-
 IOC----->Dependency Injection,Bean Factory,Application Context
 
 
@@ -122,28 +133,13 @@ IOC----->Dependency Injection,Bean Factory,Application Context
 
 
 
-@Component:
-
-1.@Component tells to spring boot ,you have to create object and you have to manage life cycle
 
 
 
-userdefined bean
-
-1.@Component with userdefined constructor(no args constructor)
-
-2.@Configuration with customized constructor of @Bean (args constructor)
-
-springboot bean
-
-1.@Component
 
 
-Dynamic bean initialization with @Qualifier 
+How Spring boot is proccessing HTTP request
 -------------------------------------------
-
-
-
 
 1. Client sends HTTP request
 2. DispatcherServlet receives request
@@ -576,6 +572,18 @@ return new User("anotherusername","anotheremail");
 }
 
 }
+
+
+
+
+
+
+
+
+
+
+Dynamic bean initialization with @Qualifier 
+-------------------------------------------
 
 
 
