@@ -4590,3 +4590,58 @@ scale 0 to million users
 8.Messaging queue
 
 9.Database scaling
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+HashMap:-
+
+1.hash
+
+2.key
+
+3.value
+
+4.node
+
+hashcode(hashcode generate based on the key )
+
+storing in hashmap(after hashcode generate now apply on that (hashcode%size of hashmap----------->now getting inserting place of hashmap)
+
+collision:-collision is nothing but multiple time value replacing for same key
+
+case 1:
+
+2 objects same then hashcode same
+
+case 2:
+
+2 objects hashcode same then objects are not same sometimes
+
+
+note 
+----
+
+1.object noting but key
+
+2.every where hash code with object used(both are not independent)
+
