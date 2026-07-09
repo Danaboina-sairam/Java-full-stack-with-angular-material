@@ -4670,6 +4670,9 @@ Wrapper:
 value or null
 
 
+Note: null vs empty
+
+
 Optional Class static methods:
 ------------------------------
 
