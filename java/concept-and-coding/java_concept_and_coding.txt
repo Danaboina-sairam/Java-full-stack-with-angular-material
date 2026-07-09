@@ -4645,3 +4645,148 @@ note
 
 2.every where hash code with object used(both are not independent)
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Optional Class:
+--------------
+it is in the java.util.Optional package
+
+
+Wrapper:
+--------
+
+value or null
+
+
+Optional Class static methods:
+------------------------------
+
+1.Optional.of(value) : only non null
+
+2.Optional.empty(): only return empty in place of null
+
+3.Optional.ofNullable(value or null) : both value and null
+
+
+Checking for presence of value:
+-------------------------------
+
+1.optionalValue.isPresent(): returns boolean either true or false
+
+
+complementing
+-------------
+
+optionalValue.isEmpty(): return boolean either true(empty) or false(value)
+
+
+
+2.optionalValue.ifPresent(): returns boolean either true or false
+
+note: if returns true then print or transformation on the return value
+
+
+
+
+Optional API methods:
+---------------------
+
+Optional.ofNullable(value or null)
+
+1.optionalValue.orElse("Default")
+
+Def:
+----
+
+if present
+	returns the value
+otherwise 
+	returns default value
+
+
+
+2.optionalValue.orElseGet(()->"Generated Default")
+
+def:
+----
+if present
+	returns the value
+otherwise
+	calls a supplier to generate the default value(only executed if needed)
+
+
+3.optionalValue.orElseThrow()
+
+def:
+----
+if present 
+	returns the value
+otherwise
+	throws an exception
+
+Note: default exception------------->NoSuchElementException
+
+
+
+3.
+
+1.optionalValue.orElseThrow(()->new IllegalArgumentException("value is missing"));
+
+
+2.optionalValue.orElseThrow(()->new RuntimeException("value not present"));
+
+
+
+
+
+Optional.of("John") or Optional.ofNullable(value or null)
+
+1.map()
+2.flatMap()
+3.filter()
+
+
+1.Optional used in below scenario
+-------------------------------
+
+1.method return types
+
+
+Optional not used scenarios
+---------------------------
+1.fields
+2.parameters
+
+
+2.value will always be present, if we know--------->return non null value preferable------------->Optional.of()
+
+
+3.
+
+Optional.of()------>without null-------->most preferable
+
+Optional.ofNullable()--------->with null--------->less preferable
+
+
+
+
+4.Optional class allows for method chaining
+
+
+
+
+
+
+
