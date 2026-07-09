@@ -192,6 +192,7 @@ Conversion
 Let’s understand this simply.
 
 Imagine a light switch 💡
+-------------------------
 
 Turn it ON once → Light turns ON 
 Turn it ON again → Still ON 
@@ -201,6 +202,7 @@ Nothing changes after the first action.
 That is idempotent behavior.
 
 Now imagine clicking “Pay ₹1000” 💳 twice.
+-------------------------------------------
 
 First click → ₹1000 deducted 
 Second click → ₹1000 deducted again 
@@ -208,6 +210,7 @@ Second click → ₹1000 deducted again
 That is NOT idempotent.
 
 In backend terms:
+-----------------
 
 An operation is idempotent if 
 making the same request multiple times 
@@ -225,6 +228,7 @@ Because networks fail.
 • Server responds late 
 
 If your API is not idempotent, you risk:
+----------------------------------------
 
 • Duplicate payments 
 • Double orders 
@@ -232,6 +236,7 @@ If your API is not idempotent, you risk:
 • Data inconsistency 
 
 Now let’s connect this to HTTP methods.
+---------------------------------------
 
 GET → Idempotent 
 PUT → Idempotent 
@@ -251,6 +256,7 @@ But here’s the important part:
 POST can be made idempotent.
 
 How to Solve Idempotency Problems 👇
+------------------------------------
 
 1️⃣ Idempotency Keys 
 
