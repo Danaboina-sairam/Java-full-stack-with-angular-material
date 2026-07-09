@@ -4792,4 +4792,12 @@ Optional.ofNullable()--------->with null--------->less preferable
 
 
 
-
+Object class:
+-------------
+1.equals()
+2.hashcode()
+3.notify()
+4.notifyAll()
+5.toString()
+6.wait()
+7.getClass()
