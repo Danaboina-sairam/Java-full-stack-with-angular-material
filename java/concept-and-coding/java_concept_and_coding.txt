@@ -4801,3 +4801,18 @@ Object class:
 5.toString()
 6.wait()
 7.getClass()
+
+
+
+
+Internal working
+----------------
+1.Strings
+2.Arrays
+3.Hashmap
+4.static
+5.Exception handling
+6.Thread pool----------->spring mvc
+7.Thread pool----------->spring webflux------------>event loop
+8.super
+9.this
