@@ -4816,3 +4816,22 @@ Internal working
 7.Thread pool----------->spring webflux------------>event loop
 8.super
 9.this
+
+
+
+
+
+
+Collection API:
+---------------
+1.store and process data
+2.not so easy to write the code
+3.even some common data processing operations difficult to write such as filtering, sorting, matching, finding, mapping etc
+4.it is called as data structure
+
+Streams API:
+------------
+1.only process data
+2.easy to write the code
+3.easy to write data processing operations such as filtering, sorting, matching, finding, mapping etc
+4.it is don't called as data structure
