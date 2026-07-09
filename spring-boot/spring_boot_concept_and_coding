@@ -48,6 +48,27 @@ Remember, 𝗰𝗼𝗺𝗺𝘂𝗻𝗶𝗰𝗮𝘁𝗶𝗼𝗻 𝗶𝘀 𝗸𝗲
 
 
 
+
+
+purchase: we are sharing data to third party api
+
+manage: this data also coming from third party but lower environment that is configuration output so we need to write code based on hardcode.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Controller->role of accepting client request in controller layer
 
 service->implementing business logic in the service layer
