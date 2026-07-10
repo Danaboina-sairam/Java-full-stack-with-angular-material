@@ -537,3 +537,51 @@ logs(single application)
 
 
 
+1.SLF4J, Logback, Log4j2, Levels, Parent–Child Loggers
+------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+2.Appenders
+---------
+
+1.Console
+
+2.File
+
+3.Rolling File------------->1.TimeBased 2.Size and TimeBased
+
+
+
+
+
+
+
+
+
+
+
+
+3.Async Appender and Logging | Structured Logging (JSON)
+--------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+4.End-to-End Distributed Logging with MDC + Correlation ID + Trace ID
+---------------------------------------------------------------------
+
+
