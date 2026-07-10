@@ -537,10 +537,59 @@ logs(single application)
 
 
 
+Logs vs Tracing
+
+What is Trace_ID and Span_ID
+
+Old Distributed Tracing Flow (Spring Cloud Sleuth)
+
+Modern Distributed Tracing Flow (Micrometer and Open Telemetry)
+
+Implementation Step1: Setting up Jaeger
+
+Implementation Step2: Setting up Application1 and Demo
+
+Implementation Step3: Setting up Application2
+
+Demo of Tracing with Application1 invoking Application2
+
+Manual Span Creation
+
+Demo of Manual Span Creation
+
+Closing Notes
+
+
+
+
+
+
 1.SLF4J, Logback, Log4j2, Levels, Parent–Child Loggers
 ------------------------------------------------------
 
+Introduction
 
+What is Logging
+
+Understand Architecture (High Level) of Logging Framework
+
+Simple Logging Implementation in Spring Boot application
+
+Dependency required for Logging
+
+UML (Low Level) of Logging Framework
+
+Logger Name and its use
+
+Logger Level and Priority (Error, Warn, Info, Debug, Trace)
+
+Configure the Level of Logger manually
+
+Parent-Child Logger relationship (Logger Hierarchy)
+
+Advantage of Parent-Child Logger (Inheritance, Propagation etc)
+
+Closing Notes and Next Part topics discussion
 
 
 
@@ -560,6 +609,30 @@ logs(single application)
 
 
 
+Introduction
+
+What is Appender and Recap from Part-1
+
+Appender logback-spring.xml Syntax
+
+Appender Implementation without any Logger
+
+Appender Implementation with Logger and additivity = true/false
+
+Console Appender
+
+File Appender
+
+Rolling File Appender - Time based Rolling policy
+
+Rolling File Appender - Size and Time Based Rolling policy
+
+Writing custom Appender
+
+Closing Notes
+
+
+
 
 
 
@@ -572,6 +645,27 @@ logs(single application)
 3.Async Appender and Logging | Structured Logging (JSON)
 --------------------------------------------------------
 
+Introduction
+
+AsyncAppender vs AsyncLogger
+
+AsyncAppender with Implementation
+
+Filters in Appender
+
+Log Format / Log Pattern
+
+Placeholder in Log Statement
+
+Structured Logging (JSON)
+
+Add Dynamic fields in JSON
+
+PII (Personally Identifiable Information) Safe Logging
+
+Closing notes
+
+
 
 
 
@@ -583,5 +677,25 @@ logs(single application)
 
 4.End-to-End Distributed Logging with MDC + Correlation ID + Trace ID
 ---------------------------------------------------------------------
+
+Introduction
+
+What id MDC
+
+Code Example of MDC
+
+Problem1 i.e Log Pollution and MDC.clear() importance
+
+Problem2, Async call and MDC behavior
+
+Problem2 solution, TaskDecorator
+
+Why Correlation ID is important
+
+Code Example of Correlation ID
+
+End to End Distributed Logging using TraceID and CorrelationID
+
+Closing Notes
 
 
