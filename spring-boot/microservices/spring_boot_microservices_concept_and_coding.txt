@@ -508,3 +508,32 @@ bulk head types
 NOTE:- all resilience patterns applied for rest calls
 
 
+
+
+
+
+
+
+
+
+
+
+tracing(all applications)
+
+1.TRACE_ID
+
+2.SPAN_ID
+
+
+spring cloud sleuth-> in memory async queue-> zipkin exporter-> Zipkin (backend), Jaeger, Grafana
+
+
+logs(single application)
+
+
+1.request(URL,Header,Body,status code)
+2.application events
+3.response(Header,Body,status code)
+
+
+
