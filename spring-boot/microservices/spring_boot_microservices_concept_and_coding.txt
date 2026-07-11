@@ -562,6 +562,23 @@ Closing Notes
 
 
 
+
+SpringCloudSleuth(Brave)--------->In memory AsyncQueue------------>ZipkinExporter--------------->Zipkin Backend
+
+
+
+
+Micrometer(OpenTelemetry SDK)------------->In memory AsyncQueue------------>OTLP Exporter-------------->Zipking Backend or Jaegar Backend or Grafana Backend
+
+
+OTLP: Open Telemetry Protocol
+
+
+
+
+
+
+
 RestClient.Builder: it is used interceptor
 -------------------
 
@@ -572,6 +589,24 @@ RestClient.create(): it is not used interceptor
 --------------------
 
 so trace id propagation not happening then each http request trace id create each for the application
+
+
+
+Manual Span Creation
+--------------------
+
+micrometer exposes Tracer class based on that we can create span id
+
+
+Tracer
+
+1.currentSpan()
+2.nextSpan().name().start()
+3.withSpan()
+
+
+
+
 
 
 
