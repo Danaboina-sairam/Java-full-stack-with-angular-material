@@ -562,6 +562,17 @@ Closing Notes
 
 
 
+RestClient.Builder: it is used interceptor
+-------------------
+
+so trace id propagation happening then each http request only one trace id accross all the application
+
+
+RestClient.create(): it is not used interceptor
+--------------------
+
+so trace id propagation not happening then each http request trace id create each for the application
+
 
 
 1.SLF4J, Logback, Log4j2, Levels, Parent–Child Loggers
