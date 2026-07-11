@@ -644,14 +644,20 @@ Closing Notes and Next Part topics discussion
 
 
 
-2.Appenders
----------
+2.Appenders: it is the destination of the logs
+------------
 
-1.Console
+1. Stdout or Console(Default)
 
 2.File
 
 3.Rolling File------------->1.TimeBased 2.Size and TimeBased
+
+4.Database
+
+5.cloud
+
+6.kafka
 
 
 
