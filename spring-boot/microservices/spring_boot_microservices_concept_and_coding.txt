@@ -772,6 +772,73 @@ Closing notes
 
 
 
+AsyncAppender(sync+async)
+
+
+
+
+
+critical 
+
+
+non critical
+
+
+
+
+
+
+Logback framework class
+-----------------------
+
+PatternLayout.java
+
+
+
+
+DateConverter
+
+LevelConverter
+
+ThreadConverter
+
+
+
+
+Placeholder in log statements
+-----------------------------
+
+
+
+Structured Logging(JSON)-LogstashEncoder
+
+
+LogstashFieldNames.java
+
+
+
+Personal Identifiable Information Masking
+-----------------------------------------
+
+log4j2 or AOP
+
+
+
+AsyncLogger(Async)
+
+
+
+
+Mapped Diagonastic Context(MDC)
+
+
+
+
+
+
+
+
+
 
 
 
