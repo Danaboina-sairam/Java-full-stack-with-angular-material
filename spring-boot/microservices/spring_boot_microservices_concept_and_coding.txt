@@ -640,7 +640,7 @@ Closing Notes and Next Part topics discussion
 
 
 
-
+Application-------->SLF4J-------->Logback(default) or LOG4J2---------->Appender----------->Stdout or console(Default)------------>Log Aggregation Tools(DataDog,ELK(ElasticSearch + Kibana),Promtail)
 
 
 
