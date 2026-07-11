@@ -644,6 +644,57 @@ Application-------->SLF4J-------->Logback(default) or LOG4J2---------->Appender-
 
 
 
+1.dependency
+
+
+
+implementations of slf4j in pom.xml
+-----------------------------------
+1.Logback(default)
+2.LOG4J2
+
+
+Both SLF4J implementations using not reliable
+---------------------------------------------
+
+so we need to exclude logback from the pom.xml then add log4j2
+
+
+2.get Logger Object 
+
+
+Logger class fields
+-------------------
+
+1.name(package, class, field name)
+
+2.level(by default INFO)
+
+
+HIGH to LOW
+-----------
+
+ERROR, WARN, INFO, DEBUG, TRACE
+
+
+Log object level(configured in application.properties by using class name) 
+----------------
+
+logging.level.com.concepts.PaymentController=DEBUG
+
+
+Log statement level
+
+
+3.Logger parent
+
+4.List<Logger> child
+
+
+
+
+
+
 2.Appenders: it is the destination of the logs
 ------------
 
