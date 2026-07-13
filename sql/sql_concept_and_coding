@@ -388,3 +388,79 @@ BATCH_STEP_EXECUTION_CONTEXT
 java -jar app.jar --job.name=myJob
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+join----->where
+
+
+
+
+
+
+
+
+
+
+where----->group by------>having
+
+
+
+
+
+
+
+
+
+
+
+where----->IN----->group by----->having
+
+
+where----->group by----->order by---->limit
+
+
+
+
+
+
+
+
+
+
+
+
+order by
+
+group by
+
+
+
+
+
+
+
+
+group by----->having
+
+group by----->order by
+
+group by----->order by-------->limit
