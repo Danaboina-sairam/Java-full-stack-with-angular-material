@@ -6,8 +6,19 @@ JPA in SpringBoot-------Entity
 
 
 
+
+
+
+
+
+
 JPA performance issues
 ----------------------
+
+
+
+
+
 
 
 
@@ -21,25 +32,38 @@ JTA---------->Distributed----------->Multiple DB
 
 
 
+
+
+
+
+
+
 Hierarchy of Transaction Manager
 --------------------------------
 
 Local Transaction Manager
+-------------------------
 
 1.DataSourceTransactionManager--------->JDBCTransactionManager
 2.HibernateTransactionManager
 3.JPATransactionManager
 
 Distributed Transaction Manager
+-------------------------------
 
 4.JTATransactionManager
 
 
 
+
+
+
+
+
+
+
 Life cycle of Entity in Persistence Context
 -------------------------------------------
-
-
 
 persist()-------->save or update
 
@@ -50,12 +74,29 @@ find()--------->fetch
 remove()-------->delete
 
 
+
+
+
+
+
+
+
 flush() and commit() Both are not same
 --------------------------------------
 
 flush()--------->force execute sql query
 
 commit()---------->permanent store in Database
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -149,6 +190,18 @@ PostgreSQL = the rental office
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 Most Java microservices are slower than they need to be.
 
 Not because of bad code.
@@ -210,15 +263,43 @@ What's your go-to HikariCP config for high-traffic services?
 
 
 
+
+
+
+
+
+
+
+
+
+Unique Constraint
+-----------------
+
 Unique Constraint On Single Column
 
 Unique Constraint On Composite Column
 
 
 
+
+
+
+
+
+Indexing
+--------
 Index On Sinle Column 
 
 Index On Composite Column
+
+
+
+
+
+
+
+
+
 
 
 
@@ -260,6 +341,13 @@ Child Class
 
 
 
+
+
+
+
+
+
+
 Parent Class and Child Class Infinite Loop
 ------------------------------------------
 
@@ -278,6 +366,22 @@ NOTE: Class Level
 Parent Class: @JsonIdentityInfo--------->Parent to Child fetch
 
 Child Class: @JsonIdentityInfo------->Child to Parent fetch
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
