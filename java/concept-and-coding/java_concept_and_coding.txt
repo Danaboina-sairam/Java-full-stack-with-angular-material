@@ -4164,7 +4164,39 @@ class Course extends Object{
 toString() vs valueOf() in Strings
 ----------------------------------
 
+| Feature       | `toString()`                  | `String.valueOf()`                       |
+| ------------- | ----------------------------- | ---------------------------------------- |
+| Belongs to    | `Object` class                | `String` class                           |
+| Accepts       | Object instance               | Primitive types and Objects              |
+| Null Handling | Throws `NullPointerException` | Returns `"null"`                         |
+| Overloaded    | No                            | Yes (for all primitive types and Object) |
 
+
+
+
+
+
+
+
+
+Summary of toString() of Object vs valueOf() of String
+------------------------------------------------------
+
+toString() of Object
+--------------------
+
+1.Instance method of Object
+2.Requires a non-null object
+3.Throws NullPointerException if called on null
+
+
+String.valueOf() of String
+--------------------------
+
+1.Static method of String
+2.Works with both objects and primitives
+3.Returns the string "null" for a null object instead of throwing an exception
+4.Internally calls obj.toString() when the object is not null
 
 
 
