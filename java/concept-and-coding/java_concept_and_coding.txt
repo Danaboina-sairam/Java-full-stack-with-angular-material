@@ -5,10 +5,11 @@ Behaviour --- method
 
 
 Constructor scenarios:
-
+----------------------
 
 
 Method:1
+--------
 
 public class Parent
 {
@@ -47,6 +48,7 @@ public class Child extends Parent
 
 
 Method:2
+--------
 
 public class Parent
 {
@@ -85,18 +87,8 @@ public class Child extends Parent
 
 
 
-
-
-
-
-
-
-
-
-
-
 Method:3
-
+--------
 public class Parent
 {
 
@@ -137,6 +129,7 @@ public class Child extends Parent
 
 
 Method:4
+--------
 
 public class Parent
 {
@@ -176,6 +169,7 @@ public class Child extends Parent
 
 
 Method:5
+--------
 
 public class Parent
 {
@@ -216,6 +210,7 @@ public class Child extends Parent
 
 
 Method:6
+--------
 
 public class Parent
 {
@@ -258,6 +253,7 @@ public class Child extends Parent
 
 
 Method:7
+--------
 
 public class Parent
 {
@@ -299,6 +295,7 @@ public class Child extends Parent
 
 
 Method:8
+--------
 
 public class Parent
 {
@@ -342,6 +339,7 @@ public class Child extends Parent
 
 
 Method:9
+--------
 
 public class Parent
 {
@@ -385,6 +383,7 @@ public class Child extends Parent
 
 
 Method:9
+--------
 
 public class Parent
 {
@@ -517,6 +516,7 @@ Compulsory one public static void main(String[] ARGS) mandatory
 
 
 🚀 Java Constructors – Complete Interview Cheat Sheet (With Edge Cases)
+------------------------------------------------------------------------
 
 Constructors may look simple, but in interviews, they’re used to test depth, fundamentals, and real understanding.
 
