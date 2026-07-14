@@ -2855,6 +2855,74 @@ Output: Any Datatype
 
 
 
+
+Main topics for Lambda
+----------------------
+
+1. Why do we need Lambdas?
+2. How are Lambdas designed in Java?
+3. How type inference works in Lambda
+4. Arrow operator
+5. Structure of Lambda
+6. Functional Interfaces
+7. Predicate, Consumer, Supplier, Function
+8. Lambda vs Anonymous Inner Classes
+9. Example of Lambdas
+
+Introduction
+
+Invoking a method
+
+Passing data or state
+
+Passing logic or behavior
+
+Refresher: Encapsulation
+
+The problem with passing behavior
+
+Is there an easy way to passing behavior?
+
+First class citizens
+
+Type safety
+
+That big idea: Interfaces
+
+Intelligent compiler: Type inference
+
+Arrow operator: The raise of Lambda
+
+Lambda in Action
+
+@FunctionalInterface
+
+Lets bring in Generics
+
+Predefined Functional Interfaces (java.util.function package)
+
+Lambda vs Anonymous Inner Classes
+
+Examples
+
+Next steps
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Streams in Java
 ---------------
 
