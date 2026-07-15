@@ -4269,6 +4269,12 @@ String.valueOf() of String
 
 
 
+Note:
+-----
+
+--->Any data type of input parameter but convert from String.valueOf() of string class to obj.toString() object only
+
+--->Logic available in println() inside the if condition
 
 
 
@@ -4404,7 +4410,14 @@ NullPointerException during equals check.
 
 
 
+Note:
+-----
 
+--->getClass()----type identification
+
+--->getClass()----instanceOf
+
+---->Comparing numeric fast and use short circuit operator for combining check
 Contract between hashcode() and equals()
 ----------------------------------------
 
