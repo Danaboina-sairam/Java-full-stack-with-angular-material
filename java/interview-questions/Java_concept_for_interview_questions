@@ -1,0 +1,43 @@
+Java concepts you should revise before your next interview.
+
+✔ OOP Principles (Abstraction, Encapsulation, Inheritance, Polymorphism)
+✔ Object Class
+✔ String, StringBuilder & StringBuffer
+✔ == vs equals()
+✔ hashCode() Contract
+✔ Collections Framework
+✔ ArrayList vs LinkedList
+✔ HashMap Internal Working
+✔ HashSet vs TreeSet
+✔ Comparable vs Comparator
+✔ Immutable Class
+✔ Exception Handling
+✔ Checked vs Unchecked Exceptions
+✔ Java 8 Features (Lambda, Stream API, Optional)
+✔ Functional Interfaces
+✔ Method References
+✔ Stream Operations (map, filter, flatMap, reduce)
+✔ Multithreading
+✔ Thread Lifecycle
+✔ Synchronization
+✔ volatile Keyword
+✔ synchronized Keyword
+✔ ReentrantLock
+✔ ExecutorService & Thread Pools
+✔ Callable vs Runnable
+✔ CompletableFuture
+✔ Concurrent Collections
+✔ Deadlock, Livelock & Starvation
+✔ JVM Architecture
+✔ Heap vs Stack Memory
+✔ Garbage Collection
+✔ Memory Leaks
+✔ Serialization & Deserialization
+✔ Reflection API
+✔ Generics
+✔ SOLID Principles
+✔ Design Patterns (Singleton, Factory, Builder, Strategy)
+✔ Java I/O & NIO
+✔ JDBC Basics
+✔ Performance Optimization
+✔ Debugging & Profiling 
