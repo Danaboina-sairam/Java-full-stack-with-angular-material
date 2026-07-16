@@ -4429,11 +4429,26 @@ NullPointerException during equals check.
 Note:
 -----
 
---->getClass()----type identification
 
---->getClass()----instanceOf
+Type identification
+-------------------
 
----->Comparing numeric fast and use short circuit operator for combining check
+--->getClass()
+
+--->instanceOf
+
+
+Note:
+-----
+
+Comparing numeric fast and use short circuit operator for combining check
+
+
+
+
+
+
+
 Contract between hashcode() and equals()
 ----------------------------------------
 
