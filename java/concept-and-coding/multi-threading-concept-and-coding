@@ -67,6 +67,18 @@ Thread :-
 NOTE:- JVM own heap memory vs process own heap memory
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 How much memory does process gets??
 ---------------------------------
 
@@ -192,11 +204,33 @@ COUNTER
 1.Also known as Program Counter,it points to the address location of instruction(particular thread) which is getting executed from CODE SEGEMENT.
 2.Increments its counter after successfully execution of the instruction.
 
+
+
+
+
+
+
+
+
+
+
+
 Execution order
 ---------------
 Code segment->Counter->Thread
 
 NOTE:- All these are managed by JVM
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -419,6 +453,26 @@ start--------->keep it in runnable state(runnable---->waiting for cpu)
 runnable(waiting for cpu)-------------->Blocked,Waiting,Timed Waiting
 
 running(got the cpu)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 new
@@ -980,6 +1034,13 @@ Both this operation could led to issues like deadlock.
 
 
 
+
+
+
+
+
+
+
 lets see an example of it
 
 combination
@@ -1524,6 +1585,19 @@ public class Main{
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 2.ReadWriteLock
 ---------------
 
@@ -1604,6 +1678,17 @@ public class Main{
           th3.start();
      }
 }
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1749,6 +1834,18 @@ public class Main{
           th2.start();
      }
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 4.Semaphore Lock
@@ -2257,6 +2354,16 @@ Blocking queue
 1.array(static):- bounded queue
 2.linkedlist(dynamic):- unbounded queue
 
+
+
+
+
+
+
+
+
+
+
 ThreadFactory
 -------------
 1.thread name 
@@ -2290,11 +2397,30 @@ CompleteableFuture
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 💡 What is CompletableFuture?
+------------------------------
+
  Introduced in Java 8 as part of java.util.concurrent, CompletableFuture represents the result of an asynchronous computation.
  It allows you to run tasks in the background, chain their execution, combine results from multiple tasks, and handle errors gracefully - all without blocking the main thread unnecessarily.
 
+
+
+
 📌 Key Capabilities of CompletableFuture
+-----------------------------------------
 1️⃣ Asynchronous Execution – You can start tasks in a separate thread so that your main program continues without waiting.
  1.Use runAsync() for tasks that don’t return data. 
  2.Use supplyAsync() for tasks that return results.
@@ -2312,6 +2438,12 @@ CompleteableFuture
 4️⃣ Error Handling - Async tasks can fail too, and CompletableFuture gives you tools to handle that:
  1.exceptionally() to provide a fallback value if something goes wrong.
  2.handle() to manage both success and failure in one place.
+
+
+
+
+
+
 
 ✅ Why I Use CompletableFuture
  It’s perfect when:
@@ -2462,12 +2594,31 @@ Disadvantages
 
 
 
+
+
+
+
+
+
+
+
+
+
 ThreadLocal
 -----------
 Each Thread has Thread local class
 Thread local class has Thread local variable
 Here once set the value to thread local variable
 Need to remove is best practice because thread local variable specific to thread but not task
+
+
+
+
+
+
+
+
+
 
 
 
