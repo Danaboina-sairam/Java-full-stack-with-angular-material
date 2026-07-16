@@ -157,7 +157,17 @@ At startup, PostgreSQL:
 
 Not a door you knock on every time. An open phone line, already authenticated.
 
-─────────────────────────
+
+
+
+
+
+
+
+
+
+
+
 𝗙𝘂𝗹𝗹 𝗹𝗶𝗳𝗲𝗰𝘆𝗰𝗹𝗲 — userRepository.findAll():
 
 1. HTTP request hits your @RestController
@@ -173,7 +183,16 @@ Not a door you knock on every time. An open phone line, already authenticated.
 Steps 2–8 typically complete in 5–20ms.
 Without a pool? Step 2 alone costs 100–200ms.
 
-─────────────────────────
+
+
+
+
+
+
+
+
+
+
 𝗠𝗲𝗻𝘁𝗮𝗹 𝗺𝗼𝗱𝗲𝗹:
 
 application.properties = preference form
