@@ -1,8 +1,15 @@
 multi threading
+---------------
 
 JDK----->compiler(byte code)
 
 JVM----->executor(machine code)
+
+
+
+
+
+
 
 compiler
 --------
@@ -11,6 +18,10 @@ Javac Test.java
 executor(JVM will create process here onwards only)
 --------
 Java Test
+
+
+
+
 
 
 1.process will created
@@ -22,6 +33,16 @@ NOTE:-
 1.in multi threading, we are focusing on JVM only
 
 2.JVM will create process
+
+
+
+
+
+
+
+
+
+
 
 
 Hierachy
@@ -70,6 +91,21 @@ IMP
 2.Register ,stacks,program counters specific to thread only
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 COMPILE TIME
 ------------
 
@@ -83,10 +119,34 @@ RUN TIME
 3.Interpreter/JIT Compiler
 4.machine code
 
+
+
+
+
+
+
+
+
+
+
+
+
 QUESTIONS
 ---------
 1.who decide how much over all heap memory allocated for jvm?
 2.who decide whatever heap memory we have that is allocated to process?
+
+
+
+
+
+
+
+
+
+
+
+
 
 CODE SEGMENT
 ------------
@@ -147,6 +207,22 @@ os schedules thread for execution then that is shared to cpu
 (in between cpu register and thread register ,there context switching is happening)
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 SCENARIOS
 ---------
 
@@ -156,9 +232,27 @@ CPU Cores 2 , Threads 2---------->in this case context switching is no need
 
 CPU Cores 4 , Threads 2---------->in this case context switching is no need
 
+
+
+
+
+
+
+
+
+
 CONTEXT SWITCH TIME
 -------------------
 CPU and Register take key role
+
+
+
+
+
+
+
+
+
 
 Multi tasking vs Multi threading
 --------------------------------
@@ -174,11 +268,29 @@ NOTE:-
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 Multi threading
 ---------------
 1.allows a program to perform multiple tasks or operation at the same time
 2.multiple threads share the same resource such as memory space but still can
   perform task independently
+
+
+
+
+
 
 Benefits
 --------
@@ -186,11 +298,21 @@ Benefits
 2.Responsiveness
 3.Resource sharing
 
+
+
+
+
 Challenges
 ----------
 1.Concurrency issue like deadlock,data inconsistency etc.
 2.Synchronized overhead.
 3.Testing and Debugging is difficult.
+
+
+
+
+
+
 
 why we have 2 ways to create threads
 ------------------------------------
@@ -218,6 +340,16 @@ NOTE:-
 
 1.if provided override method in sub class of thread then not involved Thread class run method
 2.if not provided override method in sub class of thread then involved default Thread class run method
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -322,6 +454,22 @@ Terminated
 1.life thread is completed ,it can not be started back again.
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Implicit locking
 ----------------
 
@@ -379,13 +527,9 @@ doWork() is synchronized → But objects are different → Two threads run paral
 
 
 
-Explicit locking
-----------------
-1.ReentrantLock
 
-2.ReadWriteLock
 
-3.StampedLock
+
 
 Note:- 
 
@@ -690,7 +834,26 @@ public class Main{
          producerThread.start();
          producerThread.start();
     }
-}   
+}  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 Assignment:Producer and consumer problem
 
