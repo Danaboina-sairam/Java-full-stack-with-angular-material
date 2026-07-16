@@ -226,12 +226,17 @@ os schedules thread for execution then that is shared to cpu
 SCENARIOS
 ---------
 
-CPU Cores 2 , Threads 4---------->in this case context switching is need
+context switching is need
+-------------------------
 
-CPU Cores 2 , Threads 2---------->in this case context switching is no need
+CPU Cores 2 , Threads 4
 
-CPU Cores 4 , Threads 2---------->in this case context switching is no need
+context switching is no need
+----------------------------
 
+CPU Cores 2 , Threads 2
+
+CPU Cores 4 , Threads 2
 
 
 
@@ -856,6 +861,7 @@ public class Main{
 
 
 Assignment:Producer and consumer problem
+----------------------------------------
 
 Question:
 ---------
@@ -945,6 +951,17 @@ public class ProducerConsumerLearning {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
 Why Stop,Resume,Suspended method is deprecated?
 -----------------------------------------------
 
@@ -956,6 +973,12 @@ Suspend : Put the Thread on hold(Suspend) for temporarily.No lock is release too
 RESUME : Used to Resume the execution of suspended thread.
 
 Both this operation could led to issues like deadlock.
+
+
+
+
+
+
 
 lets see an example of it
 
@@ -972,11 +995,24 @@ Single
 stop()
 
 
+
+
+
+
+
 t1,t2,t3,t4,t5------------------->times
 
 Main------------------------->Main Thread
 
 T1,T2------------------------>user defined threads
+
+
+
+
+
+
+
+
 
 
 public class SharedResource{
@@ -1099,6 +1135,15 @@ Operating System
 
 
 
+
+
+
+
+
+
+
+
+
 JVM bytecode
    ↓ (interpreted or JIT compiled)
 Native Instructions
@@ -1108,6 +1153,15 @@ System Call to OS
 OS schedules it on CPU
    ↓
 CPU executes the code
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1172,6 +1226,20 @@ public class Main{
 		System.out.println("Main thread is finishing its work");
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1245,6 +1313,20 @@ public class Main{
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Daemon thread:- it is supporting thread such as garbage collector in java,auto save of intellij editor,logging etc
 
 
@@ -1297,6 +1379,24 @@ Daemon thread vs user thread
 1.Daemon thread uses setter method that used to set flag then only act as Daemon thread
 
 2.User thread not uses setter method that is called user thread
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1424,8 +1524,8 @@ public class Main{
 
 
 
-ReadWriteLock
--------------
+2.ReadWriteLock
+---------------
 
 ReadLock(shared lock):- more than 1 thread can acquire the read lock.
 
@@ -1507,8 +1607,8 @@ public class Main{
 
 
 
-StampedLock(Read/Write Lock ,Optimistic Read)
------------
+3.StampedLock(Read/Write Lock ,Optimistic Read)
+-------------
 
 1.Support Read/Write Lock functionality like ReadWriteLock
 
@@ -1651,8 +1751,8 @@ public class Main{
 }
 
 
-Semaphore Lock
---------------
+4.Semaphore Lock
+----------------
 
 public class SharedResource{
 
@@ -1716,6 +1816,20 @@ public class Main{
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 try{
 Thread.sleep(3000);
 }
@@ -1726,6 +1840,18 @@ catch(Exception e)
 above code used to sleep which thread in the code(producer and consumer problem)
 
 Daemon thread:-something which is running in async manner
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1806,7 +1932,27 @@ finally------>lock releasing area
 
 
 
+
+
+
+
+
+
+
+
+
 synchronized(monitor lock----------->wait and notify)
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1905,6 +2051,16 @@ CAS(Compare And Swap-------->it works on the CPU)
 
 
 
+
+
+
+
+
+
+
+
+
+
 Executor(I)
 --------
 
@@ -1926,6 +2082,14 @@ multiple methods in ExecutorService(I) so that is child interface of Excutor(I)
 | Thread Pool Control  | ❌ No            | ✅ Yes                                   |
 | Shutdown Support     | ❌ No            | ✅ Yes                                   |
 | Lifecycle Management | ❌ No            | ✅ Yes                                   |
+
+
+
+
+
+
+
+
 
 
 
@@ -1999,12 +2163,36 @@ Max no of active tasks=Task Arrival rate * Task execution time
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Daemon thread vs user thread
 ----------------------------
 
 1.Daemon thread uses setter method that used to set flag then only act as Daemon thread
 
 2.User thread not uses setter method that is called user thread
+
+
+
+
+
+
+
+
+
+
 
 RejectedExecutionHandler
 ------------------------
@@ -2016,6 +2204,14 @@ RejectedExecutionHandler
 3.new ThreadPoolExecutor.DiscardPolicy(silently rejected without throwing error)
 
 4.new ThreadPoolExecutor.DiscardOldestPolicy
+
+
+
+
+
+
+
+
 
 
 
@@ -2046,7 +2242,15 @@ terminated method used to check shutdown and stop cases threads released to thre
 
 
 
-		
+
+
+
+
+
+
+
+
+
 
 Blocking queue
 --------------
@@ -2058,6 +2262,17 @@ ThreadFactory
 1.thread name 
 2.thread priority
 3.thread daemon flag
+
+
+
+
+
+
+
+
+
+
+
 
 
 Future
@@ -2108,6 +2323,19 @@ With CompletableFuture, I can design flows where multiple independent tasks star
 
 Real Life example for easy understanding ->
 Suppose you are in shopping mall buying multiple products instead of paying after selecting each product ,you collect it in a cart then pay for all which simply save your time and efforts, that's the same thing done by our hero CompletableFuture.
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2181,6 +2409,22 @@ Executor executor2 = Executors.newCachedThreadPool();         // ThreadPoolExecu
 Executor executor3 = Executors.newSingleThreadExecutor();     // ThreadPoolExecutor
 Executor executor4 = Executors.newScheduledThreadPool(2);     // ScheduledThreadPoolExecutor
 Executor executor5 = ForkJoinPool.commonPool();               // ForkJoinPool
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
