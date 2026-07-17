@@ -3719,7 +3719,9 @@ System.out.println(employee);
 
 
 
+Note:
 
+how to access dto class properties and methods in streams
 
 
 
