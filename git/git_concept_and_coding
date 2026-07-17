@@ -1,0 +1,13 @@
+git stash
+git checkout DEV
+git pull origin DEV
+git checkout your-branch-name
+git rebase origin/DEV
+git stash pop
+
+
+
+
+Control+ alt+o-------------->Unused imports
+
+ctrl +y----------------->Unused line
