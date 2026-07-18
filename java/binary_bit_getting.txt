@@ -1,0 +1,114 @@
+package com.annadaletech.tablet.enums;
+
+import com.annadaletech.productlink.dataobject.willcall.Terminal;
+import org.apache.commons.lang3.StringUtils;
+
+import java.util.HashSet;
+import java.util.Set;
+
+/**
+ * Created by 18970813
+ * Created on 03/01/2022
+ * Project name id OCR - Sunrise
+ */
+public enum IdOcrQrCodeOptionsConfig {
+
+    NONE(0),
+    QR_CODE_SELF_SHARE(1),
+    QR_CODE_DSP_SHARE(2),
+    OCR_SMS_SHARE(4);
+
+    private int bitPosition;
+
+    IdOcrQrCodeOptionsConfig(int bitPosition) {
+        this.bitPosition = bitPosition;
+    }
+
+    public int getBitPosition() {
+        return bitPosition;
+    }
+
+    public static Set<IdOcrQrCodeOptionsConfig> getConfigValue(int dbValue) {
+        Set<IdOcrQrCodeOptionsConfig> setOfTransactionTypes = new HashSet<IdOcrQrCodeOptionsConfig>();
+        for (IdOcrQrCodeOptionsConfig transactionType : IdOcrQrCodeOptionsConfig.values()) {
+            if ((transactionType.getBitPosition() & dbValue) > 0) {
+                setOfTransactionTypes.add(transactionType);
+            }
+        }
+        return setOfTransactionTypes;
+    }
+
+    public static String getIdOcrConfigurations(int dbValue) {
+        StringBuilder setOfTransactionTypes = new StringBuilder();
+        for (IdOcrQrCodeOptionsConfig transactionType : IdOcrQrCodeOptionsConfig.values()) {
+            if ((transactionType.getBitPosition() & dbValue) > 0) {
+                if (StringUtils.isNotBlank(setOfTransactionTypes.toString())) {
+                    setOfTransactionTypes.append(", ");
+                }
+                setOfTransactionTypes.append(transactionType);
+            }
+        }
+        return setOfTransactionTypes.toString();
+    }
+
+    public static int getOcrConfigValue(Terminal terminal, int position) {
+        int configValue = 0;
+        if (terminal != null && org.apache.commons.lang.StringUtils.isNotBlank(terminal.getEnableOcrQrCodeOptions())) {
+            String idOcrQrCodeConfigs = terminal.getEnableOcrQrCodeOptions().trim();
+            if (idOcrQrCodeConfigs.length() > 0) {
+                String[] items = idOcrQrCodeConfigs.split(",");
+                if (items.length > position) {
+                    try {
+                        configValue = Integer.parseInt(items[position]);
+                    } catch(Exception ex) {
+                        configValue = 0;
+                    }
+                }
+            }
+        }
+        return configValue;
+    }
+
+    public static void main(String[] a) {
+        System.out.println("For 1:001: "+ IdOcrQrCodeOptionsConfig.getConfigValue(1)); // [QR_CODE_SELF_SHARE]
+        System.out.println("For 2:010: "+ IdOcrQrCodeOptionsConfig.getConfigValue(2)); // [QR_CODE_DSP_SHARE]
+        System.out.println("For 3:011: "+ IdOcrQrCodeOptionsConfig.getConfigValue(3)); // [QR_CODE_SELF_SHARE, QR_CODE_DSP_SHARE]
+        System.out.println("For 4:100: "+ IdOcrQrCodeOptionsConfig.getConfigValue(4)); // [OCR_SMS_SHARE]
+        System.out.println("For 5:101: "+ IdOcrQrCodeOptionsConfig.getConfigValue(5)); // [OCR_SMS_SHARE, QR_CODE_SELF_SHARE]
+        System.out.println("For 6:110: "+ IdOcrQrCodeOptionsConfig.getIdOcrConfigurations(6)); // OCR_SMS_SHARE, QR_CODE_DSP_SHARE
+        System.out.println("For 7:111: "+ IdOcrQrCodeOptionsConfig.getIdOcrConfigurations(7)); // QR_CODE_SELF_SHARE, QR_CODE_DSP_SHARE, OCR_SMS_SHARE
+    }
+
+}
+
+
+terminalInfoData.setIdOcrQrCodeSendMoneyConfigs(IdOcrQrCodeOptionsConfig.getIdOcrConfigurations(
+                IdOcrQrCodeOptionsConfig.getOcrConfigValue(terminal, IdOcrQrCodeConfig.SEND_MONEY.getBitPosition())));
+				
+
+
+
+
+protected Map<String, String> generateDSPDisplayConfig(String digitalSignaturePadConfig) {
+        /** Feature Flag Map
+         * | | | | | | | |------------>Consent
+         * | | | | | | |------------>Signature
+         * | | | | | |------------>Fraud Messages
+         * | | | | |------------>Transaction Details
+         * | | | |------------>Terms and Conditions
+         * | | |------------>Privacy Notice
+         * | |------------>(for future use)
+         * |------------>(for future use)
+         */
+        Map<String, String> displayConfig = new HashMap<>();
+        int settings = StringUtils.countMatches(digitalSignaturePadConfig, ",");
+        if (settings > 0) {
+            String[] items = digitalSignaturePadConfig.trim().split(",");
+            for (TransactionType config : TransactionType.values()) {
+                if (config.getBitPosition() < items.length) {
+                    displayConfig.put(config.name(), getBinaryString(items[config.getBitPosition()]));
+                }
+            }
+        }
+        return displayConfig;
+    }
