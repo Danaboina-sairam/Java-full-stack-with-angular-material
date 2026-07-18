@@ -1,3 +1,29 @@
+shortcuts:-
+---------
+ctrl+1-->on variables->setters and getters
+ctrl+1-->on datatypes or collections->importing
+ctrl+shift+f-->for code format
+ctrl+shift+o-->remove unwanted imports
+go to source-->toString
+ctrl+shit+t-->for finding jdbc imports
+ctrl+f-->for finding datasource
+select+alt+up or down arrow-->for moving the code
+ctrl+d-->for delete the line or block
+ctrl+space-->for System.out.println()
+main-->ctrl+space-->public static void main(String args[])
+Control+ alt+o-------------->Unused imports
+ctrl +y----------------->Unused line
+
+
+
+
+
+
+
+
+
+
+
 git stash
 git checkout DEV
 git pull origin DEV
@@ -8,9 +34,6 @@ git stash pop
 
 
 
-Control+ alt+o-------------->Unused imports
-
-ctrl +y----------------->Unused line
 
 
 
