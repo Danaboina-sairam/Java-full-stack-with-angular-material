@@ -1,0 +1,1127 @@
+mvn clean install -DskipTests=true -Dmaven.wagon.http.ssl.insecure=true -Dmaven.wagon.http.ssl.allowall=true
+
+mvn clean install -DskipTests=true
+
+https://jsonlint.com/
+
+select ENABLE_CONTACT_PHONE, ENABLE_OCR,  CAN_ENABLE_DIGITAL_RECEIPTS, Ap.RECEIPT_DELIVERY_OPTIONS, SEND_TEMPLATE_ID, PAY_TEMPLATE_ID, ud.username,A.WU_ACCOUNT_NUMBER, T.TERM_ID, a.agent_id, a.AGENT_PROFILE_ID AGT_PROF_ID, T.AGENT_PROFILE_ID TERM_AGT_PROF_ID, T.TERMINAL_ID, ud.user_id, Mtsi.IDENTIFIER Counter_ID, MULTI_FSID_ID,CAN_SEND_MONEY, CAN_DO_CANCEL_REFUND_A,CAN_SEND_QUICKPAY, Ap.CAN_SEND_MONEY_VIGO_OV, 
+ LOG_WU_ANALYTICS, CAPTURE_ABANDON_REASON,  CAN_UPLOAD_RECEIPT_TO_DMS, FREE_SMS_NOTIFICATION,GDPR_CAPTURE_MARKETING_PREF,  ALLOW_WU_LOOKUP_NAME_CHANGE,IS_REQUIRED_MOBILE_NUMBER,IS_REQUIRED_PHONE_NUMBER, MY_WU_CARD_SUPPORTED, can_enroll_preprinted_card,FORMLESS_ENROLLMENT_SMS, CAN_ENROLL_WU_CARD, ALLOW_ENROLL_SENDER, allow_enter_email,NETWORK_ID, ENABLE_TC_PS_DELIVERY_OPTION, TC_PS_DELIVERY_OPTION_LIST, GDPR_PRIVACY_TC_DMS, PREPRINT_SENDMONEY_ACR, PAGE_MENU_ID, CAN_DO_KYC_CUSTOMER_LOOKUP,KYC_SECONDARY_LOOKUP_OPTIONS,ID_IMAGE_REQUIRED, CAN_SUPPORT_MULTI_ERROR, USE_CACHED_PAYOUT_TERRITORIES,CAN_DO_CHIP_NAME_SEARCH, CAN_DO_LOCAL_NAMEDOB_SEARCH, CAN_DO_LOCAL_NAME_SEARCH,Mtsi.MT_SYSTEM_IDENTIFIER_ID, PRINTER_TYPE,RECEIPT_OUTPUT_TYPE, RECEIPT_PRINT_STYLE,RECEIPT_SIZE,RECEIPT_LANG_CODE,ALLOW_TRACK_TRNFR_OR_MTCN_SRCH, DODD_FRANK_READY_FLAG,DIGITAL_SIGNATURE_PAD_CONFIG, REQUIRE_CUST_SIGNATURE_CAPTURE, ALLOW_FRAUD_PREVENTION_POPUP, AGENT_MARKETING_LANG,HOME_PAGE_TILES_LAYOUT,FLA_SIGNATURE_CAPTURE, CAN_RETRIEVE_HISTORY, DOB_PAGE_LAYOUT,AGENT_BRANDING, NETWORK_AND_SUB_NETWORK_ID
+From User_Details Ud Join Terminal_For_Dev_User Tdu On Tdu.User_Id = Ud.User_Id  Join Terminal T On T.Terminal_Id = Tdu.Terminal_Id Join Agent A On A.Agent_Id = T.Organisation_Id Join Agent_profile Ap On Ap.Agent_profile_Id = A.AGENT_PROFILE_ID Join Mt_Territory Mt On Mt.Mt_Territory_Id = A.Territory_Id Join MT_SYSTEM_IDENTIFIER Mtsi On Mtsi.MT_SYSTEM_IDENTIFIER_ID = A.MT_SYSTEM_IDENTIFIER_ID
+WHERE UD.USERNAME like ('%%') and ap.SEND_TEMPLATE_ID like '%%' and WU_ACCOUNT_NUMBER like '%%' and ENABLE_OCR in (1,2,3);
+
+update agent_profile set RECEIPT_DELIVERY_OPTIONS='YYYNY' where agent_profile_id in (5100000000005774); commit;
+
+select ENABLE_CONTACT_PHONE, CAN_ENABLE_DIGITAL_RECEIPTS, ENABLE_OCR_QRCODE, ENABLE_OCR_SCANID, Ap.RECEIPT_DELIVERY_OPTIONS, SEND_TEMPLATE_ID, PAY_TEMPLATE_ID, ud.username,A.WU_ACCOUNT_NUMBER, T.TERM_ID, a.agent_id, a.AGENT_PROFILE_ID AGT_PROF_ID, T.AGENT_PROFILE_ID TERM_AGT_PROF_ID, T.TERMINAL_ID, ud.user_id, Mtsi.IDENTIFIER Counter_ID, MULTI_FSID_ID,CAN_SEND_MONEY, CAN_DO_CANCEL_REFUND_A,CAN_SEND_QUICKPAY, Ap.CAN_SEND_MONEY_VIGO_OV, 
+ LOG_WU_ANALYTICS, CAPTURE_ABANDON_REASON,  CAN_UPLOAD_RECEIPT_TO_DMS, FREE_SMS_NOTIFICATION,GDPR_CAPTURE_MARKETING_PREF,  ALLOW_WU_LOOKUP_NAME_CHANGE,IS_REQUIRED_MOBILE_NUMBER,IS_REQUIRED_PHONE_NUMBER, MY_WU_CARD_SUPPORTED, can_enroll_preprinted_card,FORMLESS_ENROLLMENT_SMS, CAN_ENROLL_WU_CARD, ALLOW_ENROLL_SENDER, allow_enter_email,NETWORK_ID, ENABLE_TC_PS_DELIVERY_OPTION, TC_PS_DELIVERY_OPTION_LIST, GDPR_PRIVACY_TC_DMS, PREPRINT_SENDMONEY_ACR, PAGE_MENU_ID, CAN_DO_KYC_CUSTOMER_LOOKUP,KYC_SECONDARY_LOOKUP_OPTIONS,ID_IMAGE_REQUIRED, CAN_SUPPORT_MULTI_ERROR, USE_CACHED_PAYOUT_TERRITORIES,CAN_DO_CHIP_NAME_SEARCH, CAN_DO_LOCAL_NAMEDOB_SEARCH, CAN_DO_LOCAL_NAME_SEARCH,Mtsi.MT_SYSTEM_IDENTIFIER_ID, PRINTER_TYPE,RECEIPT_OUTPUT_TYPE, RECEIPT_PRINT_STYLE,RECEIPT_SIZE,RECEIPT_LANG_CODE,ALLOW_TRACK_TRNFR_OR_MTCN_SRCH, DODD_FRANK_READY_FLAG,DIGITAL_SIGNATURE_PAD_CONFIG, REQUIRE_CUST_SIGNATURE_CAPTURE, ALLOW_FRAUD_PREVENTION_POPUP, AGENT_MARKETING_LANG,HOME_PAGE_TILES_LAYOUT,FLA_SIGNATURE_CAPTURE, CAN_RETRIEVE_HISTORY, DOB_PAGE_LAYOUT,AGENT_BRANDING, NETWORK_AND_SUB_NETWORK_ID
+From User_Details Ud Join Terminal_For_Dev_User Tdu On Tdu.User_Id = Ud.User_Id  Join Terminal T On T.Terminal_Id = Tdu.Terminal_Id Join Agent A On A.Agent_Id = T.Organisation_Id Join Agent_profile Ap On Ap.Agent_profile_Id = A.AGENT_PROFILE_ID Join Mt_Territory Mt On Mt.Mt_Territory_Id = A.Territory_Id Join MT_SYSTEM_IDENTIFIER Mtsi On Mtsi.MT_SYSTEM_IDENTIFIER_ID = A.MT_SYSTEM_IDENTIFIER_ID
+WHERE UD.USERNAME like ('%USAGENT_CX%') and ap.SEND_TEMPLATE_ID like '%%' and WU_ACCOUNT_NUMBER like '%%';
+
+update AGENT_PROFILE SET CAN_ENABLE_DIGITAL_RECEIPTS=96 WHERE AGENT_PROFILE_ID IN (5100000000005774); COMMIT;
+
+chip-jar error:
+mvn install:install-file -DgroupId=com.annadaletech -DartifactId=chip.osgi -Dversion=2790-736 -Dpackaging=jar -Dfile=D:\Users\91097572\Downloads\2790-736\chip.osgi-2790-736.jar -DgeneratePom=true -DcreateChecksum=true
+
+D:\Users\91097572\.m2\repository\com\annadaletech\chip.osgi
+
+
+service now pc requests:
+https://wuprod.service-now.com/sp/?id=sc_cat_item&sys_id=f70ffe20db16fb00c811400e0b9619c0&referrer=popular_items
+
+DynamsoftServiceSetup_V14.2
+https://hpos2.qawesternunion.com/idcapture/help?signHelp=yes
+https://wuprod.service-now.com/sp/?id=sc_request&is_new_order=true&table=sc_request&sys_id=e18631511b6e0514c49d21b9bc4bcba5
+
+git bash
+
+cd /d/code-test/fast2/business
+
+export PATH=/d/Users/91097572/Downloads/java-11/bin:$PATH
+
+which java
+/d/Users/91097572/Downloads/java-11/bin/java
+
+mvn clean install -DskipTests
+
+cd ..
+
+cd web-service/
+
+mvn clean install -DskipTests
+
+
+
+properties checking
+
+.example ----->.properties
+
+reverse not working
+
+copy in .example file -----> open clipboard in .properties file then compare
+
+local history :- right click and select local history
+
+
+url,db,config,dbscripts,War,branch,web arch
+
+
+swagger
+https://swaggerhub.wuintranet.net/apis/cmt/kyc_getocrcustdata_v1_api/1.0.0
+
+
+select * from ppp_audit_log where TRANSACTION_TYPE_ID in (102,103) order by audit_log_id desc;
+
+
+address already use in bind :-
+---------------------------
+
+1.netstat -ano
+
+ctrl+f
+
+2.taskkill /PID 8292 /F
+
+
+select * from fexlink.phone_number_config where DESCRIPTION like 'Italy (+39)';
+
+
+password reset Query:
+
+UPDATE USER_DETAILS
+SET 
+ACCOUNT_NON_EXPIRED = 1,
+  ACCOUNT_NON_LOCKED    = 1,
+  ENABLED               = 1,
+  password              = 'V5sba4sxqYxQYK0MBv+wJKNvRKISU8WZztQOP6LQsiB/MiRE',
+  PASSWORD_EXP_DATE     = sysdate + 500
+WHERE USERNAME                   in ('FRAGENT_CPU02');
+
+https://swaggerhub.wuintranet.net/apis-docs/cmt/kyc_getocrcustdata_v1_api/1.0.0
+
+update phone_number_config set MIN_MOBILE_NUMBER_LENGTH=5 where phone_number_config_id Like '1300000000000096';commit;
+select * from phone_number_config where DESCRIPTION Like 'Italy (+39)';
+
+https://zip-codes.nonsolocap.it/codice-fiscale/
+
+my wu chip hpns ucd
+
+
+id-rme
+
+https://www.tutorialrepublic.com/css-reference/css3-properties.php
+
+
+http://www.softwareishard.com/har/viewer/
+
+
+clean install -DskipTests
+
+jetty:run -Djetty.http.port=8000 -f pom.xml
+
+jetty:run -Djetty.port=8085 -Dorg.eclipse.jetty.annotations.maxWait=600 -f pom.xml
+
+wupos.config.dir=D:\code-base\webservice\src\main\webapp\WEB-INF
+
+mvn clean install -DskipTests
+
+Ref: https://confluence.corpprod.awswuintranet.net/x/ZBokGg
+Local Setup for Developers: https://confluence.corpprod.awswuintranet.net/x/YS8kGg
+
+
+<repository>
+    <id>project repository</id>
+    <url>https://mvn.prod.wudip.com/maven2</url>
+</repository>
+<repository>
+    <id>central repository</id>
+    <url>http://central.maven.org/maven2</url>
+</repository>
+<repository>
+    <id>gitlab.com.wu.sharedlibrary</id>
+    <url>https://artifactory.wuintranet.net/artifactory/oneplatform-release/</url>
+</repository>
+
+
+UPDATE agent_profile set RECEIPT_DELIVERY_OPTIONS = 'YNYNY', CAN_ENABLE_DIGITAL_RECEIPTS=127 where agent_profile_id in (&agent_profile_id);
+
+
+UPDATE agent_profile set RECEIPT_DELIVERY_OPTIONS = 'NNNNN', CAN_ENABLE_DIGITAL_RECEIPTS=0 where agent_profile_id in (&agent_profile_id);
+
+
+https://jira.corpprod.awswuintranet.net/projects/DCTR/issues/DCTR-20151?filter=allopenissues
+
+API Name : sfmc_connector_v1_api
+email : manish.kumarroy@westernunion.com, aravindanmp.mannarakunnath@wu.com
+
+https://a1office.co/solutions/editor/excel-editor/
+
+
+ctrl+c
+
+ctrl+v
+
+.example to .properties conversion
+
+CONNECT &fexlink_username/&fexlink_password@&target_database_sid;
+
+
+git merge --no-off --no-commit orgin/
+
+
+green-->changes
+blue--->remove
+
+select ENABLE_CONTACT_PHONE, ENABLE_OCR_QRCODE_OPTIONS, ALLOW_DOCUMENT_RETRIEVE, CAN_USE_TIBCO_LOOKUP, Ap.RECEIPT_DELIVERY_OPTIONS, SEND_TEMPLATE_ID, PAY_TEMPLATE_ID, ud.username,A.WU_ACCOUNT_NUMBER, T.TERM_ID, a.agent_id, a.AGENT_PROFILE_ID AGT_PROF_ID, T.AGENT_PROFILE_ID TERM_AGT_PROF_ID, T.TERMINAL_ID, ud.user_id, Mtsi.IDENTIFIER Counter_ID, MULTI_FSID_ID,CAN_SEND_MONEY, CAN_DO_CANCEL_REFUND_A,CAN_SEND_QUICKPAY, Ap.CAN_SEND_MONEY_VIGO_OV, 
+ LOG_WU_ANALYTICS, CAPTURE_ABANDON_REASON,  CAN_UPLOAD_RECEIPT_TO_DMS, FREE_SMS_NOTIFICATION,GDPR_CAPTURE_MARKETING_PREF,  ALLOW_WU_LOOKUP_NAME_CHANGE,IS_REQUIRED_MOBILE_NUMBER,IS_REQUIRED_PHONE_NUMBER, MY_WU_CARD_SUPPORTED, can_enroll_preprinted_card,FORMLESS_ENROLLMENT_SMS, CAN_ENROLL_WU_CARD, ALLOW_ENROLL_SENDER, allow_enter_email,NETWORK_ID, ENABLE_TC_PS_DELIVERY_OPTION, TC_PS_DELIVERY_OPTION_LIST, GDPR_PRIVACY_TC_DMS, PREPRINT_SENDMONEY_ACR, PAGE_MENU_ID, CAN_DO_KYC_CUSTOMER_LOOKUP,KYC_SECONDARY_LOOKUP_OPTIONS,ID_IMAGE_REQUIRED, CAN_SUPPORT_MULTI_ERROR, USE_CACHED_PAYOUT_TERRITORIES,CAN_DO_CHIP_NAME_SEARCH, CAN_DO_LOCAL_NAMEDOB_SEARCH, CAN_DO_LOCAL_NAME_SEARCH,Mtsi.MT_SYSTEM_IDENTIFIER_ID, PRINTER_TYPE,RECEIPT_OUTPUT_TYPE, RECEIPT_PRINT_STYLE,RECEIPT_SIZE,RECEIPT_LANG_CODE,ALLOW_TRACK_TRNFR_OR_MTCN_SRCH, DODD_FRANK_READY_FLAG,DIGITAL_SIGNATURE_PAD_CONFIG, REQUIRE_CUST_SIGNATURE_CAPTURE, ALLOW_FRAUD_PREVENTION_POPUP, AGENT_MARKETING_LANG,HOME_PAGE_TILES_LAYOUT,FLA_SIGNATURE_CAPTURE, CAN_RETRIEVE_HISTORY, DOB_PAGE_LAYOUT,AGENT_BRANDING, NETWORK_AND_SUB_NETWORK_ID
+From User_Details Ud Join Terminal_For_Dev_User Tdu On Tdu.User_Id = Ud.User_Id  Join Terminal T On T.Terminal_Id = Tdu.Terminal_Id Join Agent A On A.Agent_Id = T.Organisation_Id Join Agent_profile Ap On Ap.Agent_profile_Id = A.AGENT_PROFILE_ID Join Mt_Territory Mt On Mt.Mt_Territory_Id = A.Territory_Id Join MT_SYSTEM_IDENTIFIER Mtsi On Mtsi.MT_SYSTEM_IDENTIFIER_ID = A.MT_SYSTEM_IDENTIFIER_ID
+WHERE UD.USERNAME like ('%IT_CP_01%') and ap.SEND_TEMPLATE_ID like '%%' and WU_ACCOUNT_NUMBER like '%%';
+
+
+update AGENT_PROFILE SET ALLOW_DOCUMENT_RETRIEVE=1 WHERE AGENT_PROFILE_ID IN (5100000000004848); 
+
+UPDATE TERMINAL SET ENABLE_OCR_QRCODE_OPTIONS = '7,7,0,0' WHERE TERMINAL_ID in (5100000000038025);commit;
+UPDATE TERMINAL SET ENABLE_OCR_SCANNER = 0 WHERE TERMINAL_ID in (5100000000038025)
+
+update TERMINAL set ENABLE_ERECEIPTS='127' where TERMINAL_ID in (5100000000034534); commit;
+update TERMINAL set ERECEIPT_DELIVERY_OPTIONS='3' where TERMINAL_ID in (5100000000034534); commit;
+
+
+DB - database - SQL scripts
+BUSINESS - Core business logic(deals with DAO layer and Core WU systems) - common for both WP1 and WP2
+WEBSERVICE -Service logic(layer between UI and Business) - HTTP request (GET/POST) from UI talks to webservice -talks to core business and back to UI
+TABLET-front end
+
+
+Git Reverse Merge:-
+-----------------
+
+1.git pull
+2.roll back
+3.terminal command
+
+git merge --no-ff --no-commit origin/DB-AUG-2022-R1-BUSNS-WP2
+
+went well
+
+imp:- if not went well resolve conflicts then commit
+
+4.commit and push
+
+changes: version files only
+
+[WP2][AUG 22 REL][QA][Reverse merge from DB to FB]
+
+settings:-
+
+1.analysis code 
+2. sunar lint 
+
+cancel: not necessory
+
+pom.xml
+
+FB|Result|DB
+
+git merge --abort
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Git Merge Request:-
+-----------------
+
+1.git lab
+2.tabletUI
+3.merge request
+4.new merge request
+5.select:FB-1.0.130-july22-Chanel 
+6.mater:DB-1.0.130-July22-WP2
+
+From FB-1.0.130-july22-Chanel into DB-1.0.130-July22-WP2
+
+7.Title
+-------
+
+Draft:[WP2][UAT][JULY REL 2022][WRM-2881][UAT-11642 ID OCR - QR Code link should open in new tab]
+
+8.Description
+-------------
+
+| Checks | Status | Remarks |
+
+| ------ | ------ | ------- |
+
+| Junit Coverage | :heavy_minus_sign: | NA |
+
+| SONAR Report | :heavy_minus_sign: | NA |
+
+| SONAR Lint Errors | :heavy_check_mark: | Attached |
+
+| Device Testing | :heavy_multiplication_x: | NA |
+
+| Release Notes | |  |
+
+| Unit Test Results | :heavy_check_mark: | |
+
+| SIT Defects | :heavy_multiplication_x: | NA |
+
+| Postphoned Defects | :heavy_multiplication_x: | NA |
+
+| Business Layer changes | :heavy_multiplication_x: | NO |
+
+| PM Sign offs | :heavy_check_mark: | YES |
+
+| QA Sign off | :heavy_check_mark: | YES |
+
+9.Reviewers
+-----------
+1.Chakrapani Bathina
+2.Devik Ayyapa
+3.Narasimharao Areti
+4.Sumit Agrawal
+5.Ramya Sana
+
+10.milestone
+------------
+
+11.label
+--------
+Chanel Team
+
+Finally:Create Merge Request
+-------
+
+
+below reviewer or approvers
+
+merge button enable that is click and merge
+
+TerminalDAOImpl.java
+TerminalForDevUserDAOImpl.java
+Terminal.java
+TransactionPermissionProfile.java
+
+
+4599_add_enable_ocr_qrcode_at_terminal.sql
+4599_add_enable_ocr_qrcode_at_terminal_r.sql
+4600_create_ereceipt_configs_terminal.sql
+4600_create_ereceipt_configs_terminal_r.sql
+
+
+[WP1 SEP REL][CHANEL-1059|CHANEL-1035][ERECIEPTS | IDOCR |WUPOS| QRCODE+SCANNER | PROFILE TO TERMINAL]
+
+
+cyberark_config.properties:
+
+ocr.okta.tokengeneration.client.cyberark.object=BUSINESS_QA_OCR_OKTA_TOKENGENERATION_CLIENTSECRET
+
+
+webservice.properties:
+
+ocr.okta.tokengeneration.client.cyberark.key=secret.ocr.okta.tokengeneration.client
+
+
+Tibco, HPNS, WUPOS & RTRA
+
+
+WUPOS, 1P, TIBCO, DOC Capture, JUMIO, DMS, RTRA/RME, HPNS, UCD, IDmission, iWatch/Pharos, Unisys
+
+
+Title: Access request for DevOps 2.0 tools Program  
+
+domain: CMT
+
+Work function\description: Agent & Care Systems
+
+Business requirement: We are working on implementing CICD pipeline using DevOps 2.0 tools set for WUPOS and Supporting apps. For same purpose need access to toolset
+
+Manager: Tony
+
+Phone Number: your mobile number
+
+
+DEFINE script_name=4601_enable_ocr_qrcode_migration_from_agentprofile_to_terminal.sql
+CONNECT &fexlink_username/&fexlink_password@&target_database_sid;
+
+UPDATE TERMINAL SET ENABL_OCR_QRCODE_OPTIONS = '0,0,0,0' WHERE TERMINAL_ID in (SELECT TERMINAL_ID from TERMINAL TERMINAL
+Join Agent A On A.Agent_ID = T.Organisation_Id
+Join Agent_profile Ap On Ap.Agent_profile_Id = T.AGENT_PROFILE_ID WHERE Ap.ENABLE_OCR_QRCODE = 1);
+
+
+UPDATE TERMINAL SET ENABLE_OCR_SCANNER = 0 WHERE TERMINAL_ID in (SELECT TERMINAL_ID from TERMINAL T
+Join Agent A On A.Agent_ID = T.Organisation_Id
+Join Agent_profile Ap On Ap.Agent_profile_Id = T.AGENT_PROFILE_ID WHERE Ap.ENABLE_OCR_SCANID = 1);
+
+
+DELETE From db_update_record WHERE script_name = '&script_name';
+
+COMMIT;
+
+
+Access requests : https://confluence.corpprod.awswuintranet.net/display/ACS/access+requests
+
+ 
+
+Environment details : https://confluence.corpprod.awswuintranet.net/display/ACS/WUPOS+Enviornment+Tracker
+
+
+CICD Links: https://confluence.corpprod.awswuintranet.net/display/ACS/CICD+paths
+
+
+Artifact links : https://confluence.corpprod.awswuintranet.net/display/ACS/Artifact+links
+
+
+
+run in windows-->windows+r 
+
+close all windows-->windows+d 
+
+
+wupos-tibco-mulesoft-jumio
+
+
+https://gitlab.wuintranet.net/wupostablet/TabletUI/
+
+
+https://gitlab.wuintranet.net/WuposProjects/webservice/
+
+
+ENABLE_ERECEIPTS-127
+
+ERECEIPT_DELIVERY_OPTIONS-YNYNY
+
+
+CAN_ENABLE_DIGITAL_RECEIPTS
+
+
+RECEIPT_DELIVERY_OPTIONS
+
+
+UPDATE agent_profile set RECEIPT_DELIVERY_OPTIONS = 'YNYNY', CAN_ENABLE_DIGITAL_RECEIPTS=3 where agent_profile_id in (&agent_profile_id);
+
+
+erecipt-teriminal level 
+
+redis cache enabled qa
+
+login and perform ereceipt
+
+
+logout and login in normal transaction
+
+
+scope:send and pay
+
+transfer status and transfer log
+
+jetty logs and redis logs
+
+classcast exception are happened in rediscache
+
+
+amount enter time
+
+ucb and genThreeInformation not loaded at phone lookup
+
+
+git -c credential.helper= -c core.quotepath=false -c log.showSignature=false add --ignore-errors -A -f -- src/core/data-services/id-ocr.service.js langs/locale-ro.json langs/locale-th.json langs/locale-no.json src/core/widgets/session-timeout/session-timeout-service.js langs/locale-bg.json langs/locale-pt.json langs/locale-uk.json langs/locale-hu.json langs/locale-nl.json langs/locale-zh.json langs/locale-de.json langs/locale-pt-br.json langs/locale-lo.json langs/locale-tr.json langs/locale-fr.json langs/locale-sr.json langs/locale-iw.json langs/locale-hr.json langs/locale-ru.json src/app/styles/wupos-mobile.css src/core/utils/general-utils.service.js src/transaction/components/customer-lookup/components/id-ocr-overlay-window/id-ocr-overlay-window.scss langs/locale-nb.json src/transaction/components/customer-lookup/components/id-ocr-overlay-window/id-ocr-overlay-window.html langs/locale-it.json langs/locale-sl.json src/core/data-services/digital-signature.service.js langs/locale-pl.json src/transaction/components/customer-lookup/customer-lookup.component.js langs/locale-sk.json src/transaction/components/customer-lookup/components/id-ocr-overlay-window/id-ocr-overlay-window.component.js langs/locale-cs.json langs/locale-en-ca.json langs/locale-ja.json src/transaction/components/customer-lookup/components/id-ocr-overlay-window/id-ocr-overlay-window.service.js langs/locale-bs.json src/app/app.component.js langs/locale-es.json langs/locale-fr-ca.json langs/locale-vi.json src/transaction/components/customer-lookup/customer-lookup.service.js langs/locale-en.json langs/locale-en-us.json langs/locale-in.json
+
+
+rm .git/index.lock
+
+
+OCR should extract :
+
+ 
+1.Name
+2.Surname
+3.ID type
+4.ID number
+5.Expiration Date
+6.DOB
+7.Issuing country
+8.Nationality (where applicable)
+9.Issuing date (where applicable)
+10.Address (where applicable)
+ 
+
+Highlighted in green should be returned all the time, 
+if they are not returned then we have a problem. 8- 10 points are additional metadata,
+which might be returned based on the ID scanned.
+
+
+
+English(en)	
+Spanish(es)	
+French(fr)	
+Italian(it)	
+German(de)	
+Russian(ru)	
+Portuguese(pt)
+Canadian French(fr_ca)	
+Canadian English(en_ca)	
+Mandarin(zh)	
+Japenese(ja)	
+Nederlands/Duetch(nl)		
+Norway (nb)/Norwegian(no)
+Polish(pl)	
+Romanian(ro)	
+Turkish(tr)	
+Indonesian Behasa(in)	
+Hungarian(hu)	
+Bosnian(bs)	
+Croatian(hr)	
+Serbian(sr)	
+Slovenian(sl)	
+Bulgarian(bg)	
+Slovak(sk)	
+Czech(cs)	
+Thai(th)	
+Vietnamese(vi)	
+Ukrainian(uk)	
+Laos(lo)	
+Brazilian Portuguese(pt_br)	
+Hebrew (iw)
+
+
+start msedge --remote-debugging-port=9222
+
+
+https://text-compare.com/
+
+
+
+digital receipts--WP1
+Ereceipts -- WP2
+
+select ENABLE_ERECEIPTS, ERECEIPT_DELIVERY_OPTIONS, ENABLE_CONTACT_PHONE,ENABLE_OCR_QRCODE_OPTIONS, ENABLE_OCR_SCANNER, CAN_SEND_SWIFT_PAY, CAN_ENABLE_DIGITAL_RECEIPTS, Ap.RECEIPT_DELIVERY_OPTIONS, SEND_TEMPLATE_ID, PAY_TEMPLATE_ID, ud.username,A.WU_ACCOUNT_NUMBER, T.TERM_ID, a.agent_id, a.AGENT_PROFILE_ID AGT_PROF_ID, T.AGENT_PROFILE_ID TERM_AGT_PROF_ID, T.TERMINAL_ID, ud.user_id, Mtsi.IDENTIFIER Counter_ID, MULTI_FSID_ID,CAN_SEND_MONEY, CAN_DO_CANCEL_REFUND_A,CAN_SEND_QUICKPAY, Ap.CAN_SEND_MONEY_VIGO_OV, 
+LOG_WU_ANALYTICS, CAPTURE_ABANDON_REASON,  CAN_UPLOAD_RECEIPT_TO_DMS, FREE_SMS_NOTIFICATION,GDPR_CAPTURE_MARKETING_PREF,  ALLOW_WU_LOOKUP_NAME_CHANGE,IS_REQUIRED_MOBILE_NUMBER,IS_REQUIRED_PHONE_NUMBER, MY_WU_CARD_SUPPORTED, can_enroll_preprinted_card,FORMLESS_ENROLLMENT_SMS, CAN_ENROLL_WU_CARD, ALLOW_ENROLL_SENDER, allow_enter_email,NETWORK_ID, ENABLE_TC_PS_DELIVERY_OPTION, TC_PS_DELIVERY_OPTION_LIST, GDPR_PRIVACY_TC_DMS, PREPRINT_SENDMONEY_ACR, PAGE_MENU_ID, CAN_DO_KYC_CUSTOMER_LOOKUP,KYC_SECONDARY_LOOKUP_OPTIONS,ID_IMAGE_REQUIRED, CAN_SUPPORT_MULTI_ERROR, USE_CACHED_PAYOUT_TERRITORIES,CAN_DO_CHIP_NAME_SEARCH, CAN_DO_LOCAL_NAMEDOB_SEARCH, CAN_DO_LOCAL_NAME_SEARCH,Mtsi.MT_SYSTEM_IDENTIFIER_ID, PRINTER_TYPE,RECEIPT_OUTPUT_TYPE, RECEIPT_PRINT_STYLE,RECEIPT_SIZE,RECEIPT_LANG_CODE,ALLOW_TRACK_TRNFR_OR_MTCN_SRCH, DODD_FRANK_READY_FLAG,DIGITAL_SIGNATURE_PAD_CONFIG, REQUIRE_CUST_SIGNATURE_CAPTURE, ALLOW_FRAUD_PREVENTION_POPUP, AGENT_MARKETING_LANG,HOME_PAGE_TILES_LAYOUT,FLA_SIGNATURE_CAPTURE, CAN_RETRIEVE_HISTORY, DOB_PAGE_LAYOUT,AGENT_BRANDING, NETWORK_AND_SUB_NETWORK_ID
+From User_Details Ud Join Terminal_For_Dev_User Tdu On Tdu.User_Id = Ud.User_Id  Join Terminal T On T.Terminal_Id = Tdu.Terminal_Id Join Agent A On A.Agent_Id = T.Organisation_Id Join Agent_profile Ap On Ap.Agent_profile_Id = A.AGENT_PROFILE_ID Join Mt_Territory Mt On Mt.Mt_Territory_Id = A.Territory_Id Join MT_SYSTEM_IDENTIFIER Mtsi On Mtsi.MT_SYSTEM_IDENTIFIER_ID = A.MT_SYSTEM_IDENTIFIER_ID
+WHERE UD.USERNAME like ('%IT_CP_01%') and ap.SEND_TEMPLATE_ID like '%%' and WU_ACCOUNT_NUMBER like '%%';
+
+
+UPDATE TERMINAL SET ENABLE_OCR_QRCODE_OPTIONS = '7,7,0,0' WHERE TERMINAL_ID in (5100000000033424);commit;
+UPDATE TERMINAL SET ENABLE_OCR_SCANNER = 0 WHERE TERMINAL_ID in (5100000000038025);
+
+update TERMINAL set ENABLE_ERECEIPTS='127' where TERMINAL_ID in (5100000000033425); commit;
+update TERMINAL set ERECEIPT_DELIVERY_OPTIONS='3' where TERMINAL_ID in (5100000000033628); commit;
+
+select CUSTOMER_DELIVERY_PREFERENCE from TRANSACTION_LOG where MTCN=9332369227;
+
+update TRANSACTION_LOG set CUSTOMER_DELIVERY_PREFERENCE='TCPS:SMS|RECEIPT:SMS' where MTCN=9332369227; commit;
+
+
+select *from TRANSACTION_LOG;
+
+--------------------------------------
+
+select CAN_USE_TIBCO_LOOKUP  from agent;
+
+update agent set CAN_USE_TIBCO_LOOKUP=1 where agent_id in(); commit;
+
+select LOG_WU_ANALYTICS from agent;
+
+select *from terminal;
+
+update agent set LOG_WU_ANALYTICS=12 where territory_id=106; commit;
+
+
+Client stub generation:
+Download the YAML file to a convenient location on your system.
+Access https://editor.swagger.io/ in your browser.
+In swagger.io editor, using the menu option import the YAML file from your system or paste the file contents in the online editor.
+Visit the Generate Client menu and select your preferred language.
+Your generated SDK client files (java-client-generated.zip) are downloaded.
+On extracting the java-client-generated.zip file, you can see the generated files and folders
+
+
+Deployments:- 
+Scrum Deployments : 
+QA Webservice - CMT-WUPOS-WEB-SERVICE-WAR-DEPLOYMENT-QA - (Env to deploy) - ONEP WP1 (jetty-9.4.13)
+QA Webservice Config - CMT-WUPOS-WEB-SERVICE-CONF-DEPLOYMENT-QA - (Env to deploy) - ONEP WP1 (jetty-9.4.13)
+QA Tablet-UI Apps - CMT-WUPOS-TABLETUI-APPS-DEPLOY-QA-NEW - (Env to deploy) - WUPOS 1P
+QA Tablet UI - (not nc) CMT-WUPOS-TABLETUI-DEPLOY-QA - (Env to deploy) - WUPOS 1P 
+
+QA-ONEP-WP1
+
+appscmt
+
+CMT-WUPOS-AGENT-APP-WAR-DEPLOYMENT-QA
+
+TABELT FIAT
+
+handleCustomerLookupChanges
+
+
+https://swaggerhub.wuintranet.net/apis/cmt/kyc_getocrcustdata_v1_api/1.0.0#/GetOcrCustDataResponse
+
+
+DEFINE script_name=4611_Update_OCR_Supported_changes.sql;
+
+CONNECT &fexlink_username/&fexlink_password@&target_database_sid;
+
+INSERT INTO db_update_record(db_update_record_id, script_name) VALUES (db_update_record_seq.NEXTVAL, '&script_name');
+
+UPDATE id_doc_metadata SET OCR_SUPPORTED = 1 where WU_CODE in ('A','B','C') and
+MT_TERRITORY_ID = (select mt_territory_id from mt_territory where TERRITORY_NAME = 'Italy');commit;
+
+UPDATE id_doc_metadata SET OCR_SUPPORTED = 1 where WU_CODE in ('A','B','C') and
+MT_TERRITORY_ID = (select mt_territory_id from mt_territory where TERRITORY_NAME = 'United Kingdom');commit;
+
+UPDATE id_doc_metadata SET OCR_SUPPORTED = 1 where WU_CODE in ('A','B','C') and
+MT_TERRITORY_ID = (select mt_territory_id from mt_territory where TERRITORY_NAME = 'Germany');commit;
+
+UPDATE id_doc_metadata SET OCR_SUPPORTED = 1 where WU_CODE in ('A','B','C') and
+MT_TERRITORY_ID = (select mt_territory_id from mt_territory where TERRITORY_NAME = 'Spain');commit;
+
+UPDATE id_doc_metadata SET OCR_SUPPORTED = 1 where WU_CODE in ('A','B','C') and
+MT_TERRITORY_ID = (select mt_territory_id from mt_territory where TERRITORY_NAME = 'France');commit;
+
+UPDATE db_update_record SET success = 1, end_time = SYSDATE WHERE script_name = '&script_name';
+COMMIT;
+
+
+ALTER TABLE id_doc_metadata
+    ADD OCR_SUPPORTED NUMERIC (1) 
+    DEFAULT 0
+    CONSTRAINT ocr_supported_chk CHECK (OCR_SUPPORTED IN (0,1,2));
+commit;
+    
+	
+UPDATE id_doc_metadata SET OCR_SUPPORTED = 2 where WU_CODE in ('D','E') and
+MT_TERRITORY_ID = (select mt_territory_id from mt_territory where TERRITORY_NAME = 'France');commit;
+
+https://confluence.corpprod.awswuintranet.net/display/R3FEO/Functional+Documentation?preview=/183664723/331827403/Platform%20Architecture%20Diagram.pdf
+
+Rootcause – Tracing was enabled on the servers by mistake that was rapidly consuming the system resources. That was the reason it re-occurred after we did a restart last night IST.
+
+Fix – Disabled the tracing, cleaned-up the space and restarted the instances. E2E validated and SMVs are working fine. Further, we are auditing on how and why the tracing was enabled. Also performing more clean-up on UAT servers to avoid this issue in near future
+
+
+https://charleeli.medium.com/do-we-really-need-at-and-amp-bindings-in-angularjs-1dd65d99d2d9
+
+
+wupos-tibco-ibis
+
+
+BAD_QUALITY
+Data Checks
+Not Executed
+Image Checks
+Not Executed
+Extraction
+Not Executed
+Extraction Details
+PRECONDITION_NOT_FULFILLED
+Similarity
+Not Executed
+
+https://bobbyhadz.com/blog/javascript-typeerror-replaceall-is-not-a-function
+
+
+
+select *from FexLink.user_details
+
+select *from organisation;
+
+select *from user_organisation;
+
+select *from agent;
+
+select *from terminal;
+
+select *from money_transfer;
+
+select *from agent_profile;
+
+select *from agent_profile where agt_prof_id in ();
+
+select *from mt_territory;
+
+select *from country;
+
+select *from transaction_log;
+
+
+Network-Walmart
+
+agent-branch or location
+
+terminal-systems
+
+operatiors-login
+
+
+Reston Data center(DC)
+----------------------
+
+1.silo1
+2.silo2
+
+Chicago Data center(DC)
+-----------------------
+
+3.silo3
+4.silo4
+
+1 Master Data center(DC)
+------------------------
+
+5.silo5
+
+
+WUPOS-->Oracle DB
+ARC-->SQL 
+
+WUPOS----|via chip calls|---->RSI-->HPNS-->RTRA-->UNISYS-->UCD
+
+WUPOS-TIBCO-MULESOFT-DOC Capture-JUMIO
+
+
+Flat File->ACM->SQL->ARC->ORACLE DB->WUPOS
+
+WP1
+---
+
+1.Pl2
+2.WUTA->Node js
+3.PC browser
+
+WP2
+---
+
+1.Term Authentication->Node js
+
+Chip calls
+----------
+
+1.Trx To WU ---Req--->
+2.Trx From WU ---Res--->
+
+chip calls recorded after completing 170 lines of each file
+
+ctrl+f : finding purpose
+
+fn+f3 : moving to next found value
+
+
+
+One Record
+----------
+
+Transfer status->MTCN search ->Results->action->select->Transfer information->sender->Receiver
+
+Multiple Record
+---------------
+
+Transaction log->from date,to date->search->Multiple records
+
+Modify transaction->MTCN->Modify either sender or receiver name
+
+
+transactionDetails->getting from db
+
+eventDetails->getting from events 
+
+
+UK Agents: UKAGENT,UKAGENT_COMP,UKAGENT_K02
+
+IT Agents: IT_CP_01,ITAGENT_IT060
+ 
+set PATH=D:\WUPOS\node-v14.15.4-win-x64\node-v14.15.4-win-x64; -- tabletapp mono
+
+set PATH=C:\Program Files\nodejs; -- tablet-ui  currently
+ng serve tabletapp/webapp
+
+select * from fexlink.delivery_address WHERE PAYOUT_TERRITORY_ID= ( SELECT MT_TERRITORY_ID  FROM fexlink.MT_TERRITORY WHERE ISO_CODE='GH');
+
+select CAPTION_TEXT Field_Name from field_caption_text where language_code = 'EN'
+and FIELD_CAPTION_ID in ( select FIELD_CAPTION_ID from dynamic_field where dynamic_field_group_id in 
+(select dynamic_field_group_id from dynamic_field_group where description in (select DESCRIPTION from D2B_SERVICE
+where DELIVERY_TEMPLATE_INDEX = 4340 and PAYOUT_TERRITORY_ID =101 )))
+order by FIELD_CAPTION_TEXT_ID asc;
+
+select * from dynamic_field where DYNAMIC_FIELD_GROUP_ID='5100000000034152'
+
+
+select * from fexlink.D2B_Service WHERE PAYOUT_TERRITORY_ID= ( SELECT MT_TERRITORY_ID  FROM fexlink.MT_TERRITORY WHERE ISO_CODE='CU');
+
+
+select CAPTION_TEXT Field_Name from field_caption_text where language_code = 'EN'
+and FIELD_CAPTION_ID in ( select FIELD_CAPTION_ID from dynamic_field where dynamic_field_group_id in 
+(select dynamic_field_group_id from dynamic_field_group where description in (select DESCRIPTION from D2B_SERVICE
+where DELIVERY_TEMPLATE_INDEX = 4042 and PAYOUT_TERRITORY_ID =49 )))
+order by FIELD_CAPTION_TEXT_ID asc;
+
+
+select * from fexlink.dynamic_field where DYNAMIC_FIELD_GROUP_ID='5100000000036723'
+
+select ISO_CODE from mt_territory;
+
+
+mt_territory
+field_caption_text
+D2B_Service
+dynamic_field
+dynamic_field_group
+
+
+TabletUI :-
+
+direct-to-bank.html -> direct-to-bank.component.js -> direct-to-bank.service.js -> transfer-data.service.js 
+
+
+Webservice :-
+
+DeliveryService.java 
+
+
+Business :-
+
+DeliveryServiceManager.java -> DeliveryServiceManagerImpl.java -> DeliveryServiceDAO.java -> DeliveryServiceDAOImpl.java 
+
+
+for chip error 
+
+need to check -> cfg_servers.xml
+
+
+Links:
+
+Pos Release Page : https://confluence.corpprod.awswuintranet.net/pages/viewpage.action?spaceKey=ACS&title=POS+Release+team+Related+Confluence+pages
+
+Process Flow: https://confluence.corpprod.awswuintranet.net/display/ACS/Release+Process+Flow
+
+Release Notes: https://confluence.corpprod.awswuintranet.net/display/ACS/Release+Notes
+
+Checkmarx:  https://confluence.corpprod.awswuintranet.net/display/ACS/Checkmarx+and+Sonar+related+Details
+
+
+
+DeliveryServices.java:
+configureDisplayableDescription-- To fetch static message from db and display on UI
+
+
+                    console.log('this.getPartialCity',this.getPartialCity.length);
+                    if(this.getPartialCity.length===0)
+                    {
+                         this.showOvVIgoCityStateDropDown = false;
+                         this.showOvVigoCityState = false;
+                    }
+                    console.log('all selected countries partialCity',this.getPartialCity);
+
+
+WU
+
+Transactions are generally deposited Next Business Day. Same Day deposit may be available dependent of the beneficiary bank cutoff time and service availability. Please confirm the deposit of the funds with the beneficiary. --------------------> DB
+
+
+VIGO 
+
+MONEY IS SENT DIRECTLY INTO THE RECEIVER'S BANK ACCOUNT. -----------------------> DAS
+
+
+--geting WU Acnt number
+	SELECT AGENT_PROFILE_ID,agent_id,WU_ACCOUNT_NUMBER FROM AGENT WHERE agent_id
+	 in (SELECT ORGANISATION_ID FROM terminal WHERE TERMINAL_ID
+	in (SELECT TERMINAL_ID FROM terminal_for_dev_user WHERE user_id
+	in (select user_id from USER_DETAILS where username='USAGENT_VG_APN01'))); 
+  
+  
+  select AGENT_MARKETING_LANG, DODD_FRANK_READY_FLAG from agent where AGENT_ID = '5100000000034308';
+  
+  update agent set AGENT_MARKETING_LANG = 'EN,ES,ZH,HT' where AGENT_ID = '5100000000034308';
+  commit;
+  
+if (moneyTransfer.getSender().getAddress().getCountry() != null) {
+            transactionLog.setSenderCountryIso(moneyTransfer.getSender().getAddress().getCountry().getIsoCode());
+}
+
+
+agent-app:
+DeliveryServices.java:
+1.configureDeliveryServiceFields--For Fetching the DeliveryService fields from DB(like Bank
+NAme,Acc Num etc..)
+2. configureReceiverAddress--For Fetching the Receiver Address fields(which are part of our
+D2B templates from DB(like Receiver state,city country code etc..)
+3. updateDynamicDependentFields,updateActOnDynamicDependentFields--- To make Delivery
+service fields- showing/hiding/enabling/disabling/required and optional
+4. updateDynamicAddressDependentFields,updateActOnDynamicAddressDependentFields--To make
+Receiver Address fields(which are part of our D2B
+template)- showing/hiding/enabling/disabling/required and optional.
+5. setValuesDeliveryServiceFields-- To set the Delivery service values while Lookups like wu
+card/sender lookup.
+6. setValuesAddressFields-- to set Receiver address fields while lookup.
+7.checkCascadingForAllLevels-- For cascading logic of Delivery service fields(ex-India D2B
+8.checkCascadingForAllAddressLevels-- For cascading logic of Receiver Address fields(excolombia D2B )
+9.configureDisplayableDescription-- To fetch static message from db and display on UI
+ ReceiptSpiderWay.java:
+setDeliveryServiceOptionsFields-- To send the Delivery service Field values and labels in
+ respective Receipt tags based on the chip field values of that field.
+SendMoneyTransfer.java:
+isReceiverNameAvailableFromAPN--check for Receiver Name Change popup(ex-Brazil D2B,Argentina
+D2B )
+
+Business:
+DevliveryserviceDAOImpl.java
+sendMoneyTransfer.java
+
+agent-app:
+DeliveryServices.java
+Receiptpiderway.java
+
+Business classes:
+DeliveryServiceManager.java
+DeliveryServiceManagerImpl.java
+DeliveryServiceImpl.java
+DeliveryServiceDAOImpl.java
+
+
+Cuba D2B for Currencies of USD and CUP
+D2B: El Salvador BTS banks  
+Mexico Bancopel  (unless it is 3 brands) – Vigo and OV are in scope
+D2B: Dominican Republic                  
+D2B: Chile     
+Philippines All 4 Current WU Wallets + Metabank    
+Jamaica - US Metabank Visa*            
+Colombia - US Metabank Visa *         
+Philippines - US Metabank Visa*                   
+Argentina D2B WUFSA           
+D2B: Bolivia - Banco Ganadero          
+El Salvador - US Metabank Visa*                   
+India - Wallet: PayTM
+Thailand - US Metabank Visa*           
+Romania - US Metabank Visa*
+
+MemcachedManager
+
+MemcachedManagerImpl(CHIP)-OLD
+
+RedisManagerImpl(CHIP)-NEW
+
+DummyMemcachedManagerImpl(TEST)
+
+
+single value - entity(Spring)
+
+multiple value - query(JDBC Hibernate)
+
+
+
+For the invalid Receipt:
+select
+
+ud.username, t.terminal_id, t.term_id,
+
+t.agent_profile_id TRMprof,
+
+a.agent_id,a.wu_account_number, a.agent_profile_id AGT_prof,mt.Territory_Name,
+
+mt.mt_territory_id, mt.default_agent_profile_id TERRprof,
+
+/* Count ALL TDU-linked terminals having this TDU's effective agent_profile_ID */
+
+( select count(*) from terminal t2
+
+join terminal_for_dev_user tdu2 on tdu2.terminal_id = t2.terminal_id
+
+where decode(t.agent_profile_id, null, a.agent_profile_id, t.agent_profile_id) = t2.agent_profile_id ) TermsWithUsersProf,
+
+/* Count ALL agents having this TDU's effective agent_profile_ID */
+
+( select count(*) from agent agt2
+
+where decode(t.agent_profile_id, null, a.agent_profile_id, t.agent_profile_id) = agt2.agent_profile_id ) AgtsWithUsersProf,
+
+/* Count ALL territories having this TDU's effective agent_profile_ID */
+
+( select count(*)
+
+from mt_territory mt2
+
+where decode(t.agent_profile_id, null, a.agent_profile_id, t.agent_profile_id) = mt2.mt_territory_id ) TerrsWithUsersProf
+
+from user_details ud
+
+join terminal_for_dev_user tdu on tdu.user_id = ud.user_id
+
+join terminal t on t.terminal_id = tdu.terminal_id
+
+join agent a on a.agent_id = t.organisation_id
+
+join mt_territory mt on mt.mt_territory_id = a.territory_id
+
+where ud.username = (upper('USAGENT_APN_01')); --5100000000034231
+
+
+select agent_profile_id from terminal where TERMINAL_ID = 5100000000034231;
+
+update terminal set agent_profile_id = NULL where TERMINAL_ID = 5100000000034231;
+commit;
+
+
+select use_cached_delivery_services from agent_profile where agent_profile_id='5110000000001060';
+
+             this.getStateList = await service.getStateList(
+                                        this.payoutTerritory.isoCode, this.payoutTerritory.currencyCode, this.isFromTopDestination);
+                    console.log('all selected countries stateList',this.getStateList);
+
+
+https://gitlab.wuintranet.net/WuposProjects/node_modules
+
+
+APN Test Data-IBAN,BIC
+https://confluence.corpprod.awswuintranet.net/display/AD/APN+Test+Data-IBAN%2CBIC
+
+Test Data-IBAN,BIC (APN)
+https://confluence.corpprod.awswuintranet.net/pages/viewpage.action?pageId=60261233
+
+
+How to install apollo-angular client in nx workspace?
+npm install apollo-angular && npx nx g apollo-angular:ng-add
+
+How to setup monorepo workspace in local?
+
+Install node version 14.15.4 or 16.0.0 if already not present
+After git clone, run npm install command to install node modules or use modules placed from box location
+update assets path in project.json to load images,javascript and translation files
+update backend webservice port in environment.js file
+Run application using ng serve tabletapp
+
+CLDAPP-DevOps-Sonar-CMT-User on Active Directory Forest HQINTL1
+
+CLDAPP-DevOps-Artifactory-CMT-Admin on Active Directory Forest HQINTL1
+
+CLDAPP-DevOps-CloudBees-CMT-User on Active Directory Forest HQINTL1
+
+
+        if (this.agentInformation.getAgentInformation() && this.agentInformation.getAgentInformation().ereceiptsAnalyticsJuly23) {
+            this.analyticsEventDTO.ereceipt_email_selected = this.sessionStorageService.getItem(StorageConstants.session.ERECEIPT_EMAIL_SELECTED) === true ? 'Y' : 'N';
+            this.analyticsEventDTO.ereceipt_SMS_selected = this.sessionStorageService.getItem(StorageConstants.session.ERECEIPT_SMS_SELECTED) === true ? 'Y' : 'N';
+            this.analyticsEventDTO.ereceipt_print_selected = this.sessionStorageService.getItem(StorageConstants.session.ERECEIPT_PRINT_SELECTED) === true ? 'Y' : 'N';
+        }
+
+
+select RELEASE_CONFIG_JSON from application_profile;
+--disable
+update application_profile set release_config_json=regexp_replace(release_config_json,'("ENABLE_OCR_SEND_JULY23":1)','"ENABLE_OCR_SEND_JULY23":0') where RELEASE_CONFIG_JSON like '%"ENABLE_OCR_SEND_JULY23":1%';
+
+update application_profile set release_config_json=regexp_replace(release_config_json,'("ENABLE_OCR_PAY_JULY23":1)','"ENABLE_OCR_PAY_JULY23":0') where RELEASE_CONFIG_JSON like '%"ENABLE_OCR_PAY_JULY23":1%';
+
+update application_profile set release_config_json=regexp_replace(release_config_json,'("ERECEIPTS_ANALYTICS_JULY23":1)','"ERECEIPTS_ANALYTICS_JULY23":0') where RELEASE_CONFIG_JSON like '%"ERECEIPTS_ANALYTICS_JULY23":1%';
+--update
+update application_profile set release_config_json=regexp_replace(release_config_json,'("ENABLE_OCR_SEND_JULY23":0)','"ENABLE_OCR_SEND_JULY23":1') where RELEASE_CONFIG_JSON like '%"ENABLE_OCR_SEND_JULY23":0%';
+
+update application_profile set release_config_json=regexp_replace(release_config_json,'("ENABLE_OCR_PAY_JULY23":0)','"ENABLE_OCR_PAY_JULY23":1') where RELEASE_CONFIG_JSON like '%"ENABLE_OCR_PAY_JULY23":0%';
+
+update application_profile set release_config_json=regexp_replace(release_config_json,'("ERECEIPTS_ANALYTICS_JULY23":0)','"ERECEIPTS_ANALYTICS_JULY23":1') where RELEASE_CONFIG_JSON like '%"ERECEIPTS_ANALYTICS_JULY23":0%';
+
+
+object bind not possible in 1.0
+
+object bind is possible in 2.0
+
+select ISO_CODE from fexlink.Country where PHONE_NUMBER_CONFIG_ID in (select PHONE_NUMBER_CONFIG_ID from fexlink.PHONE_NUMBER_CONFIG where message_id in 
+(select message_id from fexlink.message_text where message_text = 'United Kingdom (+44)' and language_code = 'en_CA'));
+
+getIsoCodeByPhoneNumberCode--CountryMangagerImpl.java
+
+
+String browserLocale = threadLocale.getLocale().getLanguage();
+String isoCode = countryManager.getIsoCodeByPhoneNumberCodeContent(phoneNumberCode, browserLocale);
+primary.setCOUNTRYNAME(isoCode);
+
+update   select ANGULAR_REDIRECT_CONFIG, APP_TYPE_IN_USE FROM terminal where TERMINAL_ID = '5100000000030137';
+ update terminal set ANGULAR_REDIRECT_CONFIG = '{"home":"Y","nextGen":"Y","send-money":"Y"}', APP_TYPE_IN_USE = 'IA_COMPAT_ANGULARJS'
+ where TERMINAL_ID = '5100000000030137';
+
+
+D:\code-general\Apache2.4\htdocs
+
+environment.ts
+project.json  ->revert
+
+mono repo--> path set setting of apache2.4
+
+runtime generated posapps folder in dist folder of monorepo
+
+
+apps-->replace  pos apps in htdocs in apache2.4
+
+ctrl+x
+
+posapps paste in apache2.4
+
+ng serve tabletapp
+ng build tabletapp
+npm run build
+
+http://localhost:82/tablet-ui/
+
+
+1418_add_delivery_service_summary.sql
+
+UPDATE agent_profile SET delivery_svc_summary = 0;
+
+DELIVERY_SVC_SUMMARY
+0 - radio , 1,2 - dropdown
+
+
+1.  When Delivery_svc_summary is "2" we need sort directed delivery service and keep non directed service in there default order
+2. When Delivery_svc_summary is 1" no need sort delivery services
+3. Depending on Exclusion flag which delivery service needs to be hidden and which needs to be shown
+all service comes under visible which are showing on screen .
+if you see from hpns we are getting some time lot of services but only show 2-3 on UI
+that's all are visible service
+
+
+SendMoneyService.java->/getExchangeRate->chip
+DeliveryService.java->/deliveryServices->chip
+DeliveryService.java->/deliveryOptions->chip
+SendMoneyService.java->/getFee->chip
+SendMoneyService.java->/getDeliveryServiceCodeReasons->WebServiceUtilsImpl.java->MoneyTransferManagerImpl.java->ReasonDaoImpl.java->wuposdb
+SearchService.java->/genThreeInformation->IdentificationDocumentManager.java->chip->UcbBufferUtilsImpl.java
+DeliveryService.java->/d2bDescription->wuposdb
+DeliveryService.java->/d2bDynamicFields->wuposdb
+DeliveryService.java->/deliveryAddressFields->wuposdb
+
+
+we tried to increase from 700 to 2048 in the settings-complier
+
+java.lang.OutOfMemoryError: GC overhead limit exceeded
+
+create table without html table tags
+
+
+https://jira.corpprod.awswuintranet.net/secure/RapidBoard.jspa?rapidView=6855&projectKey=CHANEL&view=planning&issueLimit=100
+
+https://jira.corpprod.awswuintranet.net/secure/RapidBoard.jspa?rapidView=8009&projectKey=CHANEL&view=planning.nodetail&selectedIssue=CHANEL-3338&issueLimit=100
+
+
+
+UPDATE TERMINAL SET ENABLE_OCR_QRCODE_OPTIONS = '7,7,7,7' WHERE TERMINAL_ID in (5100000000033424);commit;
+
+UPDATE TERMINAL SET ENABLE_OCR_SCANNER = '7' WHERE TERMINAL_ID in (5100000000033424);commit;
+
+
+select IS_REQUIRED_MOBILE_NUMBER,IS_REQUIRED_PHONE_NUMBER from agent_profile where Agent_profile_Id=2200000000000049;
+
+update agent_profile set IS_REQUIRED_MOBILE_NUMBER='SEND_REQUIRED_PAY_REQUIRED' where Agent_profile_Id=2200000000000049; commit;
+
+update agent_profile set IS_REQUIRED_PHONE_NUMBER='SEND_HIDE_PAY_HIDE' where Agent_profile_Id=2200000000000049; commit;
+
+select * from ppp_audit_log where TRANSACTION_TYPE_ID in (102,103) order by audit_log_id desc;
+
+select *  from OCR_REPORT_LOG where  MTCN = '2400810638';
+
+
+
