@@ -1,0 +1,648 @@
+jdk-8
+eclipse mars EE java
+apache tomcat-8
+mysql-8
+mysql workbench-5.6
+postman rest client
+
+windows--->preferences--->jdk setup in eclipse
+windows--->show view--->server or other--->for setuping server
+server tab--->for setuping server
+
+go to download page
+my sql workbench 5.6 and launch 
+connection name:Local
+password:root
+
+show databases
+create database mydb
+use mydb
+show tables
+
+my sql community server
+for installing mysql-->download visual c++--->vc_redist.x64.exe
+mysql-->go to download page
+mysql-8
+server only
+password:root
+
+for importing code:
+right click on left side-->import-->existing maven project
+
+troubleshooting maven project:
+go to-->user directory-->.m2-->repository-->repository move to trash
+right click on project-->maven-->update project
+all maven dependencies stored in .m2 folder that is from remote maven dependencies
+
+what is spring?
+dependency injection and complimenting EE(Enterprise Environment)
+
+a------------------------>b
+dependent                dependency
+
+what is spring container?
+-->spring container is nothing but component or class
+-->create the objects for bean class,hold the object in memory and inject the objects based on the necessory one object to another 
+	object
+-->spring container uses bean class and config.xml file
+-->bean tag in config.xml file create object for bean class  such as for setter or constructor injection
+
+Datatypes of dependencies
+-------------------------
+1.primitive types
+2.collection types
+3.reference types
+
+creation of maven project:-
+-------------------------
+
+go to FILE-->NEW-->MAVEN PROJECT-->work space location default-->MAVEN-ARCHITYPE-QUICKSTART select from list
+
+GROUP ID:-group id is same as package name that is created in MAVEN REPOSITORY
+
+ARITIFACT ID:-aritifact id is nothing but project id
+
+update maven project:-
+--------------------
+any changes made in pom.xml-->right click on project-->go to maven-->update project-->now everything is good
+
+
+pom.xml  vs  config.xml
+
+pom.xml:-
+-------
+1.it is used for place the dependencies that is nothing jar files
+2.for checking spring version use the pom.xml.here spring version is 4.3.6
+3.here all properties,dependencies and build in that plugins here maven version is 3.2 and java version 1.8
+
+config.xml:- it is used to set values for bean class
+----------
+bean class->xml file(fetch bean class using class name and full package name)->test class(fetch data from config xml using id)
+
+
+shortcuts:-
+---------
+ctrl+1-->on variables->setters and getters
+ctrl+1-->on datatypes or collections->importing
+ctrl+shift+f-->for code format
+ctrl+shift+o-->remove unwanted imports
+go to source-->toString
+ctrl+shit+t-->for finding jdbc imports
+ctrl+f-->for finding datasource
+select+alt+up or down arrow-->for moving the code
+ctrl+d-->for delete the line or block
+ctrl+space-->for System.out.println()
+main-->ctrl+space-->public static void main(String args[])
+
+src/main/java:-
+-------------
+right click on src/main/java now go to NEW-->others-->xml->xml file->config.xml
+
+in config.xml class attribute create the object for bean class and name attribute given to container
+
+here two name attributes one is from bean tag and second one is from property tag
+
+here create ClassPathXmlConfigurationContext used the config.xml in that getBean method used to call the bean tag name attribute
+now emp.getID used to fetch the data
+
+
+two types of injection
+----------------------
+1.setter injection
+2.constructor injection
+
+1.setter injection:-
+
+
+Setter injection
+----------------
+
+<property name="id">  
+<value>20</value>  
+
+Setter Injection with Dependent Example
+---------------------------------------
+
+<property name="id" value="1"/>
+<property name="name" value="Sachin Yadav"/> 
+<property name="address" ref="address1"/>
+
+Setter Injection with Collection Example
+----------------------------------------
+
+<property name="id" value="1"/>
+<property name="name" value="What is Java?"/> 
+<property name="answers">  
+<list>  
+<value>Java is a programming language</value>  
+<value>Java is a platform</value>  
+<value>Java is an Island</value>  
+</list>  
+</property>  
+
+Setter Injection with Non-String collection (having dependent Object) Example
+-----------------------------------------------------------------------------
+
+<property name="id" value="1">  
+<property name="name" value="What is Java?"> 
+<property name="answers">  
+<list>  
+<ref bean="answer1"/>  
+<ref bean="answer2"/>  
+</list>  
+</property> 
+
+Setter Injection with Map Example
+---------------------------------
+
+<property name="id" value="1"> 
+<property name="name" value="What is Java?"> 
+<property name="answers">  
+<map>  
+<entry key="Java is a programming language"  value="Sonoo Jaiswal"></entry>  
+<entry key="Java is a Platform" value="Sachin Yadav"></entry>  
+</map>  
+</property>
+
+
+Setter Injection with Non-String Map (having dependent Object) Example
+----------------------------------------------------------------------
+
+<property name="id" value="1"> 
+<property name="name" value="What is Java?"> 
+<property name="answers">  
+<map>  
+<entry key-ref="answer1" value-ref="user1"></entry>  
+<entry key-ref="answer2" value-ref="user2"></entry>  
+</map>  
+</property>  
+
+Properties
+----------
+
+<property name="countryAndLanguages">
+<props>
+	<prop key="USA">ENGLISH</prop>
+	<prop key="INDIA">HINDI</prop>
+</props>
+</property>
+
+p schema
+--------
+
+<bean name="" class="" p:id="" p:name=""/>
+
+
+p schema with reference types
+-----------------------------
+
+<bean name="" class="" p:scores-ref=""/>
+
+
+2.Constructor injection:-
+
+Constructor injection
+---------------------
+
+<constructor-arg value="10" type="int"/> 
+
+<constructor-arg value="10"/>  
+
+<constructor-arg value="10" type="int"/>  
+<constructor-arg value="Sonoo"/>
+
+Constructor Injection with Dependent Object
+-------------------------------------------
+
+<constructor-arg value="12" type="int"/>  
+<constructor-arg value="Sonoo"/> 
+<constructor-arg>  
+<ref bean="a1"/>  
+</constructor-arg> 
+
+Constructor Injection with Collection Example
+---------------------------------------------
+
+<constructor-arg value="111"/> 
+<constructor-arg value="What is java?"/>
+<constructor-arg>  
+<list>  
+<value>Java is a programming language</value>  
+<value>Java is a Platform</value>  
+<value>Java is an Island of Indonasia</value>  
+</list>  
+</constructor-arg>
+
+Constructor Injection with Non-String Collection (having Dependent Object) Example
+----------------------------------------------------------------------------------
+
+<constructor-arg value="111"/>  
+<constructor-arg value="What is java?"/> 
+<constructor-arg>  
+<list>  
+<ref bean="ans1"/>  
+<ref bean="ans2"/>  
+</list>  
+</constructor-arg>  
+
+Constructor Injection with Map Example
+--------------------------------------
+
+<constructor-arg value="11"/>  
+<constructor-arg value="What is Java?"/>
+<constructor-arg>  
+<map>  
+<entry key="Java is a Programming Language"  value="Ajay Kumar"></entry>  
+<entry key="Java is a Platform" value="John Smith"></entry>  
+<entry key="Java is an Island" value="Raj Kumar"></entry>  
+</map>  
+</constructor-arg> 
+
+Constructor Injection with Non-String Map (having dependent Object) Example
+---------------------------------------------------------------------------
+
+<constructor-arg value="1"/>
+<constructor-arg value="What is Java?"/>  
+<constructor-arg>  
+<map>  
+<entry key-ref="answer1" value-ref="user1"></entry>  
+<entry key-ref="answer2" value-ref="user2"></entry>  
+</map>  
+</constructor-arg>
+
+
+c schema:-xmlns:c="http://www.springframework.org/schema/c"
+--------
+
+<bean name="adress" class="" c:hno="" c:stret="" c:city=""/>
+
+
+c schema with reference types(dependent-->above and below)
+-----------------------------
+
+<bean name="employee" class="" c:id="" c:address-ref=""/>
+
+Ambiguity Problem in Constructor injection:-
+------------------------------------------
+
+container--------->sum(String x,String y)
+
+sum(double x,double y)
+sum(int x,int y)
+
+here first priority is the string type 
+otherwise in class whatever first constructor that is executed
+
+1.type
+2.index
+3.name
+
+here first is the low priority
+
+Inheriting Bean in Spring
+-------------------------
+
+<bean id="e1" class="com.javatpoint.Employee">  
+<constructor-arg value="101"/> 
+<constructor-arg  value="Sachin"/>  
+</bean>  
+  
+<bean id="address1" class="com.javatpoint.Address">  
+<constructor-arg value="21,Lohianagar"/>  
+<constructor-arg value="Ghaziabad"/>  
+<constructor-arg value="UP"/> 
+<constructor-arg value="USA"/>  
+</bean>  
+  
+<bean id="e2" class="com.javatpoint.Employee" parent="e1">  
+<constructor-arg ref="address1"/>  
+</bean> 
+
+
+life cycle methods:-
+------------------
+
+1.public void init()
+2.public void destroy()
+
+names need not be same but signature must be same
+
+init()--->hi()
+destroy()--->bye()
+
+
+bean class and config.xml---->given to container
+
+steps:-
+-----
+1.container create the instance for bean class
+2.sets the values for properties of bean class
+3.now create init()
+4.read and use bean data
+5.then create destroy()
+6.finally remove the object
+
+1.xml configuration
+2.spring interfaces
+3.spring anotation
+
+1.xml configuration:-
+-------------------
+
+bean class:-Patient
+
+create the property id for that create setter and getter methods
+in setter also add extra one statement that is Inside setter method
+create the public void hi()
+create the public void bye()
+create the toString()
+
+config.xml:-
+
+<bean class="" name="" p:id="" init-method="hi" destroy-method="bye"/>
+
+Test class:-
+
+in normal flow do not call the destroy()
+
+registerShutdownHook() not there in the ApplicationContext
+
+now add Abstract to ApplicationContext then AbstractApplicationContext
+
+final statement in the container class that is container object used to call the registerShutdownHook()
+
+context.registerShutdownHook() 
+
+
+2.spring interfaces:-
+-------------------
+
+bean class:-Patient
+
+create the property id for that create setter and getter methods
+in setter also add extra one statement that is Inside setter method
+create the public void hi()
+create the public void bye()
+create the toString()
+
+Patient class implement two interfaces that is InitializingBean,DisposableBean
+
+click ctrl+shift+o to organize the imports
+
+click ctrl+1 on Patient class to place the unimplemented methods
+
+1.afterPropertiesSet()
+2.destroy()
+
+
+config.xml:-
+
+<bean class="" name="" p:id=""/>
+
+Test class:-
+
+in normal flow do not call the destroy()
+
+registerShutdownHook() not there in the ApplicationContext
+
+now add Abstract to ApplicationContext then AbstractApplicationContext
+
+final statement in the container class that is container object used to call the registerShutdownHook()
+
+context.registerShutdownHook() 
+
+
+3.spring anotation:-
+------------------
+
+@PostConstruct
+
+@PreDestroy
+
+bean class:-Patient
+
+create the property id for that create setter and getter methods
+in setter also add extra one statement that is Inside setter method
+@PostConstruct-->click ctrl+1 to import the packages
+create the public void hi()
+@PreDestroy-->click ctrl+1 to import the packages
+create the public void bye()
+create the toString()
+
+
+config.xml:-
+
+<bean class="" name="" p:id=""/>
+
+<bean class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor"/>-->only one annotation
+
+<context:annotation-config/>-->for all annotation
+
+Test class:-
+
+NOTE:- common-->ctrlspace-->CommonAnnotationBeanPostProcessor
+
+in normal flow do not call the destroy()
+
+registerShutdownHook() not there in the ApplicationContext
+
+now add Abstract to ApplicationContext then AbstractApplicationContext
+
+final statement in the container class that is container object used to call the registerShutdownHook()
+
+context.registerShutdownHook() 
+
+
+Dependency Check,Inner beans and Scope:-
+--------------------------------------
+
+Dependency check:-
+
+1.Prescription class
+
+here create the 3 properties
+
+1.private int id
+2.private String patientName
+3.private List<util> medicene
+
+ctrl+1 on the List class to import the java.util package
+here place all the setters and getters
+finally place the toString() by using source
+
+@Required
+this annotation given to the setter method
+note:-this annotation not given to properties or variables 
+
+2.config.xml
+
+<bean class="" name=""/>
+<bean class="RequiredAnnotationBeanPostProcessor"/>-->for enable @Required annotation by default that is disable
+
+whenever not initialized any value for @Required annotation Property getting
+BeanInitializaton error
+
+not put the @Required annotation for properties we get the default values of properties
+
+3.Test class
+
+here no need of AbstractApplicationContext remove the Abstract-->ApplicationContext
+also remove the-->context.registerShutdownHook() 
+
+here use normal flow of test class
+
+
+Inner Beans:-
+
+1.Employee class
+
+here create the 2 properties
+
+1.private int id
+2.private Address address
+
+here create the setters and getters for Employee class
+also create toString()
+here ctrl+1 on Adress to create the Adress class in the same package
+
+
+Address class
+
+here create the 3 properties
+
+1.private int hno
+2.private String street
+3.private String city
+
+2.config.xml
+
+<bean class="Employee" name"employee" p:id="100">
+	<property name="Address">
+		<bean class="Address" p:hno="" p:street="" p:city=""> here "name" is optional
+	</property>
+</bean>
+ 
+here some times mistakes made for "name" that is Address changes to Adress
+3.Test class
+
+here use normal configuration
+
+scopes:-
+------
+
+5 types:-
+
+1.singleton:-create the only one object for bean class
+2.protype:-create the multiple object for bean class
+
+below two are used in spring mvc webapplication
+-----------------------------------------------
+
+3.request:-create the object for bean class as per the request
+4.session:-each session create one object for bean class
+
+below one are used in spring mvc portlet application
+----------------------------------------------------
+
+5.globalsession:-for all portlet application create the one object
+
+note:-all scopes used in config.xml that is in bean tag [scope="singleton"]
+
+
+using Properties:-Bean Externalization 
+----------------
+
+in "propertyplaceholder" package create "database.properties"
+
+or
+
+src/main/java---->new-->others-->General-->File-->database.properties
+
+database.properties:-
+
+dbServer=sairamserver
+dbPort=3306
+dbUser=test
+dbPwd=test
+
+here commenting for use "#"
+here taking latest one that means last one
+here maintain the camelcase
+
+1.MyDAO:-
+
+here create property
+
+private String dbServer
+
+MyDAO(String dbServer){}
+
+
+2.config.xml:-
+
+<context:property-placeholder location="com/bharat/spring/springcore/placeholder/database.properties"/>
+
+<bean class="" name="myDAO">
+	<constructor-arg>
+		<value>${dbServer}</value>
+	</constructor-arg>
+</bean>
+
+note:-here change the dbServer to dbserver-->get-->BeanDefinitionStoreException
+
+3.Test:-
+
+here is use normal flow
+
+beans ->manage instances 
+
+@component ->manage instances
+
+@autowired ->search for right sort algorithm
+
+dependency injection ->injection sort algorithm by using loose coupling
+
+inversion of control ->complex logic class and sort alogrithm object search for right search alogirithm
+
+ioc container ->implement the inversion of control
+
+application context -> one of ioc container
+
+
+
+inject->value,dependency->using p schema
+
+element
+attribute
+p schema
+
+
+
+
+
+dependency->setter or constructor used for injecting
+
+wiring->process of linking dependent with dependency
+
+wiring->do by the programmer
+
+autowiring->process of linking dependent with dependency
+autowiring->do by the container
+
+
+
+BeanFactory,ApplicationContext---->acts as an IOC containers
+
+bean class->A file which contains local variable,setters and getters(POJO CLASS) is called bean class
+IOC container class-> A file which contains BeanFactory,ApplicationContext is called IOC container class
+
+
+
+
+acamai
+brower-->server
+
+jdbctemplate<-----------drivermanagerdatasource
+Dao->data access object
+dto->data transfer object
+
