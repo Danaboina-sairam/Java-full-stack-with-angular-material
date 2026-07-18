@@ -191,119 +191,11 @@ WEBSERVICE -Service logic(layer between UI and Business) - HTTP request (GET/POS
 TABLET-front end
 
 
-Git Reverse Merge:-
------------------
-
-1.git pull
-2.roll back
-3.terminal command
-
-git merge --no-ff --no-commit origin/DB-AUG-2022-R1-BUSNS-WP2
-
-went well
-
-imp:- if not went well resolve conflicts then commit
-
-4.commit and push
-
-changes: version files only
-
-[WP2][AUG 22 REL][QA][Reverse merge from DB to FB]
-
-settings:-
-
-1.analysis code 
-2. sunar lint 
-
-cancel: not necessory
-
-pom.xml
-
-FB|Result|DB
-
-git merge --abort
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-Git Merge Request:-
------------------
-
-1.git lab
-2.tabletUI
-3.merge request
-4.new merge request
-5.select:FB-1.0.130-july22-Chanel 
-6.mater:DB-1.0.130-July22-WP2
-
-From FB-1.0.130-july22-Chanel into DB-1.0.130-July22-WP2
-
-7.Title
--------
-
-Draft:[WP2][UAT][JULY REL 2022][WRM-2881][UAT-11642 ID OCR - QR Code link should open in new tab]
-
-8.Description
--------------
-
-| Checks | Status | Remarks |
-
-| ------ | ------ | ------- |
-
-| Junit Coverage | :heavy_minus_sign: | NA |
-
-| SONAR Report | :heavy_minus_sign: | NA |
-
-| SONAR Lint Errors | :heavy_check_mark: | Attached |
-
-| Device Testing | :heavy_multiplication_x: | NA |
-
-| Release Notes | |  |
-
-| Unit Test Results | :heavy_check_mark: | |
-
-| SIT Defects | :heavy_multiplication_x: | NA |
-
-| Postphoned Defects | :heavy_multiplication_x: | NA |
-
-| Business Layer changes | :heavy_multiplication_x: | NO |
-
-| PM Sign offs | :heavy_check_mark: | YES |
-
-| QA Sign off | :heavy_check_mark: | YES |
-
-9.Reviewers
------------
-1.Chakrapani Bathina
-2.Devik Ayyapa
-3.Narasimharao Areti
-4.Sumit Agrawal
-5.Ramya Sana
-
-10.milestone
-------------
-
-11.label
---------
-Chanel Team
-
-Finally:Create Merge Request
--------
-
-
-below reviewer or approvers
-
-merge button enable that is click and merge
 
 TerminalDAOImpl.java
 TerminalForDevUserDAOImpl.java
