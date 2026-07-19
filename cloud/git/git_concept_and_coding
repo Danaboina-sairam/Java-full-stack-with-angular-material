@@ -40,6 +40,70 @@ git stash pop
 
 
 
+
+changes commit and pushes to dev environment
+--------------------------------------------
+
+git status
+
+all files adding
+----------------
+
+git add .
+
+specific file adding
+--------------------
+
+git add src/main/java/UserService.java
+
+
+git status
+
+
+git commit -m "Added login validation"
+
+
+git branch
+
+
+git push origin feature/login
+
+
+
+
+
+
+
+
+
+
+
+
+Useful Git commands
+-------------------
+
+git status          # Show changed files
+git branch          # Show current branch
+git log --oneline   # Show commit history
+git diff            # Show unstaged changes
+git add .           # Stage all changes
+git restore file    # Discard changes in a file
+git stash           # Save changes temporarily
+git stash pop       # Restore stashed changes
+git commit -m "message"
+git push origin branch-name
+
+
+
+
+
+
+
+
+
+
+
+
 Git Reverse Merge:-
 -----------------
 
