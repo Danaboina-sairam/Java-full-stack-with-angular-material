@@ -4434,12 +4434,18 @@ Steps to override equals() method
 
 1.Do this check----> if yes, then return true.
 EX: Reflexive
+
 2.Do null check----> if yes, then return false.
+
+EX: equals method parameter validation
+
 3.Do the getClass() check, if not equal then return false.
 
 Sometimes you see code that uses instanceof operator for checking the instances.
 but research had found that using getClass() method for type identification is better
 because instanceof check returns true for subclass also, so its not strictly equals comparison until required by business logic.
+
+EX: getClass vs instanceOf
 
 4.Type cast the object; note the sequence getClass() check must be prior to casting object.
 
@@ -4449,7 +4455,7 @@ not match, then don't try to match rest of attributes; just return false. Do nul
 individual attribute before calling equals() method on them recursively to avoid 
 NullPointerException during equals check.
 
-
+Ex: individual check
 
 
 Note:
@@ -4476,6 +4482,18 @@ Comparing numeric fast and use short circuit operator for combining check
 
 We are overriding hashcode because of hashset related issue 
 -----------------------------------------------------------
+
+Hash based collections: two objects equality decided by equal() and hashcode()
+----------------------
+
+
+Hashtable
+
+HashSet
+
+HashMap
+
+
 
 EX:1
 
