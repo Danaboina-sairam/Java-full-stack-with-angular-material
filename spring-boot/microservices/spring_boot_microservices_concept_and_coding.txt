@@ -869,3 +869,99 @@ End to End Distributed Logging using TraceID and CorrelationID
 Closing Notes
 
 
+
+
+
+
+MDC.put("payment_id","P123");
+MDC.put("user_id","U123");
+
+log.info("payment is successful");
+
+MDC.clear();
+
+
+
+
+Code->Logback->logger level validation->appender
+
+
+
+
+
+
+
+
+
+ILoggingEvent-------->mdcPropertyMap
+
+
+
+
+
+
+
+
+
+MDC.clear()
+-----------
+
+This is done to avoid LOG POLLUTION
+
+
+
+
+
+
+<pattern>%d %level %logger - %msg -%X %n</pattern>
+
+
+
+How tp copy the Parent MDC value to child(new Thread) MDC?
+----------------------------------------------------------
+
+
+TaskDecorator is feature of Spring framework. Nothing to do with Logging framework.
+
+
+
+
+Parent Thread
+-------------
+
+1.Invoke paymentService.processPayment()
+
+2.Proxy intercepts
+
+3.creates Runnable task
+
+4.Invoked TaskDecorator, accepts the Runnable task
+
+-Perform operation
+
+-Creates new Runnable
+
+Submit to Executor Queue
+------------------------
+
+Task assigned to new Thread
+
+
+
+
+trace id: automatically passing to each service
+
+
+correlation id : manually need to pass in request header while service calling
+
+
+
+
+automatic:
+
+tracing disabled then correlation id also disabled
+
+
+manual: 
+
+tracing disabled then correlation is also generated
