@@ -4380,6 +4380,9 @@ object datatypes----->value comparison
 
 
 
+Note: every class must override equals() otherwise we get default behaviour
+
+
 
 
 
