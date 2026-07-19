@@ -742,6 +742,95 @@ Closing Notes
 
 
 
+Logger(name=ROOT)-->Logger(name=com)-->Logger(name=com.concepts)-->Logger(name=com.concepts.PaymentController)
+
+
+
+
+
+
+src/main/resources/logback-spring.xml
+
+
+
+
+
+
+
+this file contains info about:
+
+-all appenders
+-log pattern
+-all loggers
+-root logger
+
+
+
+
+
+
+log level priority
+------------------
+
+logback-spring.xml(first priority)
+
+application.properties(second priority)
+
+
+
+
+
+
+additivity
+----------
+
+
+
+
+
+
+
+
+
+
+configuration
+
+properties
+
+appenders
+
+loggers
+
+
+
+
+
+
+what all different appenders?
+-----------------------------
+
+1.console appender:
+
+-local run
+-docker
+-cloud
+
+
+2.file appender
+
+
+
+3.rolling file appender
+
+
+
+
+
+
+
+
+
+
 
 
 
