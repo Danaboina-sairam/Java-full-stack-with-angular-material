@@ -4335,13 +4335,34 @@ Agreement between equals() and hashcode()
 
 primitive datatypes----->value comparison
 
+int a=10;
+int b=10;
+
+System.out.println(a==b);
+
+
+
+
+
+
 object datatypes------->address comparison
+
+String name1=new String("Sairam");
+String name2=new String("Sairam");
+
+System.out.println(name1==name2);
 
 
 
 equals() in String class overrides Object class equals()
 --------------------------------------------------------
 Strings--------------->value comparison
+
+
+String name1=new String("Sairam");
+String name2=new String("Sairam");
+
+System.out.println(name1.equals(name2));
 
 
 
