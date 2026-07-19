@@ -23,6 +23,44 @@ ctrl +y----------------->Unused line
 
 
 
+New branch creation from local and push to DEV env
+-------------------------------------------------
+
+git branch
+
+
+git checkout DEV
+git pull origin DEV
+git checkout -b feature/policy-update
+
+
+
+all files adding
+----------------
+
+git add .
+
+specific file adding
+--------------------
+
+git add src/main/java/UserService.java
+
+
+
+git commit -m "Implemented policy update"
+git push -u origin feature/policy-update
+
+
+
+
+
+
+
+
+
+
+For Rebasing
+------------
 
 git stash
 git checkout DEV
