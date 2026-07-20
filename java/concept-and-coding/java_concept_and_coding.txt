@@ -2949,12 +2949,24 @@ Analogy:- Water tank example with pipes and tap
 2.There must be always 1 tap
 3.The choice of pipes/tap depends on the purpose/goal
 
+
+
+
+
+
 Previously Collection used to Iterator interface(internally used hasNext() and next() methods)
 
 .stream():- 
 
 1.no data present in stream()(Stream Api used spliterator() internally)
 2.stream() method every time pull and push then transform the element(same like hasNext() and next())
+
+
+
+
+
+
+
 
 
 Collection vs Streams
@@ -2972,6 +2984,17 @@ Streams: not able to store and mutate
 
 
 
+
+
+
+
+
+
+
+
+
+
+
 java.util package(stream()-------->method name all lower case letters)
 -----------------
 
@@ -2980,6 +3003,16 @@ java.util.stream.ReferencePipeline$2@6d311335
 java.util.stream.ReferencePipeline$3@6d311336
 
 NOTE: 'Head' consider as 1 in  Stream pipeline
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -3008,12 +3041,27 @@ The characterstics of a stream are known from characterstics bitmap
 Intermediate operation effects the stream characterstics
 
 
+
+
+
+
+
+
+
+
+
+
+
 spliterator splitting working in parallel stream
 ------------------------------------------------
 
 spliteraor----->stream convertion----->internally linked list
 
 Pipes not store any water that is just for flow
+
+
+
+
 
 
 
@@ -3036,6 +3084,16 @@ numbers-------------->data source(ArrayList,HashMap,Arrays,I/O Streams,generator
 
 
 
+
+
+
+
+
+
+
+
+
+
 Intermediate Operations(Pipes):- lazy evaluation 
 -----------------------
 
@@ -3051,6 +3109,18 @@ Stateful
 2.limit
 3.distinct
 
+
+
+
+
+
+
+
+
+
+
+
+
 Terminal Operations(Tap)
 -------------------
 
@@ -3064,6 +3134,16 @@ Non Short Circuiting(All elements need to process)
 1.forEach
 2.reduce
 3.collect
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -3133,6 +3213,18 @@ Combining multiple operations to be executed in a single pass on the data
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 List<Integer> numbers=Arrays.asList(1,2,3,4,5,6,7,8,9);
 
 Map printing working in Java 8
@@ -3147,6 +3239,20 @@ numbers.stream().map(e->{ System.out.println("Squaring:"+e); return e*e;).count(
 
 
 whenever passing lambda expression or method reference as function parameter (provide only precise parameter and dont add extra logic)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -3180,6 +3286,19 @@ List<Integer> numbers = new ArrayList<>(List.of(1,2,3,4,5,6,7,8,9,10));
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 //void forEach(Cosumer<? super T> action)
 -----------------------------------------
 
@@ -3194,11 +3313,34 @@ Note:- forEach() for traversing each element and apply some logic on that elemen
 numbers.stream().filter(e->e%2==0).forEach(e->System.out.println(e));
 
 
+
+
+
+
+
+
+
+
+
+
+
 Return type for each operation type
 -----------------------------------
 
 1.Intermediate----------->Stream<T>
 2.Terminal--------------->void,Optional<T>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -3220,6 +3362,20 @@ NOTE: map taking any type of input(integer,string etc) and return any type of re
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Returning list in map() : Below single element converted to list
 -----------------------
 
@@ -3234,6 +3390,17 @@ Note:-
 
 
 
+
+
+
+
+
+
+
+
+
+
+
 flatMap() used to convert into single list
 ------------------------------------------
 
@@ -3244,6 +3411,18 @@ flatMap() used to convert into single list
 
 
 NOTE:- list or object not accepting directly in flatMap() ,so convert to stream
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -3266,6 +3445,16 @@ numbers.stream().flatMap(e->Stream.of(e*2,e*5,e*8)).forEach(e->System.out.printl
 
 
 
+
+
+
+
+
+
+
+
+
+
 //T reduce(T identity, BinaryOperator<T> accumulator);
 ------------------------------------------------------
 
@@ -3279,6 +3468,20 @@ Major focus on second parameter
 
 
 Unable apply sum() method on the map() because map() return integer,string,list,array,object etc --------->alternative mapToInt() and sum()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 reduce() vs sum()
 -----------------
@@ -3294,6 +3497,23 @@ sum()
 sum() used to implement 1 operation
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 mapToInt() , mapToDouble() , mapToLong()
 ----------------------------------------
 
@@ -3306,6 +3526,24 @@ peek()
 ------
 
 System.out.println(number.stream().filter(e->e%2==0).peek(e->System.out.println(e)).mapToInt(e->e*e).sum());
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 Without collect method using toArray() and toList()
@@ -3324,6 +3562,20 @@ toList()
 
 List<Integer> integers=number.stream().filter(e->e%2==0).map(e->e*e).toList();
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 With collect method using toSet() and toList()
 ----------------------------------------------
 
@@ -3332,6 +3584,21 @@ Note:-more than array,list and object, we can use collect()
 IMP:- need to recheck for object
 
 Set<Integer> setOfIntegers=number.stream().filter(e->e%2==0).map(e->e*e).collect(Collectors.toSet());
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 allMatch() , anyMatch() , noneMatch()
@@ -3372,6 +3639,23 @@ numbers.stream().sorted((e1,e2)->e2-e1).forEach(e->System.out.println(e));
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 working
 -------
 
@@ -3385,6 +3669,24 @@ mapToDouble() and max()
 
 mapToDouble() and sum()
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 not working
 -----------
 
@@ -3393,6 +3695,23 @@ map() and sum()
 map() and max()
 
 map() and count()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 IMMUTABLE LIST:
@@ -3407,6 +3726,16 @@ collect(Collectors.toUnmodifiableList())
 
 
 
+
+
+
+
+
+
+
+
+
+
 collect(Collectors.toMap())
 ---------------------------
 
@@ -3417,6 +3746,23 @@ DuplicateKeyException in the toMap():- need to pass third parameter
 1.single record------>(a,b)->a
 
 2.two record------>(a,b)->a+ ',' +b
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 Employee
@@ -3508,6 +3854,24 @@ employeeWithSalBelow25K.add(e);
 //split the list based on the salary>25000.0
 //static <T> Collector<T, ?, Map<Boolean, List<T>>> partitioningBy(Predicate<? super T> predicate)
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 With List
 ---------
 
@@ -3521,6 +3885,18 @@ With Set
 Map<Boolean,Set<Employee> empSetBySal25k = employees.stream().collect(Collectors.partitioningBy(e.getSalary()>25000.0),Collectors.toSet());
 
 System.out.println(empSetBySal25k);
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 //EX:3
@@ -3569,6 +3945,20 @@ static <T, K, D, A, M extends Map<K, D>> Collector<T, ?, M> groupingBy(Function<
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Importent points in Streams
 ---------------------------
 
@@ -3584,12 +3974,31 @@ groupingBy() entire Object by specific Field
 5.whenever using groupingBy() method along with counting() method that time divided based on the specific department (each department assigned counting value)
 6.whenever printing stream operation that printing value in the console
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 groupingBy() entire Object by specific Field but only need 1 column of object(usage of down stream collectors)
 -----------------------------------------------------------------------------
 
 Collectors(1.groupingBy(),2.mappingBy(),3.toList())
 
-Adding enire salaries of each department(usage of down stream collectors)
+Adding entire salaries of each department(usage of down stream collectors)
 ----------------------------------------
 
 Method:1
@@ -3648,6 +4057,26 @@ Last Example
 Note:- flatMap() and flatMapping() both are different
 
 Collectors(1.groupingBy(),2.flatMapping()----------------->stream(),3.toList())
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
