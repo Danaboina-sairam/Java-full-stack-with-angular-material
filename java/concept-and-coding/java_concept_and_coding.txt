@@ -3576,8 +3576,8 @@ List<Integer> integers=number.stream().filter(e->e%2==0).map(e->e*e).toList();
 
 
 
-With collect method using toSet() and toList()
-----------------------------------------------
+With collect method using toSet() and toMap() : toArray() and toList() methods in collect()
+---------------------------------------------
 
 Note:-more than array,list and object, we can use collect()
 
