@@ -1,1 +1,203 @@
 
+1.Decorator pattern
+
+
+abstract class to abstract class connection
+-------------------------------------------
+
+abstract class extends abstract class: by using abstract class as a parameter
+
+
+extends or implement: is a relation
+
+
+dependency injection: has a relation
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2.proxy pattern
+
+
+extends or implement: is a relation
+
+dependency injection: has a relation
+
+
+
+
+client------>proxy-------->resource
+
+
+client<------proxy<--------resource
+
+
+
+interface 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+3.composite pattern: recursion based pattern
+
+
+extends or implement: is a relation
+
+
+
+
+File System
+
+1.File 
+
+2.Directory
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4.adapter pattern
+
+
+
+client-------->adaptor--------->adoptee
+
+
+client wants weight in kg
+
+
+adoptee has weight in pounds
+
+
+
+client---------->adaptor(interface)------------>adoptee(interface)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+5.bridge pattern
+
+
+
+abstract class  
+
+
+
+abstract class LivingThings
+
+
+
+class Dog extends LivingThings
+
+class Fish extends LivingThings
+
+Class Tree extends LivingThings(carban dixoide and oxygen)
+
+
+
+
+
+
+
+
+abstract class<-------->interface
+
+
+
+abstract class has a relation with interface
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+6.Facade pattern
+
+->by using has a relation
+
+1.only necessary details to the client
+
+
+
+
+2.hide the system complexity from the client
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+how to add new breathing process, without adding any class of LivingThings?
+
+
+
+
+
+
+
+
+
