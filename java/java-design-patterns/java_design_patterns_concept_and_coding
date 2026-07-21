@@ -1,3 +1,105 @@
+creational design patterns
+--------------------------
+
+1.prototype pattern
+
+
+original object created with parameter
+
+
+
+clone object created with empty parameter but original object to set the values for clone object
+
+
+
+
+without prototype pattern
+-------------------------
+
+1.private variables unable to access outside of the class
+
+2.individual fields clone is difficult compared to all the fields once
+
+
+with prototype pattern
+----------------------
+
+1.only original object created with parameter
+
+2.clone reference just assign by using (Student) obj.clone();
+
+public interface Prototype
+{
+	Prototype clone();
+}
+
+
+Note: but implementation time return only constructor
+
+
+
+
+2.singleton pattern
+
+
+required 
+
+1.private constructor for restrict the object creation(here only restrict outside object creation)
+
+2.static method for expose the object to external world
+
+3.static object creation used to create single object
+
+
+
+4 ways to achieve this:
+
+1.eager
+
+
+1.private constructor for restrict the object creation(here only restrict outside object creation)
+
+2.static method for expose the object to external world
+
+3.static object creation used to create single object
+
+
+2.lazy
+
+
+3.synchronized method
+
+
+4.double locking
+
+
+how ways to break singleton pattern:
+
+1.reflection
+2.serialization
+3.clone
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+structural desing patterns:
 
 1.Decorator pattern
 
