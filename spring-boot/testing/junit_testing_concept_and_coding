@@ -1,0 +1,138 @@
+ReflectionTestUtils.setField(userService,"name","Sairam");
+
+
+
+
+
+
+
+Unit Testing
+------------
+
+
+methods in different class:  not required to write test case
+
+
+
+methods in same class: not required to write test case
+
+
+
+First Line Of Defence
+---------------------
+
+
+1.Early bug detection
+
+2.Refactor confidently
+
+3.Documentation
+
+4.Save cost
+
+
+
+unit testing(low)
+
+
+integration testing(medium)
+
+
+functional testing(high)
+
+
+
+
+multiple framework supports unit testing
+----------------------------------------
+
+1.JUnit
+
+2.TestNG
+
+3.Mockito/EasyMock
+
+4.Spock
+
+
+
+Junit4: Monolithic Architecture
+
+Junit5: Composed of Multiple Modules
+
+
+Junit5
+------
+
+1.Junit Platform
+
+2.Junit Jupiter
+
+3.Junit Vintage
+
+
+
+
+Launcher methods
+
+1.Testplan discover(Launcher launcher)
+
+2.void execute(Testplan testplan)
+
+
+
+
+
+
+
+
+
+
+
+Build tool------->Junit platform------->Test Engine
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Build tool(Maven)------>Junit-platform-sunfire-provider------->Junit-platform-launcher-------->Junit-platform-engine-------->Junit Vintage, Junit Jupiter, Other
+
+
+
+
+Build tool(Gradle)------>Junit-platform-gradle-plugin------->Junit-platform-launcher-------->Junit-platform-engine-------->Junit Vintage, Junit Jupiter, Other
+
+
+
+
+IDE(Eclipse, Intellij)-------->Junit-platform-launcher-------->Junit-platform-engine-------->Junit Vintage, Junit Jupiter, Other
+
+
+
+
+Command Line------->Junit-platform-console------->Junit-platform-launcher-------->Junit-platform-engine-------->Junit Vintage, Junit Jupiter, Other
+
+
+
+
+
+
+
+
+Arrange-Act-Assert
+
+1.mock object creation
+
+2.calling function
+
+3.validation of calling function result
