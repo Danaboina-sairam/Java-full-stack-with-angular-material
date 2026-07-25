@@ -17,3 +17,18 @@ Spring ai, langchain4j,  deeplearning4j,  langgraph4j
 
 
 prompt(ChatResponse,ChatOptions,)----------->chat model------------>ai api response
+
+
+
+
+
+
+
+github copilot plugin installed in the system
+
+
+open router api key generated(custom)
+
+github copilot in intellij 
+
+beside agent , we have manage models with provider open router------------->add model in that with api key(whatever created by using open router)
