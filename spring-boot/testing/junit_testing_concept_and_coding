@@ -1,4 +1,11 @@
+application.properties
+----------------------
+
 ReflectionTestUtils.setField(userService,"name","Sairam");
+
+
+Test cases for private and public methods
+-----------------------------------------
 
 
 
@@ -136,3 +143,55 @@ Arrange-Act-Assert
 2.calling function
 
 3.validation of calling function result
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Repeated Tests
+--------------
+
+1.for reducing intermittent issues
+
+2.Testing idempotency
+
+3.Stress testing for heavy load api calling scenario
+
+
+Life cycle in Repeated Tests
+----------------------------
+
+Lifecycle.PER_METHOD
+
+Lifecycle.PER_CLASS
+
+
+@RepeatedTest(value=5, name="")------------------->child---------------->Separate instance created for each iteration
+
+@DisplayName("")--------->parent
+
+
+
+
+Repeated Test creation through custom interface
+-----------------------------------------------
+
+that annotation need to use
+
+
+RepetitionInfo as object parameter
+----------------------------------
