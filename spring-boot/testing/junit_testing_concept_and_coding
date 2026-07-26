@@ -615,6 +615,495 @@ void testUserWithAgeGreaterThan18(){
 
 
 
+Junit5 Assertions:
+
+-Assertions are used to verify expected outcomes in test
+
+-if an assertion fails, the test faisls
+
+
+
+1.assertEquals():
+
+-checks if two values are equal or not
+-if expected and actual value matches, test case is considered PASS
+
+
+
+class MyServiceTest{
+	
+	@Test
+	void testAddition(){
+		
+		//arrange
+		MyService obj=new MyService();
+		
+		//act
+		int output=obj.multiply(5,6);
+		
+		//assert
+		assertEquals(30,output,"both are not equal");
+	}
+}
+
+
+
+for primitive values it uses "==" and for objects it uses ".equals()"
+---------------------------------------------------------------------
+
+
+@Test
+void testAssertEqualsForObject(){
+	assertEquals("hello",new String("hello"));
+}
+
+
+
+
+String class, do overrides "equals" method, where it compares sequence of characters
+
+
+
+so,if you are comparing custom objects, then do override "equals" and "hashCode" method in your class
+else
+Default "equals" method from Object class will be used.which checks for reference equality means, 2 different object with same value won't be considered same
+
+
+
+
+
+Custom Object without overriding "equals" method:
+-------------------------------------------------
+
+public class MyService{
+	String name;
+	public MyService(String name){
+		this.name=name;
+	}
+}
+
+
+@Test 
+void testAssertEqualsForObject(){
+	MyService object1=new MyService("XYZ");
+	MyService object2=new MyService("XYZ");
+	assertEquals(object1,Object2);
+}
+
+
+
+Custom Object with overriding "equals" method:
+----------------------------------------------
+
+public class MyService{
+	String name;
+	
+	public MyService(String name){
+		this.name=name;
+	}
+	
+	@Override
+	public boolean equals(Object o){
+		if(this==o) return true;
+		if(!(o instanceOf MyService)) return false;
+		MyService servObject=(MyService) o;
+		return Object.equals(this.name,servObject.name);
+	}
+}
+
+
+@Test 
+void testAssertEqualsForObject(){
+	MyService object1=new MyService("XYZ");
+	MyService object2=new MyService("XYZ");
+	assertEquals(object1,Object2);
+}
+
+
+
+
+2.assertNotEquals():
+
+-checks if two values are not equal
+-if unexpected and actual value do not matches, test case is considered PASS
+
+
+assertNotEquals(unexpected,actual);
+
+
+@Test
+void testAssertNotEqualsForObject(){
+	MyService object=new MyService();
+	
+	int actualResult=object.multiply(5,6);
+	assertNotEquals(11,actualResult);
+}
+
+
+
+
+3.assertArrayEquals():
+
+-verifies 2 arrays contain the same element in same order
+
+
+@Test
+void testAssertArrayEquals(){
+	int[] expected={1,2,3};
+	int[] actual=MyService.sortArray(new int[]{3,1,2});
+	assertArrayEquals(expected,actual); //for primitive 1==1,2==2,3==3
+}
+
+
+
+
+
+
+
+
+
+
+@Test
+void testAssertArrayEquals(){
+	String arr1={"Hello","World"};
+	String arr2={new String("Hello"),new String("World")};
+	
+	assertArrayEquals(arr1,arr2); // for oject: "hi".equals("hi"), "bye".equals("bye")
+}
+
+
+
+
+
+4.assertIterableEquals():
+
+-similar to "assertArrayEquals", but its used to compare two iterable collections like List,Queue etc
+-Checks element by element in order using ".equals()"
+-iteration sequence should matche
+-"Set" do not guarantee insertion order, so its not recommended to use this assertion on such unordered collections
+
+
+
+
+@Test
+void testAssertIterableEquals(){
+	List<String> expected=List.of("A","B","C");
+	List<String> actual=List.of("A","B","C");
+	
+	assertIterableEquals(expected,actual);
+}
+
+
+
+
+5.assertLinesMatch()
+
+-Both expected and actual must be List<String>
+-Each element of List<String> is treated as one line
+-supports regex match too
+
+
+
+
+assertLinesMatch(List<String> expectedLines,List<String> actualLines)
+
+
+
+
+
+@Test
+void testAssertLinesMatch(){
+	List<String> expected=List.of("Hello","World");
+	List<String> actual=List.of("Hello","World");
+	
+	assertLinesMatch(expected,actual);
+	
+}
+
+
+
+
+@Test
+void testAssertLinesMatch(){
+	List<String> expected=List.of("Hello","World from [A-Za-z]+");
+	List<String> actual=List.of("Hello","World from XYZ");
+	
+	assertLinesMatch(expected,actual);
+}
+
+
+
+
+
+
+@Test
+void testAssertLinesMatch(){
+	List<String> expected=List.of("Hello","World from [A-Za-z]+");
+	List<String> actual=List.of("Hello","World from 42");
+
+	assertLinesMatch(expected,actual);
+}
+
+
+REGEX
+-----
+
+
+Digits->\\d+
+
+Ex: "123","42"
+
+Letters/words->[A-Za-z]+
+
+Ex: "Hello","World"
+
+
+Alphanumeric->\\w+
+
+EX: same as [A-Za-z0-9_],includes underscore
+
+
+
+
+Anything(any characters)->.*
+
+Ex: matches whole line, useful if only part matters
+
+
+
+
+
+6.assertSame()
+
+-Just checks does both objects point to same reference or not
+
+
+String literal
+--------------
+
+@Test
+void testAssertSame(){
+	String object1="JUnit";
+	String object2="JUnit";
+	
+	assertSame(object1,object2);
+}
+
+
+
+@Test
+void testAssertSame(){
+	String object1="JUnit";
+	String object2=new String("JUnit");
+	
+	assertSame(object1,object2);
+}
+
+
+
+
+
+7.assertNotSame()
+
+-Checks if both the objects has difference reference
+
+@Test
+void testAssertNotSame(){
+	String object1="JUnit";
+	String object2=new String("JUnit");
+	
+	assertNotSame(object1,object2);
+}
+
+
+8.assertNull()
+
+-checks if object value is Null
+
+
+@Test
+void testAssertNull(){
+	MyService object=null;
+	assertNull(object);
+}
+
+
+
+
+9.assertNotNull()
+
+-checks if object value is not Null
+
+@Test
+void testAssertNotNull(){
+	MyService object=new MyService();
+	assertNotNull(object);
+}
+
+
+
+
+10.assertTrue()
+
+-checks if condition is True
+
+@Test
+void testAssertTrue(){
+	assertTrue(5>2);
+}
+
+
+
+11.assertFalse()
+
+-check if condition is False
+
+@Test
+void testAssertFalse(){
+	assertFalse(5<2);
+}
+
+
+
+12.fail()
+
+-it fails the test deliberately
+-generally used when flow reach to the point where it should not
+
+
+@Test
+void testAssertFail(){
+	MyService object=new MyService();
+	try{
+		object.methodThrowsException();
+		fail("above method should throw exception");
+	}
+	catch(Exception e){
+		//expecting the control should reach here
+	}
+}
+
+
+
+
+13.assertInstanceOf()
+
+-check if object is an instance of specified class or subclass
+
+
+@Test
+void testAssertInstanceOf(){
+	Number n=Integer.valueOf(10);
+	
+	//passes,because Integer is a subclass of Number
+	
+	assertInstanceOf(Number.class,n);
+	
+	
+	//fails, because n is not a Double
+	
+	assertInstanceOf(Double.class,n);
+	
+}
+
+
+
+
+14.assertThrows()
+
+-if the method throws the expected exception or any of its subclass, test case passes
+-since, Junit need to catch the exception and then compare, that's why it expect 2nd parameter as Executable 
+
+
+assertThrows(Class<T> expectedType, Executable executable)
+
+
+
+@Test
+void testAssertThrows(){
+	assertThrows(Exception.class,()->Integer.parseInt("abc"));
+}
+
+Exception thrown is its subclass
+
+
+(or)
+
+
+@Test
+void testAssertThrows(){
+	assertThrows(NumberFormatException.class,()->Integer.parseInt("abc"));
+}
+
+
+
+
+@Test
+void testAssertThrows(){
+	assertThrows(NullPointerException.class,()->Integer.parseInt("abc"));
+}
+
+
+
+15.assertThrowsExactly()
+
+
+-must throw exact same type exception(no subclasses).
+
+
+@Test
+void testAssertThrowsExactly(){
+	assertThrowsExactly(Exception.class,()->Integer.parseInt("abc");
+}
+
+
+@Test
+void testAssertThrowsExactly(){
+	assertThrowsExactly(NumberFormatException.class,()->Integer.parseInt("abc"));
+}
+
+
+16.assertDoesNotThrow()
+
+-Expectation is that method do not throw any exception
+
+@Test
+void testAssertDoNotThrow(){
+	assertDoesNotThrow(()->Integer.parseInt("123"));
+}
+
+
+@Test
+void testAssertDoNotThrow(){
+	assertDoesNotThrow(()->Integer.parseInt("abc"));
+}
+
+
+
+17.assertTimeout()
+
+-Ensures code finishes within time else test fails(but still runs to end).
+
+assertTimeout(Duration timeout,Executable executable)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 Repeated Tests
