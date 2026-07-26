@@ -324,6 +324,7 @@ transitively pulls in "org.junit.jupiter:junit-jupiter" and org.junit.platform:j
 
 
 Why Lifecycle.PER_METHOD is preferred, because:
+-----------------------------------------------
 
 -it provides test isolation, so they can run in any order
 
@@ -332,6 +333,7 @@ Why Lifecycle.PER_METHOD is preferred, because:
 -safe for parallel execution
 
 Go for Lifecycle.PER_CLASS only when:
+-------------------------------------
 
 -you want to shared state across test cases
 
@@ -340,6 +342,7 @@ Go for Lifecycle.PER_CLASS only when:
 
 
 Multiple @BeforeAll / @BeforeEach / @AfterEach / @AfterAll
+----------------------------------------------------------
 
 
 order is not guaranteed between execution of these 2 methods------>@BeforeAll
@@ -348,6 +351,42 @@ order is not guaranteed between execution of these 2 methods------>@BeforeAll
 same for this, order is not guaranteed between execution of these 2 methods.
 
 
+public class Junit5LifecycleDemo{
+	
+	@BeforeAll
+	static void beforeAll1(){
+		System.out.println("inside beforeAll1 method");
+	}
+	
+	@BeforeAll
+	static void beforeAll2(){
+		System.out.println("inside beforeAll2 method");
+	}
+	
+	@BeforeEach
+	void beforeEach(){
+		System.out.println("inside beforeEach method");
+	}
+	
+	@Test
+	void testcase(){
+		System.out.println("inside testcase");
+	}
+	
+	@AfterEach(){
+		System.out.println("inside AfterEach method");
+	}
+	
+	@AfterAll
+	static void afterAll1(){
+		System.out.println("inside afterAll1 method");
+	}
+	
+	@AfterAll
+	static void afterAll2(){
+		System.out.println("inside afterAll2 method");
+	}
+}
 
 
 
