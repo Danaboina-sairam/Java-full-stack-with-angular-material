@@ -515,6 +515,24 @@ Arrange-Act-Assert
 3.validation of calling function result
 
 
+@Test
+void testUserWithAgeGreaterThan18(){
+	
+	//Arrange: setting up of object, mock data etc.
+	
+	User user=new User("TestUser",20);
+	
+	//Act: invocation of actual method, which need to be tested
+	
+	boolean result=user.isAdult();
+	
+	//Assert: check if the result matches the expectation
+	
+	assertTrue(result);
+
+}
+
+
 
 
 
