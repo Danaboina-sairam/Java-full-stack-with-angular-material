@@ -136,6 +136,146 @@ Command Line------->Junit-platform-console------->Junit-platform-launcher-------
 
 
 
+
+
+
+
+
+
+
+
+Lifecycle of a Junit5 test case:
+
+
+
+Lifecycle.PER_METHOD(default)
+
+
+-Test class instance is created for each Test Method
+
+
+for first test case
+-------------------
+
+@BeforeAll(should be static)--->Create an instance of Test Class--->@BeforeEach--->Execute Test Case method with @Test--->@AfterEach---(After all test cases finished)--->@AfterAll(should be static)
+
+
+second test case onwards: recursion type
+------------------------
+
+
+Create an instance of Test Class<---(Run next Test case)---@AfterEach
+
+
+
+
+
+
+
+
+
+Lifecycle.PER_CLASS
+
+-Test Class instance is created only once
+
+
+
+for first test case
+-------------------
+
+Create an instance of Test Class--->@BeforeAll(can be non static)--->@BeforeEach--->Execute Test Case method with @Test--->@AfterEach---(After all test cases finished)--->@AfterAll(can be non static)
+
+
+Second test case onwards: recursion type
+------------------------
+
+@BeforeAll<---(Run next Test case)---@AfterEach
+
+
+
+
+
+
+
+@BeforeAll: runs once before all tests, usually for expensive setup that can be shared across all test cases like Db connection etc.
+
+
+@BeforeEach: Runs before each test case, usually for setting fresh test data like creating new objects, adding some temp data in DB for testing etc.
+
+@Test: actual test method
+
+@AfterEach: Runs after each test case, to clean up the resource like close file, deleting temp data etc.
+
+@AfterAll: runs once after all tests, clean up resources like closing DB connection etc.
+
+
+
+
+
+
+
+
+pom.xml
+
+<dependency>
+<groupId>org.springframework.boot</groupId>
+<artifactId>spring-boot-starter-test</artifactId>
+<scope>test</scope>
+</dependency>
+
+
+
+transitively pulls in "org.junit.jupiter:junit-jupiter" and org.junit.platform:junit-platform-launcher dependency
+
+
+
+
+
+
+
+
+
+
+
+Why Lifecycle.PER_METHOD is preferred, because:
+
+-it provides test isolation, so they can run in any order
+
+-easy debugging when any test case fails
+
+-safe for parallel execution
+
+Go for Lifecycle.PER_CLASS only when:
+
+-you want to shared state across test cases
+
+-your test code is thread safe
+
+
+
+Multiple @BeforeAll / @BeforeEach / @AfterEach / @AfterAll
+
+
+order is not guaranteed between execution of these 2 methods------>@BeforeAll
+
+
+same for this, order is not guaranteed between execution of these 2 methods.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Arrange-Act-Assert
 
 1.mock object creation
