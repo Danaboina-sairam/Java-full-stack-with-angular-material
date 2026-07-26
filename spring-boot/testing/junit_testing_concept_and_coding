@@ -397,6 +397,111 @@ public class Junit5LifecycleDemo{
 
 
 
+by default, test cases runs sequentially, but we can also set our test cases to run in parallel:
+------------------------------------------------------------------------------------------------
+
+
+from previous topic: Junit5 Architecture, its clear that, who helps test cases to run in parallel, its "PLATFORM LAUNCHER"
+
+
+
+
+
+
+
+1st: calls discovery() method, and gets the TestPlan with Testcases hierarchy(engine wise)
+
+
+This is the step, where parallelism strategy is used:
+-----------------------------------------------------
+
+2ndL calls execute() method of each test engine to get the test plan executed
+
+public class Junit5LifecycleDemo {
+	public Junit5LifecycleDemo(){
+		System.out.println("Junit5LifecycleDemo class Instance created");
+	}
+	
+	@BeforeAll
+	static void beforeAll(){
+		System.out.println("inside @BeforeAll method");
+	}
+	
+	@BeforeEach
+	void beforeEach(){
+		System.out.println("inside @BeforeEach method");
+	}
+	
+	@Test
+	void testcaseA() throws InterruptedException{
+		System.out.println("inside testcaseA, executed by:"+ Thread.currentThread().getName());
+		Thread.sleep(1000);
+		System.out.println("Finished testcaseA");
+	}
+	
+	@Test
+	void testcaseB() throws InterruptedException{
+		System.out.println("inside testcaseA, executed by:"+ Thread.currentThread().getName());
+		Thread.sleep(1000);
+		System.out.println("Finished testcaseB");
+	}
+	
+	@AfterEach
+	void afterEach(){
+		System.out.println("inside @AfterEach method");
+	}
+	
+	@AfterAll
+	static void afterAll(){
+		System.out.println("inside @AfterAll method");
+	}
+	
+}
+	
+	
+
+/src/test/resources/junit-platform.properties
+---------------------------------------------
+
+#below configurations, junit platform launcher will apply to junit. jupiter(i.e Jupiter Test engine only)
+
+
+
+#Enables or disables parallel execution, default value is "false"
+
+junit.jupiter.execution.parallel.enabled=true
+
+
+#Run methods within a test class in parallel, default value is "same_thread" mean sequentially
+
+junit.jupiter.execution.parallel.mode.default=concurrent
+
+#Multiple Test classes can be executed in parallel, default value is "same_thread" means sequentially
+
+junit.jupiter.execution.parallel.mode.classes.default=concurrent
+
+
+
+#thread pool managing strategy:
+
+	# "dynamic" (default): thread pool size is computed dynamically based on system resources/junit-platform
+	# "fixed" : we define the specific number of threads within a pool
+	
+junit.jupiter.execution.parallel.config.strategy=fixed
+
+
+
+#used when "fixed" thread pool strategy is used, below it creates thread pool with 5 threads.
+
+junit.jupiter.execution.parallel.config.fixed.parallelism=5
+	
+	
+	
+
+
+
+
+
 
 
 
