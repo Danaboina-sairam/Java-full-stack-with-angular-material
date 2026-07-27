@@ -1106,6 +1106,217 @@ assertTimeout(Duration timeout,Executable executable)
 
 
 
+
+
+
+
+
+
+Extension:
+
+in simple term, it allows us to add custom behavior to tests
+
+like:
+
+-Enable or disable test conditionally
+-Add custom code before or after tests
+-Intercept method calls for logging etc
+
+
+Remember this diagram from the "Architecture" topic:
+
+
+
+
+
+where does Extensions fits in:
+
+
+Junit Platform--->execute()--->Jupiter engine--->chain of Extensions--->Test Case
+
+
+
+Lets first go through each extension first, then at end, will show the dummy flow to visualize the ORDERING of JUnit5 extensions. that will clarify lot of things.
+
+
+
+Some of the Extensions Types are:
+
+1.Lifecycle Extensions
+
+2.Parameter Resolver Extension
+
+3.Execution Condition Extension
+
+4.Test Execution Callbacks(Before and After)
+
+5.Invocation Interceptor Extension
+
+6.Exception Handler Extension
+
+
+
+
+
+
+1.Lifecycle Extensions:
+
+-Similar to lifecycle annotations "@BeforeAll, @BeforeEach, @AfterAll, @AfterEach".
+-Lifecycle Extensions are used to execute custom logic before/after test classes or methods.
+
+
+
+
+
+
+one question might comes to your mind: why we need lifecycle extensions, when we already have annotations like @BeforeAll, @BeforeEach, @AfterAll and @AfterEach?
+
+
+
+These lifecycle methods with annotations @BeforeAll, @BeforeEach, @AfterAll and @AfterEach are tied to a single classes
+while
+Lifecycle extensions are reusable across many test classes
+
+
+
+
+Our custom class implemented an BeforeAllCallBack extension interface:
+----------------------------------------------------------------------
+
+
+public class BeforeAllLifeCycleExtension implements BeforeAllCallback {
+
+	@Override
+	public void beforeAll(ExtensionContext context){
+		System.out.println("Extension: Before all tests");
+	}
+	
+}
+
+
+Our custom class implemented an AfterAllCallBack extension interface:
+---------------------------------------------------------------------
+
+public class AfterAllLifecycleExtension implements AfterAllCallback{
+
+	@Override
+	public void afterAll(ExtensionContext context) throws Exception{
+		System.out.println("Extension: After all tests");
+	}
+}
+
+
+
+Execution Context object has all the info about:
+
+-Test class->via getTestClass()
+
+-Test method->via getTestMethod()
+
+-Annotations->accessible through getElement()
+
+-Test instance->via getTestInstance()
+
+
+
+
+
+Registering multiple Lifecycle extension(comma separated) within a test class:
+------------------------------------------------------------------------------
+
+
+@ExtendWith({BeforeAllLifeCycleExtension.class,AfterAllLifecycleExtension.class})
+class MyServiceTest{
+
+	MyServiceTest(){
+		System.out.println("instance created");
+	}
+	
+	@BeforeAll
+	public static void beforeAllMethod(){
+		System.out.println("inside beforeAll");
+	}
+	
+	@BeforeEach
+	public void beforeEachMethod(){
+		System.out.println("inside beforeEach");
+	}
+	
+	@Test
+	void testMethod1(){
+		System.out.println("inside test method");
+	}
+	
+	@AfterEach
+	public void afterEachMethod(){
+		Ststem.out.println("inside afterEach method");
+	}
+	
+	@AfterAll
+	public static void afterAllMethod(){
+		System.out.println("inside  afterAll");
+	}
+	
+}
+
+
+
+
+or we can also write one class, which implements all the lifecycle callback extension interface:
+------------------------------------------------------------------------------------------------
+
+
+public class LifecycleExtension implements BeforeAllCallback, AfterAllCallback, BeforeEachCallback, AfterEachCallback{
+
+	@Override
+	public void beforeAll(ExtensionContext context){
+		System.out.println("Extension: Before all tests");
+	}
+	
+	@Override
+	public void afterAll(ExtensionContext context) throws Exception{
+		System.out.println("Extension: After all tests");
+	}
+	
+	@Override
+	public void afterEach(ExtensionContext context) throws Exception{
+		System.out.println("Extension: After each tests");
+	}
+	
+	@Override
+	public void beforeEach(ExtensionContext context) throws Exception{
+		System.out.pri'("Extension: Before each tests");
+	}
+}
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Repeated Tests
 --------------
 
