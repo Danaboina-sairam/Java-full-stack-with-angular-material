@@ -4,6 +4,60 @@ Behaviour --- method
 
 
 
+
+In Java, a method signature is only:
+------------------------------------
+
+Method name + Parameter list (number of parameters, type of parameters, order of parameters)
+
+
+
+It does not include:
+--------------------
+
+Return type ❌
+Access modifier (public, private) ❌
+static, final, abstract ❌
+Method body ❌
+Parameter names ❌
+throws clause ❌
+
+
+
+Do not decide overloading based on the Return type and Access modifiers:
+------------------------------------------------------------------------
+Return type and access modifiers alone do not distinguish overloads- you cannot overload by return type only
+
+Note: return type same or different not a matter
+
+
+same or different---------->overloading 
+
+
+(VS) 
+
+
+same or subtype------------>overriding
+
+
+->Don't reduce visibility overrding time by using access modifier.
+
+->public to protected not possible
+
+->but protected to public possible
+
+
+
+
+
+
+
+
+
+
+
+
+
 Constructor scenarios:
 ----------------------
 
