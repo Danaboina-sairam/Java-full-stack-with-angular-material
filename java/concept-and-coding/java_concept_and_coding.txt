@@ -31,13 +31,13 @@ Return type and access modifiers alone do not distinguish overloads- you cannot 
 Note: return type same or different not a matter
 
 
-same or different---------->overloading 
+same or different type of return type---------->overloading 
 
 
 (VS) 
 
 
-same or subtype------------>overriding
+same or subtype of return type------------>overriding
 
 
 ->Don't reduce visibility overrding time by using access modifier.
