@@ -1525,12 +1525,23 @@ Note: Both Stack and Heap are created by JVM and stored in RAM
 Stack Memory:
 -------------
 
-->store temporary variables and separate memory block for methods
+->store local(temporary) variables and separate memory block for methods
 ->store primitive data types
 ->store reference of the heap objects
-1.strong reference-------> Person person=new Person();
-2.weak reference--------->WeakReference<String> weakRef = new WeakReference<>(new Person());
-2.1.soft reference------->SoftReference<String> softRef = new SoftReference<>(new Person());
+
+1.strong reference:
+-------------------
+Person person=new Person();
+
+2.weak reference:
+-----------------
+
+WeakReference<String> weakRef = new WeakReference<>(new Person());
+
+2.1.soft reference:
+-------------------
+
+SoftReference<String> softRef = new SoftReference<>(new Person());
 
 
 ->each thread has its own stack memory.
@@ -1572,6 +1583,23 @@ Heap Memory:-
 
 
 
+
+
+public class MemoryManagement{
+	public static void main(String args[]){
+		int primitiveVariable1=10;
+		Person personObj=new Person();
+		String stringLiteral="24";
+		MemoryManagement memObj=new MemoryManagement();
+		memObj.memoryManagementTest(personObj);
+	}
+	
+	private void memoryManagementTest(Person personObj){
+		Person personObj2=personObj;
+		String stringLiteral2="24";
+		String stringLiteral3=new String("24");
+	}
+}
 
 
 
