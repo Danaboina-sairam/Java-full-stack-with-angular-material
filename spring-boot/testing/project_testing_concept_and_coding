@@ -1,1 +1,76 @@
 
+application.properties
+----------------------
+
+ReflectionTestUtils.setField(userService,"name","Sairam");
+
+
+Test cases for void, private and public methods
+-----------------------------------------------
+
+
+
+
+
+
+
+@Autowired / @InjectMocks / @Mock
+---------------------------------
+
+
+@Service
+public class UserService {
+
+    private final UserRepository userRepository;
+
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
+    public User getUser(Long id) {
+        return userRepository.findById(id)
+                .orElseThrow();
+    }
+}
+
+
+@ExtendWith(MockitoExtension.class)
+class UserServiceTest {
+
+    @Mock
+    private UserRepository userRepository;
+
+    @InjectMocks
+    private UserService userService;
+
+    @Test
+    void shouldReturnUser() {
+
+        User user = new User(1L, "Sairam");
+
+        when(userRepository.findById(1L))
+                .thenReturn(Optional.of(user));
+
+        User result = userService.getUser(1L);
+
+        assertEquals("Sairam", result.getName());
+
+        verify(userRepository).findById(1L);
+    }
+}
+
+
+
+
+| Annotation     | Used By | Purpose                              |
+| -------------- | ------- | ------------------------------------ |
+| `@Autowired`   | Spring  | Injects actual Spring beans          |
+| `@Mock`        | Mockito | Creates fake/mock dependency         |
+| `@InjectMocks` | Mockito | Creates real class and injects mocks |
+
+
+
+@Mock and @InjectMocks work only when Mockito is initialized:
+-------------------------------------------------------------
+
+@ExtendWith(MockitoExtension.class)
