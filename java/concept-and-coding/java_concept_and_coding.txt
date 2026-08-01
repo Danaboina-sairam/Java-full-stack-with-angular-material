@@ -1506,11 +1506,24 @@ Java Memory Model
 
 OS Allocates Memory for JVM
 
-JVM instance : JVM instance is nothing but process
+JVM instance: JVM instance is nothing but process
 
 
-Stack Memory:-
-------------
+
+2 Types of Memory (RAM)
+-----------------------
+
+1.Stack
+
+2.Heap
+
+Note: Both Stack and Heap are created by JVM and stored in RAM
+
+
+
+
+Stack Memory:
+-------------
 
 ->store temporary variables and separate memory block for methods
 ->store primitive data types
