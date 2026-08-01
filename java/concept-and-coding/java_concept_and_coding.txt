@@ -1568,12 +1568,12 @@ Person person=new Person();
 2.weak reference:
 -----------------
 
-WeakReference<String> weakRef = new WeakReference<>(new Person());
+WeakReference<Person> weakRef = new WeakReference<Person>(new Person());
 
 2.1.soft reference:
 -------------------
 
-SoftReference<String> softRef = new SoftReference<>(new Person());
+SoftReference<Person> softRef = new SoftReference<Person>(new Person());
 
 
 ->each thread has its own stack memory.
