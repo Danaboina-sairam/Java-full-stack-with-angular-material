@@ -2152,6 +2152,10 @@ Record is java feature, so it can restrict add setter method
 
 
 
+
+JVM Architecture
+----------------
+
 class loader
 ------------
 
@@ -2186,53 +2190,82 @@ static variables
 static blocks
 
 
-JVM Runtime Data Areas
 
-method area:-
+
+
+
+JVM Runtime Data Areas
+----------------------
+
+method area:
+------------
 1.stores class-level data like method code, constants and metadata. this is where class definitions are kept after loading.
 
-heap area:-
+
+heap area:
+----------
 1.stores all objects and their associated instance variables.
 2.the jvm allocated memory for object instances in this area during runtime.
 3.all static variables allocated memory in heap area
 
-stack area:-
+
+stack area:
+-----------
 1.each thread in java gets its own stack. it stores local variables, method calls and partial results for method execution.
 2.every time a method is invoked, a stack frame is created to store the data for that specific call.
 
-program counter(pc) register:-
+
+program counter(pc) register:
+-----------------------------
 1.each thread has its own PC register. this register keeps track of the address of the next instruction to be executed in the thread's method.
 
-Native method stack:-
+
+Native method stack:
+--------------------
 1.stores native code(written in languages like c or c++) that java programs can interact with.
 2.for example, when java calls system-level operations that are outside the scope of the JVM, native methods are used.
 
 
 
 
-execution engine
+Execution engine
+----------------
 
 the execution engine is responsible for running the java code. it reads the bytecode and performs the necessary operations. the execution engine is made up of two key components:
 
 1.Interpreter:
+--------------
 
 ->the interpreter reads the bytecode line-by-line and executed it.
 ->pros: simple to implement.
 ->cons: slower execution because it executes each instruction individually.
 
+
 2.JIT compiler(just-in-time compiler):
+--------------------------------------
 
 1.the JIT compiler compiles the bytecode into native machine code for faster execution.
 2.it identifies frequent code paths(called hotspots)and converts them into optimized machine code. this helps reduce the time spent interpreting frequently used method.
 
+
 Garbage collection(GC)
+----------------------
 
 Garbage collection is a process by which the JVM automatically frees up memory by reclaiming memory used by objects that are no longer referenced.
 
 ->the garbage collector scans the heap and removes objects that are no longer needed, ensuring that the JVM doesn't run out of memory.
 
-Handling Native code:-
+
+Handling Native code:
+---------------------
 sometimes, you may need to execute code that is not written in java(e.g.., c/c++). JVM allows this through the java native interface(JNI), which allows java to interact with native code written in languages like c or c++
+
+
+
+
+
+
+
 
 
 
