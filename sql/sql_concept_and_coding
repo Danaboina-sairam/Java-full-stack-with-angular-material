@@ -471,3 +471,11 @@ group by----->order by-------->limit
 
 
 FROM->JOIN->ON->WHERE->GROUP BY->HAVING->SELECT->DISTINCT->ORDER BY->LIMIT/OFFSET/FETCH FIRST 3 ROWS ONLY/TOP
+
+
+
+
+
+
+
+select max(salary) from employee where salary<select max(salary) from employee grouping by dept 
