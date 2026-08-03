@@ -5,8 +5,23 @@ application.properties
 ReflectionTestUtils.setField(userService,"name","Sairam");
 
 
-Test cases for void, private and public methods
------------------------------------------------
+Test cases for void method
+--------------------------
+
+doNothing().when(digiLockerSVC).docUpload(productCode: "SBI Life EShield Insta", fileName: "01234_KFD.pdf", accountNumber: "123456", fileNameForDigi: "01234.pdf");
+
+Test case for private method
+----------------------------
+
+
+
+Test case for public method
+---------------------------
+
+
+
+spy on method 
+-------------
 
 
 
