@@ -470,4 +470,4 @@ group by----->order by-------->limit
 
 
 
-from->join->on->where->group by->having->select->order by->limit/offset/fetch first/top
+FROM->JOIN->ON->WHERE->GROUP BY->HAVING->SELECT->DISTINCT->ORDER BY->LIMIT/OFFSET/FETCH FIRST 3 ROWS ONLY/TOP
