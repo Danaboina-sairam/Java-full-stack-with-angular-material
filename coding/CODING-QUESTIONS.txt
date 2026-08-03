@@ -220,3 +220,456 @@ Greedy Algorithm Problems
 85. Dijkstra’s Algorithm (also greedy variant)
 86. Gas Station Problem
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Why does List have stream() but String doesn't?
+
+
+
+Collection → stream()
+Array → Arrays.stream()
+String → chars(), codePoints(), lines() (Java 11+)
+
+
+Arrays.stream()
+
+Used to create a stream from an array.
+
+String array
+------------
+
+String[] names = {"Java", "Spring", "SQL"};
+
+Arrays.stream(names)
+      .forEach(System.out::println);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Group anagrams using Streams
+----------------------------
+
+import java.util.*;
+import java.util.stream.Collectors;
+
+public class GroupAnagrams {
+    public static void main(String[] args) {
+
+        List<String> words = Arrays.asList(
+                "eat", "tea", "tan", "ate", "nat", "bat"
+        );
+
+        Map<String, List<String>> result = words.stream()
+                .collect(Collectors.groupingBy(word -> {
+                    char[] chars = word.toCharArray();
+                    Arrays.sort(chars);
+                    return new String(chars);
+                }));
+
+        System.out.println(result);
+    }
+}
+
+
+
+Find the second longest word
+-----------------------------
+
+String str = "Java SpringBoot Microservices Hibernate Kafka";
+
+String secondLongest = Arrays.stream(str.split("\\s+"))
+        .distinct()
+        .sorted(Comparator.comparingInt(String::length).reversed())
+        .skip(1)
+        .findFirst()
+        .orElse(null);
+
+System.out.println(secondLongest);
+
+
+
+
+
+
+Find the first duplicate word
+-----------------------------
+
+import java.util.*;
+import java.util.stream.*;
+
+public class FirstDuplicateWord {
+    public static void main(String[] args) {
+
+        String sentence = "Java is easy Java and Streams are easy";
+
+        Set<String> seen = new HashSet<>();
+
+        Optional<String> firstDuplicate = Arrays.stream(sentence.split("\\s+"))
+                .filter(word -> !seen.add(word))
+                .findFirst();
+
+        firstDuplicate.ifPresentOrElse(
+                System.out::println,
+                () -> System.out.println("No duplicate word found")
+        );
+    }
+}
+
+Remove duplicate words while preserving order
+---------------------------------------------
+
+import java.util.Arrays;
+import java.util.stream.Collectors;
+
+public class RemoveDuplicateWords {
+    public static void main(String[] args) {
+        String str = "java is easy java is powerful easy language";
+
+        String result = Arrays.stream(str.split("\\s+"))
+                              .distinct()
+                              .collect(Collectors.joining(" "));
+
+        System.out.println(result);
+    }
+}
+
+
+Count occurrences of each word
+------------------------------
+
+import java.util.Arrays;
+import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+
+public class WordCount {
+    public static void main(String[] args) {
+
+        String str = "java is easy java is powerful java";
+
+        Map<String, Long> wordCount = Arrays.stream(str.split("\\s+"))
+                .collect(Collectors.groupingBy(
+                        Function.identity(),
+                        Collectors.counting()));
+
+        System.out.println(wordCount);
+    }
+}
+
+
+Find the most frequent character
+--------------------------------
+
+import java.util.*;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+
+public class MostFrequentCharacter {
+    public static void main(String[] args) {
+        String str = "programming";
+
+        Map.Entry<Character, Long> result = str.chars()
+                .mapToObj(c -> (char) c)
+                .collect(Collectors.groupingBy(
+                        Function.identity(),
+                        LinkedHashMap::new,
+                        Collectors.counting()))
+                .entrySet()
+                .stream()
+                .max(Map.Entry.comparingByValue())
+                .orElse(null);
+
+        if (result != null) {
+            System.out.println(result.getKey() + " -> " + result.getValue());
+        }
+    }
+}
+
+Find the least frequent character
+---------------------------------
+
+import java.util.*;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+
+public class LeastFrequentCharacter {
+    public static void main(String[] args) {
+        String str = "programming";
+
+        // Count frequency of each character
+        Map<Character, Long> frequencyMap = str.chars()
+                .mapToObj(c -> (char) c)
+                .collect(Collectors.groupingBy(
+                        Function.identity(),
+                        LinkedHashMap::new,
+                        Collectors.counting()));
+
+        // Find minimum frequency
+        long minFrequency = frequencyMap.values()
+                .stream()
+                .min(Long::compare)
+                .orElse(0L);
+
+        // Print all least frequent characters
+        frequencyMap.entrySet()
+                .stream()
+                .filter(entry -> entry.getValue() == minFrequency)
+                .forEach(entry ->
+                        System.out.println(entry.getKey() + " = " + entry.getValue()));
+    }
+}
+
+
+
+Check if two strings are anagrams
+---------------------------------
+
+
+import java.util.Arrays;
+import java.util.stream.Collectors;
+
+public class AnagramCheck {
+    public static void main(String[] args) {
+        String str1 = "listen";
+        String str2 = "silent";
+
+        String sorted1 = Arrays.stream(str1.toLowerCase().split(""))
+                               .sorted()
+                               .collect(Collectors.joining());
+
+        String sorted2 = Arrays.stream(str2.toLowerCase().split(""))
+                               .sorted()
+                               .collect(Collectors.joining());
+
+        System.out.println(sorted1.equals(sorted2)
+                ? "Anagrams"
+                : "Not Anagrams");
+    }
+}
+
+
+
+
+Find all palindromic words in a sentence
+----------------------------------------
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class PalindromicWords {
+    public static void main(String[] args) {
+
+        String sentence = "madam speaks level malayalam and radar in civic center";
+
+        List<String> palindromes = Arrays.stream(sentence.split("\\s+"))
+                .filter(word -> word.length() > 1)
+                .filter(word -> word.equalsIgnoreCase(
+                        new StringBuilder(word).reverse().toString()))
+                .collect(Collectors.toList());
+
+        System.out.println(palindromes);
+    }
+}
+
+
+Sort words by frequency
+-----------------------
+
+import java.util.*;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+
+public class Main {
+    public static void main(String[] args) {
+
+        String str = "java python java spring java python streams";
+
+        Map<String, Long> result = Arrays.stream(str.split("\\s+"))
+                .collect(Collectors.groupingBy(
+                        Function.identity(),
+                        Collectors.counting()))
+                .entrySet()
+                .stream()
+                .sorted(Map.Entry.<String, Long>comparingByValue(Comparator.reverseOrder()))
+                .collect(Collectors.toMap(
+                        Map.Entry::getKey,
+                        Map.Entry::getValue,
+                        (a, b) -> a,
+                        LinkedHashMap::new));
+
+        result.forEach((k, v) -> System.out.println(k + " = " + v));
+    }
+}
+
+
+Reverse each word in a sentence
+-------------------------------
+
+import java.util.Arrays;
+import java.util.stream.Collectors;
+
+public class ReverseEachWord {
+    public static void main(String[] args) {
+        String sentence = "Reverse each word in a sentence.";
+
+        String result = Arrays.stream(sentence.split("\\s+"))
+                .map(word -> new StringBuilder(word).reverse().toString())
+                .collect(Collectors.joining(" "));
+
+        System.out.println("Original : " + sentence);
+        System.out.println("Reversed : " + result);
+    }
+}
+
+
+Find the longest common prefix using Streams
+--------------------------------------------
+
+import java.util.Arrays;
+import java.util.Optional;
+
+public class LongestCommonPrefix {
+
+    public static void main(String[] args) {
+
+        String[] arr = {"flower", "flow", "flight"};
+
+        Optional<String> result = Arrays.stream(arr)
+                .reduce((s1, s2) -> {
+                    int len = java.util.stream.IntStream
+                            .range(0, Math.min(s1.length(), s2.length()))
+                            .takeWhile(i -> s1.charAt(i) == s2.charAt(i))
+                            .count();
+
+                    return s1.substring(0, (int) len);
+                });
+
+        System.out.println(result.orElse(""));
+    }
+}
+
+
+
+Partition words into even/odd lengths
+-------------------------------------
+
+import java.util.*;
+import java.util.stream.*;
+
+public class PartitionWords {
+    public static void main(String[] args) {
+        String sentence = "Java Streams make coding easier and cleaner";
+
+        Map<Boolean, List<String>> result = Arrays.stream(sentence.split("\\s+"))
+                .collect(Collectors.partitioningBy(word -> word.length() % 2 == 0));
+
+        System.out.println("Even Length Words: " + result.get(true));
+        System.out.println("Odd Length Words : " + result.get(false));
+    }
+}
+
+
+Group words by first character
+------------------------------
+
+import java.util.*;
+import java.util.stream.Collectors;
+
+public class GroupByFirstCharacter {
+    public static void main(String[] args) {
+
+        String sentence = "apple ant ball bat cat car dog";
+
+        Map<Character, List<String>> result = Arrays.stream(sentence.split("\\s+"))
+                .collect(Collectors.groupingBy(word -> word.charAt(0)));
+
+        System.out.println(result);
+    }
+}
+
+
+Flatten a List<String> into a stream of characters using flatMap
+----------------------------------------------------------------
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class FlatMapCharacters {
+    public static void main(String[] args) {
+
+        List<String> words = Arrays.asList("Java", "Stream", "API");
+
+        List<Character> characters = words.stream()
+                .flatMap(str -> str.chars()
+                        .mapToObj(ch -> (char) ch))
+                .collect(Collectors.toList());
+
+        System.out.println(characters);
+    }
+}
+
+
+
+
+Print repeated characters only (distinct)
+-----------------------------------------
+
+
+import java.util.function.Function;
+import java.util.stream.Collectors;
+
+String input = "programming";
+
+input.chars()
+     .mapToObj(c -> (char) c)
+     .collect(Collectors.groupingBy(
+             Function.identity(),
+             Collectors.counting()))
+     .entrySet()
+     .stream()
+     .filter(entry -> entry.getValue() > 1)
+     .map(entry -> entry.getKey())
+     .forEach(System.out::println);
+
