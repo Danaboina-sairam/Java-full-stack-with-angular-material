@@ -2928,6 +2928,9 @@ sorted(Comparator)------------->Sort stream
 HardCode Response with Debugging
 --------------------------------
 
+Scenario:1
+----------
+
 String response = """    """;  
 
 ObjectMapper mapper = new ObjectMapper();
@@ -2937,6 +2940,37 @@ try {
 } catch (Exception e) {
     e.printStackTrace();
 }
+
+
+Scenario:2
+----------
+
+
+String response = """    """; 
+
+JSONObject jsonObject=new JSONObject(response);
+
+JSONObject jsonObject1=new jsonObject.getJSONObject("allLiPolicyDetails");
+
+JSONArray jsonArray=jsonObject1.getJSONArray("getpolicylist");
+
+List<GetYonoSumDTO> userList=new ArrayList<>();
+
+ObjectMapper mapper=new ObjectMapper();
+
+
+try {
+   userList = mapper.readValue(jsonArray.toString(), new TypeReference<List<GetYonoSumDTO>>(){});
+} catch (Exception e) {
+    e.printStackTrace();
+}
+
+
+For cache put use HashMap
+-------------------------
+
+
+
 
 
 
