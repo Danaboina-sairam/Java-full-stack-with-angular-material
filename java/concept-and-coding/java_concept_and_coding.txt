@@ -1631,19 +1631,10 @@ Stack vs Heap
 
 
 
-local variable(Primitive type)
---------------
-
-->A local variable may be of a primitive type, in which case it is totally kept on the thread stack.
-
-
-local variable(Reference type)
---------------
-
-->A local variable may also be a reference to an object. In that case the reference (the local variable) is stored on the thread stack, but the object itself if stored on the heap.
-
-
 Ex:1
+----
+
+1.only stack
 
 
 public class Sample {
@@ -1668,8 +1659,78 @@ public class Sample {
 
 
 
-
 EX:2
+
+class Sample
+{
+    public void method1() {
+
+    }
+}
+
+public class SampleApp {
+
+	public static void main(String args[])
+	{
+		Sample sampleObjRef=new Sample();
+	}
+}
+
+
+
+
+EX:3
+
+local variable(Primitive type)
+--------------
+
+->A local variable may be of a primitive type, in which case it is totally kept on the thread stack.
+
+
+
+class Sample
+{
+    public void method1() {
+		int a=10;
+    }
+}
+
+
+
+
+
+EX:4
+
+
+
+local variable(Reference type)
+--------------
+
+->A local variable may also be a reference to an object. In that case the reference (the local variable) is stored on the thread stack, but the object itself if stored on the heap.
+
+
+
+
+public class SampleApp {
+
+	public static void main(String args[])
+	{
+		Sample sampleObjRef=new Sample();
+	}
+}
+
+
+
+
+
+
+
+
+
+
+EX:5
+
+1.
 
 ->An object may contain methods and these methods may contain local variables. These local variables are also stored on the thread stack, even if the object the method belongs to is stored on the heap
 
@@ -1693,7 +1754,10 @@ public class SampleApp {
 
 
 
-EX:3
+
+
+
+EX:6
 
 ->An object's member variable are stored on the heap along with the object itself. That is true both when the member variable is of a primitive type, and if it is a reference to an 
 object.
@@ -1722,9 +1786,21 @@ public class SampleApp {
 
 
 
+IMP:
+
+->Static class variables are also stored on the heap along with the class definition.
+
+->Objects on the heap can be accessed by all threads that have a reference to the object.
+
+1.when a thread has access to an object, it can also get access to that object's member variables.
+
+2.if two threads call a method on the same object at the same time, they will both have access to the object's member variable, but each thread will have its own copy of the local variables
 
 
-EX:4
+
+
+
+EX:7
 
 public class MemoryManagement{
 	public static void main(String args[]){
@@ -1741,20 +1817,6 @@ public class MemoryManagement{
 		String stringLiteral3=new String("24");
 	}
 }
-
-
-
-
-
-IMP:
-
-->Static class variables are also stored on the heap along with the class definition.
-
-->Objects on the heap can be accessed by all threads that have a reference to the object.
-
-1.when a thread has access to an object, it can also get access to that object's member variables.
-
-2.if two threads call a method on the same object at the same time, they will both have access to the object's member variable, but each thread will have its own copy of the local variables
 
 
 
