@@ -1135,6 +1135,43 @@ Isolation levels
 
 
 
+
+
+In Springboot, every call to your bean goes through this proxy first.
+ 
+When you add @Transactional:
+→ Proxy intercepts the call
+→ Opens a DB connection
+→ Begins a transaction
+→ THEN calls your actual method
+→ Commits on success, rollbacks on exception
+ 
+When you add @Async:
+→ Proxy intercepts the call
+→ Submits your method to a thread pool
+→ Returns immediately
+ 
+When you add @Cacheable:
+→ Proxy intercepts the call
+→ Checks cache first
+→ If found → returns cached value, your method never runs
+→ If not found → calls your method, caches the result
+ 
+Same mechanism. Same proxy. Different interceptor logic.
+ 
+That’s why calling a method within the same class bypasses all of this. When you call this.methodB() inside your class, Java calls it directly. 
+
+The proxy is never involved. Your @Transactional, @Async, @Cacheable — all silently ignored
+
+
+
+
+
+
+
+
+
+
 ResponseEntity
 --------------
 
