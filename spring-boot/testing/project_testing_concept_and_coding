@@ -89,3 +89,14 @@ class UserServiceTest {
 -------------------------------------------------------------
 
 @ExtendWith(MockitoExtension.class)
+
+
+
+
+
+Put vs Get in Testcases
+-----------------------
+
+Put: no need to mock the data because automatically data will set
+
+Get: need to mock the data then only able to get
