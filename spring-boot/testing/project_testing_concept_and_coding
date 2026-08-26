@@ -94,9 +94,34 @@ class UserServiceTest {
 
 
 
-Put vs Get in Testcases
------------------------
+Put vs Get in HashMap Testcases
+-------------------------------
 
 Put: no need to mock the data because automatically data will set
 
 Get: need to mock the data then only able to get
+
+
+
+Setter vs Getter in DTO Testcases
+---------------------------------
+
+Setter: 
+
+Getter:
+
+
+
+Test cases for DateFormatter
+----------------------------
+
+Main Code side:
+---------------
+
+whatever formatter pattern define main code side
+
+Test case side:
+---------------
+
+here date is input but output is same like main code side formatter
+
