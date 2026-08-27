@@ -28,6 +28,15 @@ with prototype pattern
 
 2.clone reference just assign by using (Student) obj.clone();
 
+
+Why Prototype interface with clone method
+-----------------------------------------
+
+->without interface,everyone use different method name then there is consistency issue 
+
+->with interface,everyone use same method name then there is no consistency issue
+
+
 public interface Prototype
 {
 	Prototype clone();
