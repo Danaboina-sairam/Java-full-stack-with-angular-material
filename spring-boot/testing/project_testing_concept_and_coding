@@ -5,13 +5,31 @@ application.properties
 ReflectionTestUtils.setField(userService,"name","Sairam");
 
 
+
+
+
+
+
+
+
 Test cases for void method
 --------------------------
 
 doNothing().when(digiLockerSVC).docUpload(productCode: "SBI Life EShield Insta", fileName: "01234_KFD.pdf", accountNumber: "123456", fileNameForDigi: "01234.pdf");
 
+
+
+
+
+
+
+
 Test case for private method
 ----------------------------
+
+
+
+
 
 
 
@@ -20,8 +38,15 @@ Test case for public method
 
 
 
+
+
+
+
+
 spy on method 
 -------------
+
+
 
 
 
@@ -94,6 +119,13 @@ class UserServiceTest {
 
 
 
+
+
+
+
+
+
+
 Put vs Get in HashMap Testcases
 -------------------------------
 
@@ -103,12 +135,22 @@ Get: need to mock the data then only able to get
 
 
 
+
+
+
+
+
 Setter vs Getter in DTO Testcases
 ---------------------------------
 
 Setter: 
 
 Getter:
+
+
+
+
+
 
 
 
@@ -125,3 +167,23 @@ Test case side:
 
 here date is input but output is same like main code side formatter
 
+
+
+
+
+
+Some times NO need to write entire testcase but JUST called the method then also covered some lines
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+DTO
+---
+
+->some times automatically covers lines because of usage in the classes
+
+->some times not cover automatically that time need to write setters and getters
