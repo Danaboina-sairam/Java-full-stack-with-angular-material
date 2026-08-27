@@ -1,13 +1,13 @@
 Spring ai, langchain4j,  deeplearning4j,  langgraph4j
 
 
-1.message
+1.message (User, System and Assistant)
 
 2.chat options
 
 3.prompt
 
-4.chat model
+4.chat model(OpenAi,Anthropic)-(Single,Multiple)
 
 5.chat response
 
@@ -18,6 +18,14 @@ Spring ai, langchain4j,  deeplearning4j,  langgraph4j
 
 prompt(ChatResponse,ChatOptions,)----------->chat model------------>ai api response
 
+
+
+
+What is Structured Output
+
+JSON_OBJECT and TEXT Structured Output
+
+JSON_SCHEMA Structured Output
 
 
 
