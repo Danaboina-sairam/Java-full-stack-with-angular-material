@@ -39,6 +39,25 @@ BeanOutputConverter<Tweet> beanOutputConverter = new BeanOutputConverter<>(Tweet
 
 
 
+
+
+
+
+Tool calling
+------------
+
+controller-->employee tools--->employee service->employee
+
+
+controller-->date tools
+
+
+
+
+
+
+
+
 stdio: standard io
 -----
 
