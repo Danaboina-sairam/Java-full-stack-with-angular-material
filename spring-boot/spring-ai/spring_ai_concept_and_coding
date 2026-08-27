@@ -28,6 +28,16 @@ JSON_OBJECT and TEXT Structured Output
 JSON_SCHEMA Structured Output
 
 
+May be below are used for structured output
+-------------------------------------------
+
+ListOutputConverter outputConverter = new ListOutputConverter();
+
+MapOutputConverter outputConverter = new MapOutputConverter();
+
+BeanOutputConverter<Tweet> beanOutputConverter = new BeanOutputConverter<>(Tweet.class);
+
+
 
 
 
