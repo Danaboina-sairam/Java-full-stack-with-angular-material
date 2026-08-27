@@ -57,6 +57,17 @@ controller-->date tools
 
 
 
+MCP
+---
+Bean-->VideoTools-->VideoRepository-->Video
+
+
+
+
+
+
+
+
 
 stdio: standard io
 -----
