@@ -39,6 +39,22 @@ BeanOutputConverter<Tweet> beanOutputConverter = new BeanOutputConverter<>(Tweet
 
 
 
+stdio: standard io
+-----
+
+mcp-client-stdio
+
+mcp-server-stdio
+
+
+webflux
+-------
+
+mcp-client-webflux
+
+mcp-server-webflux
+
+
 
 
 
