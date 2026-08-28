@@ -134,13 +134,27 @@ class ChatController {
 Note: above creation of object with customized values
 
 
+steps
+-----
+
+1.first create api key from the any of the chat model
+
+2.chat client is fluent api that has several methods like prompt(),call(),content()
+
+3.final return response
+
+
+
+prompt():
+
+call(): 
 
 content(): it is used to return response as a string
-
 
 defaultAdvisors(): it is used to log request and response, also add property to enable in application.properties 
 
 
+Note: we can use above methods in 2 scenarios that is while 1.bean creation and 2.whenever we want to talk with model by using chatclient reference
 
 
 
