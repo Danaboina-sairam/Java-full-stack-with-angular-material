@@ -185,6 +185,18 @@ Note: we can use above methods in 2 scenarios that is while 1.bean creation and 
 ### Docker Model Runner
 * Install Docker Desktop and setup Docker Model Runner by following https://docs.docker.com/ai/model-runner/
 
+For Note:
+
+Docker------>settings-------->Beta features---------->click on Enable Docker runner model
+
+
+
+
+
+
+
+
+
 
 Manual testing
 --------------
