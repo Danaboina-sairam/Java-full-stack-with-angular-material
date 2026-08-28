@@ -92,6 +92,7 @@ class AiConfig{
 	}
 }
 
+Note: above creation of object with default values
 
 @RestController
 ChatController{
@@ -130,6 +131,7 @@ class ChatController {
 
 }
 
+Note: above creation of object with customized values
 
 
 
