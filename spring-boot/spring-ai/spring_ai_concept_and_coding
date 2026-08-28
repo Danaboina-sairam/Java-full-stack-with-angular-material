@@ -306,6 +306,75 @@ Note: remote model api key mandatory
 
 
 
+
+
+
+
+
+Prompt templates
+----------------
+
+
+Method:1
+--------
+String response = chatClient.prompt(input.prompt()).call().content();
+
+
+
+Method:2
+--------
+
+String systemPrompt = "You are a funny, and helpful assistant. You always respond in a sarcastic manner.";
+SystemMessage systemMessage = new SystemMessage(systemPrompt);
+UserMessage userMessage = new UserMessage(input.prompt());
+
+Prompt prompt = new Prompt(List.of(systemMessage, userMessage));
+String response = chatClient.prompt(prompt).call().content();
+		
+		
+
+Method:3
+--------
+
+
+PromptTemplate pt = new PromptTemplate("""
+        I would like to give a presentation about the following:
+        
+        {topic}
+        
+        Give me {count} title suggestions for this topic.
+        
+        Make sure the title is relevant to the topic and it should be a single short sentence.
+        """);
+
+Map<String, Object> vars = Map.of("topic", req.topic(), "count", req.count());
+Message message = pt.createMessage(vars);
+response = chatClient.prompt().messages(message).call().content();
+		
+		
+
+
+Method:4
+--------
+
+String systemPrompt = tweetSystemMsgResource.getContentAsString(UTF_8);
+SystemMessage systemMessage = new SystemMessage(systemPrompt);
+UserMessage userMessage = new UserMessage(input.prompt());
+
+Prompt prompt = new Prompt(List.of(systemMessage, userMessage));
+String response = chatClient.prompt(prompt).call().content();
+
+
+
+
+
+
+
+
+
+
+
+
 What is Structured Output
 
 JSON_OBJECT and TEXT Structured Output
