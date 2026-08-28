@@ -33,7 +33,7 @@ Introduction to Spring AI
 
 Getting Started with OpenAI
 
-Chat with OpenAI Compatible Models (Gemini, Groq, OpenRouter, Docker model runner)
+Chat with OpenAI Compatible Models (Gemini, Groq, OpenRouter(we need to select because multiple free models), Docker model runner)
 
 Chat with Ollama
 
