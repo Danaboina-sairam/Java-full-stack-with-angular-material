@@ -288,6 +288,13 @@ Ollama in GUI and Terminal
 --------------------------
 
 
+No Api key in Ollama: because this is local model
+--------------------
+
+
+
+Base url for Ollama: this is mandatory
+--------------------
 
 
 
