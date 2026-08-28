@@ -299,6 +299,13 @@ Base url for Ollama: this is mandatory
 
 
 
+Anthropic
+---------
+
+Note: remote model api key mandatory
+
+
+
 What is Structured Output
 
 JSON_OBJECT and TEXT Structured Output
