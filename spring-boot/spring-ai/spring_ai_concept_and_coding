@@ -33,7 +33,7 @@ Introduction to Spring AI
 
 Getting Started with OpenAI
 
-Chat with OpenAI Compatible Models (Gemini, Groq, etc.)
+Chat with OpenAI Compatible Models (Gemini, Groq, OpenRouter, Docker model runner)
 
 Chat with Ollama
 
@@ -136,6 +136,44 @@ Note: above creation of object with customized values
 
 
 content(): it is used to return response as a string
+
+
+defaultAdvisors(): it is used to log request and response, also add property to enable in application.properties 
+
+
+
+
+
+
+
+
+
+
+
+
+### Gemini Config
+* Go to https://aistudio.google.com/app/apikey and create an API Key
+* Set environment variable `GEMINI_API_KEY=YOUR_TOKEN_VALUE_HERE`
+
+### Groq Config
+* Go to https://console.groq.com/keys and create an API Key
+* Set environment variable `GROQ_API_KEY=YOUR_TOKEN_VALUE_HERE`
+
+### DeepSeek Config
+* Go to https://platform.deepseek.com/api_keys and create an API Key
+* Set environment variable `DEEPSEEK_API_KEY=YOUR_TOKEN_VALUE_HERE`
+
+### OpenRouter Config
+* Go to https://openrouter.ai/settings/keys and create an API Key
+* Set environment variable `OPENROUTER_API_KEY=YOUR_TOKEN_VALUE_HERE`
+* To view the free models, go to https://openrouter.ai/models and search for "free"
+
+### Docker Model Runner
+* Install Docker Desktop and setup Docker Model Runner by following https://docs.docker.com/ai/model-runner/
+
+
+
+
 
 
 
