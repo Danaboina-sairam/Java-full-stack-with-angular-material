@@ -135,6 +135,7 @@ Note: above creation of object with customized values
 
 
 
+content(): it is used to return response as a string
 
 
 
