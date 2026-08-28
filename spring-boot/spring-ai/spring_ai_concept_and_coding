@@ -323,6 +323,22 @@ Prompt templates
 4.Writing effective prompts
 
 
+
+2.Message Types
+---------------
+
+1.USER
+
+2.ASSISTANT
+
+3.SYSTEM
+
+4.TOOL
+
+
+3.Prompt Templates
+------------------
+
 Method:1
 --------
 String response = chatClient.prompt(input.prompt()).call().content();
