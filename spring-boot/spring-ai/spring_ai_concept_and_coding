@@ -21,6 +21,51 @@ prompt(ChatResponse,ChatOptions,)----------->chat model------------>ai api respo
 
 
 
+
+
+
+
+
+
+
+
+Introduction to Spring AI
+
+Getting Started with OpenAI
+
+Chat with OpenAI Compatible Models (Gemini, Groq, etc.)
+
+Chat with Ollama
+
+Chat with Anthropic Models
+
+Prompt Templates
+
+Structured Outputs
+
+Chat Memory
+
+Vector Stores & RAG
+
+Tool Calling
+
+Model Context Protocol (MCP)
+
+Final Thoughts
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 What is Structured Output
 
 JSON_OBJECT and TEXT Structured Output
