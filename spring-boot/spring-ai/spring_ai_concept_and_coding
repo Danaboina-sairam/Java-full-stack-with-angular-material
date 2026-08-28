@@ -345,10 +345,16 @@ mcp-server-webflux
 
 
 github copilot plugin installed in the system
+---------------------------------------------
 
 
-open router api key generated(custom)
+open router
+-----------
+api key generated(custom)
 
-github copilot in intellij 
+
+
+github copilot in intellij: Github copilot chat
+--------------------------
 
 beside agent , we have manage models with provider open router------------->add model in that with api key(whatever created by using open router)
