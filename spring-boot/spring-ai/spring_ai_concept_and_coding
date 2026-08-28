@@ -172,6 +172,52 @@ defaultAdvisors(): it is used to log request and response, also add property to 
 * Install Docker Desktop and setup Docker Model Runner by following https://docs.docker.com/ai/model-runner/
 
 
+Manual testing
+--------------
+
+application.properties or edit configuration with profile enable
+----------------------------------------------------------------
+
+spring.profiles.active=gemini
+
+
+Automatic testing
+-----------------
+
+Integration tests
+
+
+@SpringBootTest
+@AutoConfigureMockMvc
+//@ActiveProfiles("gemini")
+//@ActiveProfiles("groq")
+//@ActiveProfiles("openrouter")
+@ActiveProfiles("dmr")
+class OpenAICompatChatApplicationTests {
+    @Autowired
+    MockMvcTester mockMvcTester;
+
+    @Test
+    void chat() {
+        MvcTestResult testResult = mockMvcTester.post().uri("/api/chat")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content("""
+                        {
+                            "prompt": "Tell me a Java joke"
+                        }
+                        """)
+                .exchange();
+        assertThat(testResult)
+                .hasStatus(HttpStatus.OK)
+                .bodyJson()
+                .convertTo(ChatController.Output.class).satisfies(output -> {
+                    assertThat(output.content()).isNotBlank();
+                    System.out.println("Response:\n"+output.content());
+                });
+
+    }
+
+}
 
 
 
