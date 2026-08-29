@@ -425,7 +425,7 @@ BeanOutputConverter<Tweet> beanOutputConverter = new BeanOutputConverter<>(Tweet
 7.Chat Memory
 -------------
 
-1.LLMs are stateless
+1.LLMs are stateless(each question and answer time only remember ,next question time not remember previous question and answer)
 
 2.chat memory for conversations
 
@@ -437,6 +437,37 @@ BeanOutputConverter<Tweet> beanOutputConverter = new BeanOutputConverter<>(Tweet
 
 
 
+
+user injected bean
+------------------
+
+private final ChatClient chatClient;
+
+
+spring injected bean
+--------------------
+
+ChatMemory chatMemory
+
+
+
+Advisor used to remember context in spring ai
+---------------------------------------------
+
+MessageChatMemoryAdvisor.builder(chatMemory).build(),
+
+
+full code
+---------
+
+ChatController(ChatClient.Builder builder, ChatMemory chatMemory) {
+        this.chatClient = builder
+                .defaultAdvisors(
+                    MessageChatMemoryAdvisor.builder(chatMemory).build(),
+                    new SimpleLoggerAdvisor()
+                )
+                .build();
+}
 
 
 
