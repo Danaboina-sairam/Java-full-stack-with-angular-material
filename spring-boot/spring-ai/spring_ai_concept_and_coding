@@ -540,7 +540,19 @@ ResponseEntity<Output> chat(@RequestBody @Valid Input input,
 
 
 
+Types of Document Readers
+-------------------------
 
+//For loading text docs
+//DocumentReader documentReader = new TextReader(resource);
+
+//For loading PDF docs
+//DocumentReader documentReader = new PagePdfDocumentReader(resource);
+
+//For loading PDF, DOC/DOCX, PPT/PPTX, and HTML docs
+//DocumentReader documentReader = new TikaDocumentReader(sivaBiodataFile);
+
+DocumentReader documentReader = new MarkdownDocumentReader(resource, MarkdownDocumentReaderConfig.defaultConfig());
 
 
 
