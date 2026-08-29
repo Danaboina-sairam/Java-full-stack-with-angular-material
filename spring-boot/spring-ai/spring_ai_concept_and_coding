@@ -489,6 +489,12 @@ application.properties for chat memory
 spring.ai.chat.memory.repository.jdbc.initialize-schema=always
 
 
+Database table name for chat memory
+-----------------------------------
+
+spring_ai_chat_memory
+
+
 
 
 
