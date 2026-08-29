@@ -437,6 +437,14 @@ BeanOutputConverter<Tweet> beanOutputConverter = new BeanOutputConverter<>(Tweet
 
 
 
+dependency for chat memory
+--------------------------
+
+<dependency>
+       <groupId>org.springframework.ai</groupId>
+       <artifactId>spring-ai-starter-model-chat-memory-repository-jdbc</artifactId>
+</dependency>
+
 
 user injected bean
 ------------------
