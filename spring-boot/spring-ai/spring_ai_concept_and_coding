@@ -597,14 +597,19 @@ It creates a QuestionAnswerAdvisor and gives it a VectorStore.
 
 
 
-Tool calling
-------------
+9.Tool calling
+--------------
 
 controller-->employee tools--->employee service->employee
 
 
 controller-->date tools
 
+
+
+->Extend LLMs capabilities
+->Provide Real Time Data to LLMs
+->Perform actions
 
 
 
