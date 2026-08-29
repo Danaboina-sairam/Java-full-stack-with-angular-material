@@ -437,14 +437,6 @@ BeanOutputConverter<Tweet> beanOutputConverter = new BeanOutputConverter<>(Tweet
 
 
 
-dependency for chat memory
---------------------------
-
-<dependency>
-       <groupId>org.springframework.ai</groupId>
-       <artifactId>spring-ai-starter-model-chat-memory-repository-jdbc</artifactId>
-</dependency>
-
 
 user injected bean
 ------------------
@@ -476,6 +468,29 @@ ChatController(ChatClient.Builder builder, ChatMemory chatMemory) {
                 )
                 .build();
 }
+
+
+
+
+Normal database:(Not InMemory)
+---------------
+
+dependency for chat memory
+--------------------------
+
+<dependency>
+       <groupId>org.springframework.ai</groupId>
+       <artifactId>spring-ai-starter-model-chat-memory-repository-jdbc</artifactId>
+</dependency>
+
+application.properties for chat memory 
+--------------------------------------
+
+spring.ai.chat.memory.repository.jdbc.initialize-schema=always
+
+
+
+
 
 
 
