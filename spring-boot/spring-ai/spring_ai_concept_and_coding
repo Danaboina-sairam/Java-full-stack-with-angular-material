@@ -524,6 +524,26 @@ ResponseEntity<Output> chat(@RequestBody @Valid Input input,
 
 
 
+8.Retrieval Augmented Generation(RAG)
+
+->Embedding models
+
+->Vector stores
+
+->Similarity search
+
+->RAG
+
+
+
+
+
+
+
+
+
+
+
 
 
 
