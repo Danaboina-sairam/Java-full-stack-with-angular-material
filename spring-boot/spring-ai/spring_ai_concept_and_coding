@@ -550,7 +550,7 @@ ResponseEntity<Output> chat(@RequestBody @Valid Input input,
 
 
 
-Types of Document Readers
+Types of Document Readers: we need to add dependencies for each document reader
 -------------------------
 
 //For loading text docs
