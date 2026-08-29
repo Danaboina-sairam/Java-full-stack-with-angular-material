@@ -187,3 +187,34 @@ DTO
 ->some times automatically covers lines because of usage in the classes
 
 ->some times not cover automatically that time need to write setters and getters
+
+
+
+
+
+
+
+Matcher and Non Matcher
+-----------------------
+
+String - matcher
+
+List<Object> - matcher
+
+HashMap- new HashMap<>()
+
+
+
+
+Null response cases 
+-------------------
+
+test class
+----------
+
+@ExtendWith(MockitoExtension.class) : may be this is not used in the testing class
+
+main code class
+---------------
+
+dependency injection issue
