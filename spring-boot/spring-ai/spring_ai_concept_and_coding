@@ -548,6 +548,17 @@ ResponseEntity<Output> chat(@RequestBody @Valid Input input,
 
 
 
+Loading files from classpath 
+----------------------------
+
+@Value("classpath:/data/about-siva.md")
+private Resource biodataFile;
+
+@Value("classpath:/data/few-things-i-learned-the-hardway-in-15-years-of-my-career.md")
+private Resource careerLessonsFile;
+
+
+
 
 
 Types of Document Readers: we need to add dependencies for each document reader
@@ -564,6 +575,23 @@ Types of Document Readers: we need to add dependencies for each document reader
 
 DocumentReader documentReader = new MarkdownDocumentReader(resource, MarkdownDocumentReaderConfig.defaultConfig());
 
+
+
+
+
+QuestionAnswerAdvisor.builder(vectorStore).build()
+
+
+
+It creates a QuestionAnswerAdvisor and gives it a VectorStore.
+
+->QuestionAnswerAdvisor → handles the RAG flow.
+->vectorStore → contains your stored document embeddings.
+->When the user asks a question, the advisor:
+1.Searches the VectorStore for relevant documents.
+2.Adds the retrieved information to the prompt.
+3.Sends the enhanced prompt to the LLM.
+4.Returns the answer based on the retrieved context.
 
 
 
