@@ -1322,7 +1322,7 @@ HandlerExceptionResolverComposite
 
 
 
-Processing
+Processing: Any one of the resolver will solve the issue
 ----------
 
 ExceptionHandlerExceptionResolver
