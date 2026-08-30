@@ -1054,3 +1054,37 @@ tracing disabled then correlation id also disabled
 manual: 
 
 tracing disabled then correlation is also generated
+
+
+
+
+
+
+
+
+
+
+
+
+
+ELK
+---
+
+Logstash--->Elasticsearch--->Kibana
+
+
+1. Logstash
+-----------
+
+Collects and processes logs before sending them to Elasticsearch.
+
+
+2. Elasticsearch
+----------------
+
+Stores and searches logs.
+
+3. Kibana
+---------
+
+UI/dashboard for Elasticsearch data.
