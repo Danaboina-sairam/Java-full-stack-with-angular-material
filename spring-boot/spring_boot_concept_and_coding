@@ -264,22 +264,38 @@ PUT → Idempotent
 DELETE → Idempotent 
 POST → Usually NOT idempotent 
 
-Why?
+
+
+Why? PUT vs POST
+----------------
+
+PUT
+---
 
 PUT replaces a resource. 
 Calling it again keeps the same final state.
 
+POST
+----
+
 POST usually creates new resources. 
 Calling it again creates duplicates.
 
+
+
+
+
+
 But here’s the important part:
 
-POST can be made idempotent.
+POST can be made idempotent:
+----------------------------
 
 How to Solve Idempotency Problems 👇
 ------------------------------------
 
 1️⃣ Idempotency Keys 
+--------------------
 
 Client sends a unique key with the request. 
 Server stores the key and result. 
@@ -290,26 +306,33 @@ Return previous response instead of processing again.
 Common in payment systems like Stripe.
 
 2️⃣ Database Unique Constraints 
+------------------------------
 
 Use unique fields (e.g., orderId, transactionId). 
 If duplicate request comes → database prevents duplication.
 
 3️⃣ Upsert Logic 
+---------------
 
 Instead of “create new”, 
 use insert-or-update pattern.
 
 4️⃣ Proper HTTP Method Usage 
+----------------------------
 
 Use PUT when updating known resources. 
 Use POST carefully for creation.
 
 5️⃣ Request Deduplication Layer 
+-------------------------------
 
 Store request fingerprints in cache (Redis) 
 and block duplicates within a time window.
 
+
+
 Golden Rule 🧠 
+--------------
 
 If a user retries a request, 
 your system should not panic.
