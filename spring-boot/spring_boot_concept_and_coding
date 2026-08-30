@@ -760,6 +760,9 @@ return new User("defaultusername","defaultemail");
 
 
 
+IMPORTANT
+---------
+
 @Autowired: Only one bean available
 
 @Qualifier: Multiple beans and exact choice needed
