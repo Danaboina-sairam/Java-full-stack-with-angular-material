@@ -444,6 +444,7 @@ IOC-------->ApplicationContext----------->Dependency Injection(it is automatical
 
 
 1. BeanFactory
+--------------
 
 -Basic IoC container.
 
@@ -457,6 +458,7 @@ IOC-------->ApplicationContext----------->Dependency Injection(it is automatical
 
 
 2. ApplicationContext
+---------------------
 
 -Advanced IoC container (extends BeanFactory).
 
