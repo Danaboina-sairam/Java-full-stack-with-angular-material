@@ -760,6 +760,16 @@ return new User("defaultusername","defaultemail");
 
 
 
+@Autowired: Only one bean available
+
+@Qualifier: Multiple beans and exact choice needed
+
+@Primary: Multiple beans but one should be default
+
+
+
+
+
 
 More than 1 Bean created in @Configuration class by using @Primary and @Qualifier overcome the issue
 ----------------------------------------------------------------------------------------------------
