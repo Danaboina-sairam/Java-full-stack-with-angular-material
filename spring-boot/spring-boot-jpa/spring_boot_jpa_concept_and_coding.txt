@@ -8,6 +8,11 @@ JPA in SpringBoot-------Entity
 
 
 
+How can you configure and use multiple databases in a Spring Boot application?
+------------------------------------------------------------------------------
+
+create separate DataSource, EntityManagerFactory, and TransactionManager beans for each database
+
 
 
 
