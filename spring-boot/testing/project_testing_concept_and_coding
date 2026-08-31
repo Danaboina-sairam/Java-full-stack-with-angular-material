@@ -218,3 +218,42 @@ main code class
 ---------------
 
 dependency injection issue in constructor injection
+
+
+
+
+
+
+
+
+
+
+Unit Testing
+------------
+
+
+@ExtendWith(MockitoExtension.class)
+class PolicyServiceTest {
+
+    @Mock
+    PolicyRepository repository;
+
+    @InjectMocks
+    PolicyService service;
+}
+
+
+
+Integration Testing/Slice Testing
+---------------------------------
+
+
+@SpringBootTest
+class PolicyServiceTest {
+
+    @MockBean
+    PolicyRepository repository;
+
+    @Autowired
+    PolicyService service;
+}
