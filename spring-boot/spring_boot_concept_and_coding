@@ -480,6 +480,105 @@ private Resource careerLessonsFile;
 
 
 
+
+| `@Value`                              | `@ConfigurationProperties`                      |
+| ------------------------------------- | ----------------------------------------------- |
+| Individual properties                 | Group of related properties                     |
+| Simple                                | Better for complex configuration                |
+| Uses `${...}`                         | Uses a prefix                                   |
+| Less type-safe                        | Strongly typed                                  |
+| Good for 1–3 values                   | Good for many related values                    |
+| SpEL can be used                      | Designed specifically for configuration binding |
+| Can become messy with many properties | Cleaner and more maintainable                   |
+
+
+
+
+
+
+
+1. @Value: Use @Value when you need one or a few properties.
+----------
+
+application.properties
+----------------------
+
+app.name=Insurance
+app.timeout=30
+
+
+AppConfig
+---------
+
+@Component
+public class AppConfig {
+
+    @Value("${app.name}")
+    private String name;
+
+    @Value("${app.timeout}")
+    private int timeout;
+}
+
+
+
+2. @ConfigurationProperties: for a group of related properties
+---------------------------
+
+application.properties
+----------------------
+app.name=Insurance
+app.timeout=30
+app.retry-count=3
+app.enabled=true
+
+
+AppProperties
+-------------
+@Component
+@ConfigurationProperties(prefix = "app")
+public class AppProperties {
+
+    private String name;
+    private int timeout;
+    private int retryCount;
+    private boolean enabled;
+
+    // getters and setters
+}
+
+
+@Service
+public class InsuranceService {
+
+    private final AppProperties properties;
+
+    public InsuranceService(AppProperties properties) {
+        this.properties = properties;
+    }
+
+    public void test() {
+        System.out.println(properties.getName());
+        System.out.println(properties.getTimeout());
+        System.out.println(properties.getRetryCount());
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Creation → Dependency Injection → Initialization → Usage → Destruction
 
 
