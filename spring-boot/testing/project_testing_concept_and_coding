@@ -231,6 +231,13 @@ dependency injection issue in constructor injection
 Unit Testing
 ------------
 
+@Mock
+-----
+
+-->It creates a Mockito mock only for the test class.
+
+-->Spring does not know about it.
+
 
 @ExtendWith(MockitoExtension.class)
 class PolicyServiceTest {
@@ -246,6 +253,10 @@ class PolicyServiceTest {
 
 Integration Testing/Slice Testing
 ---------------------------------
+
+@MockBean
+---------
+@MockBean was the Spring Boot way to create a Mockito mock and put it into the Spring ApplicationContext. It is mainly used with Spring tests such as @SpringBootTest, @WebMvcTest, etc.
 
 
 @SpringBootTest
