@@ -1019,6 +1019,59 @@ Child class(dependency)
 
 
 
+
+
+
+
+
+
+
+
+
+@RestController
+@RequestMapping("/")
+class ChatController {
+    private final ChatClient chatClient;
+
+    ChatController(ChatClient.Builder builder, ChatMemory chatMemory) {
+        this.chatClient = builder
+                .defaultAdvisors(
+                    MessageChatMemoryAdvisor.builder(chatMemory).build(),
+                    new SimpleLoggerAdvisor()
+                )
+                .build();
+    }
+}
+
+NOTE:
+-----
+1.Spring injected beans no need to create property level variables
+
+2.Normal injected beans need to create property level variables
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @Transactional annotation
 -------------------------
 
