@@ -449,6 +449,37 @@ A simple way to remember:
 
 
 
+
+
+
+
+
+
+Loading files from classpath 
+----------------------------
+
+@Value("classpath:/data/about-siva.md")
+private Resource biodataFile;
+
+@Value("classpath:/data/few-things-i-learned-the-hardway-in-15-years-of-my-career.md")
+private Resource careerLessonsFile;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Creation → Dependency Injection → Initialization → Usage → Destruction
 
 
