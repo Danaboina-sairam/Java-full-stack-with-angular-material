@@ -378,6 +378,29 @@ Note: application.properties is most strong in spring boot application
 
 
 
+src/main/resources/
+│
+├── application.properties              # Common configuration
+│
+├── application-dev.properties          # DEV
+├── application-sit.properties          # SIT
+├── application-uat.properties          # UAT
+├── application-preprod.properties      # PREPROD
+└── application-prod.properties         # PROD
+
+
+
+
+application.properties
+----------------------
+
+spring.profiles.active=sit
+
+Note: after hyphen(-) whatever name used that is mentioned
+
+
+
+
 
 @Value 
 ------
