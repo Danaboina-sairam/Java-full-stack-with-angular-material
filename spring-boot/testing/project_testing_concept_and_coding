@@ -259,6 +259,12 @@ Integration Testing/Slice Testing
 @MockBean was the Spring Boot way to create a Mockito mock and put it into the Spring ApplicationContext. It is mainly used with Spring tests such as @SpringBootTest, @WebMvcTest, etc.
 
 
+
+@SpringBootTest
+---------------
+@SpringBootTest is used to run an entire Spring Boot application context for integration tests.
+
+
 @SpringBootTest
 class PolicyServiceTest {
 
@@ -268,3 +274,12 @@ class PolicyServiceTest {
     @Autowired
     PolicyService service;
 }
+
+
+
+
+@WebMvcTest: for unit testing REST controllers only
+------------
+
+@SpringBootTest: for full application integration tests.
+----------------
