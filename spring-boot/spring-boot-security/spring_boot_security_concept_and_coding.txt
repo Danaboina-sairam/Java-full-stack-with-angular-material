@@ -179,6 +179,104 @@ SecurityFilterChain: SecurityFilterChain method used to override the default Aut
 
 
 
+
+
+
+
+
+
+
+
+
+
+old approach(DEPRECATED) : For Spring Boot 2 / Spring Security 5.7
+-------------
+
+@Configuration
+@EnableWebSecurity
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http
+            .authorizeRequests()
+            .anyRequest().authenticated();
+    }
+}
+
+
+note: here overriding the configure method in the WebSecurityConfigurerAdapter class
+
+
+
+new approach: For Spring Boot 3 / Spring Security 6
+-------------
+
+@Configuration
+@EnableWebSecurity
+public class SecurityConfig {
+
+    @Bean
+    SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+
+        http
+            .authorizeHttpRequests(auth -> auth
+                .requestMatchers("/public/**").permitAll()
+                .anyRequest().authenticated()
+            )
+            .httpBasic(Customizer.withDefaults());
+
+        return http.build();
+    }
+}
+
+note: just creating the securityFilterChain bean
+
+
+
+
+
+
+
+
+
+@EnableWebSecurity
+------------------
+
+auto configuration
+------------------
+
+no need
+
+manual configuration
+--------------------
+
+need
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Types of Spring security
 ------------------------
 
