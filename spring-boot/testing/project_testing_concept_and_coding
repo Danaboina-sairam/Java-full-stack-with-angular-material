@@ -256,8 +256,9 @@ Integration Testing/Slice Testing
 
 @MockBean
 ---------
-@MockBean was the Spring Boot way to create a Mockito mock and put it into the Spring ApplicationContext. It is mainly used with Spring tests such as @SpringBootTest, @WebMvcTest, etc.
+--->@MockBean was the Spring Boot way to create a Mockito mock and put it into the Spring ApplicationContext. It is mainly used with Spring tests such as @SpringBootTest, @WebMvcTest, etc.
 
+--->Service layers can be tested using @MockBean to mock repositories and other dependencies. 
 
 
 @SpringBootTest
