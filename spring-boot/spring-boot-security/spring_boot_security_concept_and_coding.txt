@@ -295,6 +295,33 @@ need
 
 
 
+Spring Security
+│
+├── Basic Authentication
+├── JWT Authentication
+├── OAuth2 / OpenID Connect
+├── LDAP Authentication
+├── Form-Based Authentication
+└── Method-Level Security
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
