@@ -209,6 +209,28 @@ note: here overriding the configure method in the WebSecurityConfigurerAdapter c
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 new approach: For Spring Boot 3 / Spring Security 6
 -------------
 
