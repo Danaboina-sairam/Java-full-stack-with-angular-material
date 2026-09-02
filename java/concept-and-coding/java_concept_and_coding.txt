@@ -5902,3 +5902,19 @@ Streams API:
 2.easy to write the code
 3.easy to write data processing operations such as filtering, sorting, matching, finding, mapping etc
 4.it is don't called as data structure
+
+
+
+
+
+
+
+
+
+Overriding in Java
+------------------
+
+We can't override below methods
+-------------------------------
+
+Private, static, final
