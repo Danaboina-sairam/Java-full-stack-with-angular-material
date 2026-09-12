@@ -4,6 +4,43 @@ Ctrl+Alt+small o---------------->Remove unused imports
 Ctrl+Alt+small L-------------->code reformat
 
 
+sout---------->System.out.println();----------------->Tab
+
+
+Ctrl+Alt+Left Arrow------------->Intellij moving between the classes
+
+Ctrl+Alt+Right Arrow----------->Intellij moving between the classes
+
+
+
+
+
+
+
+
+
+For selecting multiple columns
+------------------------------
+
+Shift+ down arrow 
+
+For getting related items
+-------------------------
+
+Ctrl+space or Tab
+
+For new line
+------------
+
+Alt+Enter
+
+For comma and single quote usage
+--------------------------------
+
+Alt + cursor  or Ctrl+Alt+cursor
+
+
+
 
 
 
