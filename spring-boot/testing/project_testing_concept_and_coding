@@ -9,6 +9,32 @@ Ctrl+Alt+small L-------------->code reformat
 
 
 
+| Action                           | Shortcut            |
+| -------------------------------- | ------------------- |
+| 🐞 **Debug current application** | `Shift + F9`        |
+| ▶️ **Run application**           | `Shift + F10`       |
+| 🔴 **Toggle breakpoint**         | `Ctrl + F8`         |
+| ▶️ **Resume execution**          | `F9`                |
+| ⏭️ **Step Over**                 | `F8`                |
+| ⬇️ **Step Into**                 | `F7`                |
+| ⬆️ **Step Out**                  | `Shift + F8`        |
+| 🎯 **Run to Cursor**             | `Alt + F9`          |
+| 📝 **Evaluate Expression**       | `Alt + F8`          |
+| 🔍 **View breakpoints**          | `Ctrl + Shift + F8` |
+| 🧵 **Show execution point**      | `Alt + F10`         |
+| 🔄 **Rerun debug**               | `Ctrl + F5`         |
+| ⛔ **Stop debugging**             | `Ctrl + F2`         |
+
+
+
+
+
+
+
+
+
+
+
 
 application.properties
 ----------------------
