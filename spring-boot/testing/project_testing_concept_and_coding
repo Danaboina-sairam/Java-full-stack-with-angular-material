@@ -4,6 +4,9 @@ Ctrl+Alt+small o---------------->Remove unused imports
 Ctrl+Alt+small L-------------->code reformat
 
 
+ctrl+g--------->go to line and column
+
+
 sout---------->System.out.println();----------------->Tab
 
 
