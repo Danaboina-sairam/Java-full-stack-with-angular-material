@@ -414,3 +414,20 @@ String response="";
 
 doReturn(response).when(aService).getHtml2();
 
+
+
+
+
+
+
+No need to write testcase or stub for the below statement
+---------------------------------------------------------
+
+commonUtils.createPdf()
+
+
+why no need to write testcase or stub
+-------------------------------------
+
+there is no return value or object
+
