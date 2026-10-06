@@ -377,3 +377,40 @@ class PolicyServiceTest {
 
 @SpringBootTest: for full application integration tests.
 ----------------
+
+
+
+
+
+
+Whenever method in same class
+-----------------------------
+
+class AService{
+    public String getHtml1() {
+         String getHtml=getHtml2();
+    }
+
+    public String getHtml2(){
+
+    }
+}
+
+class AServiceTest{
+    @InjectMock
+    @Spy
+    ASerivce aService;
+}
+
+
+Steps for whenever method in same class
+---------------------------------------
+
+1.@Spy + @InjectMocks
+
+2.stubing
+
+String response="";
+
+doReturn(response).when(aService).getHtml2();
+
